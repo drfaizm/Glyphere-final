@@ -1,0 +1,10 @@
+/* App.jsx renders <LoginRegister /> directly —
+   no .App wrapper div exists, so centering
+   is handled entirely in index.css / body.    */
+
+#root {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}

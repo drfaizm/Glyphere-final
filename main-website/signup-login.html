@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Login &amp; Sign Up | The Typographic Gallery</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Epilogue:wght@400;700;800;900&amp;family=Manrope:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "secondary-fixed": "#d5e3fd",
+                    "primary": "#2a2a2a",
+                    "surface-container": "#eeeeee",
+                    "error": "#ba1a1a",
+                    "on-secondary-fixed-variant": "#3a485c",
+                    "on-error": "#ffffff",
+                    "on-surface-variant": "#44474c",
+                    "error-container": "#ffdad6",
+                    "surface-container-low": "#f3f3f4",
+                    "on-primary": "#ffffff",
+                    "on-error-container": "#93000a",
+                    "on-secondary-fixed": "#0d1c2f",
+                    "on-tertiary-fixed-variant": "#524529",
+                    "secondary-fixed-dim": "#b9c7e0",
+                    "secondary": "#515f74",
+                    "tertiary-container": "#4c3f23",
+                    "on-surface": "#1a1c1c",
+                    "on-secondary-container": "#57657b",
+                    "tertiary-fixed": "#f5e0ba",
+                    "surface-bright": "#f9f9f9",
+                    "surface-tint": "#5e5e5e",
+                    "on-secondary": "#ffffff",
+                    "on-tertiary-container": "#bdaa87",
+                    "surface-container-highest": "#e2e2e2",
+                    "primary-container": "#404040",
+                    "on-primary-fixed": "#1b1b1b",
+                    "surface": "#f9f9f9",
+                    "surface-variant": "#e2e2e2",
+                    "outline-variant": "#c5c6cd",
+                    "inverse-surface": "#2f3131",
+                    "secondary-container": "#d5e3fd",
+                    "surface-dim": "#dadada",
+                    "tertiary-fixed-dim": "#d8c49f",
+                    "background": "#f9f9f9",
+                    "primary-fixed": "#e2e2e2",
+                    "on-primary-fixed-variant": "#474747",
+                    "outline": "#75777d",
+                    "primary-fixed-dim": "#c6c6c6",
+                    "inverse-primary": "#c6c6c6",
+                    "inverse-on-surface": "#f0f1f1",
+                    "surface-container-lowest": "#ffffff",
+                    "on-background": "#1a1c1c",
+                    "surface-container-high": "#e8e8e8",
+                    "on-primary-container": "#acacac",
+                    "tertiary": "#34290f",
+                    "on-tertiary-fixed": "#241a03",
+                    "on-tertiary": "#ffffff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "fontFamily": {
+                    "headline": ["Epilogue"],
+                    "body": ["Manrope"],
+                    "label": ["Manrope"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Manrope', sans-serif; }
+        h1, h2, h3 { font-family: 'Epilogue', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+    </style>
+</head>
+<body class="bg-surface text-on-surface selection:bg-tertiary-fixed-dim selection:text-on-tertiary-fixed">
+<main class="min-h-screen flex flex-col md:flex-row">
+<section class="hidden md:flex w-1/2 bg-primary relative overflow-hidden flex-col justify-between p-12">
+<div class="absolute inset-0 z-0 opacity-40">
+<img class="w-full h-full object-cover grayscale" data-alt="abstract close-up of monochromatic liquid metal texture with elegant curves and high contrast studio lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDGYYwkLnz8qJLGwf5r7xh4WZNF7obMTUttMINqR6OXUmTQ8Omc2APuELlUCS7cOxV5eyDN6S_x9PQcLvjLyR68N5UT83VyXJJXXyAPhvRjmi3-Icd3YvIca3o8MC2gD88xxYMpjufCazYnn_JwWmW-ElKEgBMkSdCJ8oMASL3D7vH4iZSiPTtzGV1JwmFtpBB0bwRz4ShwAswKT5IBM5xq_r0gvh1KqAdwlWzUEowJYrWWYtUYYQjue0YbBhN-4eumEGPwW-MGpOIJ"/>
+</div>
+<div class="relative z-10">
+<div class="text-2xl font-bold tracking-tighter text-surface">The Typographic Gallery</div>
+</div>
+<div class="relative z-10 mb-20">
+<h1 class="text-6xl font-black text-surface tracking-tighter leading-none mb-6">
+                    WHERE WORDS <br/> BECOME ART.
+                </h1>
+<p class="text-on-primary-container font-body max-w-sm text-lg">
+                    Join a community of curators and creators defining the next era of digital type.
+                </p>
+</div>
+<div class="relative z-10 flex items-center space-x-4">
+<div class="h-px w-12 bg-on-primary-container"></div>
+<span class="text-xs uppercase tracking-widest text-on-primary-container font-label">Curated Excellence since 2024</span>
+</div>
+</section>
+<section class="flex-1 flex flex-col justify-center items-center p-8 md:p-24 bg-surface">
+<div class="w-full max-w-md">
+<div class="mb-12">
+<h2 class="text-4xl font-bold text-primary tracking-tighter mb-2">Welcome Back</h2>
+<p class="text-secondary font-body">Enter your details to access your curator space.</p>
+</div>
+<form class="space-y-8">
+<div class="group">
+<label class="block text-xs font-bold uppercase tracking-widest text-secondary mb-2 font-label" for="login-email">Email Address</label>
+<input class="w-full bg-transparent border-0 border-b border-outline-variant py-3 px-0 focus:ring-0 focus:border-primary transition-colors text-primary placeholder-outline" id="login-email" name="email" placeholder="curator@gallery.com" type="email"/>
+</div>
+<div class="group">
+<div class="flex justify-between items-center mb-2">
+<label class="block text-xs font-bold uppercase tracking-widest text-secondary font-label" for="login-password">Password</label>
+<a class="text-xs font-bold text-primary hover:text-secondary transition-colors uppercase tracking-widest font-label" href="#">Forgot?</a>
+</div>
+<input class="w-full bg-transparent border-0 border-b border-outline-variant py-3 px-0 focus:ring-0 focus:border-primary transition-colors text-primary placeholder-outline" id="login-password" name="password" placeholder="••••••••" type="password"/>
+</div>
+<div class="pt-4 space-y-4">
+<button class="w-full bg-primary text-on-primary py-4 px-6 font-bold tracking-tight hover:bg-primary-container active:scale-[0.98] transition-all flex justify-center items-center group" type="submit">
+                            Login to Curator Space
+                            <span class="material-symbols-outlined ml-2 text-lg group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</button>
+<div class="relative flex items-center py-4">
+<div class="flex-grow border-t border-surface-container-high"></div>
+<span class="flex-shrink mx-4 text-xs uppercase tracking-widest text-outline font-label">or</span>
+<div class="flex-grow border-t border-surface-container-high"></div>
+</div>
+<button class="w-full bg-surface-container-lowest border border-outline-variant/30 text-primary py-4 px-6 font-bold tracking-tight hover:bg-surface-container-low active:scale-[0.98] transition-all flex justify-center items-center" type="button">
+                            Sign up for an account
+                        </button>
+</div>
+</form>
+<div class="mt-16 pt-8 border-t border-surface-container-high">
+<div class="flex justify-between items-center text-[10px] uppercase tracking-widest text-outline font-label">
+<span>The Typographic Gallery</span>
+<div class="flex space-x-4">
+<a class="hover:text-primary transition-colors" href="#">Privacy</a>
+<a class="hover:text-primary transition-colors" href="#">Terms</a>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<div class="fixed inset-0 z-[100] bg-surface flex flex-col md:flex-row translate-y-full transition-transform duration-500 hidden" id="signup-overlay">
+<section class="flex-1 flex flex-col justify-center items-center p-8 md:p-24 bg-surface">
+<div class="w-full max-w-md relative">
+<button class="absolute -top-12 -left-12 p-4 text-primary hover:bg-surface-container-low transition-all" onclick="document.getElementById('signup-overlay').classList.add('translate-y-full')">
+<span class="material-symbols-outlined">close</span>
+</button>
+<div class="mb-12">
+<h2 class="text-4xl font-bold text-primary tracking-tighter mb-2">Create Identity</h2>
+<p class="text-secondary font-body">Join the elite circle of typographic curators.</p>
+</div>
+<form class="space-y-6">
+<div class="group">
+<label class="block text-xs font-bold uppercase tracking-widest text-secondary mb-1 font-label" for="reg-name">Full Name</label>
+<input class="w-full bg-transparent border-0 border-b border-outline-variant py-3 px-0 focus:ring-0 focus:border-primary transition-colors text-primary" id="reg-name" placeholder="Alexander Typo" type="text"/>
+</div>
+<div class="group">
+<label class="block text-xs font-bold uppercase tracking-widest text-secondary mb-1 font-label" for="reg-email">Email Address</label>
+<input class="w-full bg-transparent border-0 border-b border-outline-variant py-3 px-0 focus:ring-0 focus:border-primary transition-colors text-primary" id="reg-email" placeholder="alex@studio.com" type="email"/>
+</div>
+<div class="group">
+<label class="block text-xs font-bold uppercase tracking-widest text-secondary mb-1 font-label" for="reg-password">Secure Password</label>
+<input class="w-full bg-transparent border-0 border-b border-outline-variant py-3 px-0 focus:ring-0 focus:border-primary transition-colors text-primary" id="reg-password" placeholder="••••••••" type="password"/>
+</div>
+<div class="pt-6">
+<button class="w-full bg-primary text-on-primary py-4 px-6 font-bold tracking-tight hover:bg-primary-container active:scale-[0.98] transition-all" type="submit">
+                            Initialize Account
+                        </button>
+<p class="mt-6 text-center text-[10px] uppercase tracking-widest text-outline font-label">
+                            By signing up, you agree to the <a class="text-primary underline" href="#">Licensing Terms</a>.
+                        </p>
+</div>
+</form>
+</div>
+</section>
+<section class="hidden md:flex w-1/3 bg-surface-container-low flex-col justify-center p-12 overflow-hidden relative">
+<div class="absolute inset-0 z-0">
+<img class="w-full h-full object-cover" data-alt="minimalist architectural detail of a white concrete spiral staircase with sharp shadows and clean geometric lines" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDf1CGrx50DOTy8PoVSIMv6oZ-3-HcxDd4qa8BEeqjtpU7dDeTAi2r7ZUB4z-DkN40fMGAW5CyF_UZsFkDqQ5kfAE0CmonFYTNlj70nPYkLylan_WwKli-sA-xd4ozHV5cF74HAA9W_ySPc7AxfCTHCsizHfyJbQ1_6mXLNpllRTT34hkNQ95e0xMs30cGTuRJAQV4CVHk6vNn8r7hpqTumL9LJcTHROvqTh9OglU5_akbHVbJ8ByakUsKlzDtQ81vjuYaD2DC7cCLp"/>
+</div>
+<div class="relative z-10 p-8 bg-surface/80 backdrop-blur-md">
+<span class="text-tertiary-fixed-dim font-bold text-4xl mb-4 block">01</span>
+<h3 class="text-xl font-bold text-primary mb-2">Global Licensing</h3>
+<p class="text-secondary text-sm">Access the world's most exclusive typefaces with a single curated license.</p>
+</div>
+</section>
+</div>
+<footer class="w-full border-t border-slate-200/15 dark:border-slate-800/15 bg-slate-50 dark:bg-slate-950">
+<div class="w-full px-8 py-12 grid grid-cols-1 md:grid-cols-4 gap-8 max-w-screen-2xl mx-auto">
+<div class="col-span-1 md:col-span-1">
+<div class="text-xl font-black text-slate-900 dark:text-slate-50 mb-4">The Typographic Gallery</div>
+<p class="text-[10px] tracking-widest uppercase text-slate-500 dark:text-slate-400">© 2024 The Typographic Gallery. Etched in Epilogue.</p>
+</div>
+<div>
+<h4 class="text-[10px] tracking-widest uppercase font-bold text-slate-900 dark:text-slate-50 mb-6">Social</h4>
+<ul class="space-y-4">
+<li><a class="text-[10px] tracking-widest uppercase text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-50 transition-all" href="#">Instagram</a></li>
+<li><a class="text-[10px] tracking-widest uppercase text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-50 transition-all" href="#">Twitter</a></li>
+<li><a class="text-[10px] tracking-widest uppercase text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-50 transition-all" href="#">LinkedIn</a></li>
+</ul>
+</div>
+<div>
+<h4 class="text-[10px] tracking-widest uppercase font-bold text-slate-900 dark:text-slate-50 mb-6">Legal</h4>
+<ul class="space-y-4">
+<li><a class="text-[10px] tracking-widest uppercase text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-50 transition-all" href="#">Privacy Policy</a></li>
+<li><a class="text-[10px] tracking-widest uppercase text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-50 transition-all" href="#">Licensing Terms</a></li>
+</ul>
+</div>
+<div class="flex flex-col justify-between">
+<p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed italic">
+                    "Typography is the clothing that words wear."
+                </p>
+<div class="mt-8">
+<span class="inline-block p-2 bg-tertiary-fixed-dim/20 rounded-full">
+<span class="material-symbols-outlined text-primary text-sm">verified</span>
+</span>
+</div>
+</div>
+</div>
+</footer>
+<script>
+        document.querySelector('button[type="button"]').addEventListener('click', function() {
+            const overlay = document.getElementById('signup-overlay');
+            overlay.classList.remove('hidden');
+            setTimeout(() => overlay.classList.remove('translate-y-full'), 10);
+        });
+    </script>
+</body></html>

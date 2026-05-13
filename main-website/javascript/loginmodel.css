@@ -1,0 +1,440 @@
+@import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=Manrope:wght@300;400;500;600;700&display=swap');
+
+/* ─────────────────────────────────────────
+   RESET (scoped to modal elements only)
+───────────────────────────────────────── */
+.glm-backdrop *,
+.glm-backdrop *::before,
+.glm-backdrop *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+ 
+/* ─────────────────────────────────────────
+   BACKDROP — full-screen overlay
+───────────────────────────────────────── */
+.glm-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 9000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+ 
+  /* frosted dark overlay */
+  background: rgba(17, 12, 8, 0.55);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+ 
+  /* hidden by default */
+  opacity: 0;
+  pointer-events: none;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.glm-backdrop.glm-open {
+    opacity: 1;
+    pointer-events: auto;
+    visibility: visible; /* ← FIX: children bhi interactive ho jaate hain */
+}
+
+/* ─────────────────────────────────────────
+   CARD — the login/register panel
+───────────────────────────────────────── */
+.glm-card {
+    position: relative;
+    width: min(820px, 100%);
+    height: 520px;
+    background: #faf8f5;
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow:
+        0 4px 6px rgba(17, 17, 17, 0.05),
+        0 20px 60px rgba(17, 17, 17, 0.20),
+        0 0 0 1px #cec4b4;
+
+    /* card slides up on open */
+    transform: translateY(20px) scale(0.97);
+    transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.glm-backdrop.glm-open .glm-card {
+    transform: translateY(0) scale(1);
+}
+
+/* ─────────────────────────────────────────
+   CLOSE BUTTON
+───────────────────────────────────────── */
+.glm-close {
+    position: absolute;
+    top: 14px;
+    right: 16px;
+    z-index: 100;
+    width: 32px;
+    height: 32px;
+    border: none;
+    border-radius: 50%;
+    background: #f2e5d7;
+    color: #111111;
+    font-size: 18px;
+    line-height: 1;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s, color 0.2s;
+    font-family: sans-serif;
+}
+
+.glm-close:hover {
+    background: #f5e9d5;
+    color: #111;
+    transform: none;
+    box-shadow: none;
+}
+
+/* ─────────────────────────────────────────
+   FORM CONTAINERS
+───────────────────────────────────────── */
+.glm-form-container {
+    position: absolute;
+    top: 0;
+    width: 50%;
+    height: 100%;
+    padding: 32px 48px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.glm-sign-up {
+    right: 0;
+    opacity: 1;
+    z-index: 5;
+    pointer-events: auto;
+    transition: opacity 0.4s ease-in-out;
+}
+
+.glm-sign-in {
+    left: 0;
+    opacity: 0;
+    z-index: 1;
+    pointer-events: none;
+    transition: opacity 0.4s ease-in-out;
+}
+
+.glm-card.glm-login-active .glm-sign-up {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.glm-card.glm-login-active .glm-sign-in {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* ─────────────────────────────────────────
+   FORM ELEMENTS
+───────────────────────────────────────── */
+.glm-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.glm-heading {
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-size: 1.85rem;
+    font-weight: 800;
+    color: #111111;
+    letter-spacing: -0.03em;
+    line-height: 1.1;
+    margin-bottom: 24px;
+    width: 100%;
+    text-align: left;
+}
+
+/* ── Input ── */
+.glm-input-group {
+    position: relative;
+    width: 100%;
+    margin-bottom: 18px;
+}
+
+.glm-input-group i {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #8a7e70;
+    font-size: 13px;
+}
+
+.glm-input-group input {
+    width: 100%;
+    background: transparent;
+    border: none;
+    border-bottom: 1.5px solid #cec4b4;
+    padding: 9px 24px 9px 0;
+    color: #1c1812;
+    font-family: 'Manrope', sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    outline: none;
+    transition: border-color 0.25s ease;
+}
+
+.glm-input-group input::placeholder {
+    color: #8a7e70;
+    font-weight: 300;
+}
+
+.glm-input-group input:focus {
+    border-bottom-color: #8a6c3e;
+}
+
+/* ── Error ── */
+.glm-error {
+    color: #ba1a1a;
+    font-family: 'Manrope', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 500;
+    margin-bottom: 10px;
+    text-align: center;
+    width: 100%;
+    min-height: 1.2em;
+}
+
+/* ── Button ── */
+.glm-btn {
+    margin-top: 12px;
+    padding: 11px 44px;
+    border: none;
+    border-radius: 40px;
+    background: #f2e5d7;
+    color: #111111;
+    font-family: 'Manrope', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    cursor: pointer;
+    box-shadow: 0 2px 12px rgba(17, 17, 17, 0.18);
+    transition: background 0.2s, transform 0.15s, box-shadow 0.2s, border 0.2s ease;
+}
+
+.glm-btn:hover {
+    background: #f5e9d5;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 18px #f5e9d5;
+}
+
+.glm-btn:active {
+    transform: translateY(0);
+}
+
+/* ── Toggle text ── */
+.glm-toggle {
+    margin-top: 20px;
+    font-family: 'Manrope', sans-serif;
+    font-size: 12.5px;
+    color: #8a7e70;
+    text-align: center;
+}
+
+.glm-toggle span {
+    color: #8a6c3e;
+    cursor: pointer;
+    font-weight: 600;
+    margin-left: 4px;
+    transition: color 0.2s;
+}
+
+.glm-toggle span:hover {
+    color: #111111;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+
+/* ─────────────────────────────────────────
+   DIAGONAL OVERLAY (same design as card)
+───────────────────────────────────────── */
+.glm-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+    pointer-events: none;
+    background: linear-gradient(140deg, #2e2720 0%, #111111 100%);
+    clip-path: polygon(0 0, 59% 0, 25% 100%, 0 100%);
+    transition: clip-path 0.7s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+
+.glm-card.glm-login-active .glm-overlay {
+    clip-path: polygon(35% 0, 100% 0, 100% 100%, 72% 100%);
+}
+
+.glm-overlay-panel {
+    position: absolute;
+    top: 0;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0 36px;
+    width: 45%;
+    transition: opacity 0.4s ease-in-out;
+    z-index: 1;
+}
+
+.glm-overlay-left {
+    left: 0;
+    opacity: 1;
+    text-align: left;
+}
+
+.glm-overlay-right {
+    right: 0;
+    opacity: 0;
+    text-align: right;
+}
+
+.glm-card.glm-login-active .glm-overlay-left {
+    opacity: 0;
+}
+
+.glm-card.glm-login-active .glm-overlay-right {
+    opacity: 1;
+}
+
+.glm-overlay-panel h2 {
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-size: 2rem;
+    font-weight: 800;
+    letter-spacing: -0.04em;
+    line-height: 1.1;
+    margin-bottom: 12px;
+    color: #f2e5d7;
+}
+
+.glm-overlay-panel p {
+    font-family: 'Manrope', sans-serif;
+    font-size: 13px;
+    font-weight: 300;
+    line-height: 1.65;
+    color: #d4c4a8;
+}
+
+/* ─────────────────────────────────────────
+   SUCCESS STATE
+───────────────────────────────────────── */
+.glm-success {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    padding: 40px;
+    text-align: center;
+    font-family: 'Manrope', sans-serif;
+    color: #1c1812;
+}
+
+.glm-success__icon {
+    font-size: 2.5rem;
+}
+
+.glm-success__title {
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: #111;
+}
+
+.glm-success__msg {
+    font-size: 14px;
+    color: #8a7e70;
+}
+
+/* ─────────────────────────────────────────
+   RESPONSIVE — mobile
+───────────────────────────────────────── */
+@media (max-width: 680px) {
+    .glm-backdrop {
+        padding: 0;
+        align-items: flex-end;
+    }
+
+    .glm-card {
+        width: 100%;
+        height: auto;
+        border-radius: 20px 20px 0 0;
+        transform: translateY(100%);
+        transition: transform 0.4s cubic-bezier(0.34, 1.2, 0.64, 1);
+    }
+
+    .glm-backdrop.glm-open .glm-card {
+        transform: translateY(0);
+    }
+
+    .glm-overlay {
+        display: none;
+    }
+
+    .glm-form-container {
+        position: static;
+        width: 100%;
+        height: auto;
+        padding: 40px 28px 36px;
+        display: none;
+        flex-direction: column;
+        align-items: center;
+        opacity: 1 !important;
+        pointer-events: auto !important;
+    }
+
+    .glm-sign-up {
+        display: flex;
+    }
+
+    .glm-card.glm-login-active .glm-sign-in {
+        display: flex;
+    }
+
+    .glm-card.glm-login-active .glm-sign-up {
+        display: none;
+    }
+
+    .glm-heading {
+        font-size: 1.7rem;
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    .glm-input-group {
+        width: 100%;
+        margin-bottom: 14px;
+    }
+
+    .glm-btn {
+        padding: 12px 52px;
+        margin-top: 16px;
+    }
+
+    /* drag handle hint */
+    .glm-card::before {
+        content: '';
+        display: block;
+        width: 40px;
+        height: 4px;
+        border-radius: 2px;
+        background: #cec4b4;
+        margin: 12px auto 0;
+    }
+}

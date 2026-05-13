@@ -1,0 +1,2546 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Glyphere | Marketplace</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@200..800&display=swap"
+        rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Epilogue:ital,wght@0,100..900;1,100..900&family=Manrope:wght@200..800&display=swap"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=Bebas+Neue&family=Space+Mono:wght@700&family=Syne:wght@800&family=Cormorant+Garamond:ital,wght@1,300&family=DM+Sans:wght@400;500;600&display=swap"
+        rel="stylesheet">
+
+    <!-- Global styles -->
+    <link rel="stylesheet" href="/main-website/css/globalstyle.css  " />
+
+    <link rel="stylesheet" href="javascript/loginmodel.css">
+
+    <style>
+       @font-face {
+            font-family: 'Nova_Legacy';
+            src: url('/main-website/homepage-updated/fonts/Nova_Legacy.ttf') format('truetype');
+            font-weight: 400;
+            font-style: normal;
+        }
+
+        @font-face {
+            font-family: 'Sonnet_Italic';
+            src: url('/main-website/homepage-updated/fonts/Sonnet_Italic.woff') format('woff');
+            font-weight: 400;
+            font-style: normal;
+        }
+
+        @font-face {
+            font-family: 'Midnight_Citadel';
+            src: url('/main-website/homepage-updated/fonts/Midnight_Citadel.woff') format('woff');
+            font-weight: 400;
+            font-style: normal;
+        }
+
+        @font-face {
+            font-family: 'Pebble_Sans';
+            src: url('/main-website/homepage-updated/fonts/Pebble_Sans.woff') format('woff');
+            font-weight: 400;
+            font-style: normal;
+        }
+
+        @font-face {
+            font-family: 'Storybook_Sans';
+            src: url('/main-website/homepage-updated/fonts/Storybook_Sans.woff') format('woff');
+            font-weight: 400;
+            font-style: normal;
+        }
+
+        @font-face {
+            font-family: 'Mistavio_Sans';
+            src: url('/main-website/homepage-updated/fonts/Mistavio_Sans.woff2') format('woff2');
+            font-weight: 400;
+            font-style: normal;
+        }
+
+
+        @font-face {
+            font-family: 'BLOCK_ITALIC';
+            src: url('/main-website/homepage-updated/fonts/BLOCK_ITALIC.woff2') format('woff2');
+            font-weight: 400;
+            font-style: normal;
+        }
+
+        @font-face {
+            font-family: 'Turbo_Block';
+            src: url('/main-website/homepage-updated/fonts/Turbo_Block.woff2') format('woff2');
+            font-weight: 400;
+            font-style: normal;
+        }
+
+        @font-face {
+            font-family: 'Vellum_Flow';
+            src: url('/main-website/homepage-updated/fonts/Vellum_Flow.woff2') format('woff2');
+            font-weight: 400;
+            font-style: normal;
+        }
+
+        @font-face {
+            font-family: 'Brushfield_Fury';
+            src: url('/main-website/homepage-updated/fonts/Brushfield_Fury.woff2') format('woff2');
+            font-weight: 400;
+            font-style: normal;
+        }
+
+        @font-face {
+            font-family: 'Stadium_Bold';
+            src: url('/main-website/homepage-updated/fonts/Stadium_Bold.woff2') format('woff2');
+            font-weight: 400;
+            font-style: bold;
+        }
+
+
+        @font-face {
+            font-family: 'Strata_Bold';
+            src: url('/main-website/homepage-updated/fonts/Strata_Bold.woff2') format('woff2');
+            font-weight: 400;
+            font-style: bold;
+        }
+
+        @font-face {
+            font-family: 'Funkadelic_Serif';
+            src: url('/main-website/homepage-updated/fonts/Funkadelic_Serif.woff2') format('woff2');
+            font-weight: 400;
+            font-style: normal;
+        }
+
+
+        @font-face {
+            font-family: 'Velocity_Brush';
+            src: url('/main-website/homepage-updated/fonts/Velocity_Brush.woff2') format('woff2');
+            font-weight: 400;
+            font-style: bold;
+        }
+
+        @font-face {
+            font-family: 'Goliath_Soft';
+            src: url('/main-website/homepage-updated/fonts/Goliath_Soft.woff2') format('woff2');
+            font-weight: 400;
+            font-style: bold;
+        }
+
+        @font-face {
+            font-family: 'Velvet_Monoline';
+            src: url('/main-website/homepage-updated/fonts/Velvet_Monoline.woff2') format('woff2');
+            font-weight: 400;
+            font-style: normal;
+        }
+
+        @font-face {
+            font-family: 'Prose_Bold';
+            src: url('/main-website/homepage-updated/fonts/Prose_Bold.woff2') format('woff2');
+            font-weight: 400;
+            font-style: bold;
+        }
+
+        @font-face {
+            font-family: 'Zenith_Spark';
+            src: url('/main-website/homepage-updated/fonts/Zenith_Spark.woff2') format('woff2');
+            font-weight: 400;
+            font-style: normal;
+        }
+
+        @font-face {
+            font-family: 'Glissade';
+            src: url('/main-website/homepage-updated/fonts/Glissade.woff2') format('woff2');
+            font-weight: 400;
+            font-style: normal;
+        }
+
+        @font-face {
+            font-family: 'Onyx_Dynasty';
+            src: url('/main-website/homepage-updated/fonts/Onyx_Dynasty.woff2') format('woff2');
+            font-weight: 400;
+            font-style: normal;
+        }
+
+        @font-face {
+            font-family: 'Boutique_Seraphina';
+            src: url('/main-website/homepage-updated/fonts/Boutique_Seraphina.woff2') format('woff2');
+            font-weight: 400;
+            font-style: normal;
+        }
+
+        @font-face {
+            font-family: 'Apex_Rounded';
+            src: url('/main-website/homepage-updated/fonts/Apex_Rounded.woff2') format('woff2');
+            font-weight: 400;
+            font-style: normal;
+        }
+
+        @font-face {
+            font-family: 'Vanguard_Axis';
+            src: url('/main-website/homepage-updated/fonts/Vanguard_Axis.woff2') format('woff2');
+            font-weight: 400;
+            font-style: normal;
+        }
+
+        @font-face {
+            font-family: 'Throttle_Street';
+            src: url('/main-website/homepage-updated/fonts/Throttle_Street.woff2') format('woff2');
+            font-weight: 400;
+            font-style: normal;
+        }
+
+        @font-face {
+            font-family: 'Nova_Shell';
+            src: url('/main-website/homepage-updated/fonts/Nova_Shell.woff2') format('woff2');
+            font-weight: 400;
+            font-style: normal;
+        }
+
+        @font-face {
+            font-family: 'Volo_Scale';
+            src: url('/main-website/homepage-updated/fonts/Volo_Scale.woff2') format('woff2');
+            font-weight: 400;
+            font-style: normal;
+        }
+
+        /* =====================================================
+           MARKETPLACE — PAGE STYLES
+           ===================================================== */
+
+        /* ─── Layout ─── */
+        .mp-main {
+            padding-top: 7rem;
+            padding-bottom: 6rem;
+            max-width: 1440px;
+            margin: 0 auto;
+            padding-left: 2.5rem;
+            padding-right: 2.5rem;
+        }
+
+        /* ─────────────────────────────────────────
+           HERO
+        ───────────────────────────────────────── */
+        .mp-hero {
+            margin-bottom: 3rem;
+            padding: 3rem;
+        }
+
+        .mp-hero__top {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            gap: 2rem;
+            margin-bottom: 0;
+        }
+
+        .mp-hero__eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.625rem;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+            color: var(--gold-dark);
+            font-weight: 700;
+            margin-bottom: 1.25rem;
+        }
+
+        .mp-hero__eyebrow::before {
+            content: '';
+            display: inline-block;
+            width: 24px;
+            height: 1px;
+            background: var(--gold);
+            opacity: 0.6;
+        }
+
+        .mp-hero__headline {
+            font-family: 'Bricolage Grotesque', sans-serif;
+            font-size: clamp(2.8rem, 6vw, 5.5rem);
+            font-weight: 800;
+            letter-spacing: -0.04em;
+            line-height: 1.0;
+            color: var(--color-primary);
+        }
+
+        .mp-hero__description p {
+            color: var(--color-on-surface-variant);
+            max-width: 22rem;
+            line-height: 1.7;
+            font-family: var(--font-body);
+            font-size: 0.9rem;
+            font-weight: 400;
+        }
+
+        /* ─────────────────────────────────────────
+           LIVE PREVIEW BAR
+        ───────────────────────────────────────── */
+        .mp-preview-bar {
+            position: sticky;
+            top: 60px;
+            z-index: 50;
+            width: 100%;
+            margin: 0 auto 2.5rem;
+        }
+
+        .mp-preview-bar__inner {
+            background: linear-gradient(135deg, var(--color-primary-container) 0%, var(--color-primary) 100%);
+            border-radius: 20px 20px 20px 20px;
+            border-bottom: 2px solid rgba(201, 171, 129, 0.4);
+            transition: box-shadow 400ms ease;
+            overflow: hidden;
+            box-shadow: 0 8px 32px rgba(17, 17, 17, 0.2);
+        }
+
+        .mp-preview-bar__input-wrap {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 18px;
+        }
+
+        .mp-preview-bar__icon {
+            color: rgba(242, 231, 213, 0.5);
+            font-size: 16px;
+            flex-shrink: 0;
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 20;
+        }
+
+        .mp-preview-bar__input {
+            width: 100%;
+            background: transparent;
+            border: none;
+            outline: none;
+            box-shadow: none;
+            font-size: 0.9rem;
+            font-family: 'Epilogue', sans-serif;
+            font-weight: 300;
+            color: #f2e7d5;
+            padding: 0;
+            line-height: 1.5;
+        }
+
+        .mp-preview-bar__input::placeholder {
+            color: rgba(242, 231, 213, 0.4);
+            font-size: 0.875rem;
+        }
+
+        .mp-preview-bar__hint {
+            font-size: 0.5rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: rgba(242, 231, 213, 0.3);
+            white-space: nowrap;
+            font-weight: 600;
+            flex-shrink: 0;
+        }
+
+        /* ─────────────────────────────────────────
+           FILTER BAR
+        ───────────────────────────────────────── */
+        .mp-filters {
+            margin-bottom: 1rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1.25rem;
+        }
+
+        .mp-filters__pills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            overflow-x: auto;
+            padding-bottom: 0.25rem;
+        }
+
+        .mp-pill,
+        .mp-pill--active {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 0.45rem 1.1rem;
+            border-radius: var(--radius-full);
+            font-weight: 600;
+            font-size: 0.8rem;
+            transition: all 200ms cubic-bezier(0.23, 1, 0.32, 1);
+            white-space: nowrap;
+            cursor: pointer;
+            border: 1px solid transparent;
+            letter-spacing: 0.01em;
+        }
+
+        .mp-pill {
+            background-color: var(--color-surface-container-low);
+            color: var(--color-on-surface-variant);
+            border-color: rgba(201, 171, 129, 0.12);
+        }
+
+        .mp-pill:hover {
+            background-color: var(--color-surface-container-high);
+            color: var(--color-primary);
+            border-color: rgba(201, 171, 129, 0.25);
+            transform: translateY(-1px);
+        }
+
+        .mp-pill--active {
+            background: var(--color-primary);
+            color: var(--color-on-primary);
+            border-color: var(--color-primary);
+            box-shadow: 0 4px 14px rgba(17, 17, 17, 0.18);
+        }
+
+        .mp-filters__sort {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            border: none;
+            background: none;
+        }
+
+        .mp-sort-pills {
+            display: flex;
+            gap: 0.4rem;
+            flex-wrap: wrap;
+        }
+
+        .mp-sort-pill {
+            padding: 0.35rem 0.85rem;
+            border-radius: var(--radius-full);
+            font-size: 0.75rem;
+            font-weight: 600;
+            cursor: pointer;
+            border: 1px solid rgba(201, 171, 129, 0.2);
+            background: var(--color-surface-container-low);
+            color: var(--color-on-surface-variant);
+            transition: all 200ms cubic-bezier(0.23, 1, 0.32, 1);
+            white-space: nowrap;
+        }
+
+        .mp-sort-pill:hover {
+            background: var(--color-surface-container-high);
+            color: var(--color-primary);
+            border-color: rgba(201, 171, 129, 0.35);
+        }
+
+        .mp-sort-pill--active {
+            background: var(--color-primary);
+            color: var(--color-on-primary);
+            border-color: var(--color-primary);
+            box-shadow: 0 4px 14px rgba(17, 17, 17, 0.15);
+        }
+
+        /* ─────────────────────────────────────────
+           RESULTS BAR
+        ───────────────────────────────────────── */
+        .mp-results-bar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+            padding: 0 10px;
+        }
+
+        .mp-results-count {
+            font-size: 0.625rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--color-on-surface-variant);
+            font-weight: 700;
+        }
+
+        .mp-results-count span {
+            color: var(--color-primary);
+        }
+
+
+        /* ─────────────────────────────────────────
+           FONT GRID
+        ───────────────────────────────────────── */
+        .mp-grid {
+            display: grid;
+            grid-template-columns: repeat(1, minmax(0, 1fr));
+            gap: 1.5rem;
+        }
+
+        /* ═══════════════════════════════════════════
+           FONT CARD — BASE
+           ═══════════════════════════════════════════ */
+        .font-card {
+            border-radius: 20px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.25s cubic-bezier(0.23, 1, 0.32, 1),
+                box-shadow 0.25s cubic-bezier(0.23, 1, 0.32, 1);
+            cursor: pointer;
+            position: relative;
+        }
+
+        .font-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 20px 50px rgba(17, 17, 17, 0.18);
+        }
+
+        /* ── Preview Panel ── */
+        .font-card__preview {
+            padding: 32px 28px 24px;
+            flex: 1;
+            position: relative;
+            min-height: 200px;
+        }
+
+        /* ── Badges Row ── */
+        .font-card__badges {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 20px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .fc-badge {
+            font-family: 'Manrope', sans-serif;
+            font-size: 9px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            padding: 4px 10px;
+            border-radius: 20px;
+        }
+
+        .fc-badge--type {
+            background: rgba(0, 0, 0, 0.12);
+            color: inherit;
+        }
+
+        .fc-badge--sale {
+            background: rgba(255, 255, 255, 0.22);
+            color: inherit;
+        }
+
+        /* ── Big Display Characters ── */
+        .font-card__big {
+            line-height: 1.05;
+            margin-bottom: 12px;
+            font-size: clamp(60px, 9vw, 88px);
+        }
+
+        /* ── Font Name Label ── */
+        .font-card__name-label {
+            font-family: 'Manrope', sans-serif;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            opacity: 0.5;
+            margin-bottom: 5px;
+        }
+
+        /* ── Custom Fonts ── */
+        @font-face {
+            font-family: 'Mistavio Sans';
+            src: url('homepage-updated/fonts/Mistavio_Sans.woff2') format('woff2');
+            font-weight: 400;
+            font-style: normal;
+        }
+
+        @font-face {
+            font-family: 'Brushfield Fury';
+            src: url('homepage-updated/fonts/Brushfield_Fury.woff2') format('woff2');
+            font-weight: 400;
+            font-style: normal;
+        }
+
+        /* ── Tagline ── */
+        .font-card__tagline {
+            font-family: 'Manrope', sans-serif;
+            font-size: 12px;
+            font-weight: 400;
+            opacity: 0.55;
+            line-height: 1.55;
+        }
+
+        /* ── Specimen preview row ── */
+        .font-card__specimen-row {
+            margin-top: 14px;
+            padding-top: 12px;
+            border-top: 1px solid rgba(0, 0, 0, 0.08);
+        }
+
+        .specimen-text {
+            font-size: 1rem;
+            opacity: 0.65;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            line-height: 1.5;
+            width: 100%;
+            transition: font-size 0.2s ease;
+        }
+
+        .specimen-text.text--long {
+            font-size: 0.85rem;
+        }
+
+        /* Wishlist button */
+        .font-card__wishlist {
+            position: absolute;
+            top: 14px;
+            right: 14px;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background: rgba(0, 0, 0, 0.08);
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: background 0.2s, border-color 0.2s, transform 0.2s;
+            z-index: 2;
+        }
+
+        .font-card__wishlist:hover {
+            background: rgba(201, 171, 129, 0.2);
+            border-color: rgba(201, 171, 129, 0.5);
+            transform: scale(1.1);
+        }
+
+        .font-card__wishlist .material-symbols-outlined {
+            font-size: 0.875rem;
+            color: rgba(0, 0, 0, 0.35);
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 20;
+            transition: color 0.2s;
+        }
+
+        .font-card__wishlist:hover .material-symbols-outlined {
+            color: #e74c3c;
+        }
+
+        /* ── Card Bottom Bar ── */
+        .font-card__bottom {
+            padding: 16px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+            background: rgba(0, 0, 0, 0.07);
+        }
+
+        .font-card__price-wrap {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .font-card__price {
+            font-family: 'Bricolage Grotesque', sans-serif;
+            font-size: 22px;
+            font-weight: 800;
+            line-height: 1;
+            letter-spacing: -0.03em;
+        }
+
+        .font-card__styles-count {
+            font-family: 'Manrope', sans-serif;
+            font-size: 10px;
+            opacity: 0.45;
+            margin-top: 3px;
+            letter-spacing: 0.05em;
+        }
+
+        /* ── Button Group ── */
+        .font-card__btns {
+            display: flex;
+            gap: 8px;
+        }
+
+        .fc-btn-details {
+            font-family: 'Manrope', sans-serif;
+            font-size: 12px;
+            font-weight: 600;
+            padding: 9px 16px;
+            border-radius: 25px;
+            border: 1.5px solid rgba(0, 0, 0, 0.18);
+            background: transparent;
+            cursor: pointer;
+            letter-spacing: 0.3px;
+            transition: background 0.15s, transform 0.1s;
+            color: inherit;
+        }
+
+        .fc-btn-details:hover {
+            background: rgba(0, 0, 0, 0.07);
+        }
+
+        .fc-btn-buy {
+            font-family: 'Manrope', sans-serif;
+            font-size: 12px;
+            font-weight: 700;
+            padding: 9px 18px;
+            border-radius: 25px;
+            border: none;
+            cursor: pointer;
+            letter-spacing: 0.3px;
+            transition: opacity 0.15s, transform 0.1s;
+        }
+
+        .fc-btn-buy:hover {
+            opacity: 0.82;
+        }
+
+        .fc-btn-buy:active,
+        .fc-btn-details:active {
+            transform: scale(0.96);
+        }
+
+        /* ════════════════════════════════
+           CARD THEMES
+           ════════════════════════════════ */
+
+        /* T1 — Warm Cream */
+        .fc-t1 {
+            background: #faf6f0;
+            color: #1c1812;
+        }
+
+        .fc-t1 .font-card__bottom {
+            background: rgba(28, 24, 18, 0.06);
+        }
+
+        .fc-t1 .fc-btn-buy {
+            background: #1c1812;
+            color: #f5efe4;
+        }
+
+        .fc-t1 .fc-badge--type {
+            background: rgba(28, 24, 18, 0.1);
+            color: #1c1812;
+        }
+
+        .fc-t1 .fc-badge--sale {
+            background: rgba(201, 171, 129, 0.2);
+            color: var(--gold-dark);
+        }
+
+        .fc-t1 .font-card__wishlist {
+            background: rgba(28, 24, 18, 0.06);
+            border-color: rgba(28, 24, 18, 0.1);
+        }
+
+        .fc-t1 .font-card__wishlist .material-symbols-outlined {
+            color: rgba(28, 24, 18, 0.3);
+        }
+
+        /* T2 — Ink Black */
+        .fc-t2 {
+            background: #111111;
+            color: #f5efe4;
+        }
+
+        .fc-t2 .font-card__specimen-row {
+            border-top-color: rgba(242, 231, 213, 0.1);
+        }
+
+        .fc-t2 .font-card__bottom {
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .fc-t2 .fc-btn-details {
+            border-color: rgba(242, 231, 213, 0.2);
+            color: #f2e7d5;
+        }
+
+        .fc-t2 .fc-btn-buy {
+            background: var(--gold);
+            color: #111111;
+        }
+
+        .fc-t2 .fc-badge--type {
+            background: rgba(201, 171, 129, 0.15);
+            color: var(--gold);
+        }
+
+        .fc-t2 .fc-badge--sale {
+            background: rgba(255, 255, 255, 0.08);
+            color: #f2e7d5;
+        }
+
+        .fc-t2 .font-card__wishlist {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: rgba(255, 255, 255, 0.12);
+        }
+
+        .fc-t2 .font-card__wishlist .material-symbols-outlined {
+            color: rgba(242, 231, 213, 0.4);
+        }
+
+        /* T3 — Terminal Dark */
+        .fc-t3 {
+            background: #0f1a0d;
+            color: #a8e6a0;
+        }
+
+        .fc-t3 .font-card__specimen-row {
+            border-top-color: rgba(168, 230, 160, 0.12);
+        }
+
+        .fc-t3 .font-card__bottom {
+            background: rgba(255, 255, 255, 0.04);
+        }
+
+        .fc-t3 .fc-btn-details {
+            border-color: rgba(168, 230, 160, 0.25);
+            color: #a8e6a0;
+        }
+
+        .fc-t3 .fc-btn-buy {
+            background: #22863a;
+            color: #fff;
+        }
+
+        .fc-t3 .fc-badge--type {
+            background: rgba(168, 230, 160, 0.12);
+            color: #a8e6a0;
+        }
+
+        .fc-t3 .fc-badge--sale {
+            background: rgba(255, 255, 255, 0.06);
+            color: #a8e6a0;
+        }
+
+        .fc-t3 .font-card__wishlist {
+            background: rgba(168, 230, 160, 0.08);
+            border-color: rgba(168, 230, 160, 0.15);
+        }
+
+        .fc-t3 .font-card__wishlist .material-symbols-outlined {
+            color: rgba(168, 230, 160, 0.4);
+        }
+
+        /* T4 — Warm Parchment */
+        .fc-t4 {
+            background: #f5ede0;
+            color: #3d2a10;
+        }
+
+        .fc-t4 .font-card__bottom {
+            background: rgba(61, 42, 16, 0.07);
+        }
+
+        .fc-t4 .fc-btn-buy {
+            background: #3d2a10;
+            color: #f5ede0;
+        }
+
+        .fc-t4 .fc-badge--type {
+            background: rgba(61, 42, 16, 0.1);
+            color: #3d2a10;
+        }
+
+        .fc-t4 .fc-badge--sale {
+            background: rgba(201, 171, 129, 0.25);
+            color: var(--gold-dark);
+        }
+
+        .fc-t4 .font-card__wishlist {
+            background: rgba(61, 42, 16, 0.06);
+            border-color: rgba(61, 42, 16, 0.1);
+        }
+
+        .fc-t4 .font-card__wishlist .material-symbols-outlined {
+            color: rgba(61, 42, 16, 0.3);
+        }
+
+        /* T5 — Deep Midnight */
+        .fc-t5 {
+            background: #0d0d1a;
+            color: #e0d8f8;
+        }
+
+        .fc-t5 .font-card__specimen-row {
+            border-top-color: rgba(224, 216, 248, 0.1);
+        }
+
+        .fc-t5 .font-card__bottom {
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .fc-t5 .fc-btn-details {
+            border-color: rgba(224, 216, 248, 0.25);
+            color: #e0d8f8;
+        }
+
+        .fc-t5 .fc-btn-buy {
+            background: #5c4ad6;
+            color: #fff;
+        }
+
+        .fc-t5 .fc-badge--type {
+            background: rgba(224, 216, 248, 0.1);
+            color: #c4b8f5;
+        }
+
+        .fc-t5 .fc-badge--sale {
+            background: rgba(255, 255, 255, 0.07);
+            color: #e0d8f8;
+        }
+
+        .fc-t5 .font-card__wishlist {
+            background: rgba(255, 255, 255, 0.07);
+            border-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .fc-t5 .font-card__wishlist .material-symbols-outlined {
+            color: rgba(224, 216, 248, 0.4);
+        }
+
+        /* ─────────────────────────────────────────
+           NEWSLETTER CARD
+        ───────────────────────────────────────── */
+        .font-card--newsletter {
+            background: var(--color-primary);
+            color: #f2e7d5;
+        }
+
+        .font-card--newsletter .font-card__preview {
+            background: linear-gradient(135deg, var(--color-primary-container) 0%, #1c1812 100%);
+            padding: 2.5rem 2rem;
+            min-height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .newsletter-card__inner {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            width: 100%;
+        }
+
+        .newsletter-card__headline {
+            font-family: 'Bricolage Grotesque', sans-serif;
+            font-size: 1.4rem;
+            font-weight: 800;
+            line-height: 1.2;
+            color: #f2e7d5;
+            letter-spacing: -0.03em;
+            margin-bottom: 0.5rem;
+        }
+
+        .newsletter-card__sub {
+            font-size: 0.625rem;
+            color: rgba(201, 171, 129, 0.7);
+            letter-spacing: 0.06em;
+            font-weight: 600;
+            text-transform: uppercase;
+            margin-bottom: 1.25rem;
+        }
+
+        .newsletter-card__form {
+            display: flex;
+            border-radius: 0.5rem;
+            overflow: hidden;
+            border: 1px solid rgba(242, 231, 213, 0.15);
+        }
+
+        .newsletter-card__email-input {
+            background: rgba(255, 255, 255, 0.06);
+            border: none;
+            color: #f2e7d5;
+            font-size: 0.8rem;
+            padding: 0.65rem 0.875rem;
+            width: 100%;
+            outline: none;
+            font-family: 'Manrope', sans-serif;
+        }
+
+        .newsletter-card__email-input::placeholder {
+            color: rgba(242, 231, 213, 0.3);
+        }
+
+        .newsletter-card__submit {
+            background: var(--gold);
+            color: var(--color-primary);
+            padding: 0.65rem 1rem;
+            font-weight: 700;
+            font-size: 0.75rem;
+            font-family: 'Manrope', sans-serif;
+            white-space: nowrap;
+            border: none;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .newsletter-card__submit:hover {
+            background: var(--gold-light);
+        }
+
+        .font-card--newsletter .font-card__bottom {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 16px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+        }
+
+        .newsletter-name {
+            font-family: 'Bricolage Grotesque', sans-serif;
+            font-size: 1rem;
+            font-weight: 700;
+            color: #f2e7d5;
+            letter-spacing: -0.02em;
+        }
+
+        .newsletter-sub-label {
+            font-size: 0.6875rem;
+            color: rgba(201, 171, 129, 0.6);
+            font-weight: 500;
+            margin-top: 2px;
+        }
+
+        .newsletter-cta-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 9px 18px;
+            background: var(--gold);
+            color: var(--color-primary);
+            border: none;
+            border-radius: 25px;
+            font-family: 'Manrope', sans-serif;
+            font-size: 12px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: background 0.2s, transform 0.1s;
+            white-space: nowrap;
+        }
+
+        .newsletter-cta-btn:hover {
+            background: var(--gold-light);
+        }
+
+        .newsletter-cta-btn .material-symbols-outlined {
+            font-size: 14px;
+        }
+
+        /* ─────────────────────────────────────────
+           FEATURED SECTION
+        ───────────────────────────────────────── */
+        .mp-featured {
+            margin-top: 5rem;
+            padding: 3.5rem;
+            background: var(--color-primary);
+            border-radius: 1.5rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .mp-featured::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image: radial-gradient(circle, rgba(201, 171, 129, 0.06) 1px, transparent 1px);
+            background-size: 24px 24px;
+        }
+
+        .mp-featured::after {
+            content: '';
+            position: absolute;
+            right: 0;
+            top: 0;
+            width: 50%;
+            height: 100%;
+            background: radial-gradient(ellipse 80% 80% at 80% 50%, rgba(201, 171, 129, 0.12) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .mp-featured__inner {
+            position: relative;
+            z-index: 1;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .mp-featured__eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.5625rem;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+            color: var(--gold);
+            font-weight: 700;
+            margin-bottom: 1.25rem;
+            opacity: 0.85;
+        }
+
+        .mp-featured__eyebrow::before {
+            content: '';
+            width: 20px;
+            height: 1px;
+            background: var(--gold);
+            opacity: 0.5;
+        }
+
+
+        .mp-featured__headline {
+            font-family: 'Bricolage Grotesque', sans-serif;
+            font-size: clamp(2.4rem, 5vw, 4rem);
+            font-weight: 800;
+            line-height: 1.0;
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.04em;
+            color: #f2e7d5;
+        }
+
+        .mp-featured__description {
+            color: #b8aa97;
+            max-width: 26rem;
+            margin-bottom: 2.5rem;
+            line-height: 1.7;
+            font-size: 0.9rem;
+        }
+
+        .mp-featured__actions {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .mp-featured__btn-buy {
+            background: var(--gold);
+            color: var(--color-primary);
+            padding: 0.875rem 2rem;
+            border-radius: var(--radius-full);
+            font-weight: 700;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            font-size: 0.75rem;
+            transition: background 0.2s, transform 0.18s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.2s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .mp-featured__btn-buy:hover {
+            background: var(--gold-light);
+            transform: scale(1.04);
+            box-shadow: 0 8px 24px rgba(201, 171, 129, 0.3);
+        }
+
+        .mp-featured__btn-demo {
+            color: #f2e7d5;
+            font-weight: 600;
+            font-size: 0.8125rem;
+            padding-bottom: 0.2rem;
+            border-bottom: 1px solid rgba(242, 231, 213, 0.3);
+            background: none;
+            border-top: none;
+            border-left: none;
+            border-right: none;
+            cursor: pointer;
+            transition: color 0.2s, border-color 0.2s;
+            letter-spacing: 0.02em;
+        }
+
+        .mp-featured__btn-demo:hover {
+            color: var(--gold);
+            border-bottom-color: var(--gold);
+        }
+
+        .mp-featured__display-text {
+            display: none;
+        }
+
+        .mp-featured__display-text p {
+            font-family: 'Bricolage Grotesque', sans-serif;
+            font-size: clamp(100px, 14vw, 200px);
+            line-height: 0.9;
+            font-weight: 800;
+            color: rgba(242, 231, 213, 0.04);
+            letter-spacing: -0.05em;
+            text-align: right;
+            -webkit-user-select: none;
+            user-select: none;
+
+        }
+
+        /* ─────────────────────────────────────────
+           RESPONSIVE
+        ───────────────────────────────────────── */
+        @media (min-width: 768px) {
+            .mp-hero__top {
+                flex-direction: row;
+                align-items: flex-end;
+            }
+
+            .mp-filters {
+                flex-direction: row;
+                align-items: center;
+                justify-content: space-between;
+            }
+
+            .mp-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            .mp-featured {
+                padding: 3.5rem 5rem;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .mp-grid {
+                grid-template-columns: repeat(3, minmax(0, 1fr));
+            }
+
+            .mp-featured__inner {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .mp-featured__display-text {
+                display: block;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .mp-main {
+                padding-left: 1.25rem;
+                padding-right: 1.25rem;
+                padding-top: 6rem;
+            }
+
+            .mp-preview-bar {
+                padding: 0 0.75rem;
+            }
+
+            .mp-featured {
+                padding: 2.5rem 1.75rem;
+            }
+
+            .font-card__big {
+                font-size: 52px !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ═══════════════════════════════════════
+         SITE HEADER & NAV
+    ═══════════════════════════════════════ -->
+    <header class="header-nav">
+        <nav class="nav-inner" aria-label="Main navigation">
+            <div class="nav-logo-group">
+                <a href="/main-website/homepage.html"><img src="/main-website/homepage-updated/faiz.jpeg"
+                        class="nav-logo-img" alt="Glyphere" /></a>
+                <a class="nav-logo-name" href="/main-website/homepage.html">Glyphere</a>
+            </div>
+            <ul class="nav-links" role="list">
+                <li><a class="nav-link" href="/main-website/marketplace.html">Marketplace</a></li>
+                <li><a class="nav-link" href="/main-website/custom_font_services/code.html">Services</a></li>
+                <li><a class="nav-link" href="/main-website/about_the_designer/about.html">About</a></li>
+            </ul>
+            <div class="nav-actions">
+                <a class="nav-login" href="/signup-login.html">Login</a>
+                <a class="nav-signup" href="/signup-login.html">Sign Up</a>
+            </div>
+            <button class="nav-hamburger" aria-label="Menu" aria-expanded="false">
+                <span class="nav-hamburger__line"></span>
+                <span class="nav-hamburger__line"></span>
+                <span class="nav-hamburger__line"></span>
+            </button>
+        </nav>
+    </header>
+
+    <div class="nav-mobile-menu" role="dialog" aria-label="Mobile navigation">
+        <ul class="nav-mobile-menu__links">
+            <li><a class="nav-mobile-menu__link" href="/main-website/marketplace.html">Marketplace</a></li>
+            <li><a class="nav-mobile-menu__link" href="/main-website/custom_font_services/code.html">Services</a></li>
+            <li><a class="nav-mobile-menu__link" href="/main-website/about_the_designer/about.html">About</a></li>
+        </ul>
+        <div class="nav-mobile-menu__actions">
+            <a class="nav-mobile-menu__login" href="/main-website/signup-login.html">Login</a>
+            <a class="nav-mobile-menu__signup" href="/signup-login.html">Sign Up</a>
+        </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════
+         PRELOADER
+    ═══════════════════════════════════════ -->
+    <div id="preloader" role="status" aria-label="Loading Glyphere">
+        <div class="preloader-inner">
+            <div class="preloader-brand">
+                <img class="preloader-brand__image" src="/main-website/homepage-updated/faiz.jpeg" alt=""
+                    aria-hidden="true" />
+                <p class="preloader-brand__name">Glyphere</p>
+                <p class="preloader-brand__tagline">From Glyph to Identity</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════
+         MAIN CONTENT
+    ═══════════════════════════════════════ -->
+    <main class="mp-main" id="content">
+
+        <!-- ── Live Preview Bar ── -->
+        <div class="mp-preview-bar" role="search" aria-label="Live font preview">
+            <div class="mp-preview-bar__inner">
+                <div class="mp-preview-bar__input-wrap">
+                    <span class="material-symbols-outlined mp-preview-bar__icon" aria-hidden="true">text_fields</span>
+                    <input id="preview-input" class="mp-preview-bar__input" type="text"
+                        placeholder="Type to preview all typefaces live…" value="" aria-label="Preview text"
+                        autocomplete="off" spellcheck="false" />
+                    <span class="mp-preview-bar__hint">Live Preview</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- ── Filters ── -->
+        <section class="mp-filters" aria-label="Filter and sort fonts">
+            <div class="mp-filters__pills no-scrollbar" id="filter-pills">
+                <button class="mp-pill--active" data-filter="all">All Collections</button>
+                <button class="mp-pill" data-filter="serif">Serif</button>
+                <button class="mp-pill" data-filter="sans-serif">Sans-serif</button>
+                <button class="mp-pill" data-filter="script">Script</button>
+                <button class="mp-pill" data-filter="arabic">Arabic</button>
+                <button class="mp-pill" data-filter="logo">Logo fonts</button>
+            </div>
+            <div class="mp-filters__sort" role="group" aria-label="Sort options">
+                <span class="mp-filters__sort-label"
+                    style="font-size:0.75rem;font-weight:700;color:var(--color-on-surface-variant);">Sort:</span>
+                <div class="mp-sort-pills" id="sort-pills">
+                    <button class="mp-sort-pill mp-sort-pill--active" data-sort="newest">Newest</button>
+                    <button class="mp-sort-pill" data-sort="name-az">A–Z</button>
+                    <button class="mp-sort-pill" data-sort="price-low">Price ↑</button>
+                    <button class="mp-sort-pill" data-sort="price-high">Price ↓</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- ── Results Bar ── -->
+        <div class="mp-results-bar">
+            <p class="mp-results-count"><span id="results-count">5</span> typefaces found</p>
+        </div>
+
+
+
+
+
+        <!-- ── Font Grid ── -->
+        <div class="mp-grid" id="marketplace-grid">
+
+
+
+           <!-- Card 1: Turbo Block -->
+            <article class="font-card fc-t1" data-category="sans-serif" data-index="1">
+                <div class="font-card__preview">
+                    <div class="font-card__badges">
+                        <span class="fc-badge fc-badge--type">Sans Serif</span>
+                        <span class="fc-badge fc-badge--sale">Uppercase,Lowercase,Numbers,Symbols</span>
+                    </div>
+                    <button class="font-card__wishlist" aria-label="Add to wishlist">
+                        <span class="material-symbols-outlined" aria-hidden="true">favorite</span>
+                    </button>
+                    <div class="font-card__name-label">Turbo Block</div>
+                    <div class="font-card__big"
+                        style="font-family:'Turbo_Block',sans-serif;font-weight:700;color:#1c1812;">AaBb</div>
+                    <div class="font-card__tagline">Display sans with bold geometric structure and versatile weights for
+                        impactful branding and display typography.</div>
+                    <div class="font-card__specimen-row">
+                        <p class="specimen-text"
+                            style="font-family:'Turbo_Block',sans-serif;font-weight:400;font-style:italic;"
+                            data-font="'Turbo Block', sans-serif" data-default="The quick brown fox jumps">The quick
+                            brown fox jumps</p>
+                    </div>
+                </div>
+                <div class="font-card__bottom">
+                    <div class="font-card__price-wrap">
+                        <span class="font-card__price">$24</span>
+                        <span class="font-card__styles-count">1 Styles · USD</span>
+                    </div>
+                    <div class="font-card__btns">
+                        <button class="fc-btn-details font-card__cta-details">Details</button>
+                        <button class="fc-btn-buy font-card__cta-buy">Buy Now</button>
+                    </div>
+                </div>
+            </article>
+
+
+            <!-- Card 2: Vellum Flow (Handwriting) -->
+            <article class="font-card fc-t1" data-category="handwriting" data-index="2">
+                <div class="font-card__preview">
+                    <div class="font-card__badges">
+                        <span class="fc-badge fc-badge--type">Handwriting</span>
+                        <span class="fc-badge fc-badge--sale">Uppercase,Lowercase</span>
+                    </div>
+                    <button class="font-card__wishlist" aria-label="Add to wishlist">
+                        <span class="material-symbols-outlined" aria-hidden="true">favorite</span>
+                    </button>
+                    <div class="font-card__name-label">Vellum Flow</div>
+                    <div class="font-card__big"
+                        style="font-family:'Vellum_Flow',handwriting;font-weight:400;color:#1c1812;">AaBb</div>
+                    <div class="font-card__tagline">A handwriting font for persoanl notes and journals.</div>
+                    <div class="font-card__specimen-row">
+                        <p class="specimen-text"
+                            style="font-family:'Vellum_Flow',handwriting;font-weight:400;font-style:italic;"
+                            data-font="'Vellum Flow', serif" data-default="The quick brown fox jumps">The quick
+                            brown fox jumps</p>
+                    </div>
+                </div>
+                <div class="font-card__bottom">
+                    <div class="font-card__price-wrap">
+                        <span class="font-card__price">$18</span>
+                        <span class="font-card__styles-count">1 Styles · USD</span>
+                    </div>
+                    <div class="font-card__btns">
+                        <button class="fc-btn-details font-card__cta-details">Details</button>
+                        <button class="fc-btn-buy font-card__cta-buy">Buy Now</button>
+                    </div>
+                </div>
+            </article>
+            <!-- Card 3: Mistavio Sans — Custom woff2 (Sans-Serif / Warm Cream) -->
+            <article class="font-card fc-t1" data-category="sans-serif" data-index="3">
+                <div class="font-card__preview">
+                    <div class="font-card__badges">
+                        <span class="fc-badge fc-badge--type">Sans Serif</span>
+                        <span class="fc-badge fc-badge--sale">Uppercase,Lowercase,Numbers,Symbols</span>
+                    </div>
+                    <button class="font-card__wishlist" aria-label="Add to wishlist">
+                        <span class="material-symbols-outlined" aria-hidden="true">favorite</span>
+                    </button>
+                    <div class="font-card__name-label">Mistavio Sans</div>
+                    <div class="font-card__big" style="font-family:'Mistavio Sans',sans-serif;color:#1c1812;">AaBb</div>
+                    <div class="font-card__tagline">Editorial sans for luxury brands &amp; high-end publications.</div>
+                    <div class="font-card__specimen-row">
+                        <p class="specimen-text" style="font-family:'Mistavio Sans',sans-serif;"
+                            data-font="'Mistavio Sans', sans-serif" data-default="The quick brown fox jumps">The quick
+                            brown fox jumps</p>
+                    </div>
+                </div>
+                <div class="font-card__bottom">
+                    <div class="font-card__price-wrap">
+                        <span class="font-card__price">$27</span>
+                        <span class="font-card__styles-count">1 Style · USD</span>
+                    </div>
+                    <div class="font-card__btns">
+                        <button class="fc-btn-details font-card__cta-details">Details</button>
+                        <button class="fc-btn-buy font-card__cta-buy">Buy Now</button>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Card 4: BLOCK ITALIC -->
+            <article class="font-card fc-t1" data-category="logo" data-index="4">
+                <div class="font-card__preview">
+                    <div class="font-card__badges">
+                        <span class="fc-badge fc-badge--type">Logo Font</span>
+                        <span class="fc-badge fc-badge--sale">Uppercase,Numbers,Symbols</span>
+                    </div>
+                    <button class="font-card__wishlist" aria-label="Add to wishlist">
+                        <span class="material-symbols-outlined" aria-hidden="true">favorite</span>
+                    </button>
+                    <div class="font-card__name-label">BLOCK ITALIC</div>
+                    <div class="font-card__big" style="font-family:'BLOCK_ITALIC',sans-serif;color:#1c1812;">Aa</div>
+                    <div class="font-card__tagline">An italic font for logos, brands and headlines</div>
+                    <div class="font-card__specimen-row">
+                        <p class="specimen-text" style="font-family:'BLOCK_ITALIC',sans-serif;"
+                            data-font="'BLOCK_ITALIC', sans-serif" data-default="The quick brown fox jumps">The quick
+                            brown fox jumps</p>
+                    </div>
+                </div>
+                <div class="font-card__bottom">
+                    <div class="font-card__price-wrap">
+                        <span class="font-card__price">$18</span>
+                        <span class="font-card__styles-count">1 Style · USD</span>
+                    </div>
+                    <div class="font-card__btns">
+                        <button class="fc-btn-details font-card__cta-details">Details</button>
+                        <button class="fc-btn-buy font-card__cta-buy">Buy Now</button>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Card 5: Brushfield Fury -->
+            <article class="font-card fc-t1" data-category="logo" data-index="4">
+                <div class="font-card__preview">
+                    <div class="font-card__badges">
+                        <span class="fc-badge fc-badge--type">Logo Font</span>
+                        <span class="fc-badge fc-badge--sale">Uppercase,Lowercase,Numbers,Symbols</span>
+                    </div>
+                    <button class="font-card__wishlist" aria-label="Add to wishlist">
+                        <span class="material-symbols-outlined" aria-hidden="true">favorite</span>
+                    </button>
+                    <div class="font-card__name-label">Brushfield Fury</div>
+                    <div class="font-card__big" style="font-family:'Brushfield_Fury',sans-serif;color:#1c1812;">AaBb
+                    </div>
+                    <div class="font-card__tagline">A display sans-serif for posters, headings, and editorial displays.
+                    </div>
+                    <div class="font-card__specimen-row">
+                        <p class="specimen-text" style="font-family:'Brushfield_Fury',sans-serif;"
+                            data-font="'Brushfield_Fury', sans-serif" data-default="The quick brown fox jumps">The quick
+                            brown fox jumps</p>
+                    </div>
+                </div>
+                <div class="font-card__bottom">
+                    <div class="font-card__price-wrap">
+                        <span class="font-card__price">$27</span>
+                        <span class="font-card__styles-count">1 Style · USD</span>
+                    </div>
+                    <div class="font-card__btns">
+                        <button class="fc-btn-details font-card__cta-details">Details</button>
+                        <button class="fc-btn-buy font-card__cta-buy">Buy Now</button>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Card 6: Stadium Bold -->
+            <article class="font-card fc-t1" data-category="sans-serif" data-index="4">
+                <div class="font-card__preview">
+                    <div class="font-card__badges">
+                        <span class="fc-badge fc-badge--type">Sans Serif</span>
+                        <span class="fc-badge fc-badge--sale">Uppercase</span>
+                    </div>
+                    <button class="font-card__wishlist" aria-label="Add to wishlist">
+                        <span class="material-symbols-outlined" aria-hidden="true">favorite</span>
+                    </button>
+                    <div class="font-card__name-label">Stadium Bold</div>
+                    <div class="font-card__big" style="font-family:'Stadium_Bold',sans-serif;color:#1c1812;">ABC</div>
+                    <div class="font-card__tagline">A display sans-serif for posters, headings, and editorial displays.
+                    </div>
+                    <div class="font-card__specimen-row">
+                        <p class="specimen-text" style="font-family:'Stadium_Bold',sans-serif;"
+                            data-font="'Stadium_Bold', sans-serif" data-default="The quick brown fox jumps">The quick
+                            brown fox jumps</p>
+                    </div>
+                </div>
+                <div class="font-card__bottom">
+                    <div class="font-card__price-wrap">
+                        <span class="font-card__price">$12</span>
+                        <span class="font-card__styles-count">1 Style · USD</span>
+                    </div>
+                    <div class="font-card__btns">
+                        <button class="fc-btn-details font-card__cta-details">Details</button>
+                        <button class="fc-btn-buy font-card__cta-buy">Buy Now</button>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Card 7: Strata Bold -->
+            <article class="font-card fc-t1" data-category="sans-serif" data-index="4">
+                <div class="font-card__preview">
+                    <div class="font-card__badges">
+                        <span class="fc-badge fc-badge--type">Sans Serif</span>
+                        <span class="fc-badge fc-badge--sale">Uppercase,Lowercase,Numbers,Symbols</span>
+                    </div>
+                    <button class="font-card__wishlist" aria-label="Add to wishlist">
+                        <span class="material-symbols-outlined" aria-hidden="true">favorite</span>
+                    </button>
+                    <div class="font-card__name-label">Strata Bold</div>
+                    <div class="font-card__big" style="font-family:'Strata_Bold',sans-serif;color:#1c1812;">AaBb</div>
+                    <div class="font-card__tagline">A display sans-serif for posters, headings, and editorial displays.
+                    </div>
+                    <div class="font-card__specimen-row">
+                        <p class="specimen-text" style="font-family:'Strata_Bold',sans-serif;"
+                            data-font="'Stadium_Bold', sans-serif" data-default="The quick brown fox jumps">The quick
+                            brown fox jumps</p>
+                    </div>
+                </div>
+                <div class="font-card__bottom">
+                    <div class="font-card__price-wrap">
+                        <span class="font-card__price">$24</span>
+                        <span class="font-card__styles-count">1 Style · USD</span>
+                    </div>
+                    <div class="font-card__btns">
+                        <button class="fc-btn-details font-card__cta-details">Details</button>
+                        <button class="fc-btn-buy font-card__cta-buy">Buy Now</button>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Card 8: Funkadelic Serif -->
+            <article class="font-card fc-t1" data-category="serif" data-index="4">
+                <div class="font-card__preview">
+                    <div class="font-card__badges">
+                        <span class="fc-badge fc-badge--type">Serif</span>
+                        <span class="fc-badge fc-badge--sale">Uppercase,Numbers</span>
+                    </div>
+                    <button class="font-card__wishlist" aria-label="Add to wishlist">
+                        <span class="material-symbols-outlined" aria-hidden="true">favorite</span>
+                    </button>
+                    <div class="font-card__name-label">Funkadelic Serif</div>
+                    <div class="font-card__big" style="font-family:'Funkadelic_Serif',sans-serif;color:#1c1812;">ABC
+                    </div>
+                    <div class="font-card__tagline">A display serif for posters, headings, and editorial displays.
+                    </div>
+                    <div class="font-card__specimen-row">
+                        <p class="specimen-text" style="font-family:'Funkadelic_Serif',sans-serif;"
+                            data-font="'Stadium_Bold', sans-serif" data-default="The quick brown fox jumps">The quick
+                            brown fox jumps</p>
+                    </div>
+                </div>
+                <div class="font-card__bottom">
+                    <div class="font-card__price-wrap">
+                        <span class="font-card__price">$17</span>
+                        <span class="font-card__styles-count">1 Style · USD</span>
+                    </div>
+                    <div class="font-card__btns">
+                        <button class="fc-btn-details font-card__cta-details">Details</button>
+                        <button class="fc-btn-buy font-card__cta-buy">Buy Now</button>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Card 9: Velocity Brush -->
+            <article class="font-card fc-t1" data-category="handwriting" data-index="4">
+                <div class="font-card__preview">
+                    <div class="font-card__badges">
+                        <span class="fc-badge fc-badge--type">Handwriting</span>
+                        <span class="fc-badge fc-badge--sale">Uppercase,Numbers</span>
+                    </div>
+                    <button class="font-card__wishlist" aria-label="Add to wishlist">
+                        <span class="material-symbols-outlined" aria-hidden="true">favorite</span>
+                    </button>
+                    <div class="font-card__name-label">Velocity Brush</div>
+                    <div class="font-card__big" style="font-family:'Velocity_Brush',handwriting;color:#1c1812;">ABC
+                    </div>
+                    <div class="font-card__tagline">A display serif for posters, headings, and editorial displays.
+                    </div>
+                    <div class="font-card__specimen-row">
+                        <p class="specimen-text" style="font-family:'Velocity_Brush',handwriting;"
+                            data-font="'Velocity_Brush', handwriting" data-default="The quick brown fox jumps">The quick
+                            brown fox jumps</p>
+                    </div>
+                </div>
+                <div class="font-card__bottom">
+                    <div class="font-card__price-wrap">
+                        <span class="font-card__price">$12</span>
+                        <span class="font-card__styles-count">1 Style · USD</span>
+                    </div>
+                    <div class="font-card__btns">
+                        <button class="fc-btn-details font-card__cta-details">Details</button>
+                        <button class="fc-btn-buy font-card__cta-buy">Buy Now</button>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Card 10: Goliath Soft -->
+            <article class="font-card fc-t1" data-category="sans-serif" data-index="4">
+                <div class="font-card__preview">
+                    <div class="font-card__badges">
+                        <span class="fc-badge fc-badge--type">Sans serif</span>
+                        <span class="fc-badge fc-badge--sale">Uppercase,Lowercase,Numbers,Symbols</span>
+                    </div>
+                    <button class="font-card__wishlist" aria-label="Add to wishlist">
+                        <span class="material-symbols-outlined" aria-hidden="true">favorite</span>
+                    </button>
+                    <div class="font-card__name-label">Goliath Soft</div>
+                    <div class="font-card__big" style="font-family:'Goliath_Soft',serif;color:#1c1812;">AaBb
+                    </div>
+                    <div class="font-card__tagline">A display serif for posters, headings, and editorial displays.
+                    </div>
+                    <div class="font-card__specimen-row">
+                        <p class="specimen-text" style="font-family:'Goliath_Soft',serif;"
+                            data-font="'Goliath_Soft', serif" data-default="The quick brown fox jumps">The quick
+                            brown fox jumps</p>
+                    </div>
+                </div>
+                <div class="font-card__bottom">
+                    <div class="font-card__price-wrap">
+                        <span class="font-card__price">$18</span>
+                        <span class="font-card__styles-count">1 Style · USD</span>
+                    </div>
+                    <div class="font-card__btns">
+                        <button class="fc-btn-details font-card__cta-details">Details</button>
+                        <button class="fc-btn-buy font-card__cta-buy">Buy Now</button>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Card 11: Prose Bold -->
+            <article class="font-card fc-t1" data-category="serif" data-index="4">
+                <div class="font-card__preview">
+                    <div class="font-card__badges">
+                        <span class="fc-badge fc-badge--type">Serif</span>
+                        <span class="fc-badge fc-badge--sale">Uppercase,Lowercase,Numbers,Symbols</span>
+                    </div>
+                    <button class="font-card__wishlist" aria-label="Add to wishlist">
+                        <span class="material-symbols-outlined" aria-hidden="true">favorite</span>
+                    </button>
+                    <div class="font-card__name-label">Prose Bold</div>
+                    <div class="font-card__big" style="font-family:'Prose_Bold',script;color:#1c1812;">AaBb
+                    </div>
+                    <div class="font-card__tagline">A display serif for posters, headings, and editorial displays.
+                    </div>
+                    <div class="font-card__specimen-row">
+                        <p class="specimen-text" style="font-family:'Prose_Bold',script;"
+                            data-font="'Prose_Bold', script" data-default="The quick brown fox jumps">The quick
+                            brown fox jumps</p>
+                    </div>
+                </div>
+                <div class="font-card__bottom">
+                    <div class="font-card__price-wrap">
+                        <span class="font-card__price">$18</span>
+                        <span class="font-card__styles-count">1 Style · USD</span>
+                    </div>
+                    <div class="font-card__btns">
+                        <button class="fc-btn-details font-card__cta-details">Details</button>
+                        <button class="fc-btn-buy font-card__cta-buy">Buy Now</button>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Card 12: Storybook Sans -->
+            <article class="font-card fc-t1" data-category="serif" data-index="4">
+                <div class="font-card__preview">
+                    <div class="font-card__badges">
+                        <span class="fc-badge fc-badge--type">Sans</span>
+                        <span class="fc-badge fc-badge--sale">Uppercase,Lowercase,Numbers,Symbols</span>
+                    </div>
+                    <button class="font-card__wishlist" aria-label="Add to wishlist">
+                        <span class="material-symbols-outlined" aria-hidden="true">favorite</span>
+                    </button>
+                    <div class="font-card__name-label">Storybook Sans</div>
+                    <div class="font-card__big" style="font-family:'Storybook_Sans',serif;color:#1c1812;">AaBb
+                    </div>
+                    <div class="font-card__tagline">A display sans for posters, headings, and editorial displays.
+                    </div>
+                    <div class="font-card__specimen-row">
+                        <p class="specimen-text" style="font-family:'Storybook_Sans',serif;"
+                            data-font="'Storybook_Sans', serif" data-default="The quick brown fox jumps">The quick
+                            brown fox jumps</p>
+                    </div>
+                </div>
+                <div class="font-card__bottom">
+                    <div class="font-card__price-wrap">
+                        <span class="font-card__price">$18</span>
+                        <span class="font-card__styles-count">1 Style · USD</span>
+                    </div>
+                    <div class="font-card__btns">
+                        <button class="fc-btn-details font-card__cta-details">Details</button>
+                        <button class="fc-btn-buy font-card__cta-buy">Buy Now</button>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Card 13: Pebble Sans -->
+            <article class="font-card fc-t1" data-category="serif" data-index="4">
+                <div class="font-card__preview">
+                    <div class="font-card__badges">
+                        <span class="fc-badge fc-badge--type">Sans</span>
+                        <span class="fc-badge fc-badge--sale">Uppercase,Lowercase,Numbers,Symbols</span>
+                    </div>
+                    <button class="font-card__wishlist" aria-label="Add to wishlist">
+                        <span class="material-symbols-outlined" aria-hidden="true">favorite</span>
+                    </button>
+                    <div class="font-card__name-label">Pebble Sans</div>
+                    <div class="font-card__big" style="font-family:'Pebble_Sans',serif;color:#1c1812;">AaBb
+                    </div>
+                    <div class="font-card__tagline">A display sans for posters, headings, and editorial displays.
+                    </div>
+                    <div class="font-card__specimen-row">
+                        <p class="specimen-text" style="font-family:'Pebble_Sans',serif;"
+                            data-font="'Pebble_Sans', serif" data-default="The quick brown fox jumps">The quick
+                            brown fox jumps</p>
+                    </div>
+                </div>
+                <div class="font-card__bottom">
+                    <div class="font-card__price-wrap">
+                        <span class="font-card__price">$18</span>
+                        <span class="font-card__styles-count">1 Style · USD</span>
+                    </div>
+                    <div class="font-card__btns">
+                        <button class="fc-btn-details font-card__cta-details">Details</button>
+                        <button class="fc-btn-buy font-card__cta-buy">Buy Now</button>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Card 14: Midnight Citadel -->
+            <article class="font-card fc-t1" data-category="serif" data-index="4">
+                <div class="font-card__preview">
+                    <div class="font-card__badges">
+                        <span class="fc-badge fc-badge--type">Serif</span>
+                        <span class="fc-badge fc-badge--sale">Uppercase,Lowercase,Numbers,Symbols</span>
+                    </div>
+                    <button class="font-card__wishlist" aria-label="Add to wishlist">
+                        <span class="material-symbols-outlined" aria-hidden="true">favorite</span>
+                    </button>
+                    <div class="font-card__name-label">Midnight Citadel</div>
+                    <div class="font-card__big" style="font-family:'Midnight_Citadel',serif;color:#1c1812;">AaBb
+                    </div>
+                    <div class="font-card__tagline">A display serif for posters, headings, and editorial displays.
+                    </div>
+                    <div class="font-card__specimen-row">
+                        <p class="specimen-text" style="font-family:'Midnight_Citadel',serif;"
+                            data-font="'Midnight_Citadel', serif" data-default="The quick brown fox jumps">The quick
+                            brown fox jumps</p>
+                    </div>
+                </div>
+                <div class="font-card__bottom">
+                    <div class="font-card__price-wrap">
+                        <span class="font-card__price">$24</span>
+                        <span class="font-card__styles-count">1 Style · USD</span>
+                    </div>
+                    <div class="font-card__btns">
+                        <button class="fc-btn-details font-card__cta-details">Details</button>
+                        <button class="fc-btn-buy font-card__cta-buy">Buy Now</button>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Card 15: Zenith Spark -->
+            <article class="font-card fc-t1" data-category="serif" data-index="4">
+                <div class="font-card__preview">
+                    <div class="font-card__badges">
+                        <span class="fc-badge fc-badge--type">Serif</span>
+                        <span class="fc-badge fc-badge--sale">Uppercase,Lowercase,Numbers,Symbols</span>
+                    </div>
+                    <button class="font-card__wishlist" aria-label="Add to wishlist">
+                        <span class="material-symbols-outlined" aria-hidden="true">favorite</span>
+                    </button>
+                    <div class="font-card__name-label">Zenith Spark</div>
+                    <div class="font-card__big" style="font-family:'Zenith_Spark',serif;color:#1c1812;">AaBb
+                    </div>
+                    <div class="font-card__tagline">A display serif for posters, headings, and editorial displays.
+                    </div>
+                    <div class="font-card__specimen-row">
+                        <p class="specimen-text" style="font-family:'Zenith_Spark',serif;"
+                            data-font="'Zenith_Spark', serif" data-default="The quick brown fox jumps">The quick
+                            brown fox jumps</p>
+                    </div>
+                </div>
+                <div class="font-card__bottom">
+                    <div class="font-card__price-wrap">
+                        <span class="font-card__price">$24</span>
+                        <span class="font-card__styles-count">1 Style · USD</span>
+                    </div>
+                    <div class="font-card__btns">
+                        <button class="fc-btn-details font-card__cta-details">Details</button>
+                        <button class="fc-btn-buy font-card__cta-buy">Buy Now</button>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Card 16: Sonnet Italic -->
+            <article class="font-card fc-t1" data-category="serif" data-index="4">
+                <div class="font-card__preview">
+                    <div class="font-card__badges">
+                        <span class="fc-badge fc-badge--type">Serif</span>
+                        <span class="fc-badge fc-badge--sale">Uppercase,Lowercase,Numbers,Symbols</span>
+                    </div>
+                    <button class="font-card__wishlist" aria-label="Add to wishlist">
+                        <span class="material-symbols-outlined" aria-hidden="true">favorite</span>
+                    </button>
+                    <div class="font-card__name-label">Sonnet Italic</div>
+                    <div class="font-card__big" style="font-family:'Sonnet_Italic',serif;color:#1c1812;">AaBb
+                    </div>
+                    <div class="font-card__tagline">A display serif for posters, headings, and editorial displays.
+                    </div>
+                    <div class="font-card__specimen-row">
+                        <p class="specimen-text" style="font-family:'Sonnet_Italic',serif;"
+                            data-font="'Sonnet_Italic', serif" data-default="The quick brown fox jumps">The quick
+                            brown fox jumps</p>
+                    </div>
+                </div>
+                <div class="font-card__bottom">
+                    <div class="font-card__price-wrap">
+                        <span class="font-card__price">$24</span>
+                        <span class="font-card__styles-count">1 Style · USD</span>
+                    </div>
+                    <div class="font-card__btns">
+                        <button class="fc-btn-details font-card__cta-details">Details</button>
+                        <button class="fc-btn-buy font-card__cta-buy">Buy Now</button>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Card 17: Nova Legacy -->
+            <article class="font-card fc-t1" data-category="serif" data-index="4">
+                <div class="font-card__preview">
+                    <div class="font-card__badges">
+                        <span class="fc-badge fc-badge--type">Serif</span>
+                        <span class="fc-badge fc-badge--sale">Uppercase,Lowercase,Numbers,Symbols</span>
+                    </div>
+                    <button class="font-card__wishlist" aria-label="Add to wishlist">
+                        <span class="material-symbols-outlined" aria-hidden="true">favorite</span>
+                    </button>
+                    <div class="font-card__name-label">Nova Legacy</div>
+                    <div class="font-card__big" style="font-family:'Nova_Legacy',serif;color:#1c1812;">AaBb
+                    </div>
+                    <div class="font-card__tagline">A display serif for posters, headings, and editorial displays.
+                    </div>
+                    <div class="font-card__specimen-row">
+                        <p class="specimen-text" style="font-family:'Nova_Legacy',serif;"
+                            data-font="'Nova_Legacy', serif" data-default="The quick brown fox jumps">The quick
+                            brown fox jumps</p>
+                    </div>
+                </div>
+                <div class="font-card__bottom">
+                    <div class="font-card__price-wrap">
+                        <span class="font-card__price">$24</span>
+                        <span class="font-card__styles-count">1 Style · USD</span>
+                    </div>
+                    <div class="font-card__btns">
+                        <button class="fc-btn-details font-card__cta-details">Details</button>
+                        <button class="fc-btn-buy font-card__cta-buy">Buy Now</button>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Card 18: Boutique Seraphina -->
+            <article class="font-card fc-t1" data-category="serif" data-index="4">
+                <div class="font-card__preview">
+                    <div class="font-card__badges">
+                        <span class="fc-badge fc-badge--type">Serif</span>
+                        <span class="fc-badge fc-badge--sale">Uppercase,Lowercase,Numbers,Symbols</span>
+                    </div>
+                    <button class="font-card__wishlist" aria-label="Add to wishlist">
+                        <span class="material-symbols-outlined" aria-hidden="true">favorite</span>
+                    </button>
+                    <div class="font-card__name-label">Boutique Seraphina</div>
+                    <div class="font-card__big" style="font-family:'Boutique_Seraphina',serif;color:#1c1812;">AaBb
+                    </div>
+                    <div class="font-card__tagline">A display serif for posters, headings, and editorial displays.
+                    </div>
+                    <div class="font-card__specimen-row">
+                        <p class="specimen-text" style="font-family:'Boutique_Seraphina',serif;"
+                            data-font="'Boutique_Seraphina', serif" data-default="The quick brown fox jumps">The quick
+                            brown fox jumps</p>
+                    </div>
+                </div>
+                <div class="font-card__bottom">
+                    <div class="font-card__price-wrap">
+                        <span class="font-card__price">$24</span>
+                        <span class="font-card__styles-count">1 Style · USD</span>
+                    </div>
+                    <div class="font-card__btns">
+                        <button class="fc-btn-details font-card__cta-details">Details</button>
+                        <button class="fc-btn-buy font-card__cta-buy">Buy Now</button>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Card 19: Glissade -->
+            <article class="font-card fc-t1" data-category="serif" data-index="4">
+                <div class="font-card__preview">
+                    <div class="font-card__badges">
+                        <span class="fc-badge fc-badge--type">Serif</span>
+                        <span class="fc-badge fc-badge--sale">Uppercase,Lowercase,Numbers,Symbols</span>
+                    </div>
+                    <button class="font-card__wishlist" aria-label="Add to wishlist">
+                        <span class="material-symbols-outlined" aria-hidden="true">favorite</span>
+                    </button>
+                    <div class="font-card__name-label">Glissade</div>
+                    <div class="font-card__big" style="font-family:'Glissade',serif;color:#1c1812;">AaBb
+                    </div>
+                    <div class="font-card__tagline">A display serif for posters, headings, and editorial displays.
+                    </div>
+                    <div class="font-card__specimen-row">
+                        <p class="specimen-text" style="font-family:'Glissade',serif;" data-font="'Glissade', serif"
+                            data-default="The quick brown fox jumps">The quick
+                            brown fox jumps</p>
+                    </div>
+                </div>
+                <div class="font-card__bottom">
+                    <div class="font-card__price-wrap">
+                        <span class="font-card__price">$24</span>
+                        <span class="font-card__styles-count">1 Style · USD</span>
+                    </div>
+                    <div class="font-card__btns">
+                        <button class="fc-btn-details font-card__cta-details">Details</button>
+                        <button class="fc-btn-buy font-card__cta-buy">Buy Now</button>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Card 20: Onyx Dynasty -->
+            <article class="font-card fc-t1" data-category="serif" data-index="4">
+                <div class="font-card__preview">
+                    <div class="font-card__badges">
+                        <span class="fc-badge fc-badge--type">Serif</span>
+                        <span class="fc-badge fc-badge--sale">Uppercase,Lowercase,Numbers,Symbols</span>
+                    </div>
+                    <button class="font-card__wishlist" aria-label="Add to wishlist">
+                        <span class="material-symbols-outlined" aria-hidden="true">favorite</span>
+                    </button>
+                    <div class="font-card__name-label">Onyx Dynasty</div>
+                    <div class="font-card__big" style="font-family:'Onyx_Dynasty',serif;color:#1c1812;">AaBb
+                    </div>
+                    <div class="font-card__tagline">A display serif for posters, headings, and editorial displays.
+                    </div>
+                    <div class="font-card__specimen-row">
+                        <p class="specimen-text" style="font-family:'Onyx_Dynasty',serif;" data-font="'Glissade', serif"
+                            data-default="The quick brown fox jumps">The quick
+                            brown fox jumps</p>
+                    </div>
+                </div>
+                <div class="font-card__bottom">
+                    <div class="font-card__price-wrap">
+                        <span class="font-card__price">$24</span>
+                        <span class="font-card__styles-count">1 Style · USD</span>
+                    </div>
+                    <div class="font-card__btns">
+                        <button class="fc-btn-details font-card__cta-details">Details</button>
+                        <button class="fc-btn-buy font-card__cta-buy">Buy Now</button>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Card 21: Apex Rounded -->
+            <article class="font-card fc-t1" data-category="serif" data-index="4">
+                <div class="font-card__preview">
+                    <div class="font-card__badges">
+                        <span class="fc-badge fc-badge--type">Serif</span>
+                        <span class="fc-badge fc-badge--sale">Uppercase,Lowercase,Numbers,Symbols</span>
+                    </div>
+                    <button class="font-card__wishlist" aria-label="Add to wishlist">
+                        <span class="material-symbols-outlined" aria-hidden="true">favorite</span>
+                    </button>
+                    <div class="font-card__name-label">Apex Rounded</div>
+                    <div class="font-card__big" style="font-family:'Apex_Rounded',serif;color:#1c1812;">AaBb
+                    </div>
+                    <div class="font-card__tagline">A display serif for posters, headings, and editorial displays.
+                    </div>
+                    <div class="font-card__specimen-row">
+                        <p class="specimen-text" style="font-family:'Apex_Rounded',serif;"
+                            data-font="'Apex_Rounded', serif" data-default="The quick brown fox jumps">The quick
+                            brown fox jumps</p>
+                    </div>
+                </div>
+                <div class="font-card__bottom">
+                    <div class="font-card__price-wrap">
+                        <span class="font-card__price">$18</span>
+                        <span class="font-card__styles-count">1 Style · USD</span>
+                    </div>
+                    <div class="font-card__btns">
+                        <button class="fc-btn-details font-card__cta-details">Details</button>
+                        <button class="fc-btn-buy font-card__cta-buy">Buy Now</button>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Card 22: Nova Shell -->
+            <article class="font-card fc-t1" data-category="serif" data-index="4">
+                <div class="font-card__preview">
+                    <div class="font-card__badges">
+                        <span class="fc-badge fc-badge--type">Serif</span>
+                        <span class="fc-badge fc-badge--sale">Uppercase,Lowercase,Numbers,Symbols</span>
+                    </div>
+                    <button class="font-card__wishlist" aria-label="Add to wishlist">
+                        <span class="material-symbols-outlined" aria-hidden="true">favorite</span>
+                    </button>
+                    <div class="font-card__name-label">Nova Shell</div>
+                    <div class="font-card__big" style="font-family:'Nova_Shell',serif;color:#1c1812;">AaBb
+                    </div>
+                    <div class="font-card__tagline">A display serif for posters, headings, and editorial displays.
+                    </div>
+                    <div class="font-card__specimen-row">
+                        <p class="specimen-text" style="font-family:'Nova_Shell',serif;" data-font="'Nova_Shell', serif"
+                            data-default="The quick brown fox jumps">The quick
+                            brown fox jumps</p>
+                    </div>
+                </div>
+                <div class="font-card__bottom">
+                    <div class="font-card__price-wrap">
+                        <span class="font-card__price">$15</span>
+                        <span class="font-card__styles-count">1 Style · USD</span>
+                    </div>
+                    <div class="font-card__btns">
+                        <button class="fc-btn-details font-card__cta-details">Details</button>
+                        <button class="fc-btn-buy font-card__cta-buy">Buy Now</button>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Card 23: Throttle Street -->
+            <article class="font-card fc-t1" data-category="serif" data-index="4">
+                <div class="font-card__preview">
+                    <div class="font-card__badges">
+                        <span class="fc-badge fc-badge--type">Serif</span>
+                        <span class="fc-badge fc-badge--sale">Uppercase,Lowercase,Numbers,Symbols</span>
+                    </div>
+                    <button class="font-card__wishlist" aria-label="Add to wishlist">
+                        <span class="material-symbols-outlined" aria-hidden="true">favorite</span>
+                    </button>
+                    <div class="font-card__name-label">Throttle Street</div>
+                    <div class="font-card__big" style="font-family:'Throttle_Street',serif;color:#1c1812;">AaBb
+                    </div>
+                    <div class="font-card__tagline">A display serif for posters, headings, and editorial displays.
+                    </div>
+                    <div class="font-card__specimen-row">
+                        <p class="specimen-text" style="font-family:'Throttle_Street',serif;"
+                            data-font="'Throttle_Street', serif" data-default="The quick brown fox jumps">The quick
+                            brown fox jumps</p>
+                    </div>
+                </div>
+                <div class="font-card__bottom">
+                    <div class="font-card__price-wrap">
+                        <span class="font-card__price">$18</span>
+                        <span class="font-card__styles-count">1 Style · USD</span>
+                    </div>
+                    <div class="font-card__btns">
+                        <button class="fc-btn-details font-card__cta-details">Details</button>
+                        <button class="fc-btn-buy font-card__cta-buy">Buy Now</button>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Card 24: Vabguard Axis -->
+            <article class="font-card fc-t1" data-category="serif" data-index="4">
+                <div class="font-card__preview">
+                    <div class="font-card__badges">
+                        <span class="fc-badge fc-badge--type">Serif</span>
+                        <span class="fc-badge fc-badge--sale">Uppercase,Lowercase,Numbers,Symbols</span>
+                    </div>
+                    <button class="font-card__wishlist" aria-label="Add to wishlist">
+                        <span class="material-symbols-outlined" aria-hidden="true">favorite</span>
+                    </button>
+                    <div class="font-card__name-label">Vanguard Axis</div>
+                    <div class="font-card__big" style="font-family:'Vanguard_Axis',serif;color:#1c1812;">AaBb
+                    </div>
+                    <div class="font-card__tagline">A display serif for posters, headings, and editorial displays.
+                    </div>
+                    <div class="font-card__specimen-row">
+                        <p class="specimen-text" style="font-family:'Vanguard_Axis',serif;"
+                            data-font="'Vabguard_Axis', serif" data-default="The quick brown fox jumps">The quick
+                            brown fox jumps</p>
+                    </div>
+                </div>
+                <div class="font-card__bottom">
+                    <div class="font-card__price-wrap">
+                        <span class="font-card__price">$12</span>
+                        <span class="font-card__styles-count">1 Style · USD</span>
+                    </div>
+                    <div class="font-card__btns">
+                        <button class="fc-btn-details font-card__cta-details">Details</button>
+                        <button class="fc-btn-buy font-card__cta-buy">Buy Now</button>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Card 25: Volo Scale -->
+            <article class="font-card fc-t1" data-category="serif" data-index="4">
+                <div class="font-card__preview">
+                    <div class="font-card__badges">
+                        <span class="fc-badge fc-badge--type">Serif</span>
+                        <span class="fc-badge fc-badge--sale">Uppercase,Lowercase,Numbers,Symbols</span>
+                    </div>
+                    <button class="font-card__wishlist" aria-label="Add to wishlist">
+                        <span class="material-symbols-outlined" aria-hidden="true">favorite</span>
+                    </button>
+                    <div class="font-card__name-label">Volo Scale</div>
+                    <div class="font-card__big" style="font-family:'Volo_Scale',serif;color:#1c1812;">ABC
+                    </div>
+                    <div class="font-card__tagline">A display serif for posters, headings, and editorial displays.
+                    </div>
+                    <div class="font-card__specimen-row">
+                        <p class="specimen-text" style="font-family:'Volo_Scale',serif;" data-font="'Volo_Scale', serif"
+                            data-default="The quick brown fox jumps">The quick
+                            brown fox jumps</p>
+                    </div>
+                </div>
+                <div class="font-card__bottom">
+                    <div class="font-card__price-wrap">
+                        <span class="font-card__price">$12</span>
+                        <span class="font-card__styles-count">1 Style · USD</span>
+                    </div>
+                    <div class="font-card__btns">
+                        <button class="fc-btn-details font-card__cta-details">Details</button>
+                        <button class="fc-btn-buy font-card__cta-buy">Buy Now</button>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Newsletter Card -->
+            <article class="font-card font-card--newsletter" data-category="all" data-index="6">
+                <div class="font-card__preview">
+                    <div class="newsletter-card__inner">
+                        <h2 class="newsletter-card__headline">New specimens<br />weekly.</h2>
+                        <p class="newsletter-card__sub">Early access &amp; licensing drops</p>
+                        <div class="newsletter-card__form">
+                            <label for="newsletter-email" class="sr-only">Email address</label>
+                            <input class="newsletter-card__email-input" type="email" placeholder="your@email.com"
+                                id="newsletter-email" />
+                            <button class="newsletter-card__submit" id="newsletter-join-btn">Join</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="font-card__bottom">
+                    <div>
+                        <div class="newsletter-name">The Curator's Digest</div>
+                        <div class="newsletter-sub-label">Journal &amp; Community</div>
+                    </div>
+                    <button class="newsletter-cta-btn">
+                        Read Stories
+                        <span class="material-symbols-outlined" aria-hidden="true">arrow_forward</span>
+                    </button>
+                </div>
+            </article>
+
+        </div><!-- /mp-grid -->
+
+        <!-- ── Featured Specimen ── -->
+        <section class="mp-featured" aria-label="Featured typeface">
+            <div class="mp-featured__inner">
+                <div>
+                    <span class="mp-featured__eyebrow">Featured Typeface</span>
+                    <h2 class="mp-featured__headline">Monumental<br />Variable.</h2>
+                    <p class="mp-featured__description">
+                        A massive variable font family designed for environmental graphics and cinematic title cards. 72
+                        axes of flexibility.
+                    </p>
+                    <div class="mp-featured__actions">
+                        <button class="mp-featured__btn-buy">Buy Full License</button>
+                        <button class="mp-featured__btn-demo">Try the Demo</button>
+                    </div>
+                </div>
+                <div class="mp-featured__display-text" aria-hidden="true">
+                    <p>MONU<br />MENT</p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+    <!-- ── Hero ── -->
+    <header class="mp-hero">
+        <div class="mp-hero__top">
+            <div>
+                <span class="mp-hero__eyebrow">Curated Specimens</span>
+                <h1 class="mp-hero__headline">Discover the<br />next standard.</h1>
+            </div>
+            <div class="mp-hero__description">
+                <p>An editorial marketplace for independent type designers. High-end tools for high-end digital
+                    architecture.</p>
+            </div>
+        </div>
+    </header>
+
+    <!-- ── Footer ── -->
+    <footer class="site-footer">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <p class="footer-brand-name">The Typographic Gallery</p>
+                <p class="footer-brand-desc">Curated font designs for the modern digital landscape. Etched with
+                    precision, crafted with soul.</p>
+                <div class="footer-social-icons">
+                    <span class="material-symbols-outlined footer-icon" aria-hidden="true">language</span>
+                    <span class="material-symbols-outlined footer-icon" aria-hidden="true">public</span>
+                </div>
+            </div>
+            <nav aria-label="Collections">
+                <h3 class="footer-col-title">Collections</h3>
+                <ul class="footer-links">
+                    <li><a href="#">The Serif Set</a></li>
+                    <li><a href="#">Modernist Sans</a></li>
+                    <li><a href="#">Display Specials</a></li>
+                    <li><a href="#">Free Trials</a></li>
+                </ul>
+            </nav>
+            <nav aria-label="Social">
+                <h3 class="footer-col-title">Navigation</h3>
+                <ul class="footer-links">
+                    <li><a href="#">Instagram</a></li>
+                    <li><a href="#">Twitter</a></li>
+                    <li><a href="#">LinkedIn</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                </ul>
+            </nav>
+            <div>
+                <h3 class="footer-col-title">Newsletter</h3>
+                <p class="footer-newsletter-desc">Get notified about new releases and type studies.</p>
+                <div class="footer-form">
+                    <label for="footer-email" class="sr-only">Email address</label>
+                    <input id="footer-email" class="footer-email-input" placeholder="email@address.com" type="email" />
+                    <button class="material-symbols-outlined footer-submit" type="button"
+                        aria-label="Subscribe">arrow_forward</button>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p class="footer-copy">©️ 2024 The Typographic Gallery. Etched in Epilogue.</p>
+            <nav class="footer-legal" aria-label="Legal">
+                <a href="#">Licensing Terms</a>
+                <a href="#">Cookie Policy</a>
+            </nav>
+        </div>
+    </footer>
+
+    <script src="/main-website/globalscript.js"></script>
+
+    <script>
+        /* ═══════════════════════════════════════════════════════
+           MARKETPLACE — INTERACTIVE JAVASCRIPT
+           ═══════════════════════════════════════════════════════ */
+
+        /* ──────────────────────────────────────────
+           1. LIVE PREVIEW SYNC
+           — Har specimen text apni card ki font family rakhta hai
+        ───────────────────────────────────────────── */
+        const previewInput = document.getElementById('preview-input');
+        const specimenTexts = document.querySelectorAll('.specimen-text');
+
+        function syncPreview(text) {
+            specimenTexts.forEach(el => {
+                const defaultText = el.dataset.default || 'AaBbCcDdEeFfGg 0123456789';
+                const display = text.trim() === '' ? defaultText : text;
+                el.textContent = display;
+                // Font family preserved — inline style on element already handles it
+                if (display.length > 30) {
+                    el.classList.add('text--long');
+                } else {
+                    el.classList.remove('text--long');
+                }
+            });
+        }
+
+        previewInput.addEventListener('input', function () {
+            syncPreview(this.value);
+        });
+
+        /* ──────────────────────────────────────────
+           2. FILTER PILLS
+        ───────────────────────────────────────────── */
+        const pillContainer = document.getElementById('filter-pills');
+        const allCards = document.querySelectorAll('#marketplace-grid .font-card');
+        const resultsCount = document.getElementById('results-count');
+
+        pillContainer.addEventListener('click', function (e) {
+            const btn = e.target.closest('button[data-filter]');
+            if (!btn) return;
+
+            pillContainer.querySelectorAll('button').forEach(b => { b.className = 'mp-pill'; });
+            btn.className = 'mp-pill--active';
+
+            const filter = btn.dataset.filter;
+            let visible = 0;
+
+            allCards.forEach(card => {
+                const cat = card.dataset.category;
+                const show = filter === 'all' || cat === filter || cat === 'all';
+                card.style.display = show ? '' : 'none';
+                if (show) visible++;
+            });
+
+            const newsletter = document.querySelector('.font-card--newsletter');
+            const newsletterVisible = newsletter && newsletter.style.display !== 'none';
+            const fontCount = visible - (newsletterVisible ? 1 : 0);
+            resultsCount.textContent = fontCount > 0 ? fontCount : visible;
+        });
+
+        /* ──────────────────────────────────────────
+           3. WISHLIST TOGGLE
+        ───────────────────────────────────────────── */
+        document.querySelectorAll('.font-card__wishlist').forEach(btn => {
+            btn.addEventListener('click', function (e) {
+                e.stopPropagation();
+                const icon = this.querySelector('.material-symbols-outlined');
+                const isActive = icon.style.fontVariationSettings?.includes('1');
+
+                if (isActive) {
+                    icon.style.fontVariationSettings = "'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 20";
+                    icon.style.color = '';
+                    this.style.background = '';
+                    this.style.borderColor = '';
+                } else {
+                    icon.style.fontVariationSettings = "'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 20";
+                    icon.style.color = '#e74c3c';
+                    this.style.background = 'rgba(231, 76, 60, 0.12)';
+                    this.style.borderColor = 'rgba(231, 76, 60, 0.3)';
+                }
+            });
+        });
+
+        /* ──────────────────────────────────────────
+           4. DETAILS BUTTONS — font-detail-v2.html link
+        ───────────────────────────────────────────── */
+
+        // Font name → slug mapping
+        const FONT_SLUG_MAP = {
+            'Turbo Block': 'Turbo_Block',
+            'Vellum Flow': 'Vellum_Flow',
+            'Mistavio Sans': 'Mistavio_Sans',
+            'BLOCK ITALIC': 'BLOCK_ITALIC',
+            'Brushfield Fury': 'Brushfield-Fury',
+            'Stadium Bold': 'Stadium_Bold',
+            'Strata Bold': 'Strata_Bold',
+            'Funkadelic Serif': 'Funkadelic_Serif',
+            'Velocity Brush': 'Velocity_Brush',
+            'Goliath Soft': 'Goliath_Soft',
+            'Velvet Monoline': 'Velvet_Monoline',
+            'Prose Bold': 'Prose_Bold',
+            'Storybook Sans': 'Storybook_Sans',
+            'Pebble Sans': 'Pebble_Sans',
+            'Midnight Citadel': 'Midnight_Citadel',
+            'Zenith Spark': 'Zenith_Spark',
+            'Sonnet Italic': 'Sonnet_Italic',
+            'Nova Legacy': 'Nova_Legacy',
+            'Glissade': 'Glissade',
+            'Boutique Seraphina': 'Boutique_Seraphina',
+            'Onyx Dynasty': 'Onyx_Dynasty',
+            'Vanguard Axis': 'Vanguard_Axis',
+            'Throttle Street': 'Throttle_Street',
+            'Nova Shell': 'Nova_Shell',
+            'Volo Scale': 'Volo_Scale',
+            'Apex Rounded': 'Apex_Rounded',
+
+        };
+        document.querySelectorAll('.font-card__cta-details').forEach(btn => {
+            btn.addEventListener('click', function (e) {
+                e.stopPropagation();
+                const card = this.closest('.font-card');
+                const nameEl = card ? card.querySelector('.font-card__name-label') : null;
+                const fontName = nameEl ? nameEl.textContent.trim() : '';
+                const slug = FONT_SLUG_MAP[fontName];
+
+                if (slug) {
+                    window.location.href = `/main-website/font-detail-v2.html?font=${slug}`;
+                } else {
+                    // Fallback: show toast if no mapping found
+                    const orig = this.textContent;
+                    this.textContent = 'Coming Soon…';
+                    this.style.opacity = '0.55';
+                    this.style.cursor = 'default';
+                    setTimeout(() => {
+                        this.textContent = orig;
+                        this.style.opacity = '';
+                        this.style.cursor = '';
+                    }, 1600);
+                }
+            });
+        });
+
+        /* ──────────────────────────────────────────
+           4b. BUY BUTTONS
+        ───────────────────────────────────────────── */
+        document.querySelectorAll('.font-card__cta-buy').forEach(btn => {
+            btn.addEventListener('click', function () {
+                const orig = this.textContent;
+                this.textContent = '✓ Added!';
+                setTimeout(() => { this.textContent = orig; }, 1600);
+            });
+        });
+
+        /* ──────────────────────────────────────────
+           5. NEWSLETTER SIGNUP
+        ───────────────────────────────────────────── */
+        const joinBtn = document.getElementById('newsletter-join-btn');
+        const emailInput = document.getElementById('newsletter-email');
+
+        if (joinBtn && emailInput) {
+            joinBtn.addEventListener('click', function () {
+                const val = emailInput.value.trim();
+                const isValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val);
+
+                if (!isValid) {
+                    emailInput.style.outline = '2px solid #ba1a1a';
+                    emailInput.placeholder = 'Enter a valid email…';
+                    emailInput.value = '';
+                    setTimeout(() => {
+                        emailInput.style.outline = '';
+                        emailInput.placeholder = 'your@email.com';
+                    }, 2000);
+                    return;
+                }
+
+                joinBtn.textContent = '✓';
+                emailInput.value = '';
+                emailInput.placeholder = 'You\'re on the list!';
+                emailInput.disabled = true;
+                joinBtn.disabled = true;
+                joinBtn.style.opacity = '0.6';
+            });
+        }
+
+        /* ──────────────────────────────────────────
+           6. FEATURED SECTION BUTTONS
+        ───────────────────────────────────────────── */
+        const featuredBuy = document.querySelector('.mp-featured__btn-buy');
+        const featuredDemo = document.querySelector('.mp-featured__btn-demo');
+
+        if (featuredBuy) {
+            featuredBuy.addEventListener('click', function () {
+                const orig = this.textContent;
+                this.textContent = 'Processing…';
+                setTimeout(() => { this.textContent = orig; }, 1800);
+            });
+        }
+
+        if (featuredDemo) {
+            featuredDemo.addEventListener('click', function () {
+                previewInput.focus();
+                previewInput.select();
+                previewInput.closest('.mp-preview-bar').scrollIntoView({ behavior: 'smooth', block: 'center' });
+            });
+        }
+
+        /* ──────────────────────────────────────────
+           7. PREVIEW BAR SHADOW ON SCROLL
+        ───────────────────────────────────────────── */
+        window.addEventListener('scroll', () => {
+            const bar = document.querySelector('.mp-preview-bar__inner');
+            if (bar) {
+                bar.style.boxShadow = window.scrollY > 100
+                    ? '0 12px 40px rgba(17,17,17,0.3)'
+                    : '0 8px 32px rgba(17,17,17,0.2)';
+            }
+        }, { passive: true });
+
+        /* ──────────────────────────────────────────
+           8. SORT PILLS
+        ───────────────────────────────────────────── */
+        const sortContainer = document.getElementById('sort-pills');
+        const grid = document.getElementById('marketplace-grid');
+
+        function getCardData(card) {
+            const priceEl = card.querySelector('.font-card__price');
+            const nameEl = card.querySelector('.font-card__name-label');
+            const price = priceEl ? parseInt(priceEl.textContent.replace(/[^0-9]/g, '')) : 0;
+            const name = nameEl ? nameEl.textContent.trim() : '';
+            return { price, name };
+        }
+
+        sortContainer.addEventListener('click', function (e) {
+            const btn = e.target.closest('button[data-sort]');
+            if (!btn) return;
+
+            sortContainer.querySelectorAll('button').forEach(b => { b.className = 'mp-sort-pill'; });
+            btn.className = 'mp-sort-pill mp-sort-pill--active';
+
+            const sortBy = btn.dataset.sort;
+            const cards = Array.from(grid.querySelectorAll('.font-card'));
+            const newsletter = cards.find(c => c.classList.contains('font-card--newsletter'));
+            const fontCards = cards.filter(c => !c.classList.contains('font-card--newsletter'));
+
+            fontCards.sort((a, b) => {
+                const da = getCardData(a);
+                const db = getCardData(b);
+                if (sortBy === 'price-low') return da.price - db.price;
+                if (sortBy === 'price-high') return db.price - da.price;
+                if (sortBy === 'name-az') return da.name.localeCompare(db.name);
+                return parseInt(a.dataset.index || 0) - parseInt(b.dataset.index || 0);
+            });
+
+            fontCards.forEach(card => grid.appendChild(card));
+            if (newsletter) grid.appendChild(newsletter);
+        });
+
+    </script>
+
+    <script src="javascript/loginmodel.js" defer></script>
+</body>
+
+</html>

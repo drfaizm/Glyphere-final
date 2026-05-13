@@ -1,0 +1,2807 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Glyphere — Custom Fonts &amp; Premium Typefaces</title>
+    <meta name="description"
+        content="Glyphere is a premium type foundry specialising in custom font design, logo typography, and high-quality digital typefaces." />
+
+    <!-- ══════════════════════════════════════════════════
+       CACHE CONTROL
+  ══════════════════════════════════════════════════ -->
+    <meta http-equiv="Cache-Control" content="public, max-age=86400" />
+
+    <!-- ══════════════════════════════════════════════════
+       RESOURCE HINTS — DNS + connections resolved early
+  ══════════════════════════════════════════════════ -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="dns-prefetch" href="https://cdn.jsdelivr.net" />
+
+    <!-- ══════════════════════════════════════════════════
+       CRITICAL ASSET PRELOADS
+       Preload the stylesheet and the single most visible
+       font so the browser fetches them at highest priority
+       before the parser hits them in <body>.
+  ══════════════════════════════════════════════════ -->
+    <link rel="stylesheet" href="../main-website/css/globalstyle.css" />
+    <link rel="stylesheet" href="javascript/loginmodel.css">
+
+    <!-- ══════════════════════════════════════════════════
+       NON-RENDER-BLOCKING GOOGLE FONTS
+       media="print" trick: browser downloads the sheet
+       without blocking paint; onload flips it to "all".
+       <noscript> fallback for JS-disabled browsers.
+  ══════════════════════════════════════════════════ -->
+
+    <!-- Bricolage Grotesque — used in headlines/nav (largest above-fold element) -->
+    <link rel="preload" as="style"
+        href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@200..800&display=swap"
+        onload="this.onload=null;this.rel='stylesheet'" />
+    <noscript>
+        <link rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@200..800&display=swap" />
+    </noscript>
+
+    <!-- Epilogue + Manrope — body & supporting text -->
+    <link rel="preload" as="style"
+        href="https://fonts.googleapis.com/css2?family=Epilogue:ital,wght@0,100..900;1,100..900&family=Manrope:wght@200..800&display=swap"
+        onload="this.onload=null;this.rel='stylesheet'" />
+    <noscript>
+        <link rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=Epilogue:ital,wght@0,100..900;1,100..900&family=Manrope:wght@200..800&display=swap" />
+    </noscript>
+
+    <!-- Material Symbols — icons (non-critical, load last) -->
+    <link rel="preload" as="style"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+        onload="this.onload=null;this.rel='stylesheet'" />
+    <noscript>
+        <link rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" />
+    </noscript>
+
+    <!-- Swiper CSS — non-critical (carousel is below fold) -->
+    <link rel="preload" as="style" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+        onload="this.onload=null;this.rel='stylesheet'" />
+    <noscript>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    </noscript>
+
+    <!-- Global stylesheet — render-critical, loaded synchronously -->
+    <link rel="stylesheet" href="../css/globalstyle.css" />
+
+    <!-- Prefetch likely next navigations -->
+    <link rel="prefetch" href="/marketplace.html" as="document" />
+    <link rel="prefetch" href="/custom_font_services/code.html" as="document" />
+
+    <style>
+        /* =====================================================
+       HOMEPAGE — PAGE-SPECIFIC STYLES
+       All rules here are audited and used.
+       Removed: .specimens-row (element never exists in HTML),
+                flex props on .specimen-card-wrap (parent is
+                grid, not flex — those props had zero effect).
+    ===================================================== */
+
+        /* ─────────────────────────────────────────
+       MAIN WRAPPER
+    ───────────────────────────────────────── */
+        main {
+            padding: 0 2.5rem;
+            background: var(--color-background);
+            /* filter: sepia(0.1) saturate(1.2); */
+        }
+
+        /* ─────────────────────────────────────────
+       HERO SECTION
+    ───────────────────────────────────────── */
+        .hero-section {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            min-height: 100vh;
+            padding: 8rem 0 4rem;
+            gap: 0;
+        }
+
+        .status-badge {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-family: 'Instrument Sans', sans-serif;
+            font-size: 0.6125rem;
+            font-weight: 300;
+            color: var(--color-on-surface);
+            border: 0.1px solid var(--gold-dark);
+            padding: 4px;
+            border-radius: 40px;
+            width: fit-content;
+        }
+
+        .status-badge__dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 40px;
+            background: #22c55e;
+            flex-shrink: 0;
+            animation: statusDotPulse 2s ease-in-out infinite;
+        }
+
+        .hero-text-col {
+            width: 55%;
+            padding: 0 2rem;
+        }
+
+        .hero-text {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            justify-content: flex-end;
+            align-items: flex-start;
+        }
+
+        .hero-heading {
+            font-size: clamp(4rem, 6vw, 5rem);
+            font-family: var(--font-headline);
+            font-weight: 900;
+            line-height: clamp(1.05, 1.1, 1.15);
+            letter-spacing: -0.03em;
+            color: var(--color-primary);
+            width: 100%;
+        }
+
+        .hero-body {
+            width: 80%;
+            color: var(--color-on-surface-variant, #504840);
+            line-height: 1.5;
+            font-size: clamp(0.9rem, 1.2vw, 1.3rem);
+            font-weight: 500;
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 1rem;
+            padding-top: 1rem;
+            margin-top: 4vh;
+        }
+
+        /* ─────────────────────────────────────────
+       BROWSER MOCKUP WIDGET
+    ───────────────────────────────────────── */
+        .hero-mockup-col {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem 1rem;
+            transform: scale(0.95);
+            opacity: 0.8;
+        }
+
+        .browser-frame-stack {
+            position: relative;
+            width: 340px;
+        }
+
+        .browser-frame {
+            position: relative;
+            z-index: 3;
+            width: 100%;
+            background: #fff;
+            border: 1px solid rgba(28, 24, 18, 0.09);
+            border-radius: 18px;
+            box-shadow: 0 20px 60px rgba(28, 24, 18, 0.12), 0 4px 16px rgba(28, 24, 18, 0.07);
+            overflow: hidden;
+            animation: mockupFloat 7s ease-in-out infinite;
+        }
+
+        .browser-frame__chrome {
+            background: #f5f0e8;
+            padding: 11px 14px;
+            display: flex;
+            align-items: center;
+            gap: 9px;
+            border-bottom: 1px solid rgba(201, 171, 129, 0.2);
+        }
+
+        .browser-frame__dots {
+            display: flex;
+            gap: 5px;
+        }
+
+        .browser-frame__dot {
+            width: 9px;
+            height: 9px;
+            border-radius: 50%;
+            display: inline-block;
+        }
+
+        .browser-frame__dot:nth-child(1) {
+            background: #ff5f57;
+        }
+
+        .browser-frame__dot:nth-child(2) {
+            background: #febc2e;
+        }
+
+        .browser-frame__dot:nth-child(3) {
+            background: #28c840;
+        }
+
+        .browser-frame__url-bar {
+            flex: 1;
+            background: rgba(28, 24, 18, 0.06);
+            border-radius: 4px;
+            padding: 4px 10px;
+            font-size: 0.625rem;
+            color: #8a7e70;
+            font-family: var(--font-mono);
+        }
+
+        .browser-frame__nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 12px 18px;
+            background: #fff;
+            border-bottom: 1px solid rgba(201, 171, 129, 0.12);
+        }
+
+        .browser-frame__logo {
+            font-family: 'Bricolage Grotesque', sans-serif;
+            font-size: 0.8rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .browser-frame__nav-links {
+            display: flex;
+            gap: 12px;
+        }
+
+        .browser-frame__nav-links span {
+            width: 20px;
+            height: 3px;
+            background: rgba(28, 24, 18, 0.10);
+            border-radius: 2px;
+            display: block;
+        }
+
+        .browser-frame__nav-links span:first-child {
+            background: rgba(201, 171, 129, 0.5);
+        }
+
+        .browser-frame__hero {
+            padding: 22px 18px 18px;
+            background: linear-gradient(160deg, #f5f0e8 0%, #fff 100%);
+        }
+
+        .browser-frame__category-pill {
+            display: inline-block;
+            background: rgba(201, 171, 129, 0.1);
+            border: 1px solid rgba(201, 171, 129, 0.3);
+            color: #6e5c38;
+            font-size: 0.5rem;
+            font-weight: 600;
+            padding: 3px 10px;
+            border-radius: 100px;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+            font-family: 'Instrument Sans', sans-serif;
+        }
+
+        .browser-frame__heading {
+            font-family: 'Bricolage Grotesque', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 800;
+            line-height: 1.1;
+            letter-spacing: -0.4px;
+            margin-bottom: 10px;
+        }
+
+        .browser-frame__heading--primary {
+            color: #1c1812;
+        }
+
+        .browser-frame__heading--accent {
+            background: linear-gradient(135deg, var(--gold), #b39263);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .browser-frame__skeleton {
+            margin-bottom: 12px;
+        }
+
+        .browser-frame__skeleton-line {
+            height: 3px;
+            background: rgba(28, 24, 18, 0.08);
+            border-radius: 2px;
+            margin-bottom: 5px;
+            width: 82%;
+        }
+
+        .browser-frame__skeleton-line:last-child {
+            width: 50%;
+        }
+
+        .browser-frame__cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: linear-gradient(135deg, var(--gold), #b39263);
+            color: var(--color-primary);
+            font-size: 0.575rem;
+            font-weight: 700;
+            padding: 6px 14px;
+            border-radius: 100px;
+            font-family: 'Instrument Sans', sans-serif;
+        }
+
+        .browser-frame__features {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            border-top: 1px solid rgba(201, 171, 129, 0.12);
+            background: #faf7f2;
+        }
+
+        .browser-frame__feature-item {
+            padding: 10px 8px;
+            text-align: center;
+            border-right: 1px solid rgba(201, 171, 129, 0.1);
+        }
+
+        .browser-frame__feature-item:last-child {
+            border-right: none;
+        }
+
+        .browser-frame__feature-dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            margin: 0 auto 5px;
+        }
+
+        .browser-frame__feature-item:nth-child(1) .browser-frame__feature-dot {
+            background: var(--gold);
+        }
+
+        .browser-frame__feature-item:nth-child(2) .browser-frame__feature-dot {
+            background: var(--gold-dark);
+        }
+
+        .browser-frame__feature-item:nth-child(3) .browser-frame__feature-dot {
+            background: #6e5c38;
+        }
+
+        .browser-frame__feature-name {
+            font-size: 0.5rem;
+            font-weight: 600;
+            color: #3d2e00;
+            font-family: 'Instrument Sans', sans-serif;
+        }
+
+        .browser-frame__feature-desc {
+            font-size: 0.44rem;
+            color: #a89880;
+            font-family: 'Instrument Sans', sans-serif;
+        }
+
+        .browser-frame__live-bar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 7px 18px;
+            background: #f5f0e8;
+            border-top: 1px solid rgba(201, 171, 129, 0.18);
+        }
+
+        .browser-frame__live-label {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 0.5625rem;
+            color: #8a7e70;
+            font-family: 'Instrument Sans', sans-serif;
+        }
+
+        .browser-frame__live-dot {
+            width: 5px;
+            height: 5px;
+            border-radius: 50%;
+            background: var(--gold);
+            flex-shrink: 0;
+            animation: liveDotPulse 1.5s ease-in-out infinite;
+        }
+
+        .browser-frame__live-count {
+            font-family: 'Bricolage Grotesque', sans-serif;
+            font-size: 0.6875rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* ─────────────────────────────────────────
+       FLOATING BADGES
+    ───────────────────────────────────────── */
+        .float-badge {
+            position: absolute;
+            background: #fff;
+            border: 1px solid rgba(201, 171, 129, 0.2);
+            border-radius: 14px;
+            padding: 9px 14px;
+            box-shadow: 0 8px 24px rgba(28, 24, 18, 0.1);
+            font-family: 'Instrument Sans', sans-serif;
+            z-index: 10;
+            white-space: nowrap;
+        }
+
+        .float-badge--rating {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            left: -80px;
+            top: 6%;
+            animation: floatBadgeA 5.5s ease-in-out infinite;
+        }
+
+        .float-badge--stat {
+            right: -80px;
+            bottom: 6%;
+            text-align: center;
+            animation: floatBadgeB 6s ease-in-out infinite;
+        }
+
+        .float-badge--live {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            left: -80px;
+            top: 52%;
+            animation: floatBadgeC 4.8s ease-in-out infinite;
+        }
+
+        .float-badge__icon {
+            color: #faf8f5;
+            width: 30px;
+            height: 30px;
+            border-radius: 10px;
+            background: linear-gradient(135deg, var(--gold-dark), #d8c49f);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.875rem;
+            flex-shrink: 0;
+        }
+
+        .float-badge__name {
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--color-primary);
+            display: block;
+        }
+
+        .float-badge__stars {
+            color: var(--gold);
+            font-size: 0.625rem;
+            letter-spacing: 1px;
+            margin-top: 1px;
+        }
+
+        .float-badge__desc {
+            font-size: 0.575rem;
+            color: #8a7e70;
+        }
+
+        .float-badge__stat-number {
+            font-family: 'Bricolage Grotesque', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 800;
+            line-height: 1;
+            background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            display: flex;
+            align-items: baseline;
+            justify-content: center;
+            gap: 1px;
+        }
+
+        .float-badge__stat-number em {
+            font-style: normal;
+            font-size: 1.75rem;
+        }
+
+        .float-badge__stat-label {
+            font-size: 0.6rem;
+            color: #8a7e70;
+            margin-top: 3px;
+        }
+
+        .float-badge__dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--gold);
+            flex-shrink: 0;
+            animation: liveRingPulse 1.6s ease-in-out infinite;
+        }
+
+        .float-badge__live-title {
+            font-size: 0.75rem;
+            font-weight: 500;
+            color: #3d2e00;
+        }
+
+        .float-badge__live-sub {
+            font-size: 0.6rem;
+            color: #a89880;
+        }
+
+        /* ─────────────────────────────────────────
+       SPECIMENS SECTION
+    ───────────────────────────────────────── */
+        .specimens-section {
+            background: var(--color-gradient);
+            padding: 80px 0;
+            margin-left: -3rem;
+            margin-right: -3rem;
+        }
+
+        .specimens-inner {
+            max-width: 1200px;
+            margin: auto;
+            padding: 0 3rem;
+        }
+
+        .specimens-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin-bottom: 3.5rem;
+        }
+
+        .specimens-header__content {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            width: 100%;
+        }
+
+        .typewriter-wrap {
+            text-align: center;
+        }
+
+        .typewriter-heading {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Bricolage Grotesque', sans-serif;
+            font-size: clamp(2rem, 4.5vw, 3.5rem);
+            font-weight: 800;
+            line-height: 1.0;
+            letter-spacing: -2px;
+        }
+
+        .typewriter-text {
+            background: #f2e7d5;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .typewriter-cursor {
+            display: inline-block;
+            width: 4px;
+            height: clamp(36px, 5vw, 60px);
+            background: #00A865;
+            border-radius: 2px;
+            margin-left: 6px;
+            vertical-align: middle;
+            flex-shrink: 0;
+            animation: cursorBlink 0.7s steps(1) infinite;
+            transition: opacity 0.4s ease;
+        }
+
+        .typewriter-cursor.hidden {
+            opacity: 0;
+            animation: none;
+        }
+
+        .specimens-subtitle {
+            color: var(--body-text-on-gradient);
+        }
+
+        .specimens-view-all {
+            position: absolute;
+            right: 5%;
+            font-family: var(--font-headline);
+            font-weight: 700;
+            color: #f2e7d5;
+            border-bottom: 2px solid transparent;
+            padding-bottom: 0.25rem;
+            display: none;
+            transition: border-color 0.1s;
+            white-space: nowrap;
+            font-size: 0.9rem;
+        }
+
+        .specimens-view-all:hover {
+            border-bottom-color: #d6a65a;
+        }
+
+        .specimens-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            width: 100%;
+        }
+
+        /* ─── Specimen Card ─── */
+        .specimen-card {
+            min-height: 100%;
+            position: relative;
+            border-radius: 1.25rem;
+            padding: 1.75rem;
+            background: var(--color-on-gradient);
+            border: 1px solid rgba(255, 230, 190, 0.05);
+            transition: transform 0.35s ease-out, box-shadow 0.35s ease-out;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            gap: 1.25rem;
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.02), 0 10px 25px rgba(0, 0, 0, 0.28);
+        }
+
+        .specimen-card:hover {
+            transform: translateY(-0.5rem) scale(1.02);
+            box-shadow: 0 25px 45px rgba(0, 0, 0, 0.45);
+        }
+
+        /* Scroll reveal wrapper */
+        .specimen-card-wrap {
+            padding: 1.25px;
+            border-radius: 1.25rem;
+            background: linear-gradient(135deg, rgba(212, 166, 90, 0.18), rgba(255, 255, 255, 0.02));
+            box-shadow:
+                inset 8px 8px 18px rgba(0, 0, 0, 0.25),
+                inset -8px -8px 18px rgba(255, 255, 255, 0.015);
+            opacity: 0;
+            transform: translateY(32px);
+            transition: opacity 0.6s ease, transform 0.6s cubic-bezier(0.34, 1.2, 0.64, 1);
+        }
+
+        .specimen-card-wrap.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .specimens-grid .specimen-card-wrap:nth-child(1) {
+            transition-delay: 0.00s;
+        }
+
+        .specimens-grid .specimen-card-wrap:nth-child(2) {
+            transition-delay: 0.10s;
+        }
+
+        .specimens-grid .specimen-card-wrap:nth-child(3) {
+            transition-delay: 0.20s;
+        }
+
+        .specimens-grid .specimen-card-wrap:nth-child(4) {
+            transition-delay: 0.30s;
+        }
+
+        .specimens-grid .specimen-card-wrap:nth-child(5) {
+            transition-delay: 0.40s;
+        }
+
+        .specimens-grid .specimen-card-wrap:nth-child(6) {
+            transition-delay: 0.50s;
+        }
+
+        .specimen-card__header {
+            text-align: center;
+            margin-bottom: 0.25rem;
+        }
+
+        .specimen-card__name {
+            font-weight: 900;
+            font-size: 2.5rem;
+            margin: 0;
+            color: #f2e7d5;
+            letter-spacing: -0.04em;
+        }
+
+        .specimen-card__style {
+            color: var(--body-text-on-gradient);
+            font-size: 0.5625rem;
+            margin-top: 4px;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
+        /* Font-family modifiers */
+        .specimen-card__name--monument {
+            font-family: 'Turbo_Block';
+            letter-spacing: -0.05em;
+        }
+
+        .specimen-card__name--nova {
+            font-family: 'Nova Legacy', serif;
+            letter-spacing: 0;
+        }
+
+        .specimen-card__name--sonnet {
+            font-family: 'Sonnet Italic', serif;
+            font-style: italic;
+            letter-spacing: 0.05em;
+        }
+
+        .specimen-card__name--midnight {
+            font-family: 'Midnight_Citadel', sans-serif;
+            font-weight: 400;
+        }
+
+        .specimen-card__name--pebble {
+            font-family: 'Pebble_Sans', sans-serif;
+            font-weight: 400;
+        }
+
+        .specimen-card__name--storybook {
+            font-family: 'Storybook_Sans', sans-serif;
+            font-weight: 400;
+            letter-spacing: -0.03em;
+        }
+
+        .specimen-card__preview {
+            background: #181512;
+            border: 1px solid rgba(255, 230, 190, 0.05);
+            border-radius: 0.75rem;
+            padding: 1.75rem 1.25rem;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.75rem;
+            position: relative;
+        }
+
+        .specimen-card__preview-label {
+            position: absolute;
+            top: 10px;
+            left: 12px;
+            color: #9d8d78;
+            font-size: 0.4375rem;
+            letter-spacing: 0.08em;
+            font-weight: 700;
+        }
+
+        .specimen-card__chars-wrap {
+            position: relative;
+            display: inline-block;
+            padding: 0.625rem 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .specimen-card__chars {
+            font-weight: 900;
+            font-size: 3rem;
+            line-height: 1;
+            color: #f7ead7;
+        }
+
+        .specimen-card__tagline {
+            color: #a6947d;
+            font-size: 0.5rem;
+            letter-spacing: 0.05em;
+            margin: 0;
+        }
+
+        /* Char font-family modifiers */
+        .specimen-card__chars--monument {
+            font-family: 'Turbo_Block';
+            letter-spacing: -0.05em;
+        }
+
+        .specimen-card__chars--nova {
+            font-family: 'Nova Legacy', serif;
+        }
+
+        .specimen-card__chars--sonnet {
+            font-family: 'Sonnet Italic', serif;
+            font-weight: 400;
+            font-style: italic;
+        }
+
+        .specimen-card__chars--midnight {
+            font-family: 'Midnight_Citadel', sans-serif;
+            font-weight: 400;
+        }
+
+        .specimen-card__chars--pebble {
+            font-family: 'Pebble_Sans', sans-serif;
+            font-weight: 400;
+        }
+
+        .specimen-card__chars--storybook {
+            font-family: 'Storybook_Sans', sans-serif;
+            font-weight: 400;
+            letter-spacing: -0.03em;
+        }
+
+        /* Grid overlay */
+        .specimen-card__grid-lines {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+        }
+
+        .grid-line {
+            position: absolute;
+            border-color: rgba(255, 230, 190, 0.04);
+            border-style: dotted;
+        }
+
+        .grid-line--h {
+            width: 100%;
+            border-width: 1px 0 0;
+        }
+
+        .grid-line--v {
+            height: 100%;
+            border-width: 0 1px 0 0;
+        }
+
+        .grid-line--top {
+            top: 30px;
+        }
+
+        .grid-line--mid {
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .grid-line--bot {
+            bottom: 30px;
+        }
+
+        .grid-line--left {
+            left: 40px;
+        }
+
+        .grid-line--right {
+            right: 40px;
+        }
+
+        .grid-corner {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            border: 1px solid rgba(255, 230, 190, 0.12);
+        }
+
+        .grid-corner--tl {
+            top: 28px;
+            left: 38px;
+        }
+
+        .grid-corner--tr {
+            top: 28px;
+            right: 38px;
+        }
+
+        .grid-corner--bl {
+            bottom: 28px;
+            left: 38px;
+        }
+
+        .grid-corner--br {
+            bottom: 28px;
+            right: 38px;
+        }
+
+        /* Meta row */
+        .specimen-card__meta {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            border-top: 1px solid rgba(255, 230, 190, 0.06);
+            border-bottom: 1px solid rgba(255, 230, 190, 0.06);
+            padding: 1rem 0;
+        }
+
+        .specimen-card__meta-item {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .specimen-card__meta-icon {
+            font-size: 0.75rem;
+            color: #d6a65a;
+        }
+
+        .specimen-card__meta-text {
+            display: flex;
+            flex-direction: column;
+            gap: 1px;
+        }
+
+        .specimen-card__meta-label {
+            font-size: 0.5rem;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            color: #f2e7d5;
+        }
+
+        .specimen-card__meta-value {
+            font-size: 0.5rem;
+            color: var(--body-text-on-gradient);
+        }
+
+        .specimen-card__meta-divider {
+            width: 1px;
+            height: 28px;
+            background: rgba(255, 230, 190, 0.08);
+        }
+
+        .specimen-card__description {
+            padding-top: 0.75rem;
+            border-top: 1px solid rgba(255, 230, 190, 0.06);
+            font-size: 0.625rem;
+            color: var(--body-text-on-gradient);
+            letter-spacing: 0.06em;
+            font-weight: 700;
+            text-align: center;
+            font-family: Arial, Helvetica, sans-serif;
+            font-style: italic;
+            margin-top: auto;
+        }
+
+        /* ─────────────────────────────────────────
+       TESTIMONIALS SECTION
+    ───────────────────────────────────────── */
+        .testimonials-section {
+            overflow: hidden;
+            padding-bottom: 50px;
+        }
+
+        .testimonials-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 5rem 2.5rem 0;
+        }
+
+        .testimonials-header {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.75rem;
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+
+        .testimonials-kicker {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-family: 'Instrument Sans', sans-serif;
+            font-size: 0.6875rem;
+            font-weight: 600;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: var(--gold-dark);
+            opacity: 0.9;
+        }
+
+        .testimonials-kicker::before,
+        .testimonials-kicker::after {
+            content: '';
+            display: inline-block;
+            width: 28px;
+            height: 1px;
+            background: var(--gold);
+            opacity: 0.5;
+        }
+
+        .testimonials-title {
+            font-family: 'Bricolage Grotesque', sans-serif;
+            font-size: clamp(2rem, 4.5vw, 3.5rem);
+            font-weight: 800;
+            letter-spacing: -0.04em;
+            line-height: 1.05;
+            color: var(--color-primary);
+        }
+
+        .swiper {
+            width: 100%;
+            padding: 6rem 0;
+            overflow: hidden;
+        }
+
+        .swiper-slide {
+            width: 380px;
+            opacity: 0.4;
+            transform: scale(0.85);
+            transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+            display: flex;
+            justify-content: center;
+        }
+
+        .swiper-slide-active {
+            opacity: 1;
+            filter: blur(0);
+            transform: scale(1);
+        }
+
+        .swiper-slide-active .testimonial-card {
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.1);
+        }
+
+        .swiper-slide-active .testimonial-card-wrap {
+            animation: float 5s ease-in-out infinite;
+        }
+
+        .testimonial-card-wrap {
+            width: 100%;
+            max-width: 420px;
+            padding: 2px;
+            border-radius: 1.5rem;
+            background: linear-gradient(to bottom right, #ffffff, rgba(229, 231, 235, 0.5));
+            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.05);
+        }
+
+        .testimonial-card {
+            border-radius: 22px;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            transition: transform 0.1s ease-out;
+            transform-style: preserve-3d;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .testimonial-card>* {
+            transform: translateZ(20px);
+        }
+
+        .testimonial-card__stars {
+            display: flex;
+            color: var(--gold-dark);
+            font-size: 1.25rem;
+            letter-spacing: -0.05em;
+            margin-bottom: 1rem;
+        }
+
+        .testimonial-card__text {
+            color: #1f2937;
+            font-size: 1.125rem;
+            line-height: 1.75;
+            font-style: italic;
+            margin-bottom: 2rem;
+        }
+
+        .testimonial-card__author {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .testimonial-card__author img {
+            width: 48px;
+            height: 48px;
+            border-radius: 9999px;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+            border: 2px solid white;
+        }
+
+        .testimonial-card__author-name {
+            font-weight: 600;
+            color: #111827;
+            margin: 0;
+        }
+
+        .testimonial-card__author-role {
+            font-size: 0.75rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: #9ca3af;
+            margin: 0;
+        }
+
+        .swiper-pagination {
+            bottom: 0px !important;
+        }
+
+        .swiper-pagination-bullet {
+            background: #6b7280;
+            opacity: 0.4;
+        }
+
+        .swiper-pagination-bullet-active {
+            background: #374151;
+            opacity: 1;
+        }
+
+        /* ─────────────────────────────────────────
+       PROCESS SECTION
+    ───────────────────────────────────────── */
+        .process-section {
+            background: var(--color-gradient);
+            padding: 5rem 0;
+            position: relative;
+            overflow: hidden;
+            margin-left: -3rem;
+            margin-right: -3rem;
+        }
+
+        .process-section::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image: radial-gradient(circle, rgba(201, 171, 129, 0.06) 1px, transparent 1px);
+            background-size: 28px 28px;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .process-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 3rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .process-header {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 40px;
+            margin-bottom: 72px;
+            flex-wrap: wrap;
+        }
+
+        .process-header__left {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .process-eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-family: 'Instrument Sans', sans-serif;
+            font-size: 0.6875rem;
+            font-weight: 600;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: #c9ab81;
+            opacity: 0.85;
+        }
+
+        .process-eyebrow__line {
+            width: 28px;
+            height: 1px;
+            background: #c9ab81;
+            opacity: 0.5;
+        }
+
+        .process-title {
+            font-family: 'Bricolage Grotesque', sans-serif;
+            font-size: clamp(2.4rem, 4.5vw, 4rem);
+            font-weight: 800;
+            line-height: 1.0;
+            letter-spacing: -2px;
+            color: #f2e7d5;
+            margin: 0;
+            text-align: center;
+        }
+
+        .process-title__accent {
+            background: linear-gradient(135deg, #c9ab81 0%, #d6a65a 60%, #8a6c3e 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .process-header__desc {
+            /* max-width: 300px; */
+            font-family: 'Instrument Sans', sans-serif;
+            font-size: 0.9375rem;
+            font-weight: 300;
+            line-height: 1.7;
+            color: var(--body-text-on-gradient);
+            flex-shrink: 0;
+        }
+
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 22px;
+            position: relative;
+            scale: 1;
+        }
+
+        .process-steps::before {
+            content: '';
+            position: absolute;
+            top: 56px;
+            left: calc(12.5% + 8px);
+            right: calc(12.5% + 8px);
+            height: 1px;
+            background: linear-gradient(90deg, transparent 0%, rgba(201, 171, 129, 0.25) 10%, rgba(201, 171, 129, 0.25) 90%, transparent 100%);
+            z-index: 0;
+        }
+
+        .process-step {
+            position: relative;
+            padding: 1.5px;
+            border-radius: 1.25rem;
+            background: linear-gradient(160deg, rgba(214, 166, 90, 0.14), rgba(255, 255, 255, 0.01));
+            opacity: 0;
+            transform: translateY(32px);
+            transition: opacity 0.6s ease, transform 0.6s cubic-bezier(0.34, 1.2, 0.64, 1);
+        }
+
+        .process-step.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .process-step:nth-child(1) {
+            transition-delay: 0.00s;
+        }
+
+        .process-step:nth-child(2) {
+            transition-delay: 0.12s;
+        }
+
+        .process-step:nth-child(3) {
+            transition-delay: 0.24s;
+        }
+
+        .process-step:nth-child(4) {
+            transition-delay: 0.36s;
+        }
+
+        .process-step__inner {
+            height: 100%;
+            background: var(--color-on-gradient);
+            border-radius: 1.2rem;
+            padding: 2rem 1.5rem 1.75rem;
+            border: 1px solid rgba(255, 230, 190, 0.04);
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            transition: background 0.3s, border-color 0.3s, transform 0.35s cubic-bezier(0.34, 1.2, 0.64, 1), box-shadow 0.35s;
+            cursor: default;
+        }
+
+        .process-step:hover .process-step__inner {
+            background: #221e18;
+            border-color: rgba(201, 171, 129, 0.18);
+            transform: translateY(-6px);
+            box-shadow: 0 24px 50px rgba(0, 0, 0, 0.45), 0 0 0 1px rgba(201, 171, 129, 0.08);
+        }
+
+        .process-step__header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: relative;
+            z-index: 1;
+        }
+
+        .process-step__number {
+            width: 48px;
+            height: 48px;
+            border-radius: 14px;
+            background: linear-gradient(135deg, rgba(201, 171, 129, 0.15), rgba(201, 171, 129, 0.04));
+            border: 1px solid rgba(201, 171, 129, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Bricolage Grotesque', sans-serif;
+            font-size: 1.125rem;
+            font-weight: 800;
+            color: #c9ab81;
+            flex-shrink: 0;
+            transition: background 0.3s, border-color 0.3s;
+        }
+
+        .process-step:hover .process-step__number {
+            background: linear-gradient(135deg, rgba(201, 171, 129, 0.25), rgba(201, 171, 129, 0.08));
+            border-color: rgba(201, 171, 129, 0.4);
+        }
+
+        .process-step__connector {
+            color: rgba(201, 171, 129, 0.2);
+            font-size: 1rem;
+            font-family: 'Instrument Sans', sans-serif;
+            transition: color 0.3s;
+            -webkit-user-select: none;
+            user-select: none;
+        }
+
+        .process-step:last-child .process-step__connector {
+            display: none;
+        }
+
+        .process-step:hover .process-step__connector {
+            color: rgba(201, 171, 129, 0.5);
+        }
+
+        .process-step__icon {
+            font-size: 1.75rem;
+            line-height: 1;
+            margin-top: 4px;
+            display: block;
+            color: var(--body-text-on-gradient);
+        }
+
+        .process-step__title {
+            font-family: 'Bricolage Grotesque', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 700;
+            letter-spacing: -0.4px;
+            line-height: 1.15;
+            color: #f2e7d5;
+            margin: 0;
+        }
+
+        .process-step__description {
+            font-family: 'Instrument Sans', sans-serif;
+            font-size: 0.8125rem;
+            font-weight: 300;
+            line-height: 1.65;
+            color: var(--body-text-on-gradient);
+            margin: 0;
+            flex: 1;
+        }
+
+        .process-step__tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(201, 171, 129, 0.07);
+            border: 1px solid rgba(201, 171, 129, 0.12);
+            border-radius: 100px;
+            padding: 4px 12px;
+            font-family: 'Instrument Sans', sans-serif;
+            font-size: 0.5625rem;
+            font-weight: 600;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: #c9ab81;
+            opacity: 0.8;
+            width: fit-content;
+            transition: background 0.25s, border-color 0.25s, opacity 0.25s;
+            margin-top: auto;
+        }
+
+        .process-step__tag::before {
+            content: '';
+            width: 4px;
+            height: 4px;
+            border-radius: 50%;
+            background: #c9ab81;
+            flex-shrink: 0;
+        }
+
+        .process-step:hover .process-step__tag {
+            background: rgba(201, 171, 129, 0.13);
+            border-color: rgba(201, 171, 129, 0.28);
+            opacity: 1;
+        }
+
+        /* ─────────────────────────────────────────
+       CTA SECTION
+    ───────────────────────────────────────── */
+        .cta-section {
+            padding: 4rem 0;
+        }
+
+        .cta-banner {
+            border-radius: var(--radius-lg);
+            padding: 4rem 3rem;
+            text-align: center;
+        }
+
+        .cta-banner__title {
+            font-size: clamp(2rem, 5.5vw, 4rem);
+            font-family: var(--font-headline);
+            font-weight: 900;
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.05em;
+            color: var(--color-primary);
+        }
+
+        .cta-banner__subtitle {
+            font-size: clamp(1rem, 2vw, 1.375rem);
+            color: var(--color-secondary);
+            max-width: 42rem;
+            margin: 0 auto 2.5rem;
+            line-height: 1.7;
+        }
+
+        /* ═════════════════════════════════════════
+       RESPONSIVE
+    ═════════════════════════════════════════ */
+        @media (min-width: 640px) {
+            .specimens-view-all {
+                display: block;
+            }
+        }
+
+        @media (max-width: 1024px) {
+            .hero-section {
+                flex-direction: column;
+                align-items: flex-start;
+                min-height: auto;
+                padding: 7rem 0 4rem;
+                gap: 3rem;
+            }
+
+            .hero-text-col {
+                width: 100%;
+                padding: 0;
+            }
+
+            .hero-body {
+                width: 100%;
+            }
+
+            .hero-mockup-col {
+                width: 100%;
+                padding: 0;
+                transform: scale(1);
+                opacity: 1;
+            }
+
+            .browser-frame-stack {
+                width: 320px;
+                margin: 0 auto;
+            }
+
+            .float-badge--rating,
+            .float-badge--live {
+                left: -60px;
+            }
+
+            .float-badge--stat {
+                right: -60px;
+            }
+
+            /* Grid: 2 columns on tablet */
+            .specimens-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .process-steps {
+                grid-template-columns: 1fr 1fr;
+                gap: 12px;
+            }
+
+            .process-steps::before {
+                display: none;
+            }
+
+            .process-step__connector {
+                display: none;
+            }
+
+            .process-header {
+                flex-direction: column;
+                align-items: center;
+                gap: 20px;
+            }
+
+            .process-header__desc {
+                max-width: 100%;
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 768px) {
+            main {
+                padding: 0 1.5rem;
+            }
+
+            .specimens-section,
+            .process-section {
+                margin-left: -1.5rem;
+                margin-right: -1.5rem;
+            }
+
+            .specimens-inner,
+            .process-inner {
+                padding: 0 1.5rem;
+            }
+
+            .nav-logo-name {
+                font-size: 1.2rem;
+            }
+
+            .nav-logo-img {
+                width: 32px;
+                height: 32px;
+            }
+
+            .nav-actions {
+                gap: 0.75rem;
+            }
+
+            .nav-login {
+                display: none;
+            }
+
+            .nav-signup {
+                padding: 0.4rem 1rem;
+                font-size: 0.8rem;
+            }
+
+            .hero-heading {
+                font-size: clamp(2.4rem, 8vw, 3.5rem);
+            }
+
+            .hero-actions {
+                flex-wrap: wrap;
+                margin-top: 2vh;
+            }
+
+            .cta-btn {
+                font-size: 0.875rem;
+                padding: 12px 22px;
+            }
+
+            .float-badge {
+                display: none;
+            }
+
+            .browser-frame-stack {
+                width: 100%;
+                max-width: 340px;
+            }
+
+            .specimen-card__name {
+                font-size: 2rem;
+            }
+
+            .specimen-card__chars {
+                font-size: 2.25rem;
+            }
+
+            .process-title {
+
+                letter-spacing: -1px;
+                text-align: center;
+            }
+
+            .cta-banner {
+                padding: 3rem 1.5rem;
+            }
+
+            .cta-banner__title {
+                font-size: clamp(1.75rem, 6vw, 2.5rem);
+            }
+
+            .swiper-slide {
+                width: 300px;
+            }
+
+            .testimonials-inner {
+                padding: 3.5rem 1.5rem 0;
+            }
+
+            .testimonials-title {
+                letter-spacing: -0.03em;
+            }
+        }
+
+        @media (max-width: 560px) {
+            main {
+                padding: 0 1rem;
+            }
+
+            .specimens-section,
+            .process-section {
+                margin-left: -1rem;
+                margin-right: -1rem;
+            }
+
+            .specimens-inner,
+            .process-inner {
+                padding: 0 1rem;
+            }
+
+            .hero-section {
+                padding: 6rem 0 3rem;
+                gap: 2rem;
+            }
+
+            .hero-heading {
+                font-size: clamp(2rem, 9vw, 2.8rem);
+            }
+
+            .hero-body {
+                font-size: 0.9rem;
+            }
+
+            .hero-actions {
+                gap: 0.75rem;
+            }
+
+            .status-badge {
+                font-size: 0.55rem;
+            }
+
+            .cta-btn {
+                width: 100%;
+                justify-content: center;
+                font-size: 0.85rem;
+                padding: 12px 18px;
+            }
+
+            .browser-frame-stack {
+                width: 100%;
+            }
+
+            /* Grid: single column on small mobile */
+            .specimens-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .typewriter-heading {
+                font-size: clamp(1.6rem, 7vw, 2.4rem);
+                letter-spacing: -1px;
+            }
+
+            .specimens-subtitle {
+                font-size: 0.8rem;
+            }
+
+            .specimen-card {
+                padding: 1.25rem;
+                gap: 1rem;
+            }
+
+            .specimen-card__name {
+                font-size: 1.75rem;
+            }
+
+            .specimen-card__chars {
+                font-size: 2rem;
+            }
+
+            .specimen-card__meta {
+                flex-wrap: wrap;
+                gap: 0.5rem;
+                justify-content: flex-start;
+            }
+
+            .specimen-card__meta-divider {
+                display: none;
+            }
+
+            .specimen-card__meta-item {
+                flex: 1 1 calc(50% - 0.25rem);
+                gap: 0.3rem;
+            }
+
+            .process-section {
+                padding: 72px 0 80px;
+            }
+
+            .process-steps {
+                grid-template-columns: 1fr;
+                gap: 10px;
+            }
+
+            .process-title {
+                font-size: clamp(1.75rem, 7vw, 2.5rem);
+                letter-spacing: -1px;
+                text-align: center;
+            }
+
+            .process-header__desc {
+                font-size: clamp(0.75rem, 2vw, 0.875rem);
+                text-align: center;
+            }
+
+            .process-step__inner {
+                padding: 1.5rem 1.25rem 1.25rem;
+            }
+
+            .process-step__title {
+                font-size: 1rem;
+            }
+
+            .process-step__description {
+                font-size: 0.775rem;
+            }
+
+            .swiper {
+                padding: 3rem 0;
+            }
+
+            .swiper-slide {
+                width: 280px;
+            }
+
+            .testimonial-card {
+                padding: 1.5rem;
+            }
+
+            .testimonial-card__text {
+                font-size: 0.95rem;
+            }
+
+            .testimonials-inner {
+                padding: 3rem 1rem 0;
+            }
+
+            .testimonials-kicker {
+                font-size: 0.625rem;
+            }
+
+            .cta-banner {
+                padding: 2.5rem 1rem;
+            }
+
+            .cta-banner__subtitle {
+                font-size: 0.9rem;
+            }
+        }
+
+        @media (max-width: 380px) {
+            main {
+                padding: 0 0.875rem;
+            }
+
+            .specimens-section,
+            .process-section {
+                margin-left: -0.875rem;
+                margin-right: -0.875rem;
+            }
+
+            .specimens-inner,
+            .process-inner {
+                padding: 0 0.875rem;
+            }
+
+            .hero-heading {
+                font-size: clamp(1.75rem, 9vw, 2.4rem);
+            }
+
+            .specimen-card__meta-item {
+                flex: 1 1 100%;
+            }
+
+            .nav-logo-name {
+                font-size: 1.05rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ═══════════════════════════════════════
+       PRELOADER
+  ═══════════════════════════════════════ -->
+    <div id="preloader" role="status" aria-label="Loading Glyphere">
+        <div class="preloader-inner">
+            <div class="preloader-brand">
+                <img class="preloader-brand__image" src="/main-website/homepage-updated/faiz.jpeg" alt=""
+                    aria-hidden="true" width="220" height="220" />
+                <p class="preloader-brand__name">Glyphere</p>
+                <p class="preloader-brand__tagline">From Glyph to Identity</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════
+       SITE HEADER & NAV
+  ═══════════════════════════════════════ -->
+    <header class="header-nav">
+        <nav class="nav-inner" aria-label="Main navigation">
+            <div class="nav-logo-group">
+                <a href="/homepage.html">
+                    <img src="/main-website/homepage-updated/faiz.jpeg" class="nav-logo-img" alt="Glyphere" width="40"
+                        height="40" />
+                </a>
+                <a class="nav-logo-name" href="/homepage.html">Glyphere</a>
+            </div>
+            <ul class="nav-links" role="list">
+                <li><a class="nav-link" href="/main-website/marketplace.html">Marketplace</a></li>
+                <li><a class="nav-link" href="/custom_font_services/code.html">Services</a></li>
+                <li><a class="nav-link" href="/about_the_designer/about.html">About</a></li>
+            </ul>
+            <div class="nav-actions">
+                <a class="nav-login" href="http://localhost:5173/">Login</a>
+                <a class="nav-signup" href="http://localhost:5173/">Sign Up</a>
+            </div>
+            <button class="nav-hamburger" aria-label="Menu" aria-expanded="false">
+                <span class="nav-hamburger__line"></span>
+                <span class="nav-hamburger__line"></span>
+                <span class="nav-hamburger__line"></span>
+            </button>
+        </nav>
+    </header>
+
+    <div class="nav-mobile-menu" role="dialog" aria-label="Mobile navigation">
+        <div class="nav-mobile-menu__links">
+            <a class="nav-mobile-menu__link" href="/main-website/marketplace.html">Marketplace</a>
+            <a class="nav-mobile-menu__link" href="/main-website/custom_font_services/code.html">Services</a>
+            <a class="nav-mobile-menu__link" href="/main-website/about_the_designer/about.html">About</a>
+        </div>
+        <div class="nav-mobile-menu__actions">
+            <a class="nav-mobile-menu__login" href="http://localhost:5173/">Login</a>
+            <a class="nav-mobile-menu__signup" href="http://localhost:5173/">Sign Up</a>
+        </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════
+       MAIN CONTENT
+  ═══════════════════════════════════════ -->
+    <main id="content">
+
+        <!-- ─── HERO ─── -->
+        <section class="hero-section" aria-label="Hero">
+
+            <div class="hero-text-col">
+                <div class="status-badge">
+                    <span class="status-badge__dot" aria-hidden="true"></span>
+                    Currently accepting commissions
+                </div>
+
+                <div class="hero-text">
+                    <h1 class="hero-heading">Custom Fonts &amp; Premium Typefaces</h1>
+                    <p class="hero-body">
+                        Glyphere is a premium type foundry specialising in custom font design, logo typography,
+                        and high-quality digital typefaces. We craft unique letterforms for brands, designers,
+                        and businesses seeking a distinctive visual identity.
+                    </p>
+                    <div class="hero-actions">
+                        <button class="cta-btn">
+                            Browse Fonts
+                            <span class="cta-btn__arrow" aria-hidden="true">
+                                <svg viewBox="0 0 10 10" fill="none" width="9" height="9">
+                                    <path d="M2 8L8 2M8 2H3M8 2V7" stroke="#f2e7d5" stroke-width="1.5"
+                                        stroke-linecap="round" stroke-linejoin="round" />
+                                </svg>
+                            </span>
+                        </button>
+                        <button class="cta-btn">
+                            Request Custom Font
+                            <span class="cta-btn__arrow" aria-hidden="true">
+                                <svg viewBox="0 0 10 10" fill="none" width="9" height="9">
+                                    <path d="M2 8L8 2M8 2H3M8 2V7" stroke="#f2e7d5" stroke-width="1.5"
+                                        stroke-linecap="round" stroke-linejoin="round" />
+                                </svg>
+                            </span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Browser mockup widget -->
+            <div class="hero-mockup-col" aria-hidden="true">
+                <div class="browser-frame-stack">
+
+                    <div class="float-badge float-badge--rating">
+                        <div class="float-badge__icon">⭐</div>
+                        <div>
+                            <strong class="float-badge__name">5.0 Rating</strong>
+                            <div class="float-badge__stars">★★★★★</div>
+                            <div class="float-badge__desc">Google Reviews</div>
+                        </div>
+                    </div>
+
+                    <div class="float-badge float-badge--live">
+                        <div class="float-badge__dot"></div>
+                        <div>
+                            <div class="float-badge__live-title">Project Live</div>
+                            <div class="float-badge__live-sub">Just launched ✦</div>
+                        </div>
+                    </div>
+
+                    <div class="browser-frame">
+                        <div class="browser-frame__chrome">
+                            <div class="browser-frame__dots">
+                                <span class="browser-frame__dot"></span>
+                                <span class="browser-frame__dot"></span>
+                                <span class="browser-frame__dot"></span>
+                            </div>
+                            <div class="browser-frame__url-bar">glyphere.com</div>
+                        </div>
+                        <div class="browser-frame__nav">
+                            <div class="browser-frame__logo">Glyphere</div>
+                            <div class="browser-frame__nav-links">
+                                <span></span><span></span><span></span>
+                            </div>
+                        </div>
+                        <div class="browser-frame__hero">
+                            <div class="browser-frame__category-pill">Premium Font Services</div>
+                            <div class="browser-frame__heading">
+                                <span class="browser-frame__heading--primary">We Design Type.</span><br />
+                                <span class="browser-frame__heading--accent">You define Identity.</span>
+                            </div>
+                            <div class="browser-frame__skeleton">
+                                <div class="browser-frame__skeleton-line"></div>
+                                <div class="browser-frame__skeleton-line"></div>
+                            </div>
+                            <div class="browser-frame__cta">Start Project →</div>
+                        </div>
+                        <div class="browser-frame__features">
+                            <div class="browser-frame__feature-item">
+                                <div class="browser-frame__feature-dot"></div>
+                                <div class="browser-frame__feature-name">Custom Fonts</div>
+                                <div class="browser-frame__feature-desc">Unique typefaces designed from scratch.</div>
+                            </div>
+                            <div class="browser-frame__feature-item">
+                                <div class="browser-frame__feature-dot"></div>
+                                <div class="browser-frame__feature-name">Logo Typography</div>
+                                <div class="browser-frame__feature-desc">Distinctive letterforms that elevate your brand
+                                    identity.</div>
+                            </div>
+                            <div class="browser-frame__feature-item">
+                                <div class="browser-frame__feature-dot"></div>
+                                <div class="browser-frame__feature-name">Font Modification</div>
+                                <div class="browser-frame__feature-desc">Modify, refine and tailor fonts to your needs.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="browser-frame__live-bar">
+                            <div class="browser-frame__live-label">
+                                <span class="browser-frame__live-dot"></span>
+                                Live visitors right now
+                            </div>
+                            <div class="browser-frame__live-count" id="bbVisitors">24</div>
+                        </div>
+                    </div>
+
+                    <div class="float-badge float-badge--stat">
+                        <div class="float-badge__stat-number"><em id="bbStat">0</em>%</div>
+                        <div class="float-badge__stat-label">Avg. Traffic Uplift</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ─── SPECIMENS SHOWCASE ─── -->
+        <section class="specimens-section" aria-label="Featured type specimens">
+            <div class="specimens-inner">
+                <header class="specimens-header">
+                    <div class="specimens-header__content">
+                        <div class="typewriter-wrap">
+                            <h2 class="typewriter-heading" aria-live="polite" aria-atomic="true">
+                                <span class="typewriter-text" id="twTyped"></span>
+                                <span class="typewriter-cursor" id="twCursor" aria-hidden="true"></span>
+                            </h2>
+                        </div>
+                        <p class="specimens-subtitle">Meticulously crafted for digital clarity and editorial soul.</p>
+                    </div>
+                    <a class="specimens-view-all" href="/marketplace.html">View All Releases</a>
+                </header>
+
+                <div class="specimens-grid">
+
+                    <!-- Card: Turbo Block -->
+                    <article class="specimen-card-wrap">
+                        <a href="/main-website/font-detail-v2.html?font=Turbo_Block" class="specimen-card">
+                            <header class="specimen-card__header">
+                                <h3 class="specimen-card__name specimen-card__name--monument">Turbo Block</h3>
+                                <p class="specimen-card__style">Bold &bull; Modern &bull; Timeless</p>
+                            </header>
+                            <div class="specimen-card__preview">
+                                <span class="specimen-card__preview-label">PREVIEW</span>
+                                <div class="specimen-card__chars-wrap">
+                                    <span class="specimen-card__chars specimen-card__chars--monument">AaBb</span>
+                                    <div class="specimen-card__grid-lines" aria-hidden="true">
+                                        <div class="grid-line grid-line--h grid-line--top"></div>
+                                        <div class="grid-line grid-line--h grid-line--mid"></div>
+                                        <div class="grid-line grid-line--h grid-line--bot"></div>
+                                        <div class="grid-line grid-line--v grid-line--left"></div>
+                                        <div class="grid-line grid-line--v grid-line--right"></div>
+                                        <div class="grid-corner grid-corner--tl"></div>
+                                        <div class="grid-corner grid-corner--tr"></div>
+                                        <div class="grid-corner grid-corner--bl"></div>
+                                        <div class="grid-corner grid-corner--br"></div>
+                                    </div>
+                                </div>
+                                <p class="specimen-card__tagline">Clean. Strong. Unmistakable.</p>
+                            </div>
+                            <dl class="specimen-card__meta">
+                                <div class="specimen-card__meta-item">
+                                    <span class="specimen-card__meta-icon" aria-hidden="true">A</span>
+                                    <div class="specimen-card__meta-text">
+                                        <dt class="specimen-card__meta-label">STYLE</dt>
+                                        <dd class="specimen-card__meta-value">Sans Serif</dd>
+                                    </div>
+                                </div>
+                                <div class="specimen-card__meta-divider" aria-hidden="true"></div>
+                                <div class="specimen-card__meta-item">
+                                    <span class="specimen-card__meta-icon" aria-hidden="true">T</span>
+                                    <div class="specimen-card__meta-text">
+                                        <dt class="specimen-card__meta-label">WEIGHT</dt>
+                                        <dd class="specimen-card__meta-value">Black</dd>
+                                    </div>
+                                </div>
+                                <div class="specimen-card__meta-divider" aria-hidden="true"></div>
+                                <div class="specimen-card__meta-item">
+                                    <span class="specimen-card__meta-icon" aria-hidden="true">≡</span>
+                                    <div class="specimen-card__meta-text">
+                                        <dt class="specimen-card__meta-label">GLYPHS</dt>
+                                        <dd class="specimen-card__meta-value">480+</dd>
+                                    </div>
+                                </div>
+                                <div class="specimen-card__meta-divider" aria-hidden="true"></div>
+                                <div class="specimen-card__meta-item">
+                                    <span class="specimen-card__meta-icon" aria-hidden="true">🌐</span>
+                                    <div class="specimen-card__meta-text">
+                                        <dt class="specimen-card__meta-label">SUPPORT</dt>
+                                        <dd class="specimen-card__meta-value">Latin + Symbols</dd>
+                                    </div>
+                                </div>
+                            </dl>
+                            <p class="specimen-card__description">Architectural elegance meet modern precision.</p>
+                        </a>
+                    </article>
+
+                    <!-- Card: Nova Legacy -->
+                    <article class="specimen-card-wrap">
+                        <a href="/main-website/font-detail-v2.html?font=Nova_Legacy" class="specimen-card">
+                            <header class="specimen-card__header">
+                                <h3 class="specimen-card__name specimen-card__name--nova">Nova Legacy</h3>
+                                <p class="specimen-card__style">Bold &bull; Decorative &bull; Warm</p>
+                            </header>
+                            <div class="specimen-card__preview">
+                                <span class="specimen-card__preview-label">PREVIEW</span>
+                                <div class="specimen-card__chars-wrap">
+                                    <span class="specimen-card__chars specimen-card__chars--nova">AaBb</span>
+                                    <div class="specimen-card__grid-lines" aria-hidden="true">
+                                        <div class="grid-line grid-line--h grid-line--top"></div>
+                                        <div class="grid-line grid-line--h grid-line--mid"></div>
+                                        <div class="grid-line grid-line--h grid-line--bot"></div>
+                                        <div class="grid-line grid-line--v grid-line--left"></div>
+                                        <div class="grid-line grid-line--v grid-line--right"></div>
+                                        <div class="grid-corner grid-corner--tl"></div>
+                                        <div class="grid-corner grid-corner--tr"></div>
+                                        <div class="grid-corner grid-corner--bl"></div>
+                                        <div class="grid-corner grid-corner--br"></div>
+                                    </div>
+                                </div>
+                                <p class="specimen-card__tagline">Warm. Bold. Unforgettable.</p>
+                            </div>
+                            <dl class="specimen-card__meta">
+                                <div class="specimen-card__meta-item">
+                                    <span class="specimen-card__meta-icon" aria-hidden="true">A</span>
+                                    <div class="specimen-card__meta-text">
+                                        <dt class="specimen-card__meta-label">STYLE</dt>
+                                        <dd class="specimen-card__meta-value">Serif</dd>
+                                    </div>
+                                </div>
+                                <div class="specimen-card__meta-divider" aria-hidden="true"></div>
+                                <div class="specimen-card__meta-item">
+                                    <span class="specimen-card__meta-icon" aria-hidden="true">T</span>
+                                    <div class="specimen-card__meta-text">
+                                        <dt class="specimen-card__meta-label">WEIGHT</dt>
+                                        <dd class="specimen-card__meta-value">Bold</dd>
+                                    </div>
+                                </div>
+                                <div class="specimen-card__meta-divider" aria-hidden="true"></div>
+                                <div class="specimen-card__meta-item">
+                                    <span class="specimen-card__meta-icon" aria-hidden="true">≡</span>
+                                    <div class="specimen-card__meta-text">
+                                        <dt class="specimen-card__meta-label">GLYPHS</dt>
+                                        <dd class="specimen-card__meta-value">70+</dd>
+                                    </div>
+                                </div>
+                                <div class="specimen-card__meta-divider" aria-hidden="true"></div>
+                                <div class="specimen-card__meta-item">
+                                    <span class="specimen-card__meta-icon" aria-hidden="true">🌐</span>
+                                    <div class="specimen-card__meta-text">
+                                        <dt class="specimen-card__meta-label">SUPPORT</dt>
+                                        <dd class="specimen-card__meta-value">Latin + Symbols</dd>
+                                    </div>
+                                </div>
+                            </dl>
+                            <p class="specimen-card__description">Unyielding character from a bygone era.</p>
+                        </a>
+                    </article>
+
+                    <!-- Card: Sonnet Italic -->
+                    <article class="specimen-card-wrap">
+                        <a href="/main-website/font-detail-v2.html?font=Sonnet_Italic" class="specimen-card">
+                            <header class="specimen-card__header">
+                                <h3 class="specimen-card__name specimen-card__name--sonnet">Sonnet Italic</h3>
+                                <p class="specimen-card__style">Traditional &bull; Serif &bull; Italic</p>
+                            </header>
+                            <div class="specimen-card__preview">
+                                <span class="specimen-card__preview-label">PREVIEW</span>
+                                <div class="specimen-card__chars-wrap">
+                                    <span class="specimen-card__chars specimen-card__chars--sonnet">AaBb</span>
+                                    <div class="specimen-card__grid-lines" aria-hidden="true">
+                                        <div class="grid-line grid-line--h grid-line--top"></div>
+                                        <div class="grid-line grid-line--h grid-line--mid"></div>
+                                        <div class="grid-line grid-line--h grid-line--bot"></div>
+                                        <div class="grid-line grid-line--v grid-line--left"></div>
+                                        <div class="grid-line grid-line--v grid-line--right"></div>
+                                        <div class="grid-corner grid-corner--tl"></div>
+                                        <div class="grid-corner grid-corner--tr"></div>
+                                        <div class="grid-corner grid-corner--bl"></div>
+                                        <div class="grid-corner grid-corner--br"></div>
+                                    </div>
+                                </div>
+                                <p class="specimen-card__tagline">Traditional serif with a modern edge.</p>
+                            </div>
+                            <dl class="specimen-card__meta">
+                                <div class="specimen-card__meta-item">
+                                    <span class="specimen-card__meta-icon" aria-hidden="true">A</span>
+                                    <div class="specimen-card__meta-text">
+                                        <dt class="specimen-card__meta-label">STYLE</dt>
+                                        <dd class="specimen-card__meta-value">Serif</dd>
+                                    </div>
+                                </div>
+                                <div class="specimen-card__meta-divider" aria-hidden="true"></div>
+                                <div class="specimen-card__meta-item">
+                                    <span class="specimen-card__meta-icon" aria-hidden="true">T</span>
+                                    <div class="specimen-card__meta-text">
+                                        <dt class="specimen-card__meta-label">WEIGHT</dt>
+                                        <dd class="specimen-card__meta-value">Bold</dd>
+                                    </div>
+                                </div>
+                                <div class="specimen-card__meta-divider" aria-hidden="true"></div>
+                                <div class="specimen-card__meta-item">
+                                    <span class="specimen-card__meta-icon" aria-hidden="true">≡</span>
+                                    <div class="specimen-card__meta-text">
+                                        <dt class="specimen-card__meta-label">GLYPHS</dt>
+                                        <dd class="specimen-card__meta-value">100+</dd>
+                                    </div>
+                                </div>
+                                <div class="specimen-card__meta-divider" aria-hidden="true"></div>
+                                <div class="specimen-card__meta-item">
+                                    <span class="specimen-card__meta-icon" aria-hidden="true">🌐</span>
+                                    <div class="specimen-card__meta-text">
+                                        <dt class="specimen-card__meta-label">SUPPORT</dt>
+                                        <dd class="specimen-card__meta-value">Latin + Symbols</dd>
+                                    </div>
+                                </div>
+                            </dl>
+                            <p class="specimen-card__description">Traditional serif with a modern edge.</p>
+                        </a>
+                    </article>
+
+                    <!-- Card: Midnight Citadel -->
+                    <article class="specimen-card-wrap">
+                        <a href="/main-website/font-detail-v2.html?font=Midnight_Citadel" class="specimen-card">
+                            <header class="specimen-card__header">
+                                <h3 class="specimen-card__name specimen-card__name--midnight">Midnight Citadel</h3>
+                                <p class="specimen-card__style">Bold &bull; Modern &bull; Timeless</p>
+                            </header>
+                            <div class="specimen-card__preview">
+                                <span class="specimen-card__preview-label">PREVIEW</span>
+                                <div class="specimen-card__chars-wrap">
+                                    <span class="specimen-card__chars specimen-card__chars--midnight">AaBb</span>
+                                    <div class="specimen-card__grid-lines" aria-hidden="true">
+                                        <div class="grid-line grid-line--h grid-line--top"></div>
+                                        <div class="grid-line grid-line--h grid-line--mid"></div>
+                                        <div class="grid-line grid-line--h grid-line--bot"></div>
+                                        <div class="grid-line grid-line--v grid-line--left"></div>
+                                        <div class="grid-line grid-line--v grid-line--right"></div>
+                                        <div class="grid-corner grid-corner--tl"></div>
+                                        <div class="grid-corner grid-corner--tr"></div>
+                                        <div class="grid-corner grid-corner--bl"></div>
+                                        <div class="grid-corner grid-corner--br"></div>
+                                    </div>
+                                </div>
+                                <p class="specimen-card__tagline">Dark. Architectural. Timeless.</p>
+                            </div>
+                            <dl class="specimen-card__meta">
+                                <div class="specimen-card__meta-item">
+                                    <span class="specimen-card__meta-icon" aria-hidden="true">A</span>
+                                    <div class="specimen-card__meta-text">
+                                        <dt class="specimen-card__meta-label">STYLE</dt>
+                                        <dd class="specimen-card__meta-value">Sans Serif</dd>
+                                    </div>
+                                </div>
+                                <div class="specimen-card__meta-divider" aria-hidden="true"></div>
+                                <div class="specimen-card__meta-item">
+                                    <span class="specimen-card__meta-icon" aria-hidden="true">T</span>
+                                    <div class="specimen-card__meta-text">
+                                        <dt class="specimen-card__meta-label">WEIGHT</dt>
+                                        <dd class="specimen-card__meta-value">Bold</dd>
+                                    </div>
+                                </div>
+                                <div class="specimen-card__meta-divider" aria-hidden="true"></div>
+                                <div class="specimen-card__meta-item">
+                                    <span class="specimen-card__meta-icon" aria-hidden="true">≡</span>
+                                    <div class="specimen-card__meta-text">
+                                        <dt class="specimen-card__meta-label">GLYPHS</dt>
+                                        <dd class="specimen-card__meta-value">480+</dd>
+                                    </div>
+                                </div>
+                                <div class="specimen-card__meta-divider" aria-hidden="true"></div>
+                                <div class="specimen-card__meta-item">
+                                    <span class="specimen-card__meta-icon" aria-hidden="true">🌐</span>
+                                    <div class="specimen-card__meta-text">
+                                        <dt class="specimen-card__meta-label">SUPPORT</dt>
+                                        <dd class="specimen-card__meta-value">Latin + Symbols</dd>
+                                    </div>
+                                </div>
+                            </dl>
+                            <p class="specimen-card__description">Architectural elegance meet modern precision.</p>
+                        </a>
+                    </article>
+
+                    <!-- Card: Pebble Sans -->
+                    <article class="specimen-card-wrap">
+                        <a href="/main-website/font-detail-v2.html?font=Pebble_Sans" class="specimen-card">
+                            <header class="specimen-card__header">
+                                <h3 class="specimen-card__name specimen-card__name--pebble">Pebble Sans</h3>
+                                <p class="specimen-card__style">Geometric &bull; Modern &bull; Approachable</p>
+                            </header>
+                            <div class="specimen-card__preview">
+                                <span class="specimen-card__preview-label">PREVIEW</span>
+                                <div class="specimen-card__chars-wrap">
+                                    <span class="specimen-card__chars specimen-card__chars--pebble">AaBb</span>
+                                    <div class="specimen-card__grid-lines" aria-hidden="true">
+                                        <div class="grid-line grid-line--h grid-line--top"></div>
+                                        <div class="grid-line grid-line--h grid-line--mid"></div>
+                                        <div class="grid-line grid-line--h grid-line--bot"></div>
+                                        <div class="grid-line grid-line--v grid-line--left"></div>
+                                        <div class="grid-line grid-line--v grid-line--right"></div>
+                                        <div class="grid-corner grid-corner--tl"></div>
+                                        <div class="grid-corner grid-corner--tr"></div>
+                                        <div class="grid-corner grid-corner--bl"></div>
+                                        <div class="grid-corner grid-corner--br"></div>
+                                    </div>
+                                </div>
+                                <p class="specimen-card__tagline">Friendly. Round. Precise.</p>
+                            </div>
+                            <dl class="specimen-card__meta">
+                                <div class="specimen-card__meta-item">
+                                    <span class="specimen-card__meta-icon" aria-hidden="true">A</span>
+                                    <div class="specimen-card__meta-text">
+                                        <dt class="specimen-card__meta-label">STYLE</dt>
+                                        <dd class="specimen-card__meta-value">Geometric</dd>
+                                    </div>
+                                </div>
+                                <div class="specimen-card__meta-divider" aria-hidden="true"></div>
+                                <div class="specimen-card__meta-item">
+                                    <span class="specimen-card__meta-icon" aria-hidden="true">T</span>
+                                    <div class="specimen-card__meta-text">
+                                        <dt class="specimen-card__meta-label">WEIGHT</dt>
+                                        <dd class="specimen-card__meta-value">Bold</dd>
+                                    </div>
+                                </div>
+                                <div class="specimen-card__meta-divider" aria-hidden="true"></div>
+                                <div class="specimen-card__meta-item">
+                                    <span class="specimen-card__meta-icon" aria-hidden="true">≡</span>
+                                    <div class="specimen-card__meta-text">
+                                        <dt class="specimen-card__meta-label">GLYPHS</dt>
+                                        <dd class="specimen-card__meta-value">70+</dd>
+                                    </div>
+                                </div>
+                                <div class="specimen-card__meta-divider" aria-hidden="true"></div>
+                                <div class="specimen-card__meta-item">
+                                    <span class="specimen-card__meta-icon" aria-hidden="true">🌐</span>
+                                    <div class="specimen-card__meta-text">
+                                        <dt class="specimen-card__meta-label">SUPPORT</dt>
+                                        <dd class="specimen-card__meta-value">Latin + Symbols</dd>
+                                    </div>
+                                </div>
+                            </dl>
+                            <p class="specimen-card__description">Unyielding character from a bygone era.</p>
+                        </a>
+                    </article>
+
+                    <!-- Card: Storybook Sans -->
+                    <article class="specimen-card-wrap">
+                        <a href="/main-website/font-detail-v2.html?font=Storybook_Sans" class="specimen-card">
+                            <header class="specimen-card__header">
+                                <h3 class="specimen-card__name specimen-card__name--storybook">Storybook Sans</h3>
+                                <p class="specimen-card__style">Bold &bull; Display &bull; Classic</p>
+                            </header>
+                            <div class="specimen-card__preview">
+                                <span class="specimen-card__preview-label">PREVIEW</span>
+                                <div class="specimen-card__chars-wrap">
+                                    <span class="specimen-card__chars specimen-card__chars--storybook">AaBb</span>
+                                    <div class="specimen-card__grid-lines" aria-hidden="true">
+                                        <div class="grid-line grid-line--h grid-line--top"></div>
+                                        <div class="grid-line grid-line--h grid-line--mid"></div>
+                                        <div class="grid-line grid-line--h grid-line--bot"></div>
+                                        <div class="grid-line grid-line--v grid-line--left"></div>
+                                        <div class="grid-line grid-line--v grid-line--right"></div>
+                                        <div class="grid-corner grid-corner--tl"></div>
+                                        <div class="grid-corner grid-corner--tr"></div>
+                                        <div class="grid-corner grid-corner--bl"></div>
+                                        <div class="grid-corner grid-corner--br"></div>
+                                    </div>
+                                </div>
+                                <p class="specimen-card__tagline">Playful. Expressive. Memorable.</p>
+                            </div>
+                            <dl class="specimen-card__meta">
+                                <div class="specimen-card__meta-item">
+                                    <span class="specimen-card__meta-icon" aria-hidden="true">A</span>
+                                    <div class="specimen-card__meta-text">
+                                        <dt class="specimen-card__meta-label">STYLE</dt>
+                                        <dd class="specimen-card__meta-value">Sans Serif</dd>
+                                    </div>
+                                </div>
+                                <div class="specimen-card__meta-divider" aria-hidden="true"></div>
+                                <div class="specimen-card__meta-item">
+                                    <span class="specimen-card__meta-icon" aria-hidden="true">T</span>
+                                    <div class="specimen-card__meta-text">
+                                        <dt class="specimen-card__meta-label">WEIGHT</dt>
+                                        <dd class="specimen-card__meta-value">Bold</dd>
+                                    </div>
+                                </div>
+                                <div class="specimen-card__meta-divider" aria-hidden="true"></div>
+                                <div class="specimen-card__meta-item">
+                                    <span class="specimen-card__meta-icon" aria-hidden="true">≡</span>
+                                    <div class="specimen-card__meta-text">
+                                        <dt class="specimen-card__meta-label">GLYPHS</dt>
+                                        <dd class="specimen-card__meta-value">100+</dd>
+                                    </div>
+                                </div>
+                                <div class="specimen-card__meta-divider" aria-hidden="true"></div>
+                                <div class="specimen-card__meta-item">
+                                    <span class="specimen-card__meta-icon" aria-hidden="true">🌐</span>
+                                    <div class="specimen-card__meta-text">
+                                        <dt class="specimen-card__meta-label">SUPPORT</dt>
+                                        <dd class="specimen-card__meta-value">Latin + Symbols</dd>
+                                    </div>
+                                </div>
+                            </dl>
+                            <p class="specimen-card__description">Elegance that flows with every curve.</p>
+                        </a>
+                    </article>
+
+                </div><!-- /specimens-grid -->
+            </div>
+        </section>
+
+
+        <!-- ─── TESTIMONIALS ─── -->
+        <section class="testimonials-section" aria-label="Client testimonials">
+            <div class="testimonials-inner">
+                <div class="testimonials-header">
+                    <p class="testimonials-kicker">Echoes from the Industry</p>
+                    <h2 class="testimonials-title">Kind Words from Collaborators</h2>
+                </div>
+            </div>
+            <div class="swiper mySwiper">
+                <div class="swiper-wrapper">
+
+                    <div class="swiper-slide">
+                        <div class="testimonial-card-wrap">
+                            <article class="testimonial-card">
+                                <div class="testimonial-card__stars" aria-label="5 stars">★★★★★</div>
+                                <blockquote class="testimonial-card__text">
+                                    "This completely transformed our brand presence. The attention to typographic detail
+                                    is unlike anything we've seen."
+                                </blockquote>
+                                <footer class="testimonial-card__author">
+                                    <img src="https://i.pravatar.cc/100?img=11" alt="Ali Raza" width="48" height="48"
+                                        loading="lazy" />
+                                    <div>
+                                        <p class="testimonial-card__author-name">Ali Raza</p>
+                                        <p class="testimonial-card__author-role">Product Designer</p>
+                                    </div>
+                                </footer>
+                            </article>
+                        </div>
+                    </div>
+
+                    <div class="swiper-slide">
+                        <div class="testimonial-card-wrap">
+                            <article class="testimonial-card">
+                                <div class="testimonial-card__stars" aria-label="5 stars">★★★★★</div>
+                                <blockquote class="testimonial-card__text">
+                                    "The fonts are masterpieces. Our conversion rates improved simply by switching to
+                                    Glyphere's modern typefaces."
+                                </blockquote>
+                                <footer class="testimonial-card__author">
+                                    <img src="https://i.pravatar.cc/100?img=32" alt="Sarah Jenkins" width="48"
+                                        height="48" loading="lazy" />
+                                    <div>
+                                        <p class="testimonial-card__author-name">Sarah Jenkins</p>
+                                        <p class="testimonial-card__author-role">Creative Director</p>
+                                    </div>
+                                </footer>
+                            </article>
+                        </div>
+                    </div>
+
+                    <div class="swiper-slide">
+                        <div class="testimonial-card-wrap">
+                            <article class="testimonial-card">
+                                <div class="testimonial-card__stars" aria-label="5 stars">★★★★★</div>
+                                <blockquote class="testimonial-card__text">
+                                    "Integration was seamless, and the licensing model is the fairest I've seen in the
+                                    industry. Highly recommended!"
+                                </blockquote>
+                                <footer class="testimonial-card__author">
+                                    <img src="https://i.pravatar.cc/100?img=44" alt="Marcus Chen" width="48" height="48"
+                                        loading="lazy" />
+                                    <div>
+                                        <p class="testimonial-card__author-name">Marcus Chen</p>
+                                        <p class="testimonial-card__author-role">Web Developer</p>
+                                    </div>
+                                </footer>
+                            </article>
+                        </div>
+                    </div>
+
+                    <div class="swiper-slide">
+                        <div class="testimonial-card-wrap">
+                            <article class="testimonial-card">
+                                <div class="testimonial-card__stars" aria-label="5 stars">★★★★★</div>
+                                <blockquote class="testimonial-card__text">
+                                    "The fonts are masterpieces. Our conversion rates improved simply by switching to
+                                    Glyphere's modern typefaces."
+                                </blockquote>
+                                <footer class="testimonial-card__author">
+                                    <img src="https://i.pravatar.cc/100?img=32" alt="Sarah Jenkins" width="48"
+                                        height="48" loading="lazy" />
+                                    <div>
+                                        <p class="testimonial-card__author-name">Sarah Jenkins</p>
+                                        <p class="testimonial-card__author-role">Creative Director</p>
+                                    </div>
+                                </footer>
+                            </article>
+                        </div>
+                    </div>
+
+                    <div class="swiper-slide">
+                        <div class="testimonial-card-wrap">
+                            <article class="testimonial-card">
+                                <div class="testimonial-card__stars" aria-label="5 stars">★★★★★</div>
+                                <blockquote class="testimonial-card__text">
+                                    "Turnaround was quick and the quality was exceptional. The custom typeface perfectly
+                                    captured our brand's voice."
+                                </blockquote>
+                                <footer class="testimonial-card__author">
+                                    <img src="https://i.pravatar.cc/100?img=56" alt="Layla Hassan" width="48"
+                                        height="48" loading="lazy" />
+                                    <div>
+                                        <p class="testimonial-card__author-name">Layla Hassan</p>
+                                        <p class="testimonial-card__author-role">Brand Strategist</p>
+                                    </div>
+                                </footer>
+                            </article>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="swiper-pagination"></div>
+            </div>
+        </section>
+
+
+        <!-- ─── WORK PROCESS ─── -->
+        <section class="process-section" aria-label="Work process">
+            <div class="process-inner">
+                <header class="process-header">
+                    <div class="process-header__left">
+                        <p class="process-eyebrow">
+                            <span class="process-eyebrow__line"></span>
+                            How I Work<span class="process-eyebrow__line"></span>
+                        </p>
+                        <h2 class="process-title">
+                            From first brief to <span class="process-title__accent">final glyph.</span>
+                        </h2>
+                        <p class="process-header__desc">
+                            Every typeface starts as a conversation. Here's how a brief becomes a font that outlives the
+                            trend.
+                        </p>
+                    </div>
+
+                </header>
+
+                <ol class="process-steps" id="processSteps">
+                    <li class="process-step">
+                        <div class="process-step__inner">
+                            <div class="process-step__header">
+                                <div class="process-step__number">01</div>
+                                <span class="process-step__connector" aria-hidden="true">→</span>
+                            </div>
+                            <span class="process-step__icon" aria-hidden="true">✦</span>
+                            <h3 class="process-step__title">Discovery &amp; Brief</h3>
+                            <p class="process-step__description">
+                                We begin with a deep conversation about your brand, audience, and typographic ambitions
+                                — uncovering what no existing font can say.
+                            </p>
+                            <span class="process-step__tag">Brief &amp; Moodboard</span>
+                        </div>
+                    </li>
+                    <li class="process-step">
+                        <div class="process-step__inner">
+                            <div class="process-step__header">
+                                <div class="process-step__number">02</div>
+                                <span class="process-step__connector" aria-hidden="true">→</span>
+                            </div>
+                            <span class="process-step__icon" aria-hidden="true">◈</span>
+                            <h3 class="process-step__title">Concept &amp; Sketching</h3>
+                            <p class="process-step__description">
+                                Core letterforms are drawn by hand first — exploring rhythm, contrast, and personality
+                                before a single vector point is placed.
+                            </p>
+                            <span class="process-step__tag">Sketches &amp; Direction</span>
+                        </div>
+                    </li>
+                    <li class="process-step">
+                        <div class="process-step__inner">
+                            <div class="process-step__header">
+                                <div class="process-step__number">03</div>
+                                <span class="process-step__connector" aria-hidden="true">→</span>
+                            </div>
+                            <span class="process-step__icon" aria-hidden="true">⬡</span>
+                            <h3 class="process-step__title">Refinement &amp; Spacing</h3>
+                            <p class="process-step__description">
+                                Every glyph is hinted, kerned, and tested at every size. Spacing is not an afterthought
+                                — it is the craft.
+                            </p>
+                            <span class="process-step__tag">Full Glyph Set</span>
+                        </div>
+                    </li>
+                    <li class="process-step">
+                        <div class="process-step__inner">
+                            <div class="process-step__header">
+                                <div class="process-step__number">04</div>
+                                <span class="process-step__connector" aria-hidden="true">→</span>
+                            </div>
+                            <span class="process-step__icon" aria-hidden="true">◎</span>
+                            <h3 class="process-step__title">Delivery &amp; License</h3>
+                            <p class="process-step__description">
+                                You receive production-ready font files — OTF, TTF, and WOFF2 — with full licensing
+                                documentation and a usage guide.
+                            </p>
+                            <span class="process-step__tag">Font Files + License</span>
+                        </div>
+                    </li>
+                </ol>
+            </div>
+        </section>
+
+
+        <!-- ─── CTA BANNER ─── -->
+        <section class="cta-section" aria-label="Call to action">
+            <div class="cta-banner">
+                <h2 class="cta-banner__title">Your brand deserves a custom voice.</h2>
+                <p class="cta-banner__subtitle">
+                    I am currently accepting commissions for exclusive typeface design and brand-wide typographic
+                    systems.
+                </p>
+                <button class="cta-btn">
+                    Start a Project
+                    <span class="cta-btn__arrow" aria-hidden="true">
+                        <svg viewBox="0 0 10 10" fill="none" width="9" height="9">
+                            <path d="M2 8L8 2M8 2H3M8 2V7" stroke="#f2e7d5" stroke-width="1.5" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                        </svg>
+                    </span>
+                </button>
+            </div>
+        </section>
+
+    </main>
+
+
+    <!-- ═══════════════════════════════════════
+       FOOTER
+  ═══════════════════════════════════════ -->
+    <footer class="site-footer">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <p class="footer-brand-name">The Typographic Gallery</p>
+                <p class="footer-brand-desc">Curated font designs for the modern digital landscape. Etched with
+                    precision, crafted with soul.</p>
+                <div class="footer-social-icons">
+                    <span class="material-symbols-outlined footer-icon">language</span>
+                    <span class="material-symbols-outlined footer-icon">public</span>
+                </div>
+            </div>
+            <nav aria-label="Collections">
+                <h3 class="footer-col-title">Collections</h3>
+                <ul class="footer-links">
+                    <li><a href="#">The Serif Set</a></li>
+                    <li><a href="#">Modernist Sans</a></li>
+                    <li><a href="#">Display Specials</a></li>
+                    <li><a href="#">Free Trials</a></li>
+                </ul>
+            </nav>
+            <nav aria-label="Social">
+                <h3 class="footer-col-title">Follow Us</h3>
+                <ul class="footer-links">
+                    <li><a href="#">Instagram</a></li>
+                    <li><a href="#">Twitter</a></li>
+                    <li><a href="#">LinkedIn</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                </ul>
+            </nav>
+            <div>
+                <h3 class="footer-col-title">Newsletter</h3>
+                <p class="footer-newsletter-desc">Get notified about new releases and type studies.</p>
+                <div class="footer-form">
+                    <label class="sr-only" for="footerEmail">Email address</label>
+                    <input id="footerEmail" class="footer-email-input" placeholder="email@address.com" type="email" />
+                    <button class="material-symbols-outlined footer-submit" type="button"
+                        aria-label="Subscribe">arrow_forward</button>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p class="footer-copy">© 2024 The Typographic Gallery. Etched in Epilogue.</p>
+            <nav class="footer-legal" aria-label="Legal">
+                <a href="#">Licensing Terms</a>
+                <a href="#">Cookie Policy</a>
+            </nav>
+        </div>
+    </footer>
+
+
+    <!-- ═══════════════════════════════════════
+       SCRIPTS — all deferred / end-of-body
+       Dark section detection config must come
+       before globalscript.js is executed.
+  ═══════════════════════════════════════ -->
+    <script>window.DARK_SECTIONS = ['.specimens-section', '.process-section'];</script>
+
+    <!-- Swiper JS — loaded after DOM is ready -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js" defer></script>
+
+    <!-- Global shared behaviours (preloader, nav scroll, hamburger) -->
+    <script src="../main-website/globalscript.js" defer></script>
+    <script src="javascript/loginmodel.js" defer></script>
+
+    <script>
+        /* ─────────────────────────────────────────
+           Run after DOM + deferred scripts are ready
+        ───────────────────────────────────────── */
+        document.addEventListener('DOMContentLoaded', function () {
+
+            /* ── Testimonials Swiper ── */
+            const swiper = new Swiper('.mySwiper', {
+                effect: 'coverflow',
+                centeredSlides: true,
+                loop: true,
+                grabCursor: true,
+                slidesPerView: 'auto',
+                coverflowEffect: { rotate: 5, stretch: 0, depth: 100, modifier: 2.5, slideShadows: false },
+                autoplay: { delay: 4000, disableOnInteraction: false },
+                pagination: { el: '.swiper-pagination', clickable: true },
+            });
+
+            /* ── Card tilt on hover ── */
+            document.querySelectorAll('.testimonial-card').forEach(function (card) {
+                card.addEventListener('mousemove', function (e) {
+                    const r = card.getBoundingClientRect();
+                    const rx = ((e.clientY - r.top - r.height / 2) / (r.height / 2)) * -10;
+                    const ry = ((e.clientX - r.left - r.width / 2) / (r.width / 2)) * 10;
+                    card.style.transform = 'perspective(1000px) rotateX(' + rx + 'deg) rotateY(' + ry + 'deg) scale(1.02)';
+                });
+                card.addEventListener('mouseleave', function () {
+                    card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale(1)';
+                });
+            });
+
+            /* ── Animated stat counter ── */
+            const statEl = document.getElementById('bbStat');
+            if (statEl) {
+                let start = null;
+                (function step(ts) {
+                    if (!start) start = ts;
+                    const p = Math.min((ts - start) / 1800, 1);
+                    statEl.textContent = Math.round((1 - Math.pow(1 - p, 3)) * 240);
+                    if (p < 1) requestAnimationFrame(step);
+                })(performance.now());
+            }
+
+            /* ── Live visitor counter ── */
+            const visEl = document.getElementById('bbVisitors');
+            if (visEl) {
+                let vis = 24;
+                setInterval(function () {
+                    const d = Math.random() > 0.5 ? 1 : -1;
+                    vis = Math.max(18, Math.min(41, vis + (Math.random() > 0.7 ? d * 2 : d)));
+                    visEl.textContent = vis;
+                }, 2400);
+            }
+
+            /* ── Typewriter heading ── */
+            let typingDone = false;
+            const typeObs = new IntersectionObserver(function (entries) {
+                entries.forEach(function (entry) {
+                    if (entry.isIntersecting && !typingDone) {
+                        typingDone = true;
+                        typeObs.disconnect();
+                        const word = 'Hall of Specimens';
+                        const typedEl = document.getElementById('twTyped');
+                        const cursorEl = document.getElementById('twCursor');
+                        if (!typedEl || !cursorEl) return;
+                        let i = 0;
+                        (function type() {
+                            typedEl.textContent = word.substring(0, i++);
+                            if (i <= word.length) {
+                                setTimeout(type, 65 + Math.random() * 25);
+                            } else {
+                                setTimeout(function () { cursorEl.classList.add('hidden'); }, 800);
+                            }
+                        })();
+                    }
+                });
+            }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+            const specimensEl = document.querySelector('.specimens-section');
+            if (specimensEl) typeObs.observe(specimensEl);
+
+            /* ── Process steps — scroll reveal ── */
+            (function () {
+                const steps = document.querySelectorAll('.process-step');
+                if (!('IntersectionObserver' in window)) {
+                    steps.forEach(function (s) { s.classList.add('is-visible'); });
+                    return;
+                }
+                const obs = new IntersectionObserver(function (entries) {
+                    entries.forEach(function (e) {
+                        if (e.isIntersecting) { e.target.classList.add('is-visible'); obs.unobserve(e.target); }
+                    });
+                }, { threshold: 0.15 });
+                steps.forEach(function (s) { obs.observe(s); });
+            })();
+
+            /* ── Specimen cards — scroll reveal ── */
+            (function () {
+                const cards = document.querySelectorAll('.specimen-card-wrap');
+                if (!('IntersectionObserver' in window)) {
+                    cards.forEach(function (c) { c.classList.add('is-visible'); });
+                    return;
+                }
+                const obs = new IntersectionObserver(function (entries) {
+                    entries.forEach(function (e) {
+                        if (e.isIntersecting) { e.target.classList.add('is-visible'); obs.unobserve(e.target); }
+                    });
+                }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+                cards.forEach(function (c) { obs.observe(c); });
+            })();
+
+
+
+        }); /* end DOMContentLoaded */
+    </script>
+
+</body>
+
+</html>

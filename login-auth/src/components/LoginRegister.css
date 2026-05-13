@@ -1,0 +1,346 @@
+@import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700;12..96,800&family=Manrope:wght@300;400;500;600;700&display=swap');
+
+/* ─────────────────────────────────────────
+   CSS VARIABLES — Glyphere Design System
+───────────────────────────────────────── */
+:root {
+  --color-surface:         #f7f5f2;
+  --color-primary:         #111111;
+  --color-on-surface:      #1c1812;
+  --color-outline:         #8a7e70;
+  --color-outline-variant: #cec4b4;
+  --gold-dark:             #8a6c3e;
+  --font-headline:         'Bricolage Grotesque', sans-serif;
+  --font-body:             'Manrope', sans-serif;
+}
+
+/* ─────────────────────────────────────────
+   MAIN CONTAINER
+───────────────────────────────────────── */
+.container {
+  position: relative;
+  width: min(820px, 96vw);
+  height: 520px;
+  background: #faf8f5;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow:
+    0 2px 4px  rgba(17,17,17,0.04),
+    0 8px 24px rgba(17,17,17,0.08),
+    0 0 0 1px  var(--color-outline-variant);
+}
+
+/* ─────────────────────────────────────────
+   FORM CONTAINERS  (desktop)
+───────────────────────────────────────── */
+.form-container {
+  position: absolute;
+  top: 0;
+  width: 50%;
+  height: 100%;
+  padding: 32px 48px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.sign-up-container {
+  right: 0;
+  opacity: 1;
+  z-index: 5;
+  pointer-events: auto;
+  transition: opacity 0.4s ease-in-out;
+}
+
+.sign-in-container {
+  left: 0;
+  opacity: 0;
+  z-index: 1;
+  pointer-events: none;
+  transition: opacity 0.4s ease-in-out;
+}
+
+.container.log-in-active .sign-up-container {
+  opacity: 0;
+  pointer-events: none;
+}
+.container.log-in-active .sign-in-container {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* ─────────────────────────────────────────
+   FORM ELEMENTS
+───────────────────────────────────────── */
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+h1 {
+  font-family: var(--font-headline);
+  font-size: 1.85rem;
+  font-weight: 800;
+  color: var(--color-primary);
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+  margin-bottom: 24px;
+  width: 100%;
+  text-align: left;
+}
+
+/* ─────────────────────────────────────────
+   INPUT GROUP
+───────────────────────────────────────── */
+.input-group {
+  position: relative;
+  width: 100%;
+  margin-bottom: 18px;
+}
+
+.input-group i {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--color-outline);
+  font-size: 13px;
+}
+
+.input-group input {
+  width: 100%;
+  background: transparent;
+  border: none;
+  border-bottom: 1.5px solid var(--color-outline-variant);
+  padding: 9px 24px 9px 0;
+  color: var(--color-on-surface);
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 400;
+  outline: none;
+  transition: border-color 0.25s ease;
+}
+
+.input-group input::placeholder {
+  color: var(--color-outline);
+  font-weight: 300;
+}
+
+.input-group input:focus {
+  border-bottom-color: var(--gold-dark);
+}
+
+/* ─────────────────────────────────────────
+   ERROR MESSAGE
+───────────────────────────────────────── */
+.error-message {
+  color: #ba1a1a;
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  font-weight: 500;
+  margin-bottom: 10px;
+  text-align: center;
+  width: 100%;
+}
+
+/* ─────────────────────────────────────────
+   BUTTON
+───────────────────────────────────────── */
+button {
+  margin-top: 12px;
+  padding: 11px 44px;
+  border: none;
+  border-radius: 40px;
+  background: var(--color-primary);
+  color: #f5efe4;
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  box-shadow: 0 2px 12px rgba(17,17,17,0.15);
+  transition: background 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
+}
+
+button:hover {
+  background: #2e2720;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 18px rgba(17,17,17,0.22);
+}
+
+button:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 8px rgba(17,17,17,0.12);
+}
+
+/* ─────────────────────────────────────────
+   TOGGLE TEXT
+───────────────────────────────────────── */
+.toggle-text {
+  margin-top: 20px;
+  font-family: var(--font-body);
+  font-size: 12.5px;
+  font-weight: 400;
+  color: var(--color-outline);
+  text-align: center;
+}
+
+.toggle-text span {
+  color: var(--gold-dark);
+  cursor: pointer;
+  font-weight: 600;
+  margin-left: 4px;
+  transition: color 0.2s;
+}
+
+.toggle-text span:hover {
+  color: var(--color-primary);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* ─────────────────────────────────────────
+   DIAGONAL OVERLAY
+   clip-path capped at exactly 50% so it
+   never overlaps the opposite form.
+───────────────────────────────────────── */
+.overlay-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+  pointer-events: none;
+  background: linear-gradient(140deg, #2e2720 0%, #111111 100%);
+  clip-path: polygon(0 0, 50% 0, 28% 100%, 0 100%);
+  transition: clip-path 0.7s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+
+.container.log-in-active .overlay-container {
+  clip-path: polygon(50% 0, 100% 0, 100% 100%, 72% 100%);
+}
+
+/* ─────────────────────────────────────────
+   OVERLAY PANELS
+───────────────────────────────────────── */
+.overlay-panel {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 36px;
+  width: 45%;
+  transition: opacity 0.4s ease-in-out;
+  color: #f5efe4;
+  z-index: 1;
+}
+
+.overlay-left  { left: 0;  opacity: 1; text-align: left;  }
+.overlay-right { right: 0; opacity: 0; text-align: right; }
+
+.container.log-in-active .overlay-left  { opacity: 0; }
+.container.log-in-active .overlay-right { opacity: 1; }
+
+.overlay-panel h2 {
+  font-family: var(--font-headline);
+  font-size: 2rem;
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  line-height: 1.1;
+  margin-bottom: 12px;
+  color: #f5efe4;
+}
+
+.overlay-panel p {
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 300;
+  line-height: 1.65;
+  color: #d4c4a8;
+}
+
+/* ─────────────────────────────────────────
+   MOBILE  ≤ 680px
+───────────────────────────────────────── */
+@media (max-width: 680px) {
+
+  .container {
+    width: min(420px, 92vw);
+    height: auto;           /* content drives height */
+    border-radius: 14px;
+    overflow: visible;      /* allow natural height, no clipping */
+  }
+
+  .overlay-container {
+    display: none;
+  }
+
+  /* Forms: back into normal flow */
+  .form-container {
+    position: static;
+    width: 100%;
+    height: auto;
+    /* Horizontal padding gives inputs breathing room from card edge */
+    padding: 40px 32px;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    opacity: 1 !important;
+    pointer-events: auto !important;
+  }
+
+  /* Register visible by default */
+  .sign-up-container {
+    display: flex;
+  }
+
+  /* Login active */
+  .container.log-in-active .sign-in-container { display: flex; }
+  .container.log-in-active .sign-up-container { display: none;  }
+
+  h1 {
+    font-size: 1.7rem;
+    margin-bottom: 20px;
+    text-align: center;
+    width: 100%;
+  }
+
+  /* Inputs: full width — padding from form-container keeps them inset */
+  .input-group {
+    width: 100%;
+    margin-bottom: 16px;
+  }
+
+  /* Button keeps pill shape */
+  button {
+    padding: 12px 52px;
+    font-size: 14px;
+    margin-top: 16px;
+  }
+
+  .toggle-text {
+    margin-top: 18px;
+  }
+}
+
+/* ─────────────────────────────────────────
+   VERY SMALL  ≤ 380px
+───────────────────────────────────────── */
+@media (max-width: 380px) {
+  .form-container {
+    padding: 32px 24px;
+  }
+
+  h1 {
+    font-size: 1.5rem;
+  }
+
+  button {
+    padding: 11px 40px;
+  }
+}

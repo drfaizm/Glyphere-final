@@ -1,0 +1,2996 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Font — Glyphere</title>
+  <meta name="description" content="Premium typeface from Glyphere." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Manrope:wght@300;400;500;600;700;800&family=Instrument+Sans:ital,wght@0,400;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;700&display=swap"
+    rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+    rel="stylesheet" />
+
+  <link rel="stylesheet" href="javascript/loginmodel.css">
+
+  <style>
+    /* ===================================================
+   RESET + BASE
+=================================================== */
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0
+    }
+
+    body {
+      background: #f7f5f2;
+      color: #1c1812;
+      font-family: 'Manrope', sans-serif;
+      line-height: 1.5
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit
+    }
+
+    button {
+      cursor: pointer;
+      font-family: inherit;
+      border: none;
+      background: none
+    }
+
+    img {
+      display: block;
+      max-width: 100%
+    }
+
+    ::selection {
+      background: #d8c49f;
+      color: #251c00
+    }
+
+    /* ===================================================
+   CSS VARIABLES
+=================================================== */
+    :root {
+      --gold: #c9ab81;
+      --gold-dark: #8a6c3e;
+      --gold-light: #f0dab0;
+      --primary: #111111;
+      --on-primary: #f5efe4;
+      --surface: #f7f5f2;
+      --surface-low: #f5f0e8;
+      --surface-lowest: #ffffff;
+      --surface-container: #eee8de;
+      --surface-high: #e8e0d4;
+      --on-surface: #1c1812;
+      --on-surface-var: #555555;
+      --primary-container: #2e2720;
+      --radius-full: 40px;
+      --color-primary-container: #2e2720;
+      --color-primary: #111111;
+      --color-surface-variant: rgba(201, 171, 129, .1);
+      --color-on-surface-variant: #555555;
+    }
+
+    /* ===================================================
+   CUSTOM FONTS
+=================================================== */
+    @font-face {
+      font-family: 'Nova_Legacy';
+      src: url('/main-website/homepage-updated/fonts/Nova_Legacy.ttf') format('truetype');
+      font-display: swap
+    }
+
+    @font-face {
+      font-family: 'Sonnet_Italic';
+      src: url('/main-website/homepage-updated/fonts/Sonnet_Italic.woff') format('woff');
+      font-style: normal;
+      font-display: swap
+    }
+
+    @font-face {
+      font-family: 'Midnight_Citadel';
+      src: url('/main-website/homepage-updated/fonts/Midnight_Citadel.woff') format('woff');
+      font-display: swap
+    }
+
+    @font-face {
+      font-family: 'Pebble_Sans';
+      src: url('/main-website/homepage-updated/fonts/Pebble_Sans.woff') format('woff');
+      font-display: swap
+    }
+
+    @font-face {
+      font-family: 'Storybook_Sans';
+      src: url('/main-website/homepage-updated/fonts/Storybook_Sans.woff') format('woff');
+      font-display: swap
+    }
+
+    @font-face {
+      font-family: 'Monument';
+      src: url('/main-website/homepage-updated/fonts/Monument.woff2') format('woff2'), url('/main-website/homepage-updated/fonts/Monument.woff') format('woff');
+      font-display: swap
+    }
+
+    @font-face {
+      font-family: 'Nova_Legacy';
+      src: url('/main-website/homepage-updated/fonts/Nova_Legacy.ttf') format('truetype');
+      font-weight: 400;
+      font-style: normal;
+    }
+
+    @font-face {
+      font-family: 'Sonnet_Italic';
+      src: url('/main-website/homepage-updated/fonts/Sonnet_Italic.woff') format('woff');
+      font-weight: 400;
+      font-style: normal;
+    }
+
+    @font-face {
+      font-family: 'Midnight_Citadel';
+      src: url('/main-website/homepage-updated/fonts/Midnight_Citadel.woff') format('woff');
+      font-weight: 400;
+      font-style: normal;
+    }
+
+    @font-face {
+      font-family: 'Pebble_Sans';
+      src: url('/main-website/homepage-updated/fonts/Pebble_Sans.woff') format('woff');
+      font-weight: 400;
+      font-style: normal;
+    }
+
+    @font-face {
+      font-family: 'Storybook_Sans';
+      src: url('/main-website/homepage-updated/fonts/Storybook_Sans.woff') format('woff');
+      font-weight: 400;
+      font-style: normal;
+    }
+
+    @font-face {
+      font-family: 'Mistavio_Sans';
+      src: url('/main-website/homepage-updated/fonts/Mistavio_Sans.woff2') format('woff2');
+      font-weight: 400;
+      font-style: normal;
+    }
+
+
+    @font-face {
+      font-family: 'BLOCK_ITALIC';
+      src: url('/main-website/homepage-updated/fonts/BLOCK_ITALIC.woff2') format('woff2');
+      font-weight: 400;
+      font-style: normal;
+    }
+
+    @font-face {
+      font-family: 'Turbo_Block';
+      src: url('/main-website/homepage-updated/fonts/Turbo_Block.woff2') format('woff2');
+      font-weight: 400;
+      font-style: normal;
+    }
+
+    @font-face {
+      font-family: 'Vellum_Flow';
+      src: url('/main-website/homepage-updated/fonts/Vellum_Flow.woff2') format('woff2');
+      font-weight: 400;
+      font-style: normal;
+    }
+
+    @font-face {
+      font-family: 'Brushfield_Fury';
+      src: url('/main-website/homepage-updated/fonts/Brushfield_Fury.woff2') format('woff2');
+      font-weight: 400;
+      font-style: normal;
+    }
+
+    @font-face {
+      font-family: 'Stadium_Bold';
+      src: url('/main-website/homepage-updated/fonts/Stadium_Bold.woff2') format('woff2');
+      font-weight: 400;
+      font-style: bold;
+    }
+
+
+    @font-face {
+      font-family: 'Strata_Bold';
+      src: url('/main-website/homepage-updated/fonts/Strata_Bold.woff2') format('woff2');
+      font-weight: 400;
+      font-style: bold;
+    }
+
+    @font-face {
+      font-family: 'Funkadelic_Serif';
+      src: url('/main-website/homepage-updated/fonts/Funkadelic_Serif.woff2') format('woff2');
+      font-weight: 400;
+      font-style: normal;
+    }
+
+
+
+    @font-face {
+      font-family: 'Velocity_Brush';
+      src: url('/main-website/homepage-updated/fonts/Velocity_Brush.woff2') format('woff2');
+      font-weight: 400;
+      font-style: bold;
+    }
+
+    @font-face {
+      font-family: 'Goliath_Soft';
+      src: url('/main-website/homepage-updated/fonts/Goliath_Soft.woff2') format('woff2');
+      font-weight: 400;
+      font-style: bold;
+    }
+
+    @font-face {
+      font-family: 'Velvet_Monoline';
+      src: url('/main-website/homepage-updated/fonts/Velvet_Monoline.woff2') format('woff2');
+      font-weight: 400;
+      font-style: normal;
+    }
+
+    @font-face {
+      font-family: 'Prose_Bold';
+      src: url('/main-website/homepage-updated/fonts/Prose_Bold.woff2') format('woff2');
+      font-weight: 400;
+      font-style: bold;
+    }
+
+    @font-face {
+      font-family: 'Zenith_Spark';
+      src: url('/main-website/homepage-updated/fonts/Zenith_Spark.woff2') format('woff2');
+      font-weight: 400;
+      font-style: normal;
+    }
+
+    @font-face {
+      font-family: 'Glissade';
+      src: url('/main-website/homepage-updated/fonts/Glissade.woff2') format('woff2');
+      font-weight: 400;
+      font-style: normal;
+    }
+
+    @font-face {
+      font-family: 'Onyx_Dynasty';
+      src: url('/main-website/homepage-updated/fonts/Onyx_Dynasty.woff2') format('woff2');
+      font-weight: 400;
+      font-style: normal;
+    }
+
+    @font-face {
+      font-family: 'Boutique_Seraphina';
+      src: url('/main-website/homepage-updated/fonts/Boutique_Seraphina.woff2') format('woff2');
+      font-weight: 400;
+      font-style: normal;
+    }
+
+    @font-face {
+      font-family: 'Apex_Rounded';
+      src: url('/main-website/homepage-updated/fonts/Apex_Rounded.woff2') format('woff2');
+      font-weight: 400;
+      font-style: normal;
+    }
+
+    @font-face {
+      font-family: 'Vanguard_Axis';
+      src: url('/main-website/homepage-updated/fonts/Vanguard_Axis.woff2') format('woff2');
+      font-weight: 400;
+      font-style: normal;
+    }
+
+    @font-face {
+      font-family: 'Throttle_Street';
+      src: url('/main-website/homepage-updated/fonts/Throttle_Street.woff2') format('woff2');
+      font-weight: 400;
+      font-style: normal;
+    }
+
+    @font-face {
+      font-family: 'Nova_Shell';
+      src: url('/main-website/homepage-updated/fonts/Nova_Shell.woff2') format('woff2');
+      font-weight: 400;
+      font-style: normal;
+    }
+
+    @font-face {
+      font-family: 'Volo_Scale';
+      src: url('/main-website/homepage-updated/fonts/Volo_Scale.woff2') format('woff2');
+      font-weight: 400;
+      font-style: normal;
+    }
+
+
+
+
+    /* ===================================================
+   NAV
+=================================================== */
+    .header-nav {
+      position: fixed;
+      top: 0;
+      width: 95%;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 50;
+      margin-top: .5rem
+    }
+
+    .nav-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+      padding: .4rem 2rem;
+      border-radius: var(--radius-full);
+      background: linear-gradient(135deg, var(--primary-container), var(--primary));
+      transition: padding .3s
+    }
+
+    .nav-logo-group {
+      display: flex;
+      align-items: center;
+      gap: .75rem
+    }
+
+    .nav-logo-img {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      object-fit: cover
+    }
+
+    .nav-logo-name {
+      font-family: 'Bricolage Grotesque', sans-serif;
+      font-size: 1.4rem;
+      font-weight: 700;
+      letter-spacing: -.05em;
+      color: #f2e7d5
+    }
+
+    .nav-links {
+      display: none;
+      align-items: center;
+      gap: 2.5rem;
+      list-style: none
+    }
+
+    .nav-link {
+      color: #f2e7d5;
+      font-weight: 500;
+      transition: color .2s;
+      font-size: .9rem
+    }
+
+    .nav-link:hover {
+      color: #fff
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 1.25rem
+    }
+
+    .nav-login {
+      color: #f2e7d5;
+      font-weight: 500;
+      font-size: .875rem;
+      transition: color .2s
+    }
+
+    .nav-login:hover {
+      color: #fff
+    }
+
+    .nav-signup {
+      background: #f2e7d5;
+      color: var(--primary);
+      padding: .45rem 1.25rem;
+      font-size: .8125rem;
+      font-weight: 700;
+      border-radius: var(--radius-full);
+      transition: background .2s
+    }
+
+    .nav-signup:hover {
+      background: #fff
+    }
+
+    .nav-hamburger {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      gap: 5px;
+      width: 36px;
+      height: 36px;
+      background: rgba(242, 231, 213, .1);
+      border: 1px solid rgba(242, 231, 213, .2);
+      border-radius: 10px;
+      padding: 8px;
+      cursor: pointer
+    }
+
+    .nav-hamburger__line {
+      display: block;
+      width: 100%;
+      height: 1.5px;
+      background: #f2e7d5;
+      border-radius: 2px;
+      transition: transform .35s cubic-bezier(.23, 1, .32, 1), opacity .25s
+    }
+
+    .nav-hamburger.is-open .nav-hamburger__line:nth-child(1) {
+      transform: translateY(6.5px) rotate(45deg)
+    }
+
+    .nav-hamburger.is-open .nav-hamburger__line:nth-child(2) {
+      opacity: 0;
+      transform: scaleX(0)
+    }
+
+    .nav-hamburger.is-open .nav-hamburger__line:nth-child(3) {
+      transform: translateY(-6.5px) rotate(-45deg)
+    }
+
+    /* Mobile menu */
+    .nav-mobile-menu {
+      position: fixed;
+      inset: 0;
+      z-index: 49;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 0;
+      background: #111;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity .35s
+    }
+
+    .nav-mobile-menu.is-open {
+      opacity: 1;
+      pointer-events: all
+    }
+
+    .nav-mobile-menu__links {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+      padding: 0 2rem
+    }
+
+    .nav-mobile-menu__link {
+      display: block;
+      padding: 1.25rem 0;
+      font-family: 'Bricolage Grotesque', sans-serif;
+      font-size: clamp(1.5rem, 6vw, 2.2rem);
+      font-weight: 700;
+      letter-spacing: -.03em;
+      color: #f2e7d5;
+      transition: color .2s;
+      border-bottom: 1px solid rgba(242, 231, 213, .07);
+      width: 100%;
+      text-align: center
+    }
+
+    .nav-mobile-menu__link:hover {
+      color: var(--gold)
+    }
+
+    .nav-mobile-menu__actions {
+      display: flex;
+      gap: 1rem;
+      margin-top: 2.5rem
+    }
+
+    .nav-mobile-menu__login,
+    .nav-mobile-menu__signup {
+      font-weight: 700;
+      font-size: .9375rem;
+      padding: .6rem 1.5rem;
+      border-radius: var(--radius-full);
+      text-decoration: none
+    }
+
+    .nav-mobile-menu__login {
+      color: #f2e7d5;
+      border: 1px solid rgba(242, 231, 213, .25)
+    }
+
+    .nav-mobile-menu__signup {
+      background: #f2e7d5;
+      color: var(--primary)
+    }
+
+    @media(min-width:1024px) {
+      .nav-links {
+        display: flex
+      }
+
+      .nav-hamburger {
+        display: none
+      }
+
+      .nav-mobile-menu {
+        display: none
+      }
+    }
+
+    @media(max-width:1023px) {
+      .nav-hamburger {
+        display: flex
+      }
+
+      .nav-actions {
+        display: none
+      }
+    }
+
+    /* ===================================================
+   MAIN LAYOUT
+=================================================== */
+    .fd-main {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 2.5rem;
+      padding-top: 7.5rem;
+      padding-bottom: 6rem
+    }
+
+    /* ===================================================
+   HERO
+=================================================== */
+    .fd-hero {
+      display: grid;
+      grid-template-columns: 1fr 420px;
+      gap: 4rem;
+      align-items: start;
+      padding-bottom: 5rem;
+      border-bottom: 1px solid rgba(201, 171, 129, .1)
+    }
+
+    .fd-breadcrumb {
+      display: flex;
+      align-items: center;
+      gap: .5rem;
+      font-size: .75rem;
+      color: var(--on-surface-var);
+      margin-bottom: 1.5rem;
+      flex-wrap: wrap
+    }
+
+    .fd-breadcrumb a {
+      color: var(--on-surface-var);
+      transition: color .2s
+    }
+
+    .fd-breadcrumb a:hover {
+      color: var(--gold-dark)
+    }
+
+    .fd-breadcrumb span {
+      opacity: .5
+    }
+
+    .fd-badges {
+      display: flex;
+      gap: .5rem;
+      flex-wrap: wrap;
+      margin-bottom: 1.25rem
+    }
+
+    .fd-badge {
+      font-family: 'Instrument Sans', sans-serif;
+      font-size: .5625rem;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      padding: 3px 12px;
+      border-radius: 100px
+    }
+
+    .fd-badge--cat {
+      background: rgba(138, 108, 62, .1);
+      color: var(--gold-dark)
+    }
+
+    .fd-badge--style {
+      background: rgba(28, 24, 18, .07);
+      color: var(--on-surface-var)
+    }
+
+    .fd-badge--sale {
+      background: rgba(201, 171, 129, .15);
+      color: var(--gold-dark)
+    }
+
+    .fd-name {
+      font-family: 'Bricolage Grotesque', sans-serif;
+      font-size: clamp(3rem, 7vw, 6.5rem);
+      font-weight: 900;
+      letter-spacing: 0;
+      line-height: .9;
+      color: var(--primary);
+      margin-bottom: 1rem
+    }
+
+    .fd-tagline {
+      font-size: 1.0625rem;
+      color: var(--on-surface-var);
+      font-weight: 500;
+      line-height: 1.5;
+      margin-bottom: 1.25rem
+    }
+
+    .fd-description {
+      font-size: .9375rem;
+      color: var(--on-surface-var);
+      line-height: 1.75;
+      max-width: 38rem;
+      margin-bottom: 2rem
+    }
+
+    .fd-price-row {
+      display: flex;
+      align-items: baseline;
+      gap: .75rem;
+      margin-bottom: 1.75rem
+    }
+
+    .fd-price {
+      font-family: 'Bricolage Grotesque', sans-serif;
+      font-size: 2.75rem;
+      font-weight: 900;
+      letter-spacing: -.04em;
+      color: var(--primary)
+    }
+
+    .fd-price-old {
+      font-family: 'Bricolage Grotesque', sans-serif;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--on-surface-var);
+      text-decoration: line-through;
+      opacity: .45
+    }
+
+    .fd-price-save {
+      font-family: 'Instrument Sans', sans-serif;
+      font-size: .6875rem;
+      font-weight: 700;
+      background: rgba(138, 108, 62, .1);
+      color: var(--gold-dark);
+      padding: 3px 10px;
+      border-radius: 100px;
+      letter-spacing: .06em
+    }
+
+    .fd-actions {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-bottom: 1.75rem
+    }
+
+    .fd-btn-buy {
+      background: var(--primary);
+      color: var(--on-primary);
+      font-family: 'Instrument Sans', sans-serif;
+      font-size: .9375rem;
+      font-weight: 700;
+      padding: .875rem 2rem;
+      border-radius: 100px;
+      border: none;
+      cursor: pointer;
+      transition: transform .18s cubic-bezier(.34, 1.56, .64, 1), box-shadow .2s;
+      white-space: nowrap
+    }
+
+    .fd-btn-buy:hover {
+      transform: scale(1.04);
+      box-shadow: 0 8px 24px rgba(17, 17, 17, .2)
+    }
+
+    .fd-btn-demo {
+      background: transparent;
+      color: var(--primary);
+      font-family: 'Instrument Sans', sans-serif;
+      font-size: .9375rem;
+      font-weight: 600;
+      padding: .875rem 1.5rem;
+      border-radius: 100px;
+      border: 1.5px solid rgba(28, 24, 18, .2);
+      cursor: pointer;
+      transition: border-color .2s, background .2s;
+      white-space: nowrap
+    }
+
+    .fd-btn-demo:hover {
+      border-color: var(--gold);
+      background: rgba(201, 171, 129, .06)
+    }
+
+    .fd-meta-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .5rem
+    }
+
+    .fd-meta-pill {
+      font-family: 'Instrument Sans', sans-serif;
+      font-size: .6875rem;
+      font-weight: 600;
+      color: var(--on-surface-var);
+      background: var(--surface-low);
+      border: 1px solid rgba(201, 171, 129, .15);
+      padding: 4px 12px;
+      border-radius: 100px;
+      letter-spacing: .04em
+    }
+
+    /* Specimen card interactive */
+    .fd-specimen-card {
+      background: linear-gradient(135deg, var(--color-primary-container) 0%, var(--color-primary) 100%);
+      border-radius: 1.5rem;
+      padding: 2.5rem;
+      position: sticky;
+      top: 100px;
+      overflow: hidden
+    }
+
+    .fd-specimen-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: radial-gradient(circle, rgba(201, 171, 129, .05) 1px, transparent 1px);
+      background-size: 24px 24px;
+      pointer-events: none
+    }
+
+    .fd-specimen-label {
+      font-family: 'Instrument Sans', sans-serif;
+      font-size: .5625rem;
+      font-weight: 700;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      color: rgba(201, 171, 129, .6);
+      margin-bottom: 1.5rem;
+      position: relative;
+      z-index: 1
+    }
+
+    .fd-specimen-big {
+      font-size: clamp(2.5rem, 5vw, 4.5rem);
+      font-weight: 900;
+      line-height: 1.0;
+      letter-spacing: 0em;
+      color: #f2e7d5;
+      margin-bottom: 1rem;
+      word-break: break-word;
+      transition: font-size .15s;
+      position: relative;
+      z-index: 1;
+      min-height: 1.2em;
+      outline: none;
+      border: none;
+      background: transparent;
+      width: 100%;
+      cursor: text;
+      font-family: inherit;
+      resize: none
+    }
+
+    .fd-specimen-chars {
+      font-size: 1rem;
+      color: rgba(242, 231, 213, .35);
+      letter-spacing: .06em;
+      word-break: break-all;
+      line-height: 1.6;
+      position: relative;
+      z-index: 1
+    }
+
+    .fd-specimen-controls {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-top: 1.75rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid rgba(201, 171, 129, .12);
+      position: relative;
+      z-index: 1;
+      flex-wrap: wrap
+    }
+
+    .fd-specimen-size-wrap {
+      display: flex;
+      align-items: center;
+      gap: .75rem;
+      flex: 1;
+      min-width: 160px
+    }
+
+    .fd-spec-size-label {
+      font-size: .5625rem;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: rgba(242, 231, 213, .4);
+      white-space: nowrap
+    }
+
+    .fd-spec-size-val {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: .6875rem;
+      font-weight: 700;
+      color: var(--gold);
+      min-width: 2.5rem;
+      text-align: right
+    }
+
+    .fd-spec-range {
+      -webkit-appearance: none;
+      appearance: none;
+      height: 2px;
+      background: rgba(201, 171, 129, .2);
+      border-radius: 1px;
+      outline: none;
+      flex: 1;
+      cursor: pointer
+    }
+
+    .fd-spec-range::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      width: 13px;
+      height: 13px;
+      border-radius: 50%;
+      background: var(--gold);
+      cursor: pointer;
+      border: 2px solid rgba(17, 17, 17, .5)
+    }
+
+    .fd-style-pills-wrap {
+      display: flex;
+      gap: .4rem;
+      flex-wrap: wrap
+    }
+
+    .fd-style-pill-btn {
+      padding: .3rem .75rem;
+      border-radius: 100px;
+      font-size: .625rem;
+      font-weight: 700;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      cursor: pointer;
+      background: rgba(242, 231, 213, .07);
+      color: rgba(242, 231, 213, .5);
+      border: 1px solid rgba(242, 231, 213, .1);
+      transition: all .2s
+    }
+
+    .fd-style-pill-btn:hover {
+      background: rgba(242, 231, 213, .12);
+      color: rgba(242, 231, 213, .8)
+    }
+
+    .fd-style-pill-btn.active {
+      background: var(--gold);
+      color: var(--primary);
+      border-color: var(--gold)
+    }
+
+    /* ===================================================
+   SECTION SHARED
+=================================================== */
+    .fd-section {
+      padding: 4.5rem 0;
+      border-top: 1px solid rgba(201, 171, 129, .1)
+    }
+
+    .fd-section--dark {
+      background: linear-gradient(135deg, var(--primary-container), var(--primary));
+      margin: 0 -2.5rem;
+      padding: 4.5rem 2.5rem;
+      border-top: none
+    }
+
+    .fd-section-header {
+      margin-bottom: 2.5rem
+    }
+
+    .fd-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: 'Instrument Sans', sans-serif;
+      font-size: .625rem;
+      font-weight: 700;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: var(--gold-dark);
+      margin-bottom: .75rem
+    }
+
+    .fd-eyebrow::before {
+      content: '';
+      width: 20px;
+      height: 1px;
+      background: var(--gold);
+      opacity: .5;
+      display: inline-block
+    }
+
+    .fd-section-title {
+      font-family: 'Bricolage Grotesque', sans-serif;
+      font-size: clamp(1.75rem, 3vw, 2.5rem);
+      font-weight: 800;
+      letter-spacing: -.04em;
+      color: var(--primary);
+      line-height: 1.05
+    }
+
+    .fd-section--dark .fd-eyebrow {
+      color: #c9ab81
+    }
+
+    .fd-section--dark .fd-section-title {
+      color: #f2e7d5
+    }
+
+    .fd-section-sub {
+      font-size: .875rem;
+      color: var(--on-surface-var);
+      margin-top: .5rem
+    }
+
+    .fd-section--dark .fd-section-sub {
+      color: #b8aa97
+    }
+
+    /* ===================================================
+   TYPE TESTER
+=================================================== */
+    .fd-tester-body {
+      display: grid;
+      grid-template-columns: 260px 1fr;
+      gap: 1.5rem;
+      align-items: start
+    }
+
+    .fd-tester-controls {
+      background: var(--surface-low);
+      border: 1px solid rgba(201, 171, 129, .12);
+      border-radius: 1rem;
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem
+    }
+
+    .fd-tester-surface {
+      background: var(--surface-lowest);
+      border: 1px solid rgba(201, 171, 129, .12);
+      border-radius: 1rem;
+      min-height: 300px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2.5rem;
+      transition: background .3s
+    }
+
+    .fd-tester-surface.is-dark {
+      background: #111
+    }
+
+    .fd-tester-preview {
+      font-size: 72px;
+      line-height: 1.1;
+      word-break: break-word;
+      text-align: center;
+      max-width: 100%;
+      transition: font-family .2s
+    }
+
+    .fd-tester-surface.is-dark .fd-tester-preview {
+      color: #f2e7d5
+    }
+
+    .fd-field {
+      display: flex;
+      flex-direction: column;
+      gap: .4rem
+    }
+
+    .fd-field span,
+    .fd-range-label {
+      font-size: .625rem;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--on-surface-var)
+    }
+
+    .fd-textarea {
+      background: var(--surface-container);
+      border: 1px solid rgba(201, 171, 129, .18);
+      border-radius: .5rem;
+      padding: .6rem .875rem;
+      font-family: 'Manrope', sans-serif;
+      font-size: .875rem;
+      color: var(--primary);
+      outline: none;
+      resize: vertical;
+      min-height: 64px;
+      transition: border-color .2s;
+      width: 100%
+    }
+
+    .fd-textarea:focus {
+      border-color: var(--gold)
+    }
+
+    .fd-range-row {
+      display: flex;
+      flex-direction: column;
+      gap: .5rem
+    }
+
+    .fd-range-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center
+    }
+
+    .fd-range-header strong {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: .625rem;
+      color: var(--gold-dark)
+    }
+
+    .fd-range {
+      width: 100%;
+      -webkit-appearance: none;
+      height: 3px;
+      background: rgba(201, 171, 129, .2);
+      border-radius: 2px;
+      outline: none;
+      cursor: pointer
+    }
+
+    .fd-range::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background: var(--gold-dark);
+      border: 2px solid #fff;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, .15);
+      cursor: pointer;
+      transition: transform .1s
+    }
+
+    .fd-range::-webkit-slider-thumb:hover {
+      transform: scale(1.2)
+    }
+
+    .fd-control-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: .75rem
+    }
+
+    .fd-segmented {
+      display: inline-flex;
+      background: var(--surface-container);
+      border-radius: 100px;
+      padding: 3px;
+      gap: 3px;
+      border: 1px solid rgba(201, 171, 129, .12)
+    }
+
+    .fd-segmented button {
+      padding: .2rem .75rem;
+      border-radius: 100px;
+      border: none;
+      background: transparent;
+      font-size: .75rem;
+      font-weight: 600;
+      color: var(--on-surface-var);
+      cursor: pointer;
+      transition: all .2s
+    }
+
+    .fd-segmented button.is-active {
+      background: var(--primary);
+      color: var(--on-primary);
+      box-shadow: 0 2px 6px rgba(0, 0, 0, .12)
+    }
+
+    .fd-dark-toggle {
+      font-family: 'Instrument Sans', sans-serif;
+      font-size: .6875rem;
+      font-weight: 700;
+      padding: .3rem .875rem;
+      border-radius: 100px;
+      border: 1px solid rgba(201, 171, 129, .2);
+      background: var(--surface-container);
+      color: var(--on-surface-var);
+      cursor: pointer;
+      transition: all .2s
+    }
+
+    .fd-dark-toggle.is-on {
+      background: var(--primary);
+      color: var(--on-primary);
+      border-color: var(--primary)
+    }
+
+    /* ─────────────────────────────────────────
+           LIVE TYPE TESTER
+        ───────────────────────────────────────── */
+    .fd-tester-section {
+      padding: 5rem 0;
+      border-bottom: 1px solid var(--color-surface-variant);
+    }
+
+    .fd-section-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.625rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gold-dark);
+      font-weight: 700;
+      margin-bottom: 2rem;
+    }
+
+    .fd-section-label::before {
+      content: '';
+      display: inline-block;
+      width: 24px;
+      height: 1px;
+      background: var(--gold);
+      opacity: 0.5;
+    }
+
+    .fd-tester-bar {
+      background: linear-gradient(135deg, var(--color-primary-container) 0%, var(--color-primary) 100%);
+      border-radius: 20px;
+      padding: 14px 22px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 2.5rem;
+      box-shadow: 0 8px 32px rgba(17, 17, 17, 0.15);
+    }
+
+    .fd-tester-bar .material-symbols-outlined {
+      color: rgba(242, 231, 213, 0.4);
+      font-size: 18px;
+      flex-shrink: 0;
+    }
+
+    .fd-tester-input {
+      flex: 1;
+      background: transparent;
+      border: none;
+      outline: none;
+      color: #f2e7d5;
+      font-size: 0.9rem;
+      font-family: var(--font-body);
+      font-weight: 300;
+    }
+
+    .fd-tester-input::placeholder {
+      color: rgba(242, 231, 213, 0.35);
+    }
+
+    .fd-tester-hint {
+      font-size: 0.5rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(242, 231, 213, 0.28);
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .fd-tester-rows {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .fd-tester-row {
+      display: flex;
+      align-items: baseline;
+      gap: 1.5rem;
+      padding: 1.5rem 0;
+      border-bottom: 1px solid var(--color-surface-variant);
+      overflow: hidden;
+    }
+
+    .fd-tester-row:first-child {
+      border-top: 1px solid var(--color-surface-variant);
+    }
+
+    .fd-tester-size {
+      font-size: 0.5625rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--color-on-surface-variant);
+      width: 2.5rem;
+      flex-shrink: 0;
+    }
+
+    .fd-tester-text {
+      color: var(--color-primary);
+      line-height: 1.1;
+      transition: font-size 0.1s;
+      flex: 1;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+
+    /* ===================================================
+   GLYPHS
+=================================================== */
+    .fd-glyphs-wrap {
+      background: var(--primary);
+      border-radius: 1rem;
+      padding: 2rem;
+      margin-bottom: 1.5rem
+    }
+
+    .fd-glyphs-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 4px
+    }
+
+    .fd-glyph {
+      width: 50px;
+      height: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.375rem;
+      color: #f2e7d5;
+      background: rgba(255, 255, 255, .04);
+      border: 1px solid rgba(255, 230, 190, .06);
+      border-radius: .5rem;
+      cursor: pointer;
+      transition: all .15s cubic-bezier(.34, 1.56, .64, 1);
+      position: relative;
+      overflow: visible
+    }
+
+    .fd-glyph>span:first-child {
+      pointer-events: none;
+      line-height: 1
+    }
+
+    .fd-glyph-unicode {
+      position: absolute;
+      bottom: calc(100% + 6px);
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(201, 171, 129, .95);
+      color: #1c1812;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: .5rem;
+      font-weight: 700;
+      padding: 2px 6px;
+      border-radius: 4px;
+      white-space: nowrap;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity .15s;
+      letter-spacing: .04em;
+      z-index: 10
+    }
+
+    .fd-glyph:hover {
+      transform: scale(2.65);
+      background: rgba(201, 171, 129, .2);
+      border-color: rgba(201, 171, 129, .4);
+      z-index: 2;
+      color: var(--gold)
+    }
+
+    .fd-glyph:hover .fd-glyph-unicode {
+      opacity: 1
+    }
+
+    .fd-langs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .5rem
+    }
+
+    .fd-lang-tag {
+      font-family: 'Instrument Sans', sans-serif;
+      font-size: .6875rem;
+      font-weight: 600;
+      color: var(--gold-dark);
+      background: rgba(138, 108, 62, .08);
+      border: 1px solid rgba(201, 171, 129, .2);
+      padding: 4px 12px;
+      border-radius: 100px
+    }
+
+    /* ===================================================
+   DETAILS GRID
+=================================================== */
+    .fd-details-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.25rem
+    }
+
+    .fd-detail-card {
+      background: var(--surface-low);
+      border: 1px solid rgba(201, 171, 129, .12);
+      border-radius: 1rem;
+      padding: 1.75rem
+    }
+
+    .fd-detail-title {
+      font-family: 'Bricolage Grotesque', sans-serif;
+      font-size: 1.0625rem;
+      font-weight: 800;
+      letter-spacing: -.03em;
+      color: var(--primary);
+      margin-bottom: 1.25rem
+    }
+
+    .fd-detail-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: .625rem;
+      margin-bottom: 1.25rem
+    }
+
+    .fd-detail-item {
+      display: flex;
+      align-items: baseline;
+      gap: .625rem;
+      font-size: .8125rem;
+      color: var(--on-surface-var)
+    }
+
+    .fd-detail-check {
+      color: var(--gold-dark);
+      font-size: .625rem;
+      flex-shrink: 0
+    }
+
+    .fd-detail-note {
+      font-size: .6875rem;
+      color: var(--on-surface-var);
+      opacity: .7;
+      line-height: 1.6;
+      border-top: 1px solid rgba(201, 171, 129, .1);
+      padding-top: .875rem
+    }
+
+    .fd-designer {
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+      margin-bottom: 1rem
+    }
+
+    .fd-designer-avatar {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      object-fit: cover;
+      flex-shrink: 0;
+      border: 2px solid rgba(201, 171, 129, .2)
+    }
+
+    .fd-designer-name {
+      display: block;
+      font-size: .9375rem;
+      font-weight: 700;
+      color: var(--primary)
+    }
+
+    .fd-designer-studio {
+      display: block;
+      font-size: .6875rem;
+      color: var(--gold-dark);
+      font-weight: 600;
+      letter-spacing: .06em;
+      margin-bottom: .4rem
+    }
+
+    .fd-designer-bio {
+      font-size: .75rem;
+      color: var(--on-surface-var);
+      line-height: 1.6
+    }
+
+    /* ===================================================
+   RELATED
+=================================================== */
+    .fd-related-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 1rem
+    }
+
+    .fd-related-card {
+      display: block;
+      border-radius: 1rem;
+      padding: 1.75rem;
+      text-decoration: none;
+      transition: transform .25s cubic-bezier(.23, 1, .32, 1), box-shadow .25s;
+      cursor: pointer
+    }
+
+    .fd-related-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 40px rgba(0, 0, 0, .15)
+    }
+
+    .fd-related-card.gc-dark {
+      background: #111;
+      color: #f2e7d5
+    }
+
+    .fd-related-card.gc-cream {
+      background: #faf6f0;
+      color: #1c1812
+    }
+
+    .fd-related-preview {
+      font-size: 2.5rem;
+      font-weight: 700;
+      line-height: 1.05;
+      margin-bottom: 1rem
+    }
+
+    .fd-related-info {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: .35rem
+    }
+
+    .fd-related-info strong {
+      font-family: 'Bricolage Grotesque', sans-serif;
+      font-size: 1rem;
+      font-weight: 800;
+      letter-spacing: -.03em
+    }
+
+    .fd-related-tagline {
+      font-size: .6875rem;
+      opacity: .5
+    }
+
+    /* ===================================================
+   STICKY BUY BAR — floating pill style
+=================================================== */
+    .fd-sticky {
+      position: fixed;
+      bottom: 1.5rem;
+      left: 50%;
+      transform: translateX(-50%) translateY(140%);
+      z-index: 40;
+      background: linear-gradient(135deg, var(--primary-container), var(--primary));
+      border-radius: var(--radius-full);
+      padding: .875rem 1.25rem .875rem 1.75rem;
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      box-shadow: 0 12px 40px rgba(17, 17, 17, .4);
+      border: 1px solid rgba(201, 171, 129, .2);
+      white-space: nowrap;
+      transition: transform .45s cubic-bezier(.34, 1.2, .64, 1)
+    }
+
+    .fd-sticky.is-visible {
+      transform: translateX(-50%) translateY(0)
+    }
+
+    .fd-sticky-info {
+      display: flex;
+      align-items: center;
+      gap: 1rem
+    }
+
+    .fd-sticky-name {
+      font-family: 'Bricolage Grotesque', sans-serif;
+      font-size: 1rem;
+      font-weight: 800;
+      letter-spacing: -.03em;
+      color: #f2e7d5
+    }
+
+    .fd-sticky-sep {
+      width: 1px;
+      height: 20px;
+      background: rgba(242, 231, 213, .15);
+      flex-shrink: 0
+    }
+
+    .fd-sticky-price {
+      font-family: 'Bricolage Grotesque', sans-serif;
+      font-size: .875rem;
+      font-weight: 700;
+      color: var(--gold)
+    }
+
+    .fd-sticky-actions {
+      display: flex;
+      gap: .75rem;
+      align-items: center
+    }
+
+    /* ===================================================
+   TOAST
+=================================================== */
+    #g-toast-wrap {
+      position: fixed;
+      bottom: 5rem;
+      right: 2rem;
+      z-index: 9999;
+      display: flex;
+      flex-direction: column;
+      gap: .5rem
+    }
+
+    .g-toast {
+      background: var(--primary);
+      color: var(--on-primary);
+      padding: .75rem 1.5rem;
+      border-radius: 100px;
+      font-size: .8125rem;
+      font-weight: 600;
+      font-family: 'Instrument Sans', sans-serif;
+      border: 1px solid rgba(201, 171, 129, .25);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, .2);
+      opacity: 0;
+      transform: translateY(10px);
+      transition: opacity .3s, transform .3s
+    }
+
+    .g-toast.show {
+      opacity: 1;
+      transform: translateY(0)
+    }
+
+    /* ===================================================
+   FOOTER
+=================================================== */
+    .site-footer {
+      border-top: 1px solid rgba(201, 171, 129, .12);
+      background: #f5f0e8
+    }
+
+    .footer-grid {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 3.5rem 2.5rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 2.5rem
+    }
+
+    .footer-brand-name {
+      font-family: 'Bricolage Grotesque', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 800;
+      letter-spacing: -.03em;
+      color: var(--primary);
+      margin-bottom: .75rem
+    }
+
+    .footer-brand-desc {
+      font-size: .8125rem;
+      color: #5a5248;
+      line-height: 1.7
+    }
+
+    .footer-col-title {
+      font-size: .5625rem;
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--primary);
+      margin-bottom: 1rem
+    }
+
+    .footer-links-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: .625rem
+    }
+
+    .footer-links-list a {
+      font-size: .8125rem;
+      color: #5a5248;
+      text-decoration: none;
+      transition: color .2s
+    }
+
+    .footer-links-list a:hover {
+      color: var(--gold-dark)
+    }
+
+    .footer-bottom {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 1.5rem 2.5rem;
+      border-top: 1px solid rgba(201, 171, 129, .1);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem
+    }
+
+    .footer-copy,
+    .footer-legal a {
+      font-size: .625rem;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: #a89880
+    }
+
+    .footer-legal {
+      display: flex;
+      gap: 2rem
+    }
+
+    .footer-legal a {
+      text-decoration: none;
+      transition: color .2s
+    }
+
+    .footer-legal a:hover {
+      color: var(--primary)
+    }
+
+    /* ===================================================
+   LICENSING CARDS (3-tier)
+=================================================== */
+    .fd-license-cards {
+      display: grid;
+      grid-template-columns: repeat(1, 1fr);
+      gap: 1rem
+    }
+
+    @media(min-width:640px) {
+      .fd-license-cards {
+        grid-template-columns: repeat(3, 1fr)
+      }
+    }
+
+    .fd-license-card {
+      border-radius: 1.25rem;
+      padding: 2rem 1.75rem;
+      border: 1px solid rgba(201, 171, 129, .15);
+      background: var(--surface-low);
+      transition: transform .2s, box-shadow .2s;
+      cursor: pointer
+    }
+
+    .fd-license-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 30px rgba(17, 17, 17, .1)
+    }
+
+    .fd-license-card--highlighted {
+      background: linear-gradient(135deg, var(--primary-container), var(--primary));
+      border-color: rgba(201, 171, 129, .3)
+    }
+
+    .fd-license-card--highlighted .fd-lc-name,
+    .fd-license-card--highlighted .fd-lc-price,
+    .fd-license-card--highlighted .fd-lc-perk {
+      color: #f2e7d5
+    }
+
+    .fd-license-card--highlighted .fd-lc-scope,
+    .fd-license-card--highlighted .fd-lc-check {
+      color: rgba(242, 231, 213, .55)
+    }
+
+    .fd-license-card--highlighted .fd-lc-check {
+      color: var(--gold)
+    }
+
+    .fd-lc-badge {
+      font-size: .5625rem;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--gold-dark);
+      background: rgba(201, 171, 129, .1);
+      border: 1px solid rgba(201, 171, 129, .2);
+      padding: .25rem .75rem;
+      border-radius: 100px;
+      display: inline-block;
+      margin-bottom: 1.25rem
+    }
+
+    .fd-license-card--highlighted .fd-lc-badge {
+      color: var(--gold);
+      background: rgba(201, 171, 129, .15);
+      border-color: rgba(201, 171, 129, .3)
+    }
+
+    .fd-lc-name {
+      font-family: 'Bricolage Grotesque', sans-serif;
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: var(--primary);
+      margin-bottom: .4rem
+    }
+
+    .fd-lc-scope {
+      font-size: .8rem;
+      color: var(--on-surface-var);
+      margin-bottom: 1.5rem
+    }
+
+    .fd-lc-price {
+      font-family: 'Bricolage Grotesque', sans-serif;
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--primary);
+      line-height: 1;
+      margin-bottom: 1.5rem;
+      letter-spacing: -.04em
+    }
+
+    .fd-lc-price sup {
+      font-size: 1rem;
+      vertical-align: top;
+      margin-top: .4rem
+    }
+
+    .fd-lc-perks {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: .75rem;
+      margin-bottom: 1.75rem
+    }
+
+    .fd-lc-perk {
+      font-size: .8125rem;
+      color: var(--on-surface);
+      display: flex;
+      align-items: center;
+      gap: 8px
+    }
+
+    .fd-lc-check {
+      font-size: .875rem;
+      color: var(--gold-dark)
+    }
+
+    .fd-lc-btn {
+      width: 100%;
+      padding: .75rem;
+      border-radius: 100px;
+      font-weight: 700;
+      font-size: .875rem;
+      letter-spacing: .04em;
+      text-align: center;
+      transition: all .2s;
+      display: block;
+      cursor: pointer;
+      font-family: 'Instrument Sans', sans-serif
+    }
+
+    .fd-lc-btn--outline {
+      background: transparent;
+      border: 1.5px solid rgba(28, 24, 18, .2);
+      color: var(--primary)
+    }
+
+    .fd-lc-btn--outline:hover {
+      background: var(--surface-container);
+      border-color: var(--gold-dark)
+    }
+
+    .fd-lc-btn--fill {
+      background: var(--gold);
+      color: var(--primary);
+      border: none
+    }
+
+    .fd-lc-btn--fill:hover {
+      background: var(--gold-light)
+    }
+
+    .fd-lc-btn--dark {
+      background: #f2e7d5;
+      color: var(--primary);
+      border: none
+    }
+
+    .fd-lc-btn--dark:hover {
+      background: #fff
+    }
+
+    /* Formats row */
+    .fd-formats-section {
+      margin-top: 2.5rem
+    }
+
+    .fd-formats-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 1rem;
+      flex-wrap: wrap;
+      gap: .75rem
+    }
+
+    .fd-formats-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .75rem
+    }
+
+    .fd-format-item {
+      background: var(--surface-low);
+      border: 1px solid rgba(201, 171, 129, .15);
+      border-radius: .75rem;
+      padding: 1.25rem 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: .35rem;
+      min-width: 120px;
+      transition: border-color .2s
+    }
+
+    .fd-format-item:hover {
+      border-color: var(--gold)
+    }
+
+    .fd-format-badge {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: .75rem;
+      font-weight: 700;
+      color: var(--primary);
+      letter-spacing: .08em
+    }
+
+    /* ===================================================
+   RESPONSIVE
+=================================================== */
+    @media(max-width:1024px) {
+      .fd-hero {
+        grid-template-columns: 1fr;
+        gap: 2.5rem
+      }
+
+      .fd-specimen-card {
+        position: static
+      }
+
+      .fd-tester-body {
+        grid-template-columns: 1fr
+      }
+    }
+
+    @media(max-width:768px) {
+      .fd-main {
+        padding: 0 1.25rem;
+        padding-top: 6.5rem;
+        padding-bottom: 4rem
+      }
+
+      .fd-section--dark {
+        margin: 0 -1.25rem;
+        padding: 4rem 1.25rem
+      }
+
+      .fd-sticky {
+        width: 90%;
+        max-width: 480px;
+        padding: 0.75rem 1rem;
+        gap: 0.75rem;
+        justify-content: space-between;
+        bottom: 1rem;
+      }
+
+      .fd-sticky-info {
+        gap: 0.5rem;
+      }
+
+      .fd-sticky-name {
+        font-size: 0.875rem;
+      }
+
+      .fd-sticky-sep {
+        height: 14px;
+      }
+
+      .fd-sticky-price {
+        font-size: 0.8125rem;
+      }
+
+      .fd-sticky-actions {
+        gap: 0.5rem;
+      }
+
+      .fd-sticky-actions .fd-btn-demo,
+      .fd-sticky-actions .fd-btn-buy {
+        padding: 0.5rem 0.875rem;
+        font-size: 0.75rem;
+        min-width: 0;
+      }
+
+      .fd-sticky-actions .fd-btn-arrow {
+        display: none;
+        /* Hide the arrow on mobile to save space */
+      }
+
+
+      .fd-name {
+        font-size: clamp(2.5rem, 8vw, 4rem)
+      }
+
+      .fd-details-grid {
+        grid-template-columns: 1fr
+      }
+    }
+
+    @media(max-width:560px) {
+      .fd-sticky {
+        width: calc(100% - 2rem);
+        flex-direction: column;
+        gap: 0.75rem;
+        padding: 1rem;
+        border-radius: 1.25rem;
+        align-items: stretch;
+        bottom: 1rem;
+      }
+
+      .fd-sticky-info {
+        justify-content: space-between;
+        width: 100%;
+      }
+
+      .fd-sticky-actions {
+        width: 100%;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 0.5rem;
+      }
+
+      .fd-sticky-actions .fd-btn-demo,
+      .fd-sticky-actions .fd-btn-buy {
+        width: 100%;
+        padding: 0.625rem;
+        font-size: 0.75rem;
+      }
+
+      .fd-sticky-sep {
+        display: none;
+        /* Hide separator in stacked layout */
+      }
+
+      .fd-actions {
+        flex-direction: column
+      }
+
+      .fd-btn-buy,
+      .fd-btn-demo {
+        width: 100%;
+        text-align: center;
+        justify-content: center
+      }
+
+      .fd-glyph {
+        width: 42px;
+        height: 42px;
+        font-size: 1.125rem
+      }
+
+      .fd-style-preview {
+        font-size: 1.375rem
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAV -->
+  <header class="header-nav">
+    <nav class="nav-inner">
+      <div class="nav-logo-group">
+        <a href="/homepage.html"><img src="/homepage-updated/faiz.jpeg" class="nav-logo-img" alt="Glyphere" /></a>
+        <a class="nav-logo-name" href="/homepage.html">Glyphere</a>
+      </div>
+      <ul class="nav-links" role="list">
+        <li><a class="nav-link" href="/marketplace.html">Marketplace</a></li>
+        <li><a class="nav-link" href="/custom_font_services/code.html">Services</a></li>
+        <li><a class="nav-link" href="/about_the_designer/about.html">About</a></li>
+      </ul>
+      <div class="nav-actions">
+        <a class="nav-login" href="/signup-login.html">Login</a>
+        <a class="nav-signup" href="/signup-login.html">Sign Up</a>
+      </div>
+      <button class="nav-hamburger" aria-label="Menu" aria-expanded="false">
+        <span class="nav-hamburger__line"></span>
+        <span class="nav-hamburger__line"></span>
+        <span class="nav-hamburger__line"></span>
+      </button>
+    </nav>
+  </header>
+
+  <div class="nav-mobile-menu">
+    <div class="nav-mobile-menu__links">
+      <a class="nav-mobile-menu__link" href="/marketplace.html">Marketplace</a>
+      <a class="nav-mobile-menu__link" href="/custom_font_services/code.html">Services</a>
+      <a class="nav-mobile-menu__link" href="/about_the_designer/about.html">About</a>
+    </div>
+    <div class="nav-mobile-menu__actions">
+      <a class="nav-mobile-menu__login" href="/signup-login.html">Login</a>
+      <a class="nav-mobile-menu__signup" href="/signup-login.html">Sign Up</a>
+    </div>
+  </div>
+
+  <!-- MAIN -->
+  <main class="fd-main" id="fd-main">
+    <!-- All sections injected by JS below -->
+  </main>
+
+  <!-- STICKY BAR -->
+  <div class="fd-sticky" id="fd-sticky">
+    <div class="fd-sticky-info">
+      <span class="fd-sticky-name" id="fd-sticky-name">—</span>
+      <span class="fd-sticky-sep" aria-hidden="true"></span>
+      <span class="fd-sticky-price" id="fd-sticky-price"></span>
+    </div>
+    <div class="fd-sticky-actions">
+      <button class="fd-btn-demo" id="fd-sticky-demo" style="color:#f2e7d5;border-color:rgba(242,231,213,.25);">Try Demo
+        ↑</button>
+      <button class="fd-btn-buy" id="fd-sticky-buy" style="background:var(--gold);color:var(--primary);">Buy
+        Now</button>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="footer-grid">
+      <div>
+        <p class="footer-brand-name">Glyphere</p>
+        <p class="footer-brand-desc">Custom fonts &amp; premium typefaces crafted with soul.</p>
+      </div>
+      <nav>
+        <h3 class="footer-col-title">Marketplace</h3>
+        <ul class="footer-links-list">
+          <li><a href="/marketplace.html">All Fonts</a></li>
+          <li><a href="/marketplace.html">Serifs</a></li>
+          <li><a href="/marketplace.html">Display</a></li>
+        </ul>
+      </nav>
+      <nav>
+        <h3 class="footer-col-title">Services</h3>
+        <ul class="footer-links-list">
+          <li><a href="/custom_font_services/code.html">Custom Design</a></li>
+          <li><a href="/custom_font_services/code.html">Brand Typography</a></li>
+          <li><a href="/custom_font_services/code.html">Licensing</a></li>
+        </ul>
+      </nav>
+      <nav>
+        <h3 class="footer-col-title">Follow</h3>
+        <ul class="footer-links-list">
+          <li><a href="#">Instagram</a></li>
+          <li><a href="#">Twitter / X</a></li>
+          <li><a href="#">LinkedIn</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-copy">© 2024 Glyphere. All Rights Reserved.</p>
+      <nav class="footer-legal">
+        <a href="#">Licensing Terms</a>
+        <a href="#">Cookie Policy</a>
+      </nav>
+    </div>
+  </footer>
+
+  <!-- TOAST CONTAINER -->
+  <div id="g-toast-wrap"></div>
+
+  <script>
+    /* =====================================================
+       FONT DATA — All fonts in one place
+       To add a new font: just add an object to this array.
+    ===================================================== */
+    const FONTS = [
+      {
+        slug: "Turbo_Block", name: "Turbo Block", tagline: "Architectural elegance meets modern precision.",
+        category: "sans-serif", tags: ["bold", "modern", "display", "branding"],
+        description: "Turbo Block is a commanding display sans-serif built for brands that refuse to whisper. Its razor-sharp geometry and unapologetic weight make it the natural choice for packaging, editorial headlines, and identity systems that demand authority.",
+        price: 34, salePrice: 40, styles: ["Black", "ExtraBold", "Bold"], weights: [900, 800, 700],
+        glyphCount: 100, languageSupport: ["Latin", "Uppercase", "Lowercase", "Numbers", "Symbols"],
+        formats: ["TTF", "OTF", "WOFF", "WOFF2"], licenseTypes: ["Personal", "Commercial", "Brand", "Enterprise"],
+        previewText: "Form follows force.",
+        chars: "AaBbCcDd 012 !?",
+        fontFamily: "Turbo_Block, Impact, sans-serif",
+        fontFaceUrl: "/homepage-updated/fonts/Turbo_Block.woff", fallback: "Impact, sans-serif", theme: "dark",
+        designer: { name: "Faiz", studio: "Glyphere", bio: "Independent type designer specialising in display and brand typography.", avatar: "/homepage-updated/faiz.jpeg" },
+        releaseDate: "2024-01", featured: true, relatedSlugs: ["nova-legacy", "midnight-citadel"],
+        glyphs: ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "!", "?", "@", "#", "$", "%", "^", "&", "*", "(", ")", "-", "_", "+", "=", "[", "]", "{", "}", "|", "\\", ": ", "; ", "'", "\"", ",", ".", "/", "<", ">", "~", "`"]
+      },
+      {
+        slug: "Midnight_Citadel", name: "Midnight Citadel", tagline: "Dark. Architectural. Timeless.",
+        category: "serif", tags: ["gothic", "dark", "architectural", "display"],
+        description: "Midnight Citadel draws from Gothic blackletter and brutalist architecture. Every letterform is a monument — imposing, deliberate, unforgettable. Ideal for music, gaming, fashion, and any brand willing to own the night.",
+        price: 35, salePrice: 39.9, styles: ["Regular"], weights: [400],
+        glyphCount: 100, languageSupport: ["Latin", "Uppercase", "Lowercase", "Numbers", "Symbols"],
+        formats: ["TTF", "OTF", "WOFF", "WOFF2"], licenseTypes: ["Personal", "Commercial", "Brand", "Enterprise"],
+        previewText: "Own the darkness.", chars: "AaBbCcDd 012",
+        fontFamily: "'Midnight_Citadel', serif",
+        fontFaceUrl: "/homepage-updated/fonts/Midnight_Citadel.woff", fallback: "serif", theme: "dark",
+        designer: { name: "Faiz", studio: "Glyphere", bio: "Independent type designer specialising in display and brand typography.", avatar: "/homepage-updated/faiz.jpeg" },
+        releaseDate: "2024-04", featured: false, relatedSlugs: ["monument-grotesk", "pebble-sans"],
+        glyphs: ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "!", "?", "@", "#", "$", "%", "^", "&", "*", "(", ")", "-", "_", "+", "=", "[", "]", "{", "}", "|", "\\", ": ", "; ", "'", "\"", ",", ".", "/", "<", ">", "~", "`"]
+      },
+      {
+        slug: "Pebble_Sans", name: "Pebble Sans", tagline: "Friendly. Round. Precise.",
+        category: "geometric", tags: ["geometric", "round", "friendly", "ui"],
+        description: "Pebble Sans is a geometric sans-serif with softly rounded terminals that radiate warmth without sacrificing legibility. Perfect for product interfaces, tech startups, and brands that value approachability.",
+        price: 28, salePrice: 29.9, styles: ["Regular", "Bold"], weights: [400, 700],
+        glyphCount: 100, languageSupport: ["Latin", "Uppercase", "Lowercase", "Numbers", "Symbols"],
+        formats: ["TTF", "OTF", "WOFF", "WOFF2"], licenseTypes: ["Personal", "Commercial"],
+        previewText: "Design that smiles.", chars: "AaBbCcDd 012",
+        fontFamily: "'Pebble_Sans', Helvetica, sans-serif",
+        fontFaceUrl: "/homepage-updated/fonts/Pebble_Sans.woff", fallback: "Helvetica, sans-serif", theme: "cream",
+        designer: { name: "Faiz", studio: "Glyphere", bio: "Independent type designer specialising in display and brand typography.", avatar: "/homepage-updated/faiz.jpeg" },
+        releaseDate: "2024-05", featured: false, relatedSlugs: ["storybook-sans", "monument-grotesk"],
+        glyphs: ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "!", "?", "@", "#", "$", "%", "^", "&", "*", "(", ")", "-", "_", "+", "=", "[", "]", "{", "}", "|", "\\", ": ", "; ", "'", "\"", ",", ".", "/", "<", ">", "~", "`"]
+      },
+      {
+        slug: "Storybook_Sans", name: "Storybook Sans", tagline: "Playful. Expressive. Memorable.",
+        category: "display", tags: ["playful", "editorial", "expressive", "display"],
+        description: "Storybook Sans is a display typeface with personality in every curve. Inspired by hand-lettering traditions, it brings warmth and spontaneity to book covers, packaging, and any brand that dares to be different.",
+        price: 28, salePrice: 30, styles: ["Regular"], weights: [400],
+        glyphCount: 100, languageSupport: ["Latin", "Uppercase", "Lowercase", "Numebers", "Symbols"],
+        formats: ["TTF", "OTF", "WOFF", "WOFF2"], licenseTypes: ["Personal", "Commercial"],
+        previewText: "Every letter tells a story.", chars: "AaBbCcDd 012",
+        fontFamily: "'Storybook_Sans', Georgia, serif",
+        fontFaceUrl: "/homepage-updated/fonts/Storybook_Sans.woff", fallback: "Georgia, serif", theme: "cream",
+        designer: { name: "Faiz", studio: "Glyphere", bio: "Independent type designer specialising in display and brand typography.", avatar: "/homepage-updated/faiz.jpeg" },
+        releaseDate: "2024-06", featured: false, relatedSlugs: ["pebble-sans", "nova-legacy"],
+        glyphs: ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "!", "?", "@", "#", "$", "%", "^", "&", "*", "(", ")", "-", "_", "+", "=", "[", "]", "{", "}", "|", "\\", ": ", "; ", "'", "\"", ",", ".", "/", "<", ">", "~", "`"]
+      },
+      {
+
+        slug: "Brushfield-Fury",
+        name: "Brushfield Fury",
+        tagline: "Playful. Expressive. Memorable.",
+        category: "display",
+        tags: ["playful", "kids", "editorial", "expressive", "display"],
+        description: "Storybook Sans is a display typeface with personality in every curve. Inspired by hand-lettering traditions, it brings warmth and spontaneity to book covers, packaging, social content, and any brand that dares to be different.",
+        price: 39,
+        salePrice: 45,
+        styles: ["Regular"],
+        weights: [400],
+        glyphCount: 100,
+        languageSupport: ["Latin", "Uppercase", "Lowercase", "Numebers", "Symbols"],
+        formats: ["TTF", "OTF", "WOFF", "WOFF2"],
+        licenseTypes: ["Personal", "Commercial"],
+        previewText: "Every letter tells a story.",
+        chars: "AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz 0123456789 !?",
+        fontFamily: "'Brushfield_Fury', sans-serif",
+        fontFaceUrl: "/homepage-updated/fonts/Brushfield_Fury.woff2",
+        googleFont: null,
+        fallback: "Georgia, serif",
+        theme: "cream",
+        designer: {
+          name: "Faiz",
+          studio: "Glyphere",
+          bio: "Independent type designer specialising in display and brand typography.",
+          avatar: "/homepage-updated/faiz.jpeg"
+        },
+        releaseDate: "2024-06",
+        featured: false,
+        relatedSlugs: ["pebble-sans", "nova-legacy"],
+        glyphs: ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "!", "?", "@", "#", "$", "%", "^", "&", "*", "()", "{}", "[]", "/", "<", ">", " "]
+
+      },
+      {
+        slug: "Vellum_Flow", name: "Vellum Flow", tagline: "Flowing Script. Elegant Lines.",
+        category: "handwriting", tags: ["playful", "editorial", "expressive", "display"],
+        description: "Vellum Flow is a display typeface with personality in every curve. Inspired by hand-lettering traditions, it brings warmth and spontaneity to book covers, packaging, and any brand that dares to be different.",
+        price: 25, salePrice: 29.95, styles: ["Regular"], weights: [400],
+        glyphCount: 70, languageSupport: ["Latin", "Uppercase", "Lowercase"],
+        formats: ['TTF', 'OTF', "WOFF", "WOFF2"], licenseTypes: ["Personal", "Commercial"],
+        previewText: "Every letter tells a story.", chars: "AaBbCcDd 012",
+        fontFamily: "'Vellum_Flow', Georgia, serif",
+        fontFaceUrl: "/homepage-updated/fonts/Vellum_Flow.woff", fallback: "Georgia, serif", theme: "cream",
+        designer: { name: "Faiz", studio: "Glyphere", bio: "Independent type designer specialising in display and brand typography.", avatar: "/homepage-updated/faiz.jpeg" },
+        releaseDate: "2024-06", featured: false, relatedSlugs: ["pebble-sans", "nova-legacy"],
+        glyphs: ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", " "]
+      },
+      {
+        slug: "Mistavio_Sans", name: "Mistavio Sans", tagline: "Modern. Sophisticated. Versatile.",
+        category: "sans", tags: ["playful", "editorial", "expressive", "display"],
+        description: "Mistavio Sans is a display typeface with clean lines and balanced proportions. Inspired by mid-century modern typography, it brings clarity and sophistication to headlines, logos, and branding that needs to stand out.",
+        price: 38, salePrice: 44.95, styles: ["Regular"], weights: [400],
+        glyphCount: 100, languageSupport: ["Latin", "Uppercases", "Lowercases", "Numbers", "Symbols"],
+        formats: ["TTF", "OTF", "WOFF", "WOFF2"], licenseTypes: ["Personal", "Commercial"],
+        previewText: "Every letter tells a story.", chars: "AaBbCcDd 012",
+        fontFamily: "'Mistavio_Sans', Georgia, serif",
+        fontFaceUrl: "/homepage-updated/fonts/Mistavio_Sans.woff", fallback: "Georgia, serif", theme: "cream",
+        designer: { name: "Faiz", studio: "Glyphere", bio: "Independent type designer specialising in display and brand typography.", avatar: "/homepage-updated/faiz.jpeg" },
+        releaseDate: "2024-06", featured: false, relatedSlugs: ["pebble-sans", "nova-legacy"],
+        glyphs: ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "!", "?", "@", "#", "$", "%", "^", "&", "*", "(", ")", "-", "_", "+", "=", "[", "]", "{", "}", "|", "\\", ": ", "; ", "'", "\"", ",", ".", "/", "<", ">", "~", "`"]
+      },
+      {
+        slug: "Velocity_Brush", name: "Velocity Brush", tagline: "Raw. Dynamic. Expressive.",
+        category: "script", tags: ["brush", "dynamic", "expressive", "handwriting"],
+        description: "Velocity Brush captures the energy of a moment. Its bold strokes and spontaneous flow make it perfect for brands that want to feel authentic, creative, and alive.",
+        price: 20, salePrice: 20, styles: ["Regular"], weights: [400],
+        glyphCount: 100, languageSupport: ["Latin", "Uppercase", "Lowercase", "Numbers", "Symbols"],
+        formats: ['TTF', 'OTF', 'WOFF', 'WOFF2'], licenseTypes: ["Personal", "Commercial"],
+        previewText: "Write with impact.", chars: "AaBbCcDd 012",
+        fontFamily: "'Velocity_Brush', sans-serif",
+        fontFaceUrl: "/homepage-updated/fonts/Velocity_Brush.woff", fallback: "sans-serif", theme: "dark",
+        designer: { name: "Faiz", studio: "Glyphere", bio: "Independent type designer specialising in display and brand typography.", avatar: "/homepage-updated/faiz.jpeg" },
+        releaseDate: "2024-06", featured: false, relatedSlugs: ["brushfield-fury", "storybook-sans"],
+        glyphs: ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "!", "?", " "]
+      },
+      {
+        slug: "Goliath_Soft", name: "Goliath Soft", tagline: "Strong yet friendly.",
+        category: "display", tags: ["bold", "rounded", "friendly", "packaging"],
+        description: "Goliath Soft takes bold typography and gives it a warm twist. With soft edges and balanced proportions, it’s perfect for brands that want to feel approachable but still stand out.",
+        price: 28, salePrice: 30, styles: ["Bold"], weights: [700],
+        glyphCount: 100, languageSupport: ["Latin", "Uppercase", "Lowercase", "Numbers", "Symbols"],
+        formats: ['TTF', 'OTF', 'WOFF', 'WOFF2'], licenseTypes: ["Personal", "Commercial"],
+        previewText: "soft and bold.", chars: "AaBbCcDd 012 !?",
+        fontFamily: "'Goliath_Soft', sans-serif",
+        fontFaceUrl: "/homepage-updated/fonts/Goliath_Soft.woff", fallback: "sans-serif", theme: "cream",
+        designer: { name: "Faiz", studio: "Glyphere", bio: "Independent type designer specialising in display and brand typography.", avatar: "/homepage-updated/faiz.jpeg" },
+        releaseDate: "2024-06", featured: false, relatedSlugs: ["mistavio-sans", "turbo-block"],
+        glyphs: ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "!", "?", ".", ";", ":", " "]
+      },
+      {
+        slug: "BLOCK_ITALIC", name: "BLOCK ITALIC", tagline: "Bold display with dynamic energy.",
+        category: "Logo", tags: ["bold", "rounded", "friendly", "packaging"],
+        description: "Block Italic is a bold display typeface with a dynamic italic slant. Inspired by classic wood type, it delivers energy, impact, and a confident, retro feel. Perfect for headlines, posters, and packaging that demands attention.",
+        price: 28, salePrice: 29.95, styles: ["Bold"], weights: [700],
+        glyphCount: 100, languageSupport: ["Latin", "Uppercase", "Lowercase", "Numbers", "Symbols"],
+        formats: ['TTF', 'OTF', 'WOFF', 'WOFF2'], licenseTypes: ["Personal", "Commercial"],
+        previewText: "soft and bold.", chars: "AaBbCcDd 012 !?",
+        fontFamily: "'BLOCK_ITALIC', logo",
+        fontFaceUrl: "/homepage-updated/fonts/BLOCK_ITALIC.woff2", fallback: "logo", theme: "dark",
+        designer: { name: "Faiz", studio: "Glyphere", bio: "Independent type designer specialising in display and brand typography.", avatar: "/homepage-updated/faiz.jpeg" },
+        releaseDate: "2024-06", featured: false, relatedSlugs: ["mistavio-sans", "turbo-block"],
+        glyphs: ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "!", "?", "@", "#", "$", "%", "^", "&", "*", "", " ", ",", ".", "/", "<", ">", "~", "`", ";", ":"]
+      },
+      {
+        slug: "Stadium_Bold", name: "Stadium Bold", tagline: "Bold display with dynamic energy.",
+        category: "sans-serif", tags: ["bold", "rounded", "friendly", "packaging"],
+        description: "Stadium Bold is a bold display typeface with a dynamic italic slant. Inspired by classic wood type, it delivers energy, impact, and a confident, retro feel. Perfect for headlines, posters, and packaging that demands attention.",
+        price: 20, salePrice: 20, styles: ["Bold"], weights: [700],
+        glyphCount: 100, languageSupport: ["Latin", "Uppercase", "Lowercase"],
+        formats: ['TTF', 'OTF', 'WOFF', 'WOFF2'], licenseTypes: ["Personal", "Commercial"],
+        previewText: "soft and bold.", chars: "AaBbCcDd 012 !?",
+        fontFamily: "'Stadium_Bold', sans-serif",
+        fontFaceUrl: "/homepage-updated/fonts/Stadium_Bold.woff2", fallback: "logo", theme: "dark",
+        designer: { name: "Faiz", studio: "Glyphere", bio: "Independent type designer specialising in display and brand typography.", avatar: "/homepage-updated/faiz.jpeg" },
+        releaseDate: "2024-06", featured: false, relatedSlugs: ["mistavio-sans", "turbo-block"],
+        glyphs: ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y"]
+      },
+      {
+        slug: "Strata_Bold", name: "Strata Bold", tagline: "Modern. Sophisticated. Versatile.",
+        category: "sans", tags: ["playful", "editorial", "expressive", "display"],
+        description: "Mistavio Sans is a display typeface with clean lines and balanced proportions. Inspired by mid-century modern typography, it brings clarity and sophistication to headlines, logos, and branding that needs to stand out.",
+        price: 35, salePrice: 39.95, styles: ["Bold"], weights: [400],
+        glyphCount: 100, languageSupport: ["Latin", "Uppercases", "Lowercases", "Numbers", "Symbols"],
+        formats: ["TTF", "OTF", "WOFF", "WOFF2"], licenseTypes: ["Personal", "Commercial"],
+        previewText: "Every letter tells a story.", chars: "AaBbCcDd 012",
+        fontFamily: "'Strata_Bold', sans-serif",
+        fontFaceUrl: "/homepage-updated/fonts/Strata_Bold.woff2", fallback: "sans-serif", theme: "dark",
+        designer: { name: "Faiz", studio: "Glyphere", bio: "Independent type designer specialising in display and brand typography.", avatar: "/homepage-updated/faiz.jpeg" },
+        releaseDate: "2024-06", featured: false, relatedSlugs: ["pebble-sans", "nova-legacy"],
+        glyphs: ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "!", "?", "@", "#", "$", "%", "^", "&", "*", "(", ")", "-", "_", "+", "=", "[", "]", "{", "}", "|", "\\", ": ", "; ", "'", "\"", ",", ".", "/", "<", ">", "~", "`"]
+      },
+      {
+        slug: "Funkadelic_Serif", name: "Funkadelic Serif", tagline: "Groovy vibes with a retro twist.",
+        category: "serif", tags: ["funky", "retro", "playful", "display"],
+        description: "Funkadelic Serif brings groovy vibes with a retro twist. Perfect for headlines, packaging, and projects that need a bold, playful personality.",
+        price: 49, salePrice: 29, styles: ["Regular"], weights: [400],
+        glyphCount: 100, languageSupport: ["Latin", "Uppercases", "Lowercases", "Numbers", "Symbols"],
+        formats: ["TTF", "OTF", "WOFF", "WOFF2"], licenseTypes: ["Personal", "Commercial"],
+        previewText: "Groovy vibes with a retro twist.", chars: "AaBbCcDd 012",
+        fontFamily: "'Funkadelic_Serif', serif",
+        fontFaceUrl: "/homepage-updated/fonts/Funkadelic_Serif.woff2", fallback: "serif", theme: "dark",
+        designer: { name: "Faiz", studio: "Glyphere", bio: "Independent type designer specialising in display and brand typography.", avatar: "/homepage-updated/faiz.jpeg" },
+        releaseDate: "2024-06", featured: false, relatedSlugs: ["pebble-sans", "nova-legacy"],
+        glyphs: ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "!", "?", "@", "#", "$", "%", "^", "&", "*", "(", ")", "-", "_", "+", "=", "[", "]", "{", "}", "|", "\\", ": ", "; ", "'", "\"", ",", ".", "/", "<", ">", "~", "`"]
+      },
+      {
+        slug: "Prose_Bold", name: "Prose Bold", tagline: "Bold display with dynamic energy.",
+        category: "serif", tags: ["funky", "retro", "playful", "display"],
+        description: "Prose Bold is a bold serif typeface with a dynamic italic slant. Inspired by classic wood type, it delivers energy, impact, and a confident, retro feel. Perfect for headlines, posters, and packaging that demands attention.",
+        price: 28, salePrice: 30, styles: ["Bold"], weights: [700],
+        glyphCount: 100, languageSupport: ["Latin", "Uppercases", "Lowercases", "Numbers", "Symbols"],
+        formats: ["TTF", "OTF", "WOFF", "WOFF2"], licenseTypes: ["Personal", "Commercial"],
+        previewText: "Bold display with dynamic energy.", chars: "AaBbCcDd 012",
+        fontFamily: "'Prose_Bold', serif",
+        fontFaceUrl: "/homepage-updated/fonts/Prose_Bold.woff2", fallback: "serif", theme: "dark",
+        designer: { name: "Faiz", studio: "Glyphere", bio: "Independent type designer specialising in display and brand typography.", avatar: "/homepage-updated/faiz.jpeg" },
+        releaseDate: "2024-06", featured: false, relatedSlugs: ["pebble-sans", "nova-legacy"],
+        glyphs: ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "!", "?", "@", "#", "$", "%", "^", "&", "*", "(", ")", "-", "_", "+", "=", "[", "]", "{", "}", "|", "\\", ": ", "; ", "'", "\"", ",", ".", "/", "<", ">", "~", "`"]
+      },
+      {
+        slug: "Zenith_Spark", name: "Zenith Spark", tagline: "Bold display with dynamic energy.",
+        category: "serif", tags: ["funky", "retro", "playful", "display"],
+        description: "Zenith Spark is a bold display font with a retro vibe. Perfect for headlines, posters, and packaging that demands attention.",
+        price: 35, salePrice: 40, styles: ["Bold"], weights: [700],
+        glyphCount: 100, languageSupport: ["Latin", "Uppercases", "Lowercases", "Numbers", "Symbols"],
+        formats: ["TTF", "OTF", "WOFF", "WOFF2"], licenseTypes: ["Personal", "Commercial"],
+        previewText: "Bold display with dynamic energy.", chars: "AaBbCcDd 012",
+        fontFamily: "'Zenith_Spark', serif",
+        fontFaceUrl: "/homepage-updated/fonts/Zenith_Spark.woff2", fallback: "serif", theme: "light",
+        designer: { name: "Faiz", studio: "Glyphere", bio: "Independent type designer specialising in display and brand typography.", avatar: "/homepage-updated/faiz.jpeg" },
+        releaseDate: "2024-06", featured: false, relatedSlugs: ["pebble-sans", "nova-legacy"],
+        glyphs: ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "!", "?", "@", "#", "$", "%", "^", "&", "*", "(", ")", "-", "_", "+", "=", "[", "]", "{", "}", "|", "\\", ": ", "; ", "'", "\"", ",", ".", "/", "<", ">", "~", "`"]
+      },
+      {
+        slug: "Sonnet_Italic", name: "Sonnet Italic", tagline: "Bold display with dynamic energy.",
+        category: "serif", tags: ["funky", "retro", "playful", "display"],
+        description: "Sonnet Italic is a bold display font with a retro vibe. Perfect for headlines, posters, and packaging that demands attention.",
+        price: 35, salePrice: 40, styles: ["Bold"], weights: [700],
+        glyphCount: 100, languageSupport: ["Latin", "Uppercases", "Lowercases", "Numbers", "Symbols"],
+        formats: ["TTF", "OTF", "WOFF", "WOFF2"], licenseTypes: ["Personal", "Commercial"],
+        previewText: "Bold display with dynamic energy.", chars: "AaBbCcDd 012",
+        fontFamily: "'Sonnet_Italic', serif",
+        fontFaceUrl: "/homepage-updated/fonts/Sonnet_Italic.woff", fallback: "serif", theme: "light",
+        designer: { name: "Faiz", studio: "Glyphere", bio: "Independent type designer specialising in display and brand typography.", avatar: "/homepage-updated/faiz.jpeg" },
+        releaseDate: "2024-06", featured: false, relatedSlugs: ["pebble-sans", "nova-legacy"],
+        glyphs: ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "!", "?", "@", "#", "$", "%", "^", "&", "*", "(", ")", "-", "_", "+", "=", "[", "]", "{", "}", "|", "\\", ": ", "; ", "'", "\"", ",", ".", "/", "<", ">", "~", "`"]
+      },
+      {
+        slug: "Nova_Legacy", name: "Nova Legacy", tagline: "Bold display with dynamic energy.",
+        category: "serif", tags: ["funky", "retro", "playful", "display"],
+        description: "Nova Legacy is a bold display font with a retro vibe. Perfect for headlines, posters, and packaging that demands attention.",
+        price: 35, salePrice: 40, styles: ["Bold"], weights: [700],
+        glyphCount: 100, languageSupport: ["Latin", "Uppercases", "Lowercases", "Numbers", "Symbols"],
+        formats: ["TTF", "OTF", "WOFF", "WOFF2"], licenseTypes: ["Personal", "Commercial"],
+        previewText: "Bold display with dynamic energy.", chars: "AaBbCcDd 012",
+        fontFamily: "'Nova_Legacy', serif",
+        fontFaceUrl: "/homepage-updated/fonts/Nova_Legacy.ttf", fallback: "serif", theme: "light",
+        designer: { name: "Faiz", studio: "Glyphere", bio: "Independent type designer specialising in display and brand typography.", avatar: "/homepage-updated/faiz.jpeg" },
+        releaseDate: "2024-06", featured: false, relatedSlugs: ["pebble-sans", "nova-legacy"],
+        glyphs: ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "!", "?", "@", "#", "$", "%", "^", "&", "*", "(", ")", "-", "_", "+", "=", "[", "]", "{", "}", "|", "\\", ": ", "; ", "'", "\"", ",", ".", "/", "<", ">", "~", "`"]
+      },
+      {
+        slug: "Boutique_Seraphina", name: "Boutique Seraphina", tagline: "Bold display with dynamic energy.",
+        category: "serif", tags: ["funky", "retro", "playful", "display"],
+        description: "Boutique Seraphina is a bold display font with a retro vibe. Perfect for headlines, posters, and packaging that demands attention.",
+        price: 35, salePrice: 40, styles: ["Bold"], weights: [700],
+        glyphCount: 100, languageSupport: ["Latin", "Uppercases", "Lowercases", "Numbers", "Symbols"],
+        formats: ["TTF", "OTF", "WOFF", "WOFF2"], licenseTypes: ["Personal", "Commercial"],
+        previewText: "Bold display with dynamic energy.", chars: "AaBbCcDd 012",
+        fontFamily: "'Boutique_Seraphina', serif",
+        fontFaceUrl: "/homepage-updated/fonts/Boutique_Seraphina.woff2", fallback: "serif", theme: "light",
+        designer: { name: "Faiz", studio: "Glyphere", bio: "Independent type designer specialising in display and brand typography.", avatar: "/homepage-updated/faiz.jpeg" },
+        releaseDate: "2024-06", featured: false, relatedSlugs: ["pebble-sans", "nova-legacy"],
+        glyphs: ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "!", "?", "@", "#", "$", "%", "^", "&", "*", "(", ")", "-", "_", "+", "=", "[", "]", "{", "}", "|", "\\", ": ", "; ", "'", "\"", ",", ".", "/", "<", ">", "~", "`"]
+      },
+      {
+        slug: "Glissade", name: "Glissade", tagline: "Bold display with dynamic energy.",
+        category: "serif", tags: ["funky", "retro", "playful", "display"],
+        description: "Glissade is a bold display font with a retro vibe. Perfect for headlines, posters, and packaging that demands attention.",
+        price: 35, salePrice: 40, styles: ["Bold"], weights: [700],
+        glyphCount: 100, languageSupport: ["Latin", "Uppercases", "Lowercases", "Numbers", "Symbols"],
+        formats: ["TTF", "OTF", "WOFF", "WOFF2"], licenseTypes: ["Personal", "Commercial"],
+        previewText: "Bold display with dynamic energy.", chars: "AaBbCcDd 012",
+        fontFamily: "'Glissade', serif",
+        fontFaceUrl: "/homepage-updated/fonts/Glissade.woff2", fallback: "serif", theme: "light",
+        designer: { name: "Faiz", studio: "Glyphere", bio: "Independent type designer specialising in display and brand typography.", avatar: "/homepage-updated/faiz.jpeg" },
+        releaseDate: "2024-06", featured: false, relatedSlugs: ["pebble-sans", "nova-legacy"],
+        glyphs: ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "!", "?", "@", "#", "$", "%", "^", "&", "*", "(", ")", "-", "_", "+", "=", "[", "]", "{", "}", "|", "\\", ": ", "; ", "'", "\"", ",", ".", "/", "<", ">", "~", "`"]
+      },
+      {
+        slug: "Onyx_Dynasty", name: "Onyx Dynasty", tagline: "Bold display with dynamic energy.",
+        category: "serif", tags: ["funky", "retro", "playful", "display"],
+        description: "Onyx Dynasty is a bold display font with a retro vibe. Perfect for headlines, posters, and packaging that demands attention.",
+        price: 35, salePrice: 40, styles: ["Bold"], weights: [700],
+        glyphCount: 100, languageSupport: ["Latin", "Uppercases", "Lowercases", "Numbers", "Symbols"],
+        formats: ["TTF", "OTF", "WOFF", "WOFF2"], licenseTypes: ["Personal", "Commercial"],
+        previewText: "Bold display with dynamic energy.", chars: "AaBbCcDd 012",
+        fontFamily: "'Onyx_Dynasty', serif",
+        fontFaceUrl: "/homepage-updated/fonts/Onyx_Dynasty.woff2", fallback: "serif", theme: "light",
+        designer: { name: "Faiz", studio: "Glyphere", bio: "Independent type designer specialising in display and brand typography.", avatar: "/homepage-updated/faiz.jpeg" },
+        releaseDate: "2024-06", featured: false, relatedSlugs: ["pebble-sans", "nova-legacy"],
+        glyphs: ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "!", "?", "@", "#", "$", "%", "^", "&", "*", "(", ")", "-", "_", "+", "=", "[", "]", "{", "}", "|", "\\", ": ", "; ", "'", "\"", ",", ".", "/", "<", ">", "~", "`"]
+      },
+      {
+        slug: "Apex_Rounded", name: "Apex Rounded", tagline: "Bold display with dynamic energy.",
+        category: "sans", tags: ["funky", "retro", "playful", "display"],
+        description: "Apex Rounded is a bold display font with a retro vibe. Perfect for headlines, posters, and packaging that demands attention.",
+        price: 40, salePrice: 30, styles: ["Bold"], weights: [700],
+        glyphCount: 100, languageSupport: ["Latin", "Uppercases", "Lowercases", "Numbers", "Symbols"],
+        formats: ["TTF", "OTF", "WOFF", "WOFF2"], licenseTypes: ["Personal", "Commercial"],
+        previewText: "Bold display with dynamic energy.", chars: "AaBbCcDd 012",
+        fontFamily: "'Apex_Rounded', serif",
+        fontFaceUrl: "/homepage-updated/fonts/Apex_Rounded.woff2", fallback: "serif", theme: "light",
+        designer: { name: "Faiz", studio: "Glyphere", bio: "Independent type designer specialising in display and brand typography.", avatar: "/homepage-updated/faiz.jpeg" },
+        releaseDate: "2024-06", featured: false, relatedSlugs: ["pebble-sans", "nova-legacy"],
+        glyphs: ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "!", "?", "@", "#", "$", "%", "^", "&", "*", "(", ")", "-", "_", "+", "=", "[", "]", "{", "}", "|", "\\", ": ", "; ", "'", "\"", ",", ".", "/", "<", ">", "~", "`"]
+      },
+      {
+        slug: "Nova_Shell", name: "Nova Shell", tagline: "Bold display with dynamic energy.",
+        category: "sans", tags: ["funky", "retro", "playful", "display"],
+        description: "Nova Shell is a bold display font with a retro vibe. Perfect for headlines, posters, and packaging that demands attention.",
+        price: 34, salePrice: 25, styles: ["Bold"], weights: [700],
+        glyphCount: 70, languageSupport: ["Latin", "Uppercases", "Lowercases", "Numbers", "Symbols"],
+        formats: ["TTF", "OTF", "WOFF", "WOFF2"], licenseTypes: ["Personal", "Commercial"],
+        previewText: "Bold display with dynamic energy.", chars: "AaBbCcDd 012",
+        fontFamily: "'Nova_Shell', serif",
+        fontFaceUrl: "/homepage-updated/fonts/Nova_Shell.woff2", fallback: "serif", theme: "light",
+        designer: { name: "Faiz", studio: "Glyphere", bio: "Independent type designer specialising in display and brand typography.", avatar: "/homepage-updated/faiz.jpeg" },
+        releaseDate: "2024-06", featured: false, relatedSlugs: ["pebble-sans", "nova-legacy"],
+        glyphs: ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "!", "?", "@", "#", "$", "%", "^", "&", "*", "(", ")", "-", "_", "+", "=", "[", "]", "{", "}", "|", "\\", ": ", "; ", "'", "\"", ",", ".", "/", "<", ">", "~", "`"]
+      },
+      {
+        slug: "Throttle_Street", name: "Throttle Street", tagline: "Bold display with dynamic energy.",
+        category: "sans", tags: ["funky", "retro", "playful", "display"],
+        description: "Throttle Street is a bold display font with a retro vibe. Perfect for headlines, posters, and packaging that demands attention.",
+        price: 39, salePrice: 30, styles: ["Bold"], weights: [700],
+        glyphCount: 70, languageSupport: ["Latin", "Uppercases", "Lowercases", "Numbers", "Symbols"],
+        formats: ["TTF", "OTF", "WOFF", "WOFF2"], licenseTypes: ["Personal", "Commercial"],
+        previewText: "Bold display with dynamic energy.", chars: "AaBbCcDd 012",
+        fontFamily: "'Throttle_Street', serif",
+        fontFaceUrl: "/homepage-updated/fonts/Throttle_Street.woff2", fallback: "serif", theme: "light",
+        designer: { name: "Faiz", studio: "Glyphere", bio: "Independent type designer specialising in display and brand typography.", avatar: "/homepage-updated/faiz.jpeg" },
+        releaseDate: "2024-06", featured: false, relatedSlugs: ["pebble-sans", "nova-legacy"],
+        glyphs: ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "!", "?", "@", "#", "$", "%", "^", "&", "*", "(", ")", "-", "_", "+", "=", "[", "]", "{", "}", "|", "\\", ": ", "; ", "'", "\"", ",", ".", "/", "<", ">", "~", "`"]
+      },
+      {
+        slug: "Vanguard_Axis", name: "Vanguard Axis", tagline: "Bold display with dynamic energy.",
+        category: "sans", tags: ["funky", "retro", "playful", "display"],
+        description: "Vanguard Axis is a bold display font with a retro vibe. Perfect for headlines, posters, and packaging that demands attention.",
+        price: 30, salePrice: 20, styles: ["Bold"], weights: [700],
+        glyphCount: 70, languageSupport: ["Latin", "Uppercases", "Lowercases", "Numbers", "Symbols"],
+        formats: ["TTF", "OTF", "WOFF", "WOFF2"], licenseTypes: ["Personal", "Commercial"],
+        previewText: "Bold display with dynamic energy.", chars: "AaBbCcDd 012",
+        fontFamily: "'Vanguard_Axis', serif",
+        fontFaceUrl: "/homepage-updated/fonts/Vanguard_Axis.woff2", fallback: "serif", theme: "light",
+        designer: { name: "Faiz", studio: "Glyphere", bio: "Independent type designer specialising in display and brand typography.", avatar: "/homepage-updated/faiz.jpeg" },
+        releaseDate: "2024-06", featured: false, relatedSlugs: ["pebble-sans", "nova-legacy"],
+        glyphs: ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "!", "?", "@", "#", "$", "%", "^", "&", "*", "(", ")", "-", "_", "+", "=", "[", "]", "{", "}", "|", "\\", ": ", "; ", "'", "\"", ",", ".", "/", "<", ">", "~", "`"]
+      },
+      {
+        slug: "Volo_Scale", name: "Volo Scale", tagline: "Bold display with dynamic energy.",
+        category: "sans", tags: ["funky", "retro", "playful", "display"],
+        description: "Volo Scale is a bold display font with a retro vibe. Perfect for headlines, posters, and packaging that demands attention.",
+        price: 30, salePrice: 20, styles: ["Bold"], weights: [700],
+        glyphCount: 70, languageSupport: ["Latin", "Uppercases", "Lowercases", "Numbers", "Symbols"],
+        formats: ["TTF", "OTF", "WOFF", "WOFF2"], licenseTypes: ["Personal", "Commercial"],
+        previewText: "Bold display with dynamic energy.", chars: "AaBbCcDd 012",
+        fontFamily: "'Volo_Scale', serif",
+        fontFaceUrl: "/homepage-updated/fonts/Volo_Scale.woff2", fallback: "serif", theme: "light",
+        designer: { name: "Faiz", studio: "Glyphere", bio: "Independent type designer specialising in display and brand typography.", avatar: "/homepage-updated/faiz.jpeg" },
+        releaseDate: "2024-06", featured: false, relatedSlugs: ["pebble-sans", "nova-legacy"],
+        glyphs: ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "!", "?", "@", "#", "$", "%", "^", "&", "*", "(", ")", "-", "_", "+", "=", "[", "]", "{", "}", "|", "\\", ": ", "; ", "'", "\"", ",", ".", "/", "<", ">", "~", "`"]
+      }
+    ];
+
+    /* =====================================================
+       HELPERS
+    ===================================================== */
+    const qs = (s, c = document) => c.querySelector(s);
+    const qsa = (s, c = document) => [...c.querySelectorAll(s)];
+    const $ = (tag, cls, html) => { const e = document.createElement(tag); if (cls) e.className = cls; if (html !== undefined) e.innerHTML = html; return e; };
+
+    function fmt(p) { return '$' + p; }
+
+    function toast(msg) {
+      const wrap = document.getElementById('g-toast-wrap');
+      const t = $('div', 'g-toast'); t.textContent = msg;
+      wrap.appendChild(t);
+      requestAnimationFrame(() => { requestAnimationFrame(() => t.classList.add('show')); });
+      setTimeout(() => { t.classList.remove('show'); setTimeout(() => t.remove(), 400); }, 2800);
+    }
+
+    function loadFont(font) {
+      if (!font.fontFaceUrl) return;
+      const id = 'ff-' + font.slug;
+      if (document.getElementById(id)) return;
+      const ext = font.fontFaceUrl.split('.').pop();
+      const fmt = ext === 'woff2' ? 'woff2' : ext === 'woff' ? 'woff' : 'truetype';
+      const s = document.createElement('style'); s.id = id;
+      s.textContent = `@font-face{font-family:${JSON.stringify(font.name)};src:url('${font.fontFaceUrl}') format('${fmt}');font-display:swap}`;
+      document.head.appendChild(s);
+    }
+
+    /* =====================================================
+       ROUTER — get slug from URL
+    ===================================================== */
+    function getSlug() {
+      const p = new URLSearchParams(location.search);
+      if (p.has('font')) return p.get('font');
+      const parts = location.pathname.split('/').filter(Boolean);
+      const i = parts.indexOf('fonts');
+      if (i !== -1 && parts[i + 1]) return parts[i + 1];
+      return null;
+    }
+
+    function getFont(slug) { return FONTS.find(f => f.slug === slug) || null; }
+    function getRelated(slugs) { return (slugs || []).map(s => FONTS.find(f => f.slug === s)).filter(Boolean); }
+    function fontURL(slug) { return `?font=${slug}`; }
+
+    /* =====================================================
+       RENDER
+    ===================================================== */
+    function render() {
+      const slug = getSlug();
+      const main = document.getElementById('fd-main');
+
+      if (!slug || !getFont(slug)) {
+        main.innerHTML = `
+      <div style="min-height:70vh;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1.5rem;text-align:center;padding:2rem;">
+        <p style="font-size:3.5rem;">✦</p>
+        <h1 style="font-family:'Bricolage Grotesque',sans-serif;font-size:2.5rem;font-weight:800;letter-spacing:-.04em;">Font not found</h1>
+        <p style="color:#8a7e70;max-width:26rem;">${slug ? `No font found for slug: "<strong>${slug}</strong>"` : 'No font specified in the URL.'}</p>
+        <a href="/marketplace.html" style="background:#1c1812;color:#f2e7d5;padding:.875rem 2rem;border-radius:100px;font-weight:700;font-size:.875rem;">← Back to Marketplace</a>
+      </div>`;
+        return;
+      }
+      
+
+      const font = getFont(slug);
+      loadFont(font);
+
+      /* SEO */
+      document.title = `${font.name} — Glyphere`;
+      qs('meta[name="description"]')?.setAttribute('content', `${font.name}: ${font.tagline} — ${fmt(font.salePrice ?? font.price)}`);
+
+      const ff = font.fontFamily;
+      const hasSale = font.salePrice != null;
+
+      main.innerHTML = `
+    <!-- HERO -->
+    <section class="fd-hero">
+      <div>
+        <div class="fd-breadcrumb">
+          <a href="/marketplace.html">Marketplace</a><span>›</span>
+          <a href="/marketplace.html">${font.category}</a><span>›</span>
+          <span>${font.name}</span>
+        </div>
+
+        <div class="fd-badges">
+          <span class="fd-badge fd-badge--cat">${font.category}</span>
+          ${(font.styles || []).map(s => `<span class="fd-badge fd-badge--style">${s}</span>`).join('')}
+          ${hasSale ? `<span class="fd-badge fd-badge--sale">On Sale</span>` : ''}
+        </div>
+
+        <h1 class="fd-name" style="font-family:${ff};">${font.name}</h1>
+        <p class="fd-tagline">${font.tagline}</p>
+        <p class="fd-description">${font.description}</p>
+
+        <div class="fd-price-row">
+          ${hasSale ? `<span class="fd-price-old">${fmt(font.price)}</span><span class="fd-price">${fmt(Math.round(font.salePrice * 0.60))}</span><span class="fd-price-save">Save ${fmt(font.price - Math.round(font.salePrice * 0.60))}</span>` : `<span class="fd-price">${fmt(font.price)}</span>`}
+        </div>
+
+        <div class="fd-actions">
+          <button class="fd-btn-buy" id="hero-buy">Buy License — ${fmt(hasSale ? Math.round(font.salePrice * 0.60) : font.price)}</button>
+          <button class="fd-btn-demo" id="hero-demo">Try Free Demo ↓</button>
+        </div>
+
+        <div class="fd-meta-pills">
+          <span class="fd-meta-pill">⊞ ${font.glyphCount}+ Glyphs</span>
+          <span class="fd-meta-pill">◈ ${(font.styles || ['Regular']).join(' · ')}</span>
+          <span class="fd-meta-pill">⬡ ${(font.formats || ['OTF TTF WOFF2']).join(' · ')}</span>
+          <span class="fd-meta-pill">📅 ${font.releaseDate || '—'}</span>
+        </div>
+      </div>
+
+      <div>
+        <div class="fd-specimen-card">
+          <p class="fd-specimen-label">LIVE PREVIEW — TYPE ANYTHING</p>
+          <p class="fd-specimen-big" id="fd-hero-preview" style="font-family:${ff};" contenteditable="true" spellcheck="false">${font.previewText || 'Aa'}</p>
+          <p class="fd-specimen-chars" style="font-family:${ff};">${font.chars || 'AaBbCcDd 0123'}</p>
+          <div class="fd-specimen-controls">
+            <div class="fd-specimen-size-wrap">
+              <span class="fd-spec-size-label">Size</span>
+              <input type="range" class="fd-spec-range" id="fd-hero-size" min="28" max="120" value="64"/>
+              <span class="fd-spec-size-val" id="fd-hero-size-v">64</span>
+            </div>
+            <div class="fd-style-pills-wrap" id="fd-hero-pills">
+              <button class="fd-style-pill-btn active" data-style="normal" data-weight="400">Regular</button>
+              <button class="fd-style-pill-btn" data-style="italic" data-weight="400">Italic</button>
+              <button class="fd-style-pill-btn" data-style="normal" data-weight="700">Bold</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TYPE TESTER -->
+    <section class="fd-section" id="fd-tester-section">
+      <div class="fd-section-header">
+        <span class="fd-eyebrow">Live Type Tester</span>
+        <h2 class="fd-section-title">Try ${font.name}</h2>
+        <p class="fd-section-sub">Adjust size, spacing, case, and background in real time.</p>
+      </div>
+      <div class="fd-tester-body">
+        <div class="fd-tester-controls">
+          <div class="fd-field">
+            <span>Your text</span>
+            <textarea class="fd-textarea" id="fd-text">${font.previewText || 'The quick brown fox'}</textarea>
+          </div>
+          <div class="fd-range-row">
+            <div class="fd-range-header"><span class="fd-range-label">Font size</span><strong id="fd-size-v">72px</strong></div>
+            <input class="fd-range" type="range" min="20" max="180" value="72" id="fd-size"/>
+          </div>
+          <div class="fd-range-row">
+            <div class="fd-range-header"><span class="fd-range-label">Letter spacing</span><strong id="fd-ls-v">0px</strong></div>
+            <input class="fd-range" type="range" min="-4" max="20" value="0" id="fd-ls"/>
+          </div>
+          <div class="fd-range-row">
+            <div class="fd-range-header"><span class="fd-range-label">Line height</span><strong id="fd-lh-v">1.10</strong></div>
+            <input class="fd-range" type="range" min="0.8" max="2.0" step="0.05" value="1.1" id="fd-lh"/>
+          </div>
+          <div class="fd-control-row">
+            <span style="font-size:.625rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--on-surface-var)">Case</span>
+            <div class="fd-segmented" id="fd-case">
+              <button class="is-active" data-case="none">Aa</button>
+              <button data-case="uppercase">AA</button>
+              <button data-case="lowercase">aa</button>
+            </div>
+          </div>
+          <div class="fd-control-row">
+            <span style="font-size:.625rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--on-surface-var)">Background</span>
+            <button class="fd-dark-toggle" id="fd-dark" aria-pressed="false">Dark</button>
+          </div>
+        </div>
+        <div class="fd-tester-surface" id="fd-surface">
+          <p class="fd-tester-preview" id="fd-preview" style="font-family:${ff};">${font.previewText || 'The quick brown fox'}</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- LIVE SIZE TESTER -->
+    <section class="fd-tester-section" id="fd-size-tester" aria-label="Live size tester">
+      <p class="fd-section-label">Live Size Tester</p>
+      <div class="fd-tester-bar">
+        <span class="material-symbols-outlined" aria-hidden="true">text_fields</span>
+        <input type="text" class="fd-tester-input" id="tester-input"
+          placeholder="Type your text here to preview across all sizes…"
+          autocomplete="off" spellcheck="false" />
+        <span class="fd-tester-hint">Live</span>
+      </div>
+      <div class="fd-tester-rows" id="tester-rows"></div>
+    </section>
+
+
+    <!-- GLYPHS -->
+    <section class="fd-section fd-section--dark">
+      <div class="fd-section-header">
+        <span class="fd-eyebrow">Character Set</span>
+        <h2 class="fd-section-title">${font.glyphCount}+ Glyphs</h2>
+        <p class="fd-section-sub">Hover to enlarge · Click to copy</p>
+      </div>
+      <div class="fd-glyphs-wrap">
+        <div class="fd-glyphs-grid" id="fd-glyphs-grid">
+          ${(font.glyphs || []).map(g => { const code = 'U+' + g.charCodeAt(0).toString(16).toUpperCase().padStart(4, '0'); return `<button class="fd-glyph" style="font-family:${ff};" data-char="${g === ' ' ? '[space]' : g}" title="${code}"><span>${g === ' ' ? '·' : g}</span><span class="fd-glyph-unicode">${code}</span></button>` }).join('')}
+        </div>
+      </div>
+      <div class="fd-langs">
+        ${(font.languageSupport || []).map(l => `<span class="fd-lang-tag">✓ ${l}</span>`).join('')}
+      </div>
+    </section>
+
+    <!-- LICENSING & FORMATS -->
+    <section class="fd-section">
+      <div class="fd-section-header">
+        <span class="fd-eyebrow">Licensing</span>
+        <h2 class="fd-section-title">Pick Your License</h2>
+        <p class="fd-section-sub">One-time purchase. Yours forever.</p>
+      </div>
+      <div class="fd-license-cards">
+        <div class="fd-license-card">
+          <span class="fd-lc-badge">Personal</span>
+          <p class="fd-lc-name">Desktop License</p>
+          <p class="fd-lc-scope">For print, personal projects &amp; static media</p>
+          <p class="fd-lc-price"><sup>$</sup>${Math.round((hasSale ? font.salePrice : font.price) * 0.60)}</p>
+          <ul class="fd-lc-perks">
+            ${(font.formats || ['OTF', 'TTF']).slice(0, 2).map(f => `<li class="fd-lc-perk"><span class="fd-lc-check">✦</span>.${f} file included</li>`).join('')}
+            <li class="fd-lc-perk"><span class="fd-lc-check">✦</span>Up to 5 desktop users</li>
+            <li class="fd-lc-perk"><span class="fd-lc-check">✦</span>Print &amp; editorial use</li>
+          </ul>
+          <button class="fd-lc-btn fd-lc-btn--outline fd-lc-buy-btn">Get Desktop</button>
+        </div>
+        <div class="fd-license-card fd-license-card--highlighted">
+          <span class="fd-lc-badge">Most Popular</span>
+          <p class="fd-lc-name">Web License</p>
+          <p class="fd-lc-scope">For websites, apps &amp; digital products</p>
+          <p class="fd-lc-price"><sup>$</sup>${hasSale ? font.salePrice : font.price}</p>
+          <ul class="fd-lc-perks">
+            ${(font.formats || ['OTF', 'TTF', 'WOFF2']).map(f => `<li class="fd-lc-perk"><span class="fd-lc-check">✦</span>.${f} included</li>`).join('')}
+            <li class="fd-lc-perk"><span class="fd-lc-check">✦</span>Up to 500k monthly pageviews</li>
+            <li class="fd-lc-perk"><span class="fd-lc-check">✦</span>Desktop license included</li>
+          </ul>
+          <button class="fd-lc-btn fd-lc-btn--dark fd-lc-buy-btn">Buy Web License</button>
+        </div>
+        <div class="fd-license-card">
+          <span class="fd-lc-badge">Enterprise</span>
+          <p class="fd-lc-name">Commercial License</p>
+          <p class="fd-lc-scope">For agencies, large brands &amp; product teams</p>
+          <p class="fd-lc-price"><sup>$</sup>${Math.round((hasSale ? font.salePrice : font.price) * 1.50)}</p>
+          <ul class="fd-lc-perks">
+            <li class="fd-lc-perk"><span class="fd-lc-check">✦</span>Unlimited desktop users</li>
+            <li class="fd-lc-perk"><span class="fd-lc-check">✦</span>Unlimited web traffic</li>
+            <li class="fd-lc-perk"><span class="fd-lc-check">✦</span>App &amp; SaaS embedding</li>
+            <li class="fd-lc-perk"><span class="fd-lc-check">✦</span>Broadcast &amp; film usage</li>
+          </ul>
+          <button class="fd-lc-btn fd-lc-btn--outline fd-lc-buy-btn">Contact for Quote</button>
+        </div>
+      </div>
+
+      <div class="fd-formats-section">
+        <div class="fd-formats-header">
+          <span class="fd-eyebrow" style="margin-bottom:0;">File Formats Included</span>
+        </div>
+        <div class="fd-formats-row">
+          ${(font.formats || []).map(f => `<div class="fd-format-item"><span class="fd-format-badge">.${f.toLowerCase()}</span><span class="fd-format-desc">${{ 'OTF': 'OpenType · Desktop', 'TTF': 'TrueType · Desktop & Web', 'WOFF': 'Web Open Font', 'WOFF2': 'Best Compression', 'Variable': 'All Weights in One' }[f] || f}</span></div>`).join('')}
+        </div>
+      </div>
+
+      <div style="margin-top:2.5rem;">
+        <div class="fd-detail-card" style="max-width:380px;">
+          <h3 class="fd-detail-title">Designer</h3>
+          <div class="fd-designer">
+            <img class="fd-designer-avatar" src="${font.designer?.avatar || ''}" alt="${font.designer?.name || ''}" loading="lazy"/>
+            <div>
+              <strong class="fd-designer-name">${font.designer?.name || '—'}</strong>
+              <span class="fd-designer-studio">${font.designer?.studio || ''}</span>
+              <p class="fd-designer-bio">${font.designer?.bio || ''}</p>
+            </div>
+          </div>
+          <p class="fd-detail-note">Released: ${font.releaseDate || '—'}</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- RELATED -->
+    ${getRelated(font.relatedSlugs).length ? `
+    <section class="fd-section">
+      <div class="fd-section-header">
+        <span class="fd-eyebrow">You May Also Like</span>
+        <h2 class="fd-section-title">Related Typefaces</h2>
+      </div>
+      <div class="fd-related-grid">
+        ${getRelated(font.relatedSlugs).map(r => `
+          <a class="fd-related-card ${r.theme === 'dark' ? 'gc-dark' : 'gc-cream'}" href="${fontURL(r.slug)}">
+            <p class="fd-related-preview" style="font-family:${r.fontFamily};">${r.previewText || 'Aa'}</p>
+            <div class="fd-related-info"><strong>${r.name}</strong><span>${fmt(r.salePrice ?? r.price)}</span></div>
+            <p class="fd-related-tagline">${r.tagline}</p>
+          </a>
+        `).join('')}
+      </div>
+    </section>` : ''}
+  `;
+
+      /* ── Wire up tester ── */
+      const preview = document.getElementById('fd-preview');
+      const textArea = document.getElementById('fd-text');
+      const sizeIn = document.getElementById('fd-size');
+      const sizeV = document.getElementById('fd-size-v');
+      const lsIn = document.getElementById('fd-ls');
+      const lsV = document.getElementById('fd-ls-v');
+      const lhIn = document.getElementById('fd-lh');
+      const lhV = document.getElementById('fd-lh-v');
+      const caseGrp = document.getElementById('fd-case');
+      const darkBtn = document.getElementById('fd-dark');
+      const surface = document.getElementById('fd-surface');
+      let caseMode = 'none';
+
+      function updatePreview() {
+        const raw = textArea.value || font.previewText || 'The quick brown fox';
+        preview.textContent = caseMode === 'uppercase' ? raw.toUpperCase() : caseMode === 'lowercase' ? raw.toLowerCase() : raw;
+        preview.style.fontSize = sizeIn.value + 'px';
+        preview.style.letterSpacing = lsIn.value + 'px';
+        preview.style.lineHeight = lhIn.value;
+        sizeV.textContent = sizeIn.value + 'px';
+        lsV.textContent = lsIn.value + 'px';
+        lhV.textContent = parseFloat(lhIn.value).toFixed(2);
+      }
+
+      textArea.addEventListener('input', updatePreview);
+      sizeIn.addEventListener('input', updatePreview);
+      lsIn.addEventListener('input', updatePreview);
+      lhIn.addEventListener('input', updatePreview);
+
+      caseGrp.addEventListener('click', e => {
+        const btn = e.target.closest('[data-case]');
+        if (!btn) return;
+        qsa('[data-case]', caseGrp).forEach(b => b.classList.remove('is-active'));
+        btn.classList.add('is-active');
+        caseMode = btn.dataset.case;
+        updatePreview();
+      });
+
+      darkBtn.addEventListener('click', () => {
+        const on = darkBtn.getAttribute('aria-pressed') === 'true';
+        darkBtn.setAttribute('aria-pressed', String(!on));
+        darkBtn.classList.toggle('is-on', !on);
+        darkBtn.textContent = on ? 'Dark' : 'Light';
+        surface.classList.toggle('is-dark', !on);
+      });
+
+      updatePreview();
+
+      /* ── Glyph copy ── */
+      document.getElementById('fd-glyphs-grid')?.addEventListener('click', e => {
+        const btn = e.target.closest('.fd-glyph');
+        if (!btn) return;
+        const ch = btn.dataset.char === '[space]' ? ' ' : btn.dataset.char;
+        navigator.clipboard?.writeText(ch).then(() => toast(`"${ch == ' ' ? 'Space' : ch}" copied`));
+      });
+
+      /* ── Hero Specimen Card ── */
+      const heroPreview = document.getElementById('fd-hero-preview');
+      const heroSizeIn = document.getElementById('fd-hero-size');
+      const heroSizeV = document.getElementById('fd-hero-size-v');
+      const heroPills = document.getElementById('fd-hero-pills');
+
+      function updateHeroSize() {
+        if (!heroPreview || !heroSizeIn) return;
+        heroPreview.style.fontSize = heroSizeIn.value + 'px';
+        if (heroSizeV) heroSizeV.textContent = heroSizeIn.value;
+      }
+
+      if (heroSizeIn) {
+        heroSizeIn.addEventListener('input', updateHeroSize);
+        updateHeroSize(); // init
+      }
+
+      if (heroPills) {
+        heroPills.addEventListener('click', e => {
+          const btn = e.target.closest('[data-style]');
+          if (!btn || !heroPreview) return;
+          qsa('.fd-style-pill-btn', heroPills).forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          heroPreview.style.fontStyle = btn.dataset.style || 'normal';
+          heroPreview.style.fontWeight = btn.dataset.weight || '400';
+        });
+      }
+
+      // Keep font-family when user edits contenteditable
+      if (heroPreview) {
+        heroPreview.addEventListener('keydown', e => {
+          // Prevent Enter from adding <div> — keep it inline
+          if (e.key === 'Enter') { e.preventDefault(); }
+        });
+        // Ensure placeholder restores if emptied
+        heroPreview.addEventListener('input', () => {
+          if (heroPreview.textContent.trim() === '') {
+            heroPreview.textContent = font.previewText || 'Aa';
+            // move cursor to end
+            const range = document.createRange();
+            const sel = window.getSelection();
+            range.selectNodeContents(heroPreview);
+            range.collapse(false);
+            sel.removeAllRanges();
+            sel.addRange(range);
+          }
+        });
+      }
+
+      /* ── Hero buy/demo buttons ── */
+      document.getElementById('hero-buy')?.addEventListener('click', () => toast(`${font.name} added to cart ✦`));
+      document.getElementById('hero-demo')?.addEventListener('click', () => {
+        document.getElementById('fd-tester-section')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+
+      /* ── Sticky bar ── */
+      const sticky = document.getElementById('fd-sticky');
+      const stickyName = document.getElementById('fd-sticky-name');
+      const stickyPrc = document.getElementById('fd-sticky-price');
+      const stickyBuy = document.getElementById('fd-sticky-buy');
+      const stickyDemo = document.getElementById('fd-sticky-demo');
+
+      stickyName.textContent = font.name;
+      stickyPrc.textContent = `Buy from ${fmt(hasSale ? Math.round(font.salePrice * 0.60) : font.price)}`;
+
+      stickyBuy.addEventListener('click', () => toast(`${font.name} added to cart ✦`));
+      stickyDemo.addEventListener('click', () => {
+        document.getElementById('fd-tester-section')?.scrollIntoView({ behavior: 'smooth' });
+      });
+
+      const heroEl = qs('.fd-hero');
+      window.addEventListener('scroll', () => {
+        if (!heroEl) return;
+        sticky.classList.toggle('is-visible', heroEl.getBoundingClientRect().bottom < 80);
+      }, { passive: true });
+
+      /* ── Live Size Tester ── */
+      const testerInput = document.getElementById('tester-input');
+      const testerRows = document.getElementById('tester-rows');
+      const TESTER_SIZES = [96, 72, 48, 36, 24, 18, 14];
+      const DEFAULT_TESTER_TEXT = font.previewText || 'The quick brown fox jumps over the lazy dog.';
+
+      function buildTesterRows(text) {
+        if (!testerRows) return;
+        const t = text.trim() === '' ? DEFAULT_TESTER_TEXT : text;
+        testerRows.innerHTML = TESTER_SIZES.map(s =>
+          `<div class="fd-tester-row">
+            <span class="fd-tester-size">${s}px</span>
+            <p class="fd-tester-text" style="font-family:${ff};font-size:${s}px;">${t}</p>
+          </div>`
+        ).join('');
+      }
+      buildTesterRows('');
+      testerInput?.addEventListener('input', function () { buildTesterRows(this.value); });
+    }
+
+    function fmtDesc(f) {
+      return { OTF: 'OpenType — Desktop', TTF: 'TrueType — Desktop & Web', WOFF: 'Web Open Font', WOFF2: 'Best Compression', Variable: 'All weights in one' }[f] || f;
+    }
+
+
+    /* =====================================================
+       NAV HAMBURGER
+    ===================================================== */
+    (function () {
+      const ham = qs('.nav-hamburger');
+      const menu = qs('.nav-mobile-menu');
+      if (!ham || !menu) return;
+      ham.addEventListener('click', () => {
+        const open = ham.classList.toggle('is-open');
+        menu.classList.toggle('is-open', open);
+        document.body.style.overflow = open ? 'hidden' : '';
+        ham.setAttribute('aria-expanded', String(open));
+      });
+      qsa('.nav-mobile-menu__link,.nav-mobile-menu__login,.nav-mobile-menu__signup', menu)
+        .forEach(el => el.addEventListener('click', () => {
+          ham.classList.remove('is-open');
+          menu.classList.remove('is-open');
+          document.body.style.overflow = '';
+        }));
+      document.addEventListener('keydown', e => { if (e.key === 'Escape') ham.click(); });
+      window.addEventListener('resize', () => { if (window.innerWidth >= 1024) ham.classList.contains('is-open') && ham.click(); });
+    })();
+
+    /* ── Init ── */
+    render();
+  </script>
+
+
+  <script src="javascript/loginmodel.js" defer></script>
+
+</body>
+
+</html>
