@@ -4,6 +4,9 @@
 <head>
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="/main-website/glyphere.png" />
     <title>Glyphere | Marketplace</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -20,12 +23,12 @@
         rel="stylesheet">
 
     <!-- Global styles -->
-    <link rel="stylesheet" href="/main-website/css/globalstyle.css  " />
+    <link rel="stylesheet" href="/main-website/css/globalstyle.css" />
 
     <link rel="stylesheet" href="javascript/loginmodel.css">
 
     <style>
-       @font-face {
+        @font-face {
             font-family: 'Nova_Legacy';
             src: url('/main-website/homepage-updated/fonts/Nova_Legacy.ttf') format('truetype');
             font-weight: 400;
@@ -457,6 +460,148 @@
 
         .mp-results-count span {
             color: var(--color-primary);
+        }
+
+        .mp-view-toggle {
+            display: flex;
+            align-items: center;
+            background: var(--color-surface-container-low);
+            border: 1px solid rgba(201, 171, 129, 0.15);
+            border-radius: var(--radius-full);
+            padding: 3px;
+            gap: 2px;
+        }
+
+        .mp-view-btn {
+            background: transparent;
+            border: none;
+            outline: none;
+            color: var(--color-on-surface-variant);
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.2s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        .mp-view-btn:hover {
+            color: var(--color-primary);
+            background: rgba(201, 171, 129, 0.08);
+        }
+
+        .mp-view-btn--active {
+            background: var(--color-primary) !important;
+            color: var(--color-on-primary) !important;
+            box-shadow: 0 2px 8px rgba(17, 17, 17, 0.15);
+        }
+
+        .mp-view-btn .material-symbols-outlined {
+            font-size: 18px;
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 20;
+        }
+
+        /* ── List View Morphing Styles (Desktop & Tablet) ── */
+        @media (min-width: 768px) {
+            .mp-grid.list-view {
+                grid-template-columns: 1fr !important;
+                gap: 2rem;
+            }
+
+            .mp-grid.list-view .font-card {
+                flex-direction: row;
+                align-items: stretch;
+                min-height: 240px;
+            }
+
+            .mp-grid.list-view .font-card__preview {
+                flex: 1.8;
+                border-bottom: none;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                padding: 32px 40px;
+            }
+
+            .mp-grid.list-view .font-card__bottom {
+                flex: 0 0 280px;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                padding: 32px;
+                border-left: 1px solid rgba(0, 0, 0, 0.08);
+                background: rgba(0, 0, 0, 0.04);
+                gap: 20px;
+                text-align: center;
+            }
+
+            .mp-grid.list-view .font-card__price-wrap {
+                align-items: center;
+                text-align: center;
+            }
+
+            .mp-grid.list-view .font-card__btns {
+                flex-direction: column;
+                width: 100%;
+                gap: 8px;
+            }
+
+            .mp-grid.list-view .fc-btn-details,
+            .mp-grid.list-view .fc-btn-buy {
+                width: 100%;
+                text-align: center;
+                padding: 12px 20px;
+            }
+
+            /* Make specimen preview text significantly larger and more impactful in list view */
+            .mp-grid.list-view .specimen-text {
+                font-size: 2.2rem;
+                opacity: 0.95;
+            }
+
+            .mp-grid.list-view .specimen-text.text--long {
+                font-size: 1.6rem;
+            }
+
+            .mp-grid.list-view .font-card__specimen-row {
+                margin-top: 20px;
+                padding-top: 16px;
+            }
+
+            /* Theme overrides for List View borders and backgrounds */
+            .mp-grid.list-view .fc-t1 .font-card__bottom {
+                border-left-color: rgba(28, 24, 18, 0.08);
+                background: rgba(28, 24, 18, 0.03);
+            }
+
+            .mp-grid.list-view .fc-t2 .font-card__bottom {
+                border-left-color: rgba(255, 255, 255, 0.08);
+                background: rgba(255, 255, 255, 0.03);
+            }
+
+            .mp-grid.list-view .fc-t3 .font-card__bottom {
+                border-left-color: rgba(168, 230, 160, 0.08);
+                background: rgba(255, 255, 255, 0.02);
+            }
+
+            /* Newsletter card specific List View morphing */
+            .mp-grid.list-view .font-card--newsletter .font-card__preview {
+                flex: 1.8;
+                padding: 2.5rem;
+            }
+
+            .mp-grid.list-view .font-card--newsletter .font-card__bottom {
+                flex: 0 0 280px;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                text-align: center;
+                padding: 32px;
+                border-left: 1px solid rgba(242, 231, 213, 0.1);
+                background: rgba(255, 255, 255, 0.04);
+            }
         }
 
 
@@ -907,6 +1052,18 @@
         .font-card--newsletter {
             background: var(--color-primary);
             color: #f2e7d5;
+            transition: var(--transition-smooth), transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease;
+        }
+
+        .font-card--newsletter:hover {
+            transform: translateY(-6px) scale(1.02);
+            box-shadow: 0 22px 45px rgba(0, 0, 0, 0.45), 0 0 35px rgba(201, 171, 129, 0.15);
+        }
+
+        .font-card--newsletter:hover .newsletter-card__headline {
+            font-feature-settings: "salt" 1, "ss01" 1;
+            letter-spacing: -0.05em;
+            color: #ffffff;
         }
 
         .font-card--newsletter .font-card__preview {
@@ -916,6 +1073,8 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            position: relative;
+            overflow: hidden;
         }
 
         .newsletter-card__inner {
@@ -933,6 +1092,7 @@
             color: #f2e7d5;
             letter-spacing: -0.03em;
             margin-bottom: 0.5rem;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
         .newsletter-card__sub {
@@ -949,6 +1109,38 @@
             border-radius: 0.5rem;
             overflow: hidden;
             border: 1px solid rgba(242, 231, 213, 0.15);
+            transition: border-color 0.4s ease, box-shadow 0.4s ease;
+        }
+
+        .newsletter-card__form.focus-halo {
+            border-color: var(--gold);
+            box-shadow: 0 0 20px rgba(201, 171, 129, 0.25);
+        }
+
+        .newsletter-card__form.error-flash {
+            border-color: #ba1a1a;
+            animation: cardSpringShake 0.35s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+        }
+
+        @keyframes cardSpringShake {
+            10%, 90% { transform: translate3d(-1px, 0, 0); }
+            20%, 80% { transform: translate3d(2px, 0, 0); }
+            30%, 50%, 70% { transform: translate3d(-3px, 0, 0); }
+            40%, 60% { transform: translate3d(3px, 0, 0); }
+        }
+
+        /* Success Letter-Particles */
+        .newsletter-particle {
+            position: absolute;
+            pointer-events: none;
+            z-index: 50;
+            color: var(--gold);
+            font-family: 'Bricolage Grotesque', sans-serif;
+            font-weight: 800;
+            font-size: 1.15rem;
+            opacity: 1;
+            will-change: transform, opacity;
+            transition: transform 0.9s cubic-bezier(0.1, 0.8, 0.2, 1), opacity 0.9s ease;
         }
 
         .newsletter-card__email-input {
@@ -1095,12 +1287,12 @@
 
 
         .mp-featured__headline {
-            font-family: 'Bricolage Grotesque', sans-serif;
+            font-family: 'Vanguard_Axis', serif;
             font-size: clamp(2.4rem, 5vw, 4rem);
-            font-weight: 800;
+            font-weight: 400;
             line-height: 1.0;
             margin-bottom: 1.5rem;
-            letter-spacing: -0.04em;
+            letter-spacing: -0.02em;
             color: #f2e7d5;
         }
 
@@ -1164,12 +1356,12 @@
         }
 
         .mp-featured__display-text p {
-            font-family: 'Bricolage Grotesque', sans-serif;
+            font-family: 'Vanguard_Axis', serif;
             font-size: clamp(100px, 14vw, 200px);
             line-height: 0.9;
-            font-weight: 800;
+            font-weight: 400;
             color: rgba(242, 231, 213, 0.04);
-            letter-spacing: -0.05em;
+            letter-spacing: -0.02em;
             text-align: right;
             -webkit-user-select: none;
             user-select: none;
@@ -1233,6 +1425,828 @@
                 font-size: 52px !important;
             }
         }
+
+        /* ── Dynamic Glyph Interactive Styling ── */
+        .font-card__big {
+            cursor: pointer;
+            transition: transform 0.25s cubic-bezier(0.23, 1, 0.32, 1), filter 0.25s ease;
+        }
+
+        .font-card__big:hover {
+            transform: scale(1.06);
+            filter: drop-shadow(0 4px 8px rgba(201, 171, 129, 0.15));
+        }
+
+        .font-card__explore-hint {
+            position: absolute;
+            bottom: 12px;
+            right: 16px;
+            font-size: 0.55rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: inherit;
+            opacity: 0;
+            transform: translateY(4px);
+            transition: all 0.25s cubic-bezier(0.23, 1, 0.32, 1);
+            font-weight: 700;
+            pointer-events: none;
+            background: rgba(0, 0, 0, 0.08);
+            padding: 3px 8px;
+            border-radius: 10px;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .fc-t2 .font-card__explore-hint,
+        .fc-t3 .font-card__explore-hint,
+        .fc-t5 .font-card__explore-hint {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: rgba(255, 255, 255, 0.05);
+        }
+
+        .font-card:hover .font-card__explore-hint {
+            opacity: 0.6;
+            transform: translateY(0);
+        }
+
+        /* ── Live Preview Presets ── */
+        .mp-preview-bar__presets {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 18px 12px;
+            border-top: 1px solid rgba(242, 231, 213, 0.08);
+            background: rgba(0, 0, 0, 0.12);
+            flex-wrap: wrap;
+        }
+
+        .mp-preset-label {
+            font-size: 0.5625rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: rgba(242, 231, 213, 0.45);
+            font-weight: 700;
+            margin-right: 4px;
+        }
+
+        .mp-preset-btn {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(242, 231, 213, 0.12);
+            color: rgba(242, 231, 213, 0.7);
+            padding: 3px 10px;
+            border-radius: 12px;
+            font-size: 0.7rem;
+            font-family: 'Manrope', sans-serif;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        .mp-preset-btn:hover {
+            background: rgba(242, 231, 213, 0.12);
+            color: #f2e7d5;
+            border-color: rgba(242, 231, 213, 0.3);
+            transform: translateY(-1px);
+        }
+
+        .mp-preset-btn:active {
+            transform: translateY(0);
+        }
+
+        /* ── Fluid Card Filtering transitions ── */
+        .font-card {
+            transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1),
+                box-shadow 0.4s cubic-bezier(0.23, 1, 0.32, 1),
+                opacity 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .font-card.fc-filtering-out {
+            opacity: 0 !important;
+            transform: scale(0.92) translateY(12px) !important;
+            pointer-events: none;
+        }
+
+        .font-card.fc-filtering-in {
+            opacity: 0;
+            transform: scale(0.92) translateY(12px);
+        }
+
+        /* ── Interactive Glyph Modal ── */
+        .glyph-modal {
+            position: fixed;
+            inset: 0;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.35s cubic-bezier(0.23, 1, 0.32, 1);
+            padding: 1.5rem;
+        }
+
+        .glyph-modal--visible {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .glyph-modal__backdrop {
+            position: absolute;
+            inset: 0;
+            background: rgba(13, 11, 9, 0.82);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+        }
+
+        .glyph-modal__content {
+            position: relative;
+            background: #181512;
+            border: 1px solid rgba(201, 171, 129, 0.15);
+            border-radius: 28px;
+            width: 100%;
+            max-width: 960px;
+            max-height: 85vh;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 32px 80px rgba(0, 0, 0, 0.6);
+            overflow: hidden;
+            transform: scale(0.94) translateY(20px);
+            transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            color: #f2e7d5;
+        }
+
+        .glyph-modal--visible .glyph-modal__content {
+            transform: scale(1) translateY(0);
+        }
+
+        /* Modal Header */
+        .glyph-modal__header {
+            padding: 24px 32px;
+            border-bottom: 1px solid rgba(242, 231, 213, 0.08);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .glyph-modal__title-group {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .glyph-modal__subtitle {
+            font-size: 0.625rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--gold);
+            font-weight: 700;
+        }
+
+        .glyph-modal__title {
+            font-family: 'Bricolage Grotesque', sans-serif;
+            font-size: 1.75rem;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            color: #f2e7d5;
+        }
+
+        .glyph-modal__close {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(242, 231, 213, 0.1);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            color: #f2e7d5;
+            transition: all 0.2s;
+        }
+
+        .glyph-modal__close:hover {
+            background: rgba(242, 231, 213, 0.12);
+            color: var(--gold);
+            transform: rotate(90deg);
+        }
+
+        /* Modal Body Split Layout */
+        .glyph-modal__body {
+            flex: 1;
+            overflow-y: auto;
+            display: grid;
+            grid-template-columns: 1fr;
+            min-height: 0;
+        }
+
+        @media (min-width: 768px) {
+            .glyph-modal__body {
+                grid-template-columns: 1.8fr 1fr;
+            }
+        }
+
+        /* Left Side: Glyph Grid */
+        .glyph-modal__grid-container {
+            padding: 32px;
+            border-bottom: 1px solid rgba(242, 231, 213, 0.08);
+            overflow-y: auto;
+        }
+
+        @media (min-width: 768px) {
+            .glyph-modal__grid-container {
+                border-bottom: none;
+                border-right: 1px solid rgba(242, 231, 213, 0.08);
+            }
+        }
+
+        .glyph-section-title {
+            font-size: 0.6875rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: rgba(242, 231, 213, 0.4);
+            font-weight: 700;
+            margin-bottom: 12px;
+            margin-top: 24px;
+        }
+
+        .glyph-section-title:first-child {
+            margin-top: 0;
+        }
+
+        .glyph-grid {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 8px;
+        }
+
+        @media (min-width: 480px) {
+            .glyph-grid {
+                grid-template-columns: repeat(8, 1fr);
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .glyph-grid {
+                grid-template-columns: repeat(10, 1fr);
+            }
+        }
+
+        .glyph-box {
+            aspect-ratio: 1;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(242, 231, 213, 0.08);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25rem;
+            cursor: pointer;
+            transition: all 0.18s cubic-bezier(0.23, 1, 0.32, 1);
+            user-select: none;
+        }
+
+        .glyph-box:hover {
+            background: rgba(201, 171, 129, 0.15);
+            border-color: var(--gold);
+            color: #181512;
+            transform: scale(1.1);
+            z-index: 10;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Right Side: Magnifier / Preview Details */
+        .glyph-modal__details {
+            padding: 32px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            background: rgba(0, 0, 0, 0.2);
+            min-height: 320px;
+        }
+
+        .glyph-magnifier {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            text-align: center;
+        }
+
+        .glyph-magnifier__display {
+            font-size: 8rem;
+            line-height: 1;
+            color: var(--gold);
+            margin-bottom: 16px;
+            height: 140px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .glyph-magnifier__code {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.75rem;
+            color: rgba(242, 231, 213, 0.45);
+            background: rgba(255, 255, 255, 0.04);
+            padding: 4px 10px;
+            border-radius: 6px;
+            letter-spacing: 0.5px;
+        }
+
+        .glyph-magnifier__hint {
+            font-size: 0.75rem;
+            color: rgba(242, 231, 213, 0.4);
+            margin-top: 12px;
+            font-weight: 500;
+            line-height: 1.5;
+        }
+
+        /* Copy Success Toast inside Modal */
+        .glyph-copy-toast {
+            position: absolute;
+            bottom: 24px;
+            left: 50%;
+            transform: translateX(-50%) translateY(20px);
+            background: var(--gold);
+            color: #181512;
+            padding: 10px 20px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            opacity: 0;
+            pointer-events: none;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            z-index: 100;
+        }
+
+        .glyph-copy-toast--visible {
+            opacity: 1;
+            transform: translateX(-50%) translateY(0);
+        }
+
+        /* ── Typographic Specimen Slider ── */
+        .mp-size-slider-wrap {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--color-surface-container-low);
+            border: 1px solid rgba(201, 171, 129, 0.15);
+            border-radius: var(--radius-full);
+            padding: 4px 16px;
+            height: 38px;
+        }
+
+        .slider-icon {
+            font-size: 16px;
+            color: var(--color-on-surface-variant);
+        }
+
+        .mp-size-slider {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 80px;
+            height: 4px;
+            background: rgba(201, 171, 129, 0.2);
+            border-radius: 2px;
+            outline: none;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        @media (min-width: 480px) {
+            .mp-size-slider {
+                width: 120px;
+            }
+        }
+
+        .mp-size-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--gold);
+            cursor: pointer;
+            transition: transform 0.2s, background-color 0.2s;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+        }
+
+        .mp-size-slider::-webkit-slider-thumb:hover {
+            transform: scale(1.2);
+            background: var(--gold-light);
+        }
+
+        .slider-value-label {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.6875rem;
+            color: var(--color-on-surface-variant);
+            font-weight: 700;
+            width: 32px;
+            text-align: right;
+        }
+
+        .specimen-text {
+            font-size: var(--specimen-size, 1rem) !important;
+        }
+
+        /* ── Scroll Reveal transitions ── */
+        .fc-reveal {
+            opacity: 0;
+            transform: translateY(28px) scale(0.98);
+            transition: opacity 0.7s cubic-bezier(0.23, 1, 0.32, 1),
+                transform 0.7s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        .fc-reveal--visible {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+
+        /* ── Price licensing dropdown ── */
+        .font-card__price-wrap {
+            position: relative;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            user-select: none;
+        }
+
+        .font-card__price-row {
+            display: flex;
+            align-items: baseline;
+            gap: 5px;
+        }
+
+        .fc-license-badge {
+            font-family: 'Manrope', sans-serif;
+            font-size: 8px;
+            font-weight: 700;
+            letter-spacing: 0.8px;
+            text-transform: uppercase;
+            color: rgba(242, 231, 213, 0.45);
+            background: rgba(0, 0, 0, 0.15);
+            padding: 2px 6px;
+            border-radius: 4px;
+            border: 1px solid rgba(242, 231, 213, 0.1);
+            display: inline-flex;
+            align-items: center;
+            gap: 2px;
+            margin-top: 4px;
+            align-self: flex-start;
+            transition: all 0.2s ease;
+        }
+
+        .fc-t1 .fc-license-badge,
+        .fc-t4 .fc-license-badge {
+            color: rgba(28, 24, 18, 0.5);
+            background: rgba(28, 24, 18, 0.05);
+            border-color: rgba(28, 24, 18, 0.08);
+        }
+
+        .font-card__price-wrap:hover .fc-license-badge {
+            color: var(--gold);
+            border-color: rgba(201, 171, 129, 0.3);
+            background: rgba(0, 0, 0, 0.3);
+        }
+
+        .fc-t1 .font-card__price-wrap:hover .fc-license-badge,
+        .fc-t4 .font-card__price-wrap:hover .fc-license-badge {
+            color: var(--gold-dark);
+            border-color: rgba(201, 171, 129, 0.5);
+            background: rgba(201, 171, 129, 0.1);
+        }
+
+        /* Popover dropdown box */
+        .fc-license-popover {
+            position: absolute;
+            bottom: 110%;
+            left: 0;
+            z-index: 100;
+            background: #181512;
+            border: 1px solid rgba(201, 171, 129, 0.2);
+            border-radius: 12px;
+            padding: 6px;
+            width: 145px;
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
+            opacity: 0;
+            transform: translateY(6px) scale(0.95);
+            pointer-events: none;
+            transition: all 0.2s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        .fc-license-popover--visible {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+            pointer-events: auto;
+        }
+
+        .fc-license-option {
+            font-family: 'Manrope', sans-serif;
+            font-size: 10px;
+            font-weight: 700;
+            color: rgba(242, 231, 213, 0.7);
+            padding: 6px 10px;
+            border-radius: 8px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.15s;
+            margin-bottom: 2px;
+        }
+
+        .fc-license-option:last-child {
+            margin-bottom: 0;
+        }
+
+        .fc-license-option:hover {
+            background: var(--gold);
+            color: #181512;
+        }
+
+        .fc-license-option--active {
+            color: var(--gold);
+            background: rgba(201, 171, 129, 0.08);
+        }
+
+        .fc-license-option--active:hover {
+            color: #181512;
+        }
+        /* ── Curator's Journal Overlay Modal ── */
+        .stories-modal {
+            position: fixed;
+            inset: 0;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.35s cubic-bezier(0.23, 1, 0.32, 1);
+            padding: 1.5rem;
+        }
+
+        .stories-modal--visible {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .stories-modal__backdrop {
+            position: absolute;
+            inset: 0;
+            background: rgba(13, 11, 9, 0.85);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+        }
+
+        .stories-modal__content {
+            position: relative;
+            background: #15120e;
+            border: 1px solid rgba(201, 171, 129, 0.2);
+            border-radius: 28px;
+            width: 100%;
+            max-width: 900px;
+            max-height: 85vh;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 35px 85px rgba(0, 0, 0, 0.65);
+            overflow: hidden;
+            transform: scale(0.94) translateY(20px);
+            transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            color: #f2e7d5;
+        }
+
+        .stories-modal--visible .stories-modal__content {
+            transform: scale(1) translateY(0);
+        }
+
+        /* Stories Header styling */
+        .stories-modal__header {
+            padding: 2rem 2.5rem 1.5rem;
+            border-bottom: 1px solid rgba(201, 171, 129, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: #1a1612;
+        }
+
+        .stories-modal__title-group {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .stories-modal__subtitle {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.68rem;
+            text-transform: uppercase;
+            letter-spacing: 0.18em;
+            color: var(--gold-dark);
+            font-weight: 600;
+        }
+
+        .stories-modal__title {
+            font-family: 'Bricolage Grotesque', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            background: linear-gradient(135deg, #ffffff 40%, var(--gold) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .stories-modal__close {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(201, 171, 129, 0.15);
+            color: var(--gold);
+            cursor: pointer;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            outline: none;
+        }
+
+        .stories-modal__close:hover {
+            background: var(--gold);
+            color: #15120e;
+            border-color: var(--gold);
+            transform: scale(1.06);
+        }
+
+        /* Stories Scrollable Body */
+        .stories-modal__body {
+            padding: 2.5rem;
+            overflow-y: auto;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 1.8rem;
+            line-height: 1.8;
+            font-size: 0.95rem;
+            font-family: 'Manrope', -apple-system, sans-serif;
+            font-weight: 300;
+            color: rgba(242, 231, 213, 0.85);
+            text-align: left;
+        }
+
+        /* Dropcap letter style */
+        .stories-modal__dropcap {
+            float: left;
+            font-family: 'Bricolage Grotesque', sans-serif;
+            font-size: 4rem;
+            line-height: 0.8;
+            padding-top: 4px;
+            padding-right: 8px;
+            font-weight: 900;
+            color: var(--gold);
+        }
+
+        .stories-modal__section-title {
+            font-family: 'Bricolage Grotesque', sans-serif;
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: #ffffff;
+            margin-top: 1rem;
+            letter-spacing: -0.01em;
+        }
+
+        /* Bold Quote callout */
+        .stories-modal__quote {
+            border-left: 3px solid var(--gold);
+            padding-left: 1.5rem;
+            margin: 1.5rem 0;
+            font-style: italic;
+            font-size: 1.1rem;
+            color: #ffffff;
+            font-family: 'Epilogue', sans-serif;
+            font-weight: 300;
+            line-height: 1.6;
+        }
+
+        /* Dynamic Showcase Grid */
+        .stories-modal__specimen-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin: 1rem 0;
+        }
+        @media (max-width: 640px) {
+            .stories-modal__specimen-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .stories-modal__specimen-card {
+            border: 1px solid rgba(201, 171, 129, 0.12);
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 16px;
+            padding: 1.75rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            gap: 1rem;
+        }
+
+        .stories-modal__specimen-name {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: var(--gold-dark);
+        }
+
+        .stories-modal__specimen-display {
+            font-size: 2.2rem;
+            line-height: 1.2;
+            margin: 0.5rem 0;
+        }
+
+        /* ─────────────────────────────────────────
+           EMPTY STATE
+        ───────────────────────────────────────── */
+        .mp-empty-state {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 5rem 2rem;
+            text-align: center;
+            gap: 1rem;
+            animation: emptyStateFadeIn 0.45s cubic-bezier(0.23, 1, 0.32, 1) both;
+        }
+
+        @keyframes emptyStateFadeIn {
+            from { opacity: 0; transform: translateY(16px) scale(0.98); }
+            to   { opacity: 1; transform: translateY(0) scale(1); }
+        }
+
+        .mp-empty-state__glyph {
+            font-family: 'Bricolage Grotesque', sans-serif;
+            font-size: clamp(5rem, 14vw, 10rem);
+            font-weight: 900;
+            letter-spacing: -0.06em;
+            line-height: 1;
+            color: transparent;
+            -webkit-text-stroke: 1.5px rgba(201, 171, 129, 0.25);
+            text-stroke: 1.5px rgba(201, 171, 129, 0.25);
+            user-select: none;
+            margin-bottom: 0.5rem;
+        }
+
+        .mp-empty-state__title {
+            font-family: 'Bricolage Grotesque', sans-serif;
+            font-size: clamp(1.25rem, 3vw, 1.75rem);
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            color: var(--color-primary);
+            margin: 0;
+        }
+
+        .mp-empty-state__sub {
+            font-family: 'Manrope', sans-serif;
+            font-size: 0.875rem;
+            font-weight: 400;
+            color: var(--color-on-surface-variant);
+            max-width: 26rem;
+            line-height: 1.65;
+            margin: 0;
+        }
+
+        .mp-empty-state__reset {
+            margin-top: 0.5rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 0.65rem 1.75rem;
+            border-radius: 100px;
+            border: 1.5px solid rgba(201, 171, 129, 0.35);
+            background: transparent;
+            color: var(--color-primary);
+            font-family: 'Manrope', sans-serif;
+            font-size: 0.8125rem;
+            font-weight: 700;
+            letter-spacing: 0.04em;
+            cursor: pointer;
+            transition: background 0.2s, border-color 0.2s, transform 0.18s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .mp-empty-state__reset:hover {
+            background: rgba(201, 171, 129, 0.08);
+            border-color: var(--gold);
+            transform: scale(1.04);
+        }
     </style>
 </head>
 
@@ -1244,18 +2258,27 @@
     <header class="header-nav">
         <nav class="nav-inner" aria-label="Main navigation">
             <div class="nav-logo-group">
-                <a href="/main-website/homepage.html"><img src="/main-website/homepage-updated/faiz.jpeg"
-                        class="nav-logo-img" alt="Glyphere" /></a>
+                <a href="/main-website/homepage.html"><img src="/main-website/glyphere.png" class="nav-logo-img"
+                        alt="Glyphere" /></a>
                 <a class="nav-logo-name" href="/main-website/homepage.html">Glyphere</a>
             </div>
             <ul class="nav-links" role="list">
                 <li><a class="nav-link" href="/main-website/marketplace.html">Marketplace</a></li>
-                <li><a class="nav-link" href="/main-website/custom_font_services/code.html">Services</a></li>
-                <li><a class="nav-link" href="/main-website/about_the_designer/about.html">About</a></li>
+                <li><a class="nav-link" href="/main-website/custom_font_services/custom_font_services.html">Services</a>
+                </li>
+                <!-- <li><a class="nav-link" href="/main-website/font-finder.html">Font Finder</a></li> -->
+                <li><a class="nav-link" href="/main-website/about.html">About</a></li>
             </ul>
             <div class="nav-actions">
-                <a class="nav-login" href="/signup-login.html">Login</a>
-                <a class="nav-signup" href="/signup-login.html">Sign Up</a>
+                <a class="nav-cart" href="/main-website/cart.html" id="navCartBtn" aria-label="Shopping cart">
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                        <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z" />
+                        <line x1="3" y1="6" x2="21" y2="6" />
+                        <path d="M16 10a4 4 0 0 1-8 0" />
+                    </svg>
+                    <span class="nav-cart__badge" id="navCartBadge" data-count="0">0</span>
+                </a>
+                <a class="nav-signup" href="/main-website/signup-login.html">Log In</a>
             </div>
             <button class="nav-hamburger" aria-label="Menu" aria-expanded="false">
                 <span class="nav-hamburger__line"></span>
@@ -1268,12 +2291,21 @@
     <div class="nav-mobile-menu" role="dialog" aria-label="Mobile navigation">
         <ul class="nav-mobile-menu__links">
             <li><a class="nav-mobile-menu__link" href="/main-website/marketplace.html">Marketplace</a></li>
-            <li><a class="nav-mobile-menu__link" href="/main-website/custom_font_services/code.html">Services</a></li>
-            <li><a class="nav-mobile-menu__link" href="/main-website/about_the_designer/about.html">About</a></li>
+            <li><a class="nav-mobile-menu__link"
+                    href="/main-website/custom_font_services/custom_font_services.html">Services</a></li>
+            <!-- <li><a class="nav-mobile-menu__link" href="/main-website/font-finder.html">Font Finder</a></li> -->
+            <li><a class="nav-mobile-menu__link" href="/main-website/about.html">About</a></li>
         </ul>
         <div class="nav-mobile-menu__actions">
-            <a class="nav-mobile-menu__login" href="/main-website/signup-login.html">Login</a>
-            <a class="nav-mobile-menu__signup" href="/signup-login.html">Sign Up</a>
+            <a class="nav-mobile-menu__cart" href="/main-website/cart.html" aria-label="Shopping cart">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z" />
+                    <line x1="3" y1="6" x2="21" y2="6" />
+                    <path d="M16 10a4 4 0 0 1-8 0" />
+                </svg>
+                Cart
+            </a>
+            <a class="nav-mobile-menu__signup" href="/main-website/signup-login.html">Log In</a>
         </div>
     </div>
 
@@ -1283,8 +2315,9 @@
     <div id="preloader" role="status" aria-label="Loading Glyphere">
         <div class="preloader-inner">
             <div class="preloader-brand">
-                <img class="preloader-brand__image" src="/main-website/homepage-updated/faiz.jpeg" alt=""
-                    aria-hidden="true" />
+                <div class="preloader-glyph-container">
+                    <div class="preloader-glyph"></div>
+                </div>
                 <p class="preloader-brand__name">Glyphere</p>
                 <p class="preloader-brand__tagline">From Glyph to Identity</p>
             </div>
@@ -1296,6 +2329,19 @@
     ═══════════════════════════════════════ -->
     <main class="mp-main" id="content">
 
+        <!-- ── Hero ── -->
+        <header class="mp-hero">
+            <div class="mp-hero__top">
+                <div>
+                    <span class="mp-hero__eyebrow">Curated Specimens</span>
+                    <h1 class="mp-hero__headline">Discover the<br />next standard.</h1>
+                </div>
+                <div class="mp-hero__description">
+                    <p>An editorial marketplace for independent type designers. High-end tools for high-end digital architecture.</p>
+                </div>
+            </div>
+        </header>
+
         <!-- ── Live Preview Bar ── -->
         <div class="mp-preview-bar" role="search" aria-label="Live font preview">
             <div class="mp-preview-bar__inner">
@@ -1305,6 +2351,14 @@
                         placeholder="Type to preview all typefaces live…" value="" aria-label="Preview text"
                         autocomplete="off" spellcheck="false" />
                     <span class="mp-preview-bar__hint">Live Preview</span>
+                </div>
+                <!-- ── Live Preview Presets ── -->
+                <div class="mp-preview-bar__presets">
+                    <span class="mp-preset-label">Presets:</span>
+                    <button class="mp-preset-btn" data-preset="alphabet">Alphabet</button>
+                    <button class="mp-preset-btn" data-preset="numbers">Digits</button>
+                    <button class="mp-preset-btn" data-preset="slogan">Slogan</button>
+                    <button class="mp-preset-btn" data-preset="waterfall">Waterfall</button>
                 </div>
             </div>
         </div>
@@ -1316,7 +2370,7 @@
                 <button class="mp-pill" data-filter="serif">Serif</button>
                 <button class="mp-pill" data-filter="sans-serif">Sans-serif</button>
                 <button class="mp-pill" data-filter="script">Script</button>
-                <button class="mp-pill" data-filter="arabic">Arabic</button>
+                <button class="mp-pill" data-filter="handwriting">Handwriting</button>
                 <button class="mp-pill" data-filter="logo">Logo fonts</button>
             </div>
             <div class="mp-filters__sort" role="group" aria-label="Sort options">
@@ -1333,7 +2387,24 @@
 
         <!-- ── Results Bar ── -->
         <div class="mp-results-bar">
-            <p class="mp-results-count"><span id="results-count">5</span> typefaces found</p>
+            <p class="mp-results-count"><span id="results-count"></span> typefaces found</p>
+
+            <!-- ── Specimen Size Slider ── -->
+            <div class="mp-size-slider-wrap">
+                <span class="material-symbols-outlined slider-icon" title="Adjust Font Size">format_size</span>
+                <input type="range" id="specimen-size-slider" min="14" max="72" value="20" class="mp-size-slider"
+                    aria-label="Specimen Font Size">
+                <span class="slider-value-label"><span id="slider-size-val">20</span>px</span>
+            </div>
+
+            <div class="mp-view-toggle" role="group" aria-label="Layout view">
+                <button class="mp-view-btn mp-view-btn--active" id="view-grid" title="Grid View" aria-label="Grid View">
+                    <span class="material-symbols-outlined">grid_view</span>
+                </button>
+                <button class="mp-view-btn" id="view-list" title="List View" aria-label="List View">
+                    <span class="material-symbols-outlined">format_list_bulleted</span>
+                </button>
+            </div>
         </div>
 
 
@@ -1345,7 +2416,7 @@
 
 
 
-           <!-- Card 1: Turbo Block -->
+            <!-- Card 1: Turbo Block -->
             <article class="font-card fc-t1" data-category="sans-serif" data-index="1">
                 <div class="font-card__preview">
                     <div class="font-card__badges">
@@ -1393,7 +2464,7 @@
                     <div class="font-card__name-label">Vellum Flow</div>
                     <div class="font-card__big"
                         style="font-family:'Vellum_Flow',handwriting;font-weight:400;color:#1c1812;">AaBb</div>
-                    <div class="font-card__tagline">A handwriting font for persoanl notes and journals.</div>
+                    <div class="font-card__tagline">A handwriting font for personal notes and journals.</div>
                     <div class="font-card__specimen-row">
                         <p class="specimen-text"
                             style="font-family:'Vellum_Flow',handwriting;font-weight:400;font-style:italic;"
@@ -2193,15 +3264,23 @@
 
         </div><!-- /mp-grid -->
 
+        <!-- ── Empty State (shown when no cards match filter/search) ── -->
+        <div id="mp-empty-state" class="mp-empty-state" role="status" aria-live="polite" style="display:none;">
+            <div class="mp-empty-state__glyph" aria-hidden="true">Aa</div>
+            <h2 class="mp-empty-state__title">No typefaces found</h2>
+            <p class="mp-empty-state__sub">Try a different filter or clear your search to see all collections.</p>
+            <button class="mp-empty-state__reset" id="emptyStateReset">Clear filters</button>
+        </div>
+
+
         <!-- ── Featured Specimen ── -->
-        <section class="mp-featured" aria-label="Featured typeface">
+        <section class="mp-featured" aria-label="Featured typeface" style="background: linear-gradient(135deg, #18140e 0%, #0d0a07 100%);">
             <div class="mp-featured__inner">
                 <div>
                     <span class="mp-featured__eyebrow">Featured Typeface</span>
-                    <h2 class="mp-featured__headline">Monumental<br />Variable.</h2>
+                    <h2 class="mp-featured__headline" style="font-family:'Vanguard_Axis', serif; font-weight: 400;">Vanguard<br />Axis.</h2>
                     <p class="mp-featured__description">
-                        A massive variable font family designed for environmental graphics and cinematic title cards. 72
-                        axes of flexibility.
+                        A commanding high-contrast display serif designed for monumental posters, editorial headings, and elite branding systems.
                     </p>
                     <div class="mp-featured__actions">
                         <button class="mp-featured__btn-buy">Buy Full License</button>
@@ -2209,75 +3288,136 @@
                     </div>
                 </div>
                 <div class="mp-featured__display-text" aria-hidden="true">
-                    <p>MONU<br />MENT</p>
+                    <p style="font-family:'Vanguard_Axis', serif; font-weight: 400; letter-spacing: -0.02em;">VAN<br />GUARD</p>
                 </div>
             </div>
         </section>
 
     </main>
-    <!-- ── Hero ── -->
-    <header class="mp-hero">
-        <div class="mp-hero__top">
-            <div>
-                <span class="mp-hero__eyebrow">Curated Specimens</span>
-                <h1 class="mp-hero__headline">Discover the<br />next standard.</h1>
-            </div>
-            <div class="mp-hero__description">
-                <p>An editorial marketplace for independent type designers. High-end tools for high-end digital
-                    architecture.</p>
-            </div>
-        </div>
-    </header>
 
     <!-- ── Footer ── -->
     <footer class="site-footer">
         <div class="footer-grid">
-            <div class="footer-brand">
-                <p class="footer-brand-name">The Typographic Gallery</p>
-                <p class="footer-brand-desc">Curated font designs for the modern digital landscape. Etched with
-                    precision, crafted with soul.</p>
-                <div class="footer-social-icons">
-                    <span class="material-symbols-outlined footer-icon" aria-hidden="true">language</span>
-                    <span class="material-symbols-outlined footer-icon" aria-hidden="true">public</span>
-                </div>
-            </div>
-            <nav aria-label="Collections">
-                <h3 class="footer-col-title">Collections</h3>
-                <ul class="footer-links">
-                    <li><a href="#">The Serif Set</a></li>
-                    <li><a href="#">Modernist Sans</a></li>
-                    <li><a href="#">Display Specials</a></li>
-                    <li><a href="#">Free Trials</a></li>
-                </ul>
-            </nav>
-            <nav aria-label="Social">
-                <h3 class="footer-col-title">Navigation</h3>
-                <ul class="footer-links">
-                    <li><a href="#">Instagram</a></li>
-                    <li><a href="#">Twitter</a></li>
-                    <li><a href="#">LinkedIn</a></li>
-                    <li><a href="#">Privacy Policy</a></li>
-                </ul>
-            </nav>
             <div>
-                <h3 class="footer-col-title">Newsletter</h3>
-                <p class="footer-newsletter-desc">Get notified about new releases and type studies.</p>
-                <div class="footer-form">
-                    <label for="footer-email" class="sr-only">Email address</label>
-                    <input id="footer-email" class="footer-email-input" placeholder="email@address.com" type="email" />
-                    <button class="material-symbols-outlined footer-submit" type="button"
-                        aria-label="Subscribe">arrow_forward</button>
-                </div>
+                <p class="footer-brand-name">Glyphere</p>
+                <p class="footer-brand-desc">Custom fonts &amp; premium typefaces crafted with soul.</p>
             </div>
+            <nav>
+                <h3 class="footer-col-title">Marketplace</h3>
+                <ul class="footer-links-list">
+                    <li><a href="/main-website/marketplace.html">All Fonts</a></li>
+                    <li><a href="/main-website/marketplace.html">Serifs</a></li>
+                    <li><a href="/main-website/marketplace.html">Display</a></li>
+                    <!-- <li><a href="/main-website/font-finder.html">Font Finder</a></li> -->
+                </ul>
+            </nav>
+            <nav>
+                <h3 class="footer-col-title">Services</h3>
+                <ul class="footer-links-list">
+                    <li><a href="/main-website/custom_font_services/custom_font_services.html">Custom Design</a></li>
+                    <li><a href="/main-website/custom_font_services/custom_font_services.html">Brand Typography</a></li>
+                    <li><a href="/main-website/custom_font_services/custom_font_services.html">Licensing</a></li>
+                </ul>
+            </nav>
+            <nav>
+                <h3 class="footer-col-title">Follow</h3>
+                <ul class="footer-links-list">
+                    <li><a href="#">Instagram</a></li>
+                    <li><a href="#">Twitter / X</a></li>
+                    <li><a href="#">LinkedIn</a></li>
+                </ul>
+            </nav>
         </div>
         <div class="footer-bottom">
-            <p class="footer-copy">©️ 2024 The Typographic Gallery. Etched in Epilogue.</p>
-            <nav class="footer-legal" aria-label="Legal">
-                <a href="#">Licensing Terms</a>
-                <a href="#">Cookie Policy</a>
+            <p class="footer-copy">© 2024 Glyphere. All Rights Reserved.</p>
+            <nav class="footer-legal">
+                <a href="/main-website/licensing.html">Licensing Terms</a>
+                <a href="/main-website/cookie-policy.html">Cookie Policy</a>
             </nav>
         </div>
     </footer>
+
+    <!-- ── Curator's Stories Overlay Modal ── -->
+    <div id="stories-modal" class="stories-modal" role="dialog" aria-modal="true" aria-labelledby="stories-title">
+        <div class="stories-modal__backdrop" id="stories-backdrop"></div>
+        <div class="stories-modal__content">
+            <div class="stories-modal__header">
+                <div class="stories-modal__title-group">
+                    <span class="stories-modal__subtitle">Curator's Journal · Volume 04</span>
+                    <h2 class="stories-modal__title" id="stories-title">Editorial Soul &amp; Geometry</h2>
+                </div>
+                <button class="stories-modal__close" id="stories-close" aria-label="Close stories modal">
+                    <span class="material-symbols-outlined">close</span>
+                </button>
+            </div>
+            <div class="stories-modal__body">
+                <p><span class="stories-modal__dropcap">T</span>ypefaces are not merely static vectors drawn to fill a page; they represent the visual voice of our cultural moment. When we craft editorial typefaces, we marry structural geometric boundaries with deep artistic expression, forming a physical fingerprint of identity. Our curated selection of typeface families is engineered to serve this delicate equilibrium.</p>
+                
+                <h3 class="stories-modal__section-title">The Geometry of Contrast</h3>
+                <p>Contrast is the breathing pulse of visual hierarchy. By drawing high-contrast serif lines paired with organic, sweeping curves, we create a dialogue between structure and organic beauty. In luxury spirits branding, premium wine labels, and high-fashion headlines, this dynamic contrast elevates standard copywriting into a premium experience.</p>
+                
+                <div class="stories-modal__quote">
+                    "A premium typeface does not just convey a word; it encapsulates the mood, weight, and history behind that word, establishing an unspoken connection with the viewer."
+                </div>
+                
+                <h3 class="stories-modal__section-title">Curated Pairings &amp; Glyphic Displays</h3>
+                <p>When selecting specimen combinations, the secret lies in geometric parity. Combining an aggressive, bold display serif with a thin, neutral geometric sans-serif anchors the layout. It creates a robust structure while letting the editorial serif assert its raw personality.</p>
+                
+                <div class="stories-modal__specimen-grid">
+                    <div class="stories-modal__specimen-card" style="background:#faf7f2; color:#1c1812;">
+                        <span class="stories-modal__specimen-name">Sonnet Italic Showcase</span>
+                        <div class="stories-modal__specimen-display" style="font-family:'Sonnet_Italic', serif; font-style:italic;">
+                            Editorial Poetry
+                        </div>
+                        <p style="font-size:0.75rem; opacity:0.75; margin:0;">Sophisticated contrasts tailored for premium luxury branding assets.</p>
+                    </div>
+                    <div class="stories-modal__specimen-card" style="background:#111111; color:#faf7f2; border-color: rgba(255,255,255,0.06);">
+                        <span class="stories-modal__specimen-name">Midnight Citadel Display</span>
+                        <div class="stories-modal__specimen-display" style="font-family:'Midnight_Citadel', sans-serif;">
+                            Midnight Obsession
+                        </div>
+                        <p style="font-size:0.75rem; opacity:0.75; margin:0;">A bold, graphic headline face designed for editorial covers.</p>
+                    </div>
+                </div>
+                
+                <p>We drop fresh specimens every single week in the Curator's Digest, offering early access keys and cryptographically verified digital license tokens. Sign up on the main grid list to lock in your slot and download our seasonal editorial specimen kits.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ── Interactive Glyph Explorer Modal ── -->
+    <div id="glyph-modal" class="glyph-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+        <div class="glyph-modal__backdrop" id="modal-backdrop"></div>
+        <div class="glyph-modal__content">
+            <div class="glyph-modal__header">
+                <div class="glyph-modal__title-group">
+                    <span class="glyph-modal__subtitle">Character Map Explorer</span>
+                    <h2 class="glyph-modal__title" id="modal-title">Font Name</h2>
+                </div>
+                <button class="glyph-modal__close" id="modal-close" aria-label="Close modal">
+                    <span class="material-symbols-outlined">close</span>
+                </button>
+            </div>
+            <div class="glyph-modal__body">
+                <div class="glyph-modal__grid-container" id="modal-grid-container">
+                    <!-- Dynamic grid sections will be injected here -->
+                </div>
+                <div class="glyph-modal__details">
+                    <div class="glyph-magnifier">
+                        <div class="glyph-magnifier__display" id="magnifier-display">A</div>
+                        <div class="glyph-magnifier__code" id="magnifier-code">U+0041</div>
+                        <div class="glyph-magnifier__hint">Hover keys to magnify.<br>Click to copy glyph to clipboard.
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Copy Toast -->
+            <div class="glyph-copy-toast" id="glyph-toast">
+                <span class="material-symbols-outlined" style="font-size: 16px;">check_circle</span>
+                <span>Copied to clipboard!</span>
+            </div>
+        </div>
+    </div>
 
     <script src="/main-website/globalscript.js"></script>
 
@@ -2318,6 +3458,13 @@
         const allCards = document.querySelectorAll('#marketplace-grid .font-card');
         const resultsCount = document.getElementById('results-count');
 
+        // ── Set initial count dynamically (total cards minus newsletter card) ──
+        (function () {
+            const newsletterCard = document.querySelector('.font-card--newsletter');
+            const total = allCards.length - (newsletterCard ? 1 : 0);
+            resultsCount.textContent = total;
+        })();
+
         pillContainer.addEventListener('click', function (e) {
             const btn = e.target.closest('button[data-filter]');
             if (!btn) return;
@@ -2328,38 +3475,141 @@
             const filter = btn.dataset.filter;
             let visible = 0;
 
+            // Phase 1: Fade and scale out non-matching cards
             allCards.forEach(card => {
                 const cat = card.dataset.category;
                 const show = filter === 'all' || cat === filter || cat === 'all';
-                card.style.display = show ? '' : 'none';
-                if (show) visible++;
+                if (!show) {
+                    card.classList.add('fc-filtering-out');
+                }
             });
 
-            const newsletter = document.querySelector('.font-card--newsletter');
-            const newsletterVisible = newsletter && newsletter.style.display !== 'none';
-            const fontCount = visible - (newsletterVisible ? 1 : 0);
-            resultsCount.textContent = fontCount > 0 ? fontCount : visible;
+            // Phase 2: Wait for fade transition, then hide them and show matches
+            setTimeout(() => {
+                allCards.forEach(card => {
+                    const cat = card.dataset.category;
+                    const show = filter === 'all' || cat === filter || cat === 'all';
+
+                    if (show) {
+                        card.style.display = '';
+                        card.classList.remove('fc-filtering-out');
+                        card.classList.add('fc-filtering-in');
+                        // Trigger CSS reflow
+                        void card.offsetWidth;
+                        card.classList.remove('fc-filtering-in');
+                        visible++;
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+
+                const newsletter = document.querySelector('.font-card--newsletter');
+                const newsletterVisible = newsletter && newsletter.style.display !== 'none';
+                const fontCount = visible - (newsletterVisible ? 1 : 0);
+                resultsCount.textContent = fontCount > 0 ? fontCount : visible;
+
+                /* ── Show / hide empty state ── */
+                const emptyState = document.getElementById('mp-empty-state');
+                if (emptyState) {
+                    emptyState.style.display = (fontCount === 0 && visible === 0) ? 'flex' : 'none';
+                }
+            }, 250); // Match CSS transition duration
         });
 
+        /* ── Empty state reset button ── */
+        const emptyResetBtn = document.getElementById('emptyStateReset');
+        if (emptyResetBtn) {
+            emptyResetBtn.addEventListener('click', function () {
+                // Click the "All Collections" pill
+                const allPill = pillContainer.querySelector('[data-filter="all"]');
+                if (allPill) allPill.click();
+                const emptyState = document.getElementById('mp-empty-state');
+                if (emptyState) emptyState.style.display = 'none';
+            });
+        }
+
         /* ──────────────────────────────────────────
-           3. WISHLIST TOGGLE
+           3. WISHLIST TOGGLE — localStorage persistent
         ───────────────────────────────────────────── */
+
+        /* ── Wishlist storage helpers ── */
+        function wl_get() {
+            try { return JSON.parse(localStorage.getItem('glyphereWishlist') || '[]'); } catch { return []; }
+        }
+        function wl_save(list) {
+            localStorage.setItem('glyphereWishlist', JSON.stringify(list));
+        }
+        function wl_add(id) {
+            const list = wl_get();
+            if (!list.includes(id)) list.push(id);
+            wl_save(list);
+        }
+        function wl_remove(id) {
+            wl_save(wl_get().filter(i => i !== id));
+        }
+        function wl_has(id) {
+            return wl_get().includes(id);
+        }
+
+        /* ── Wishlist toast ── */
+        let _wlToastEl = null, _wlToastTimer = null;
+        function wl_toast(msg, isAdded) {
+            if (!_wlToastEl) {
+                _wlToastEl = document.createElement('div');
+                _wlToastEl.className = 'cart-toast wl-toast';
+                _wlToastEl.style.cssText = 'background:#1c1812;';
+                document.body.appendChild(_wlToastEl);
+            }
+            _wlToastEl.innerHTML = `<span class="cart-toast__icon">${isAdded ? '♥' : '♡'}</span><span class="cart-toast__msg">${msg}</span>`;
+            clearTimeout(_wlToastTimer);
+            _wlToastEl.classList.add('cart-toast--visible');
+            _wlToastTimer = setTimeout(() => _wlToastEl.classList.remove('cart-toast--visible'), 2600);
+        }
+
+        /* ── Apply saved wishlist state on page load ── */
+        function wl_restoreState(btn) {
+            const card = btn.closest('.font-card');
+            const nameEl = card ? card.querySelector('.font-card__name-label') : null;
+            if (!nameEl) return;
+            const id = nameEl.textContent.trim().toLowerCase().replace(/\s+/g, '-');
+            if (wl_has(id)) {
+                const icon = btn.querySelector('.material-symbols-outlined');
+                icon.style.fontVariationSettings = "'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 20";
+                icon.style.color = '#e74c3c';
+                btn.style.background = 'rgba(231, 76, 60, 0.12)';
+                btn.style.borderColor = 'rgba(231, 76, 60, 0.3)';
+                btn.setAttribute('aria-label', 'Remove from wishlist');
+            }
+        }
+
         document.querySelectorAll('.font-card__wishlist').forEach(btn => {
+            wl_restoreState(btn);
+
             btn.addEventListener('click', function (e) {
                 e.stopPropagation();
+                const card = this.closest('.font-card');
+                const nameEl = card ? card.querySelector('.font-card__name-label') : null;
+                const fontName = nameEl ? nameEl.textContent.trim() : 'Font';
+                const id = fontName.toLowerCase().replace(/\s+/g, '-');
                 const icon = this.querySelector('.material-symbols-outlined');
-                const isActive = icon.style.fontVariationSettings?.includes('1');
+                const isActive = wl_has(id);
 
                 if (isActive) {
+                    wl_remove(id);
                     icon.style.fontVariationSettings = "'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 20";
                     icon.style.color = '';
                     this.style.background = '';
                     this.style.borderColor = '';
+                    this.setAttribute('aria-label', 'Add to wishlist');
+                    wl_toast(`${fontName} removed from wishlist`, false);
                 } else {
+                    wl_add(id);
                     icon.style.fontVariationSettings = "'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 20";
                     icon.style.color = '#e74c3c';
                     this.style.background = 'rgba(231, 76, 60, 0.12)';
                     this.style.borderColor = 'rgba(231, 76, 60, 0.3)';
+                    this.setAttribute('aria-label', 'Remove from wishlist');
+                    wl_toast(`${fontName} saved to wishlist`, true);
                 }
             });
         });
@@ -2424,10 +3674,112 @@
         });
 
         /* ──────────────────────────────────────────
-           4b. BUY BUTTONS
+           4b. BUY BUTTONS — Add to Cart
         ───────────────────────────────────────────── */
+
+        /* ── Cart utilities ── */
+        function glCart_get() {
+            try { return JSON.parse(localStorage.getItem('glyphereCart') || '[]'); } catch { return []; }
+        }
+        function glCart_save(cart) {
+            localStorage.setItem('glyphereCart', JSON.stringify(cart));
+            window.dispatchEvent(new CustomEvent('cartUpdated', { detail: { count: cart.length } }));
+        }
+        function glCart_add(item) {
+            const cart = glCart_get();
+            const existing = cart.find(i => i.id === item.id && i.license === item.license);
+            if (existing) { existing.qty = (existing.qty || 1) + 1; }
+            else { cart.push({ ...item, qty: 1 }); }
+            glCart_save(cart);
+            return cart.length;
+        }
+
+        /* ── Badge sync ── */
+        function glCart_syncBadge() {
+            const badge = document.getElementById('navCartBadge');
+            if (!badge) return;
+            const count = glCart_get().reduce((s, i) => s + (i.qty || 1), 0);
+            badge.textContent = count;
+            badge.setAttribute('data-count', count);
+            badge.style.transform = count > 0 ? 'scale(1)' : 'scale(0)';
+        }
+        glCart_syncBadge();
+
+        /* ── Toast ── */
+        let _toastEl = null, _toastTimer = null;
+        function glCart_toast(fontName, price) {
+            if (!_toastEl) {
+                _toastEl = document.createElement('div');
+                _toastEl.className = 'cart-toast';
+                _toastEl.innerHTML = `
+                  <span class="cart-toast__icon">✦</span>
+                  <span class="cart-toast__msg"></span>
+                  <a class="cart-toast__action" href="/main-website/cart.html">View Cart →</a>`;
+                document.body.appendChild(_toastEl);
+            }
+            _toastEl.querySelector('.cart-toast__msg').textContent = `${fontName} added to cart`;
+            clearTimeout(_toastTimer);
+            _toastEl.classList.add('cart-toast--visible');
+            _toastTimer = setTimeout(() => _toastEl.classList.remove('cart-toast--visible'), 3200);
+        }
+
+        /* ── Flying particle ── */
+        function glCart_flyParticle(fromEl) {
+            const cartBtn = document.getElementById('navCartBtn');
+            if (!cartBtn || !fromEl) return;
+
+            const src = fromEl.getBoundingClientRect();
+            const dst = cartBtn.getBoundingClientRect();
+
+            const p = document.createElement('div');
+            p.className = 'cart-fly-particle';
+            p.style.left = (src.left + src.width / 2) + 'px';
+            p.style.top = (src.top + src.height / 2) + 'px';
+            document.body.appendChild(p);
+
+            requestAnimationFrame(() => {
+                p.style.transition = 'left 0.55s cubic-bezier(0.42,0,0.58,1), top 0.55s cubic-bezier(0.42,0,0.58,1), opacity 0.15s ease 0.4s, transform 0.55s ease';
+                p.style.left = (dst.left + dst.width / 2) + 'px';
+                p.style.top = (dst.top + dst.height / 2) + 'px';
+                p.style.opacity = '0';
+                p.style.transform = 'translate(-50%,-50%) scale(0.3)';
+            });
+
+            setTimeout(() => p.remove(), 620);
+
+            /* bounce badge after particle arrives */
+            setTimeout(() => {
+                const badge = document.getElementById('navCartBadge');
+                if (badge) {
+                    badge.classList.remove('nav-cart__badge--bounce');
+                    void badge.offsetWidth; /* reflow */
+                    badge.classList.add('nav-cart__badge--bounce');
+                    setTimeout(() => badge.classList.remove('nav-cart__badge--bounce'), 600);
+                }
+                cartBtn.classList.add('nav-cart--pulse');
+                setTimeout(() => cartBtn.classList.remove('nav-cart--pulse'), 700);
+            }, 500);
+        }
+
+        /* ── Wire all Buy Now buttons ── */
         document.querySelectorAll('.font-card__cta-buy').forEach(btn => {
             btn.addEventListener('click', function () {
+                const card = this.closest('.font-card');
+                const name = card?.querySelector('.font-card__name-label')?.textContent.trim() || 'Font';
+                const priceText = card?.querySelector('.font-card__price')?.textContent || '$0';
+                const price = parseFloat(priceText.replace(/[^0-9.]/g, '')) || 0;
+                const license = card?.dataset.selectedLicense || 'Desktop';
+
+                glCart_flyParticle(this);
+                glCart_add({
+                    id: name.toLowerCase().replace(/\s+/g, '-') + '-' + license.toLowerCase(),
+                    name,
+                    price,
+                    license: license
+                });
+                glCart_syncBadge();
+                glCart_toast(`${name} (${license})`, price);
+
                 const orig = this.textContent;
                 this.textContent = '✓ Added!';
                 setTimeout(() => { this.textContent = orig; }, 1600);
@@ -2441,29 +3793,116 @@
         const emailInput = document.getElementById('newsletter-email');
 
         if (joinBtn && emailInput) {
+            const form = emailInput.closest('.newsletter-card__form');
+
+            // Interactive ambient focus states
+            emailInput.addEventListener('focus', () => {
+                if (form) form.classList.add('focus-halo');
+            });
+            emailInput.addEventListener('blur', () => {
+                if (form) form.classList.remove('focus-halo');
+            });
+
+            // Golden Typographic Letter Particles
+            function spawnTypographicParticles() {
+                const preview = document.querySelector('.font-card--newsletter .font-card__preview');
+                if (!preview) return;
+
+                const glyphs = ['✦', '✧', 'a', 'g', 'R', '★', 'Q', 'e', 'x', 'y', '✧', '★'];
+                const count = 18;
+
+                for (let i = 0; i < count; i++) {
+                    const span = document.createElement('span');
+                    span.className = 'newsletter-particle';
+                    span.textContent = glyphs[Math.floor(Math.random() * glyphs.length)];
+
+                    // Initial coordinate from form center
+                    const startX = preview.offsetWidth / 2 + (Math.random() - 0.5) * 100;
+                    const startY = preview.offsetHeight * 0.72;
+
+                    span.style.left = `${startX}px`;
+                    span.style.top = `${startY}px`;
+
+                    preview.appendChild(span);
+
+                    // Physics vector calculations
+                    const targetX = (Math.random() - 0.5) * 180;
+                    const targetY = -120 - Math.random() * 110;
+                    const spinAngle = (Math.random() - 0.5) * 360;
+
+                    // Trigger hardware accelerated animation frame
+                    requestAnimationFrame(() => {
+                        span.style.transform = `translate(${targetX}px, ${targetY}px) rotate(${spinAngle}deg) scale(0.5)`;
+                        span.style.opacity = '0';
+                    });
+
+                    // Remove from DOM after cascade completes
+                    setTimeout(() => span.remove(), 920);
+                }
+            }
+
             joinBtn.addEventListener('click', function () {
                 const val = emailInput.value.trim();
                 const isValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val);
 
                 if (!isValid) {
-                    emailInput.style.outline = '2px solid #ba1a1a';
-                    emailInput.placeholder = 'Enter a valid email…';
+                    if (form) {
+                        form.classList.remove('error-flash');
+                        void form.offsetWidth; // Reflow
+                        form.classList.add('error-flash');
+                        setTimeout(() => form.classList.remove('error-flash'), 360);
+                    }
+                    emailInput.placeholder = 'Please enter a valid email...';
                     emailInput.value = '';
-                    setTimeout(() => {
-                        emailInput.style.outline = '';
-                        emailInput.placeholder = 'your@email.com';
-                    }, 2000);
                     return;
                 }
 
+                // Subscribe Success Trigger
+                spawnTypographicParticles();
+
                 joinBtn.textContent = '✓';
                 emailInput.value = '';
-                emailInput.placeholder = 'You\'re on the list!';
+                emailInput.placeholder = 'You\'re on the list! ✨';
                 emailInput.disabled = true;
                 joinBtn.disabled = true;
                 joinBtn.style.opacity = '0.6';
             });
         }
+
+        /* ── Curator's Journal Overlay Controller ── */
+        const storiesModal = document.getElementById('stories-modal');
+        const storiesBackdrop = document.getElementById('stories-backdrop');
+        const storiesClose = document.getElementById('stories-close');
+        const storiesCta = document.querySelector('.newsletter-cta-btn');
+
+        function openStoriesModal() {
+            if (storiesModal) {
+                storiesModal.classList.add('stories-modal--visible');
+                document.body.style.overflow = 'hidden';
+            }
+        }
+
+        function closeStoriesModal() {
+            if (storiesModal) {
+                storiesModal.classList.remove('stories-modal--visible');
+                document.body.style.overflow = '';
+            }
+        }
+
+        if (storiesCta) {
+            storiesCta.addEventListener('click', (e) => {
+                e.stopPropagation();
+                openStoriesModal();
+            });
+        }
+        if (storiesClose) storiesClose.addEventListener('click', closeStoriesModal);
+        if (storiesBackdrop) storiesBackdrop.addEventListener('click', closeStoriesModal);
+        
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && storiesModal && storiesModal.classList.contains('stories-modal--visible')) {
+                closeStoriesModal();
+            }
+        });
 
         /* ──────────────────────────────────────────
            6. FEATURED SECTION BUTTONS
@@ -2474,8 +3913,17 @@
         if (featuredBuy) {
             featuredBuy.addEventListener('click', function () {
                 const orig = this.textContent;
-                this.textContent = 'Processing…';
-                setTimeout(() => { this.textContent = orig; }, 1800);
+                this.textContent = '✓ Added!';
+                glCart_flyParticle(this);
+                glCart_add({
+                    id: 'vanguard-axis-commercial',
+                    name: 'Vanguard Axis',
+                    price: 30,
+                    license: 'Commercial'
+                });
+                glCart_syncBadge();
+                glCart_toast('Vanguard Axis (Commercial)', 30);
+                setTimeout(() => { this.textContent = orig; }, 1600);
             });
         }
 
@@ -2536,6 +3984,319 @@
 
             fontCards.forEach(card => grid.appendChild(card));
             if (newsletter) grid.appendChild(newsletter);
+        });
+
+        /* ──────────────────────────────────────────
+           9. GRID VS LIST VIEW TOGGLE
+        ───────────────────────────────────────────── */
+        const viewGridBtn = document.getElementById('view-grid');
+        const viewListBtn = document.getElementById('view-list');
+
+        function setViewMode(mode) {
+            if (mode === 'list') {
+                grid.classList.add('list-view');
+                if (viewListBtn) viewListBtn.classList.add('mp-view-btn--active');
+                if (viewGridBtn) viewGridBtn.classList.remove('mp-view-btn--active');
+                localStorage.setItem('glyphere-view-mode', 'list');
+            } else {
+                grid.classList.remove('list-view');
+                if (viewGridBtn) viewGridBtn.classList.add('mp-view-btn--active');
+                if (viewListBtn) viewListBtn.classList.remove('mp-view-btn--active');
+                localStorage.setItem('glyphere-view-mode', 'grid');
+            }
+        }
+
+        if (viewGridBtn && viewListBtn) {
+            viewGridBtn.addEventListener('click', () => setViewMode('grid'));
+            viewListBtn.addEventListener('click', () => setViewMode('list'));
+
+            // Restore view preference
+            const savedViewMode = localStorage.getItem('glyphere-view-mode');
+            if (savedViewMode === 'list') {
+                setViewMode('list');
+            } else {
+                setViewMode('grid');
+            }
+        }
+
+        /* ──────────────────────────────────────────
+           10. LIVE PREVIEW PRESETS SYNC
+        ───────────────────────────────────────────── */
+        const presets = {
+            alphabet: 'ABCDEFGHIJKLMNOPQRSTUVWXYZ',
+            numbers: '0123456789',
+            slogan: 'Crafting letters with soul.',
+            waterfall: 'Aa Bb Cc Dd Ee Ff Gg Hh Ii Jj'
+        };
+
+        document.querySelectorAll('.mp-preset-btn').forEach(btn => {
+            btn.addEventListener('click', function (e) {
+                e.stopPropagation();
+                const type = this.dataset.preset;
+                const text = presets[type] || '';
+                previewInput.value = text;
+                syncPreview(text);
+
+                // Animate input visually
+                previewInput.focus();
+                previewInput.style.transform = 'scale(1.01)';
+                setTimeout(() => {
+                    previewInput.style.transform = '';
+                }, 150);
+            });
+        });
+
+        /* ──────────────────────────────────────────
+           11. DYNAMIC "EXPLORE GLYPHS" HOVER BADGES
+        ───────────────────────────────────────────── */
+        document.querySelectorAll('.font-card__preview').forEach(preview => {
+            if (preview.closest('.font-card--newsletter')) return;
+
+            const hint = document.createElement('div');
+            hint.className = 'font-card__explore-hint';
+            hint.textContent = 'Explore Glyphs';
+            preview.appendChild(hint);
+        });
+
+        /* ──────────────────────────────────────────
+           12. INTERACTIVE GLYPH EXPLORER CONTROLLER
+        ───────────────────────────────────────────── */
+        const glyphModal = document.getElementById('glyph-modal');
+        const modalBackdrop = document.getElementById('modal-backdrop');
+        const modalClose = document.getElementById('modal-close');
+        const modalTitle = document.getElementById('modal-title');
+        const modalGridContainer = document.getElementById('modal-grid-container');
+        const magnifierDisplay = document.getElementById('magnifier-display');
+        const magnifierCode = document.getElementById('magnifier-code');
+        const glyphToast = document.getElementById('glyph-toast');
+
+        const glyphSections = [
+            { title: 'Uppercase', chars: 'ABCDEFGHIJKLMNOPQRSTUVWXYZ' },
+            { title: 'Lowercase', chars: 'abcdefghijklmnopqrstuvwxyz' },
+            { title: 'Numbers & Symbols', chars: '0123456789&?!@#$%*+=()[]{}.,:;/' }
+        ];
+
+        let activeFontFamily = '';
+
+        function renderGlyphGrid() {
+            modalGridContainer.innerHTML = '';
+
+            glyphSections.forEach(section => {
+                const title = document.createElement('h3');
+                title.className = 'glyph-section-title';
+                title.textContent = section.title;
+                modalGridContainer.appendChild(title);
+
+                const grid = document.createElement('div');
+                grid.className = 'glyph-grid';
+
+                Array.from(section.chars).forEach(char => {
+                    const box = document.createElement('div');
+                    box.className = 'glyph-box';
+                    box.style.fontFamily = activeFontFamily;
+                    box.textContent = char;
+
+                    box.addEventListener('mouseenter', () => {
+                        magnifierDisplay.textContent = char;
+                        magnifierDisplay.style.fontFamily = activeFontFamily;
+
+                        const hex = char.charCodeAt(0).toString(16).toUpperCase().padStart(4, '0');
+                        magnifierCode.textContent = `U+${hex}`;
+
+                        magnifierDisplay.style.transform = 'scale(1.1)';
+                        setTimeout(() => { magnifierDisplay.style.transform = 'scale(1)'; }, 100);
+                    });
+
+                    box.addEventListener('click', () => {
+                        navigator.clipboard.writeText(char).then(() => {
+                            glyphToast.classList.add('glyph-copy-toast--visible');
+                            setTimeout(() => {
+                                glyphToast.classList.remove('glyph-copy-toast--visible');
+                            }, 1800);
+                        });
+                    });
+
+                    grid.appendChild(box);
+                });
+
+                modalGridContainer.appendChild(grid);
+            });
+        }
+
+        document.querySelectorAll('.font-card').forEach(card => {
+            const bigDisplay = card.querySelector('.font-card__big');
+            if (!bigDisplay) return;
+
+            bigDisplay.addEventListener('click', (e) => {
+                e.stopPropagation();
+
+                const nameEl = card.querySelector('.font-card__name-label');
+                const fontName = nameEl ? nameEl.textContent.trim() : 'Typeface';
+
+                activeFontFamily = bigDisplay.style.fontFamily || window.getComputedStyle(bigDisplay).fontFamily;
+
+                modalTitle.textContent = fontName;
+                magnifierDisplay.style.fontFamily = activeFontFamily;
+                magnifierDisplay.textContent = bigDisplay.textContent.charAt(0);
+                const firstHex = bigDisplay.textContent.charCodeAt(0).toString(16).toUpperCase().padStart(4, '0');
+                magnifierCode.textContent = `U+${firstHex}`;
+
+                renderGlyphGrid();
+
+                glyphModal.classList.add('glyph-modal--visible');
+                document.body.style.overflow = 'hidden';
+            });
+        });
+
+        function closeModal() {
+            glyphModal.classList.remove('glyph-modal--visible');
+            document.body.style.overflow = '';
+        }
+
+        if (modalClose) modalClose.addEventListener('click', closeModal);
+        if (modalBackdrop) modalBackdrop.addEventListener('click', closeModal);
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && glyphModal.classList.contains('glyph-modal--visible')) {
+                closeModal();
+            }
+        });
+
+        /* ──────────────────────────────────────────
+           13. SPECIMEN SIZE SLIDER CONTROLLER
+        ───────────────────────────────────────────── */
+        const sizeSlider = document.getElementById('specimen-size-slider');
+        const sizeVal = document.getElementById('slider-size-val');
+        const marketplaceGrid = document.getElementById('marketplace-grid');
+
+        if (sizeSlider && sizeVal && marketplaceGrid) {
+            // Set initial state
+            sizeSlider.value = 16;
+            sizeVal.textContent = 16;
+            marketplaceGrid.style.setProperty('--specimen-size', '16px');
+
+            sizeSlider.addEventListener('input', function () {
+                const size = this.value;
+                sizeVal.textContent = size;
+                marketplaceGrid.style.setProperty('--specimen-size', size + 'px');
+            });
+        }
+
+        /* ──────────────────────────────────────────
+           14. INTERACTIVE SCROLL-REVEAL OBSERVER
+        ───────────────────────────────────────────── */
+        const revealObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fc-reveal--visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, {
+            rootMargin: '0px 0px -40px 0px',
+            threshold: 0.05
+        });
+
+        document.querySelectorAll('.font-card').forEach(card => {
+            card.classList.add('fc-reveal');
+            revealObserver.observe(card);
+        });
+
+        /* ──────────────────────────────────────────
+           15. DYNAMIC CARDS DECORATOR (LICENSING POPOVER)
+        ───────────────────────────────────────────── */
+        document.querySelectorAll('.font-card').forEach(card => {
+            if (card.classList.contains('font-card--newsletter')) return;
+
+            const priceWrap = card.querySelector('.font-card__price-wrap');
+            if (!priceWrap) return;
+
+            const priceEl = priceWrap.querySelector('.font-card__price');
+            const stylesEl = priceWrap.querySelector('.font-card__styles-count');
+            const basePriceText = priceEl ? priceEl.textContent.trim() : '$18';
+            const desktopPrice = parseFloat(basePriceText.replace(/[^0-9.]/g, '')) || 18;
+            const webBasePrice = Math.round(desktopPrice / 0.6);
+
+            card.dataset.basePrice = webBasePrice;
+            card.dataset.selectedLicense = 'Desktop';
+            card.dataset.selectedPrice = desktopPrice;
+
+            priceWrap.innerHTML = `
+                <div class="font-card__price-row">
+                    <span class="font-card__price">${basePriceText}</span>
+                </div>
+                <span class="fc-license-badge">Desktop <span class="material-symbols-outlined" style="font-size:10px;">expand_more</span></span>
+                <span class="font-card__styles-count">${stylesEl ? stylesEl.textContent : '1 Style · USD'}</span>
+                
+                <div class="fc-license-popover">
+                    <div class="fc-license-option fc-license-option--active" data-license="Desktop" data-multiplier="0.6">
+                        <span>Desktop</span>
+                        <span>$${desktopPrice}</span>
+                    </div>
+                    <div class="fc-license-option" data-license="Web" data-multiplier="1.0">
+                        <span>Web</span>
+                        <span>$${webBasePrice}</span>
+                    </div>
+                    <div class="fc-license-option" data-license="Commercial" data-multiplier="1.5">
+                        <span>Commercial</span>
+                        <span>$${Math.round(webBasePrice * 1.5)}</span>
+                    </div>
+                </div>
+            `;
+        });
+
+        // Open/Close popovers
+        document.addEventListener('click', function (e) {
+            if (!e.target.closest('.font-card__price-wrap')) {
+                document.querySelectorAll('.fc-license-popover').forEach(p => {
+                    p.classList.remove('fc-license-popover--visible');
+                });
+                return;
+            }
+
+            const priceWrap = e.target.closest('.font-card__price-wrap');
+            const popover = priceWrap.querySelector('.fc-license-popover');
+
+            document.querySelectorAll('.fc-license-popover').forEach(p => {
+                if (p !== popover) p.classList.remove('fc-license-popover--visible');
+            });
+
+            if (popover && !e.target.closest('.fc-license-option')) {
+                popover.classList.toggle('fc-license-popover--visible');
+            }
+        });
+
+        // Option selection inside popover
+        document.querySelectorAll('.font-card').forEach(card => {
+            if (card.classList.contains('font-card--newsletter')) return;
+
+            card.addEventListener('click', function (e) {
+                const option = e.target.closest('.fc-license-option');
+                if (!option) return;
+
+                e.stopPropagation();
+
+                const license = option.dataset.license;
+                const multiplier = parseFloat(option.dataset.multiplier) || 1;
+                const basePrice = parseFloat(card.dataset.basePrice) || 18;
+                const finalPrice = Math.round(basePrice * multiplier);
+
+                card.dataset.selectedLicense = license;
+                card.dataset.selectedPrice = finalPrice;
+
+                const popover = option.closest('.fc-license-popover');
+                popover.querySelectorAll('.fc-license-option').forEach(opt => {
+                    opt.classList.remove('fc-license-option--active');
+                });
+                option.classList.add('fc-license-option--active');
+
+                const priceEl = card.querySelector('.font-card__price');
+                const badgeEl = card.querySelector('.fc-license-badge');
+
+                if (priceEl) priceEl.textContent = `$${finalPrice}`;
+                if (badgeEl) badgeEl.innerHTML = `${license} <span class="material-symbols-outlined" style="font-size:10px;">expand_more</span>`;
+
+                popover.classList.remove('fc-license-popover--visible');
+            });
         });
 
     </script>

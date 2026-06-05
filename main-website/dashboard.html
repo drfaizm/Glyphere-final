@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Session Guard: HALT load if not authenticated -->
+    <script>
+        (function () {
+            var currentUser = localStorage.getItem('glyphere_current_user');
+            if (!currentUser) {
+                // Instantly redirect guest to login
+                window.location.replace('/main-website/signup-login.html');
+            }
+        })();
+    </script>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="/main-website/glyphere.png" />
+    <title>Designer Dashboard | Glyphere — Premium Digital Type Foundry</title>
+    <meta name="description"
+        content="Access your Glyphere licensed typefaces, manage active domains, view bespoke brand typography design status, and check billing history." />
+
+    <!-- Preconnect -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <!-- Google Fonts -->
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=Manrope:wght@300;400;500;600;700&family=Instrument+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=JetBrains+Mono:wght@300;400;700&display=swap"
+        media="print" onload="this.media='all'" />
+    <noscript>
+        <link rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=Manrope:wght@300;400;500;600;700&family=Instrument+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=JetBrains+Mono:wght@300;400;700&display=swap" />
+    </noscript>
+
+    <!-- Shared/Global Stylesheet -->
+    <link rel="stylesheet" href="css/globalstyle.css" />
+
+    <!-- Bespoke Premium Dashboard Stylesheet -->
+    <link rel="stylesheet" href="css/dashboard.css" />
+</head>
+
+<body class="dashboard-body">
+
+    <!-- ═══════════════════════════════════════
+       PRELOADER
+    ═══════════════════════════════════════ -->
+    <div id="preloader" role="status" aria-label="Loading Glyphere Dashboard">
+        <div class="preloader-inner">
+            <div class="preloader-brand">
+                <div class="preloader-glyph-container">
+                    <div class="preloader-glyph"></div>
+                </div>
+                <p class="preloader-brand__name">Glyphere</p>
+                <p class="preloader-brand__tagline">Loading Designer Portal</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════
+       SITE HEADER & NAV
+    ═══════════════════════════════════════ -->
+    <header class="header-nav">
+        <nav class="nav-inner" aria-label="Main navigation">
+            <div class="nav-logo-group">
+                <a href="/main-website/homepage.html">
+                    <svg class="nav-logo-svg" viewBox="0 0 40 40" width="36" height="36" fill="none"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="20" cy="20" r="18" stroke="url(#logoGrad)" stroke-width="2.5"
+                            fill="rgba(201, 171, 129, 0.05)" />
+                        <path
+                            d="M25 15C23.8 13.2 21.8 12 19.5 12C15.4 12 12 15.4 12 19.5C12 23.6 15.4 27 19.5 27C23 27 26 24.5 26.8 21.2H19.5V18.8H29V20C29 25 24.7 29.5 19.5 29.5C14 29.5 9.5 25 9.5 19.5C9.5 14 14 9.5 19.5 9.5C22.6 9.5 25.5 11 27.2 13.5L25 15Z"
+                            fill="url(#logoGrad)" />
+                        <defs>
+                            <linearGradient id="logoGrad" x1="0" y1="0" x2="40" y2="40" gradientUnits="userSpaceOnUse">
+                                <stop offset="0%" stop-color="#f0dab0" />
+                                <stop offset="100%" stop-color="#c9ab81" />
+                            </linearGradient>
+                        </defs>
+                    </svg>
+                </a>
+                <a class="nav-logo-name" href="/main-website/homepage.html">Glyphere</a>
+            </div>
+            <ul class="nav-links" role="list">
+                <li><a class="nav-link" href="/main-website/marketplace.html">Marketplace</a></li>
+                <li><a class="nav-link" href="/main-website/custom_font_services/custom_font_services.html">Services</a>
+                </li>
+                <li><a class="nav-link" href="/main-website/about.html">About</a></li>
+            </ul>
+            <div class="nav-actions">
+                <a class="nav-cart" href="/main-website/cart.html" id="navCartBtn" aria-label="Shopping cart">
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                        <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z" />
+                        <line x1="3" y1="6" x2="21" y2="6" />
+                        <path d="M16 10a4 4 0 0 1-8 0" />
+                    </svg>
+                    <span class="nav-cart__badge" id="navCartBadge" data-count="0">0</span>
+                </a>
+                <a class="nav-signup" href="/main-website/signup-login.html">Log In</a>
+            </div>
+            <button class="nav-hamburger" aria-label="Menu" aria-expanded="false">
+                <span class="nav-hamburger__line"></span>
+                <span class="nav-hamburger__line"></span>
+                <span class="nav-hamburger__line"></span>
+            </button>
+        </nav>
+    </header>
+
+    <div class="nav-mobile-menu" role="dialog" aria-label="Mobile navigation">
+        <div class="nav-mobile-menu__links">
+            <a class="nav-mobile-menu__link" href="/main-website/marketplace.html">Marketplace</a>
+            <a class="nav-mobile-menu__link"
+                href="/main-website/custom_font_services/custom_font_services.html">Services</a>
+            <a class="nav-mobile-menu__link" href="/main-website/about.html">About</a>
+        </div>
+        <div class="nav-mobile-menu__actions">
+            <a class="nav-mobile-menu__cart" href="/main-website/cart.html" aria-label="Shopping cart">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z" />
+                    <line x1="3" y1="6" x2="21" y2="6" />
+                    <path d="M16 10a4 4 0 0 1-8 0" />
+                </svg>
+                Cart
+            </a>
+            <a class="nav-mobile-menu__signup" href="/main-website/signup-login.html">Log In</a>
+        </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════
+       HERO / WELCOME PANEL
+    ═══════════════════════════════════════ -->
+    <main>
+        <section class="dash-hero">
+            <div class="dash-welcome">
+                <h1 class="dash-welcome__title">Welcome, <em id="dash-username">Designer</em></h1>
+                <p class="dash-welcome__subtitle">Review your active typography licenses and connected project
+                    integrations.</p>
+            </div>
+            <div class="dash-time-widget">
+                <span class="dash-time-dot"></span>
+                <span>Active Session Secure</span>
+            </div>
+        </section>
+
+        <!-- ─── Statistics metrics grid ─── -->
+        <section class="dash-metrics" aria-label="Account Overview metrics">
+            <!-- Active Licenses -->
+            <div class="metric-card">
+                <div class="metric-card__glow"></div>
+                <div class="metric-card__header">
+                    <span>Active Licenses</span>
+                    <span class="metric-card__icon">🛡️</span>
+                </div>
+                <div class="metric-card__value">3</div>
+                <div class="metric-card__desc">Perpetual commercial rights</div>
+            </div>
+
+
+
+            <!-- Custom Font Progress -->
+            <div class="metric-card">
+                <div class="metric-card__glow"></div>
+                <div class="metric-card__header">
+                    <span>Bespoke Type Projects</span>
+                    <span class="metric-card__icon">🎨</span>
+                </div>
+                <div class="metric-card__value">1</div>
+                <div class="metric-card__desc">Active foundry design projects</div>
+            </div>
+        </section>
+
+        <!-- ═══════════════════════════════════════
+           SIDEBAR & PANELS LAYOUT CONTAINER
+        ═══════════════════════════════════════ -->
+        <section class="dash-container">
+            <!-- Left Sidebar Navigation -->
+            <aside class="dash-sidebar" aria-label="Dashboard navigation">
+                <button class="dash-menu-btn active" data-target="panel-fonts">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
+                    </svg>
+                    My Typefaces
+                </button>
+                <button class="dash-menu-btn" data-target="panel-services">
+                    <svg viewBox="0 0 24 24">
+                        <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+                        <polyline points="2 17 12 22 22 17"></polyline>
+                        <polyline points="2 12 12 17 22 12"></polyline>
+                    </svg>
+                    Bespoke Service Tracker
+                </button>
+
+                <button class="dash-menu-btn" data-target="panel-orders">
+                    <svg viewBox="0 0 24 24">
+                        <rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect>
+                        <line x1="1" y1="10" x2="23" y2="10"></line>
+                    </svg>
+                    Invoices &amp; Billing
+                </button>
+                <button class="dash-menu-btn" data-target="panel-settings">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                        <circle cx="12" cy="7" r="4"></circle>
+                    </svg>
+                    Account Settings
+                </button>
+            </aside>
+
+            <!-- Right content panels area -->
+            <div class="dash-content-area">
+
+                <!-- 1. MY LICENSED FONTS PANEL -->
+                <div class="dash-panel active" id="panel-fonts">
+                    <div class="panel-header">
+                        <h2 class="panel-title">My Licensed Typefaces</h2>
+                        <p class="panel-subtitle">Review, test specimen details, and download structural font packets.
+                        </p>
+                    </div>
+
+                    <div class="downloads-grid">
+                        <!-- Font 1: Turbo Block -->
+                        <div class="font-card">
+                            <div class="font-card__header">
+                                <div>
+                                    <h3 class="font-card__name">Turbo Block</h3>
+                                    <p class="font-card__style">Black / Display Geometry</p>
+                                </div>
+                                <span class="license-tag">Desktop + Web</span>
+                            </div>
+                            <div class="font-card__specimen-wrap">
+                                <input type="text" class="font-card__specimen-input" value="TURBO BLOCK"
+                                    style="font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-stretch: expanded;"
+                                    spellcheck="false" />
+                                <span class="font-card__specimen-label">Interactive Specimen Test</span>
+                            </div>
+                            <div class="font-card__actions">
+                                <button class="download-btn download-btn--otf"
+                                    onclick="triggerDownload(this, 'Turbo_Block_Desktop.otf')">
+                                    <svg viewBox="0 0 24 24">
+                                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3" />
+                                    </svg>
+                                    Get OTF
+                                </button>
+                                <button class="download-btn download-btn--woff2"
+                                    onclick="triggerDownload(this, 'Turbo_Block_Web.woff2')">
+                                    <svg viewBox="0 0 24 24">
+                                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3" />
+                                    </svg>
+                                    Get WOFF2
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Font 2: Midnight Citadel -->
+                        <div class="font-card">
+                            <div class="font-card__header">
+                                <div>
+                                    <h3 class="font-card__name">Midnight Citadel</h3>
+                                    <p class="font-card__style">Gothic Brutalist Blackletter</p>
+                                </div>
+                                <span class="license-tag">Desktop</span>
+                            </div>
+                            <div class="font-card__specimen-wrap">
+                                <input type="text" class="font-card__specimen-input" value="CITADEL"
+                                    style="font-family: 'Playfair Display', serif; font-weight: 700; font-style: italic;"
+                                    spellcheck="false" />
+                                <span class="font-card__specimen-label">Interactive Specimen Test</span>
+                            </div>
+                            <div class="font-card__actions">
+                                <button class="download-btn download-btn--otf"
+                                    onclick="triggerDownload(this, 'Midnight_Citadel_Desktop.otf')">
+                                    <svg viewBox="0 0 24 24">
+                                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3" />
+                                    </svg>
+                                    Get OTF
+                                </button>
+                                <button class="download-btn download-btn--woff2" disabled
+                                    style="opacity:0.3; cursor:not-allowed;">
+                                    🔒 No Web Lic
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Font 3: Pebble Sans -->
+                        <div class="font-card">
+                            <div class="font-card__header">
+                                <div>
+                                    <h3 class="font-card__name">Pebble Sans</h3>
+                                    <p class="font-card__style">Geometric terminals warm sans</p>
+                                </div>
+                                <span class="license-tag">Web License</span>
+                            </div>
+                            <div class="font-card__specimen-wrap">
+                                <input type="text" class="font-card__specimen-input" value="Pebble Sans"
+                                    style="font-family: 'Manrope', sans-serif; font-weight: 500;" spellcheck="false" />
+                                <span class="font-card__specimen-label">Interactive Specimen Test</span>
+                            </div>
+                            <div class="font-card__actions">
+                                <button class="download-btn download-btn--otf" disabled
+                                    style="opacity:0.3; cursor:not-allowed;">
+                                    🔒 No Desk Lic
+                                </button>
+                                <button class="download-btn download-btn--woff2"
+                                    onclick="triggerDownload(this, 'Pebble_Sans_Web.woff2')">
+                                    <svg viewBox="0 0 24 24">
+                                        <path d="M21 15v4a2 2 0 0 1-2-2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3" />
+                                    </svg>
+                                    Get WOFF2
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2. BESPOKE SERVICE TRACKER PANEL -->
+                <div class="dash-panel" id="panel-services">
+                    <div class="panel-header">
+                        <h2 class="panel-title">Bespoke Typeface Tracker</h2>
+                        <p class="panel-subtitle">Review active status and design phases of your ordered custom branding
+                            typefaces.</p>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-card__title-row">
+                            <div>
+                                <span class="project-id">ORDER ID: #GF-99421</span>
+                                <h3 class="project-name">Custom Display Serif for Brand Rebranding</h3>
+                            </div>
+                            <span class="license-tag"
+                                style="background: rgba(34, 197, 94, 0.12); color: #22c55e;">Status: In Progress</span>
+                        </div>
+
+                        <!-- Progress Bar Timeline -->
+                        <div class="tracker-timeline">
+                            <!-- Step 1: Concept -->
+                            <div class="tracker-step completed">
+                                <div class="tracker-node">1</div>
+                                <div class="tracker-info">
+                                    <span class="tracker-label">Concept Sketching</span>
+                                    <span class="tracker-status-text">Completed</span>
+                                </div>
+                            </div>
+                            <!-- Step 2: Stem Geometry -->
+                            <div class="tracker-step completed">
+                                <div class="tracker-node">2</div>
+                                <div class="tracker-info">
+                                    <span class="tracker-label">Stem Refinements</span>
+                                    <span class="tracker-status-text">Completed</span>
+                                </div>
+                            </div>
+                            <!-- Step 3: Bespoke Kerning -->
+                            <div class="tracker-step active">
+                                <div class="tracker-node">3</div>
+                                <div class="tracker-info">
+                                    <span class="tracker-label">Bespoke Kerning</span>
+                                    <span class="tracker-status-text">Active Phase</span>
+                                </div>
+                            </div>
+                            <!-- Step 4: Final Delivery -->
+                            <div class="tracker-step">
+                                <div class="tracker-node">4</div>
+                                <div class="tracker-info">
+                                    <span class="tracker-label">Export &amp; Ship</span>
+                                    <span class="tracker-status-text">Pending</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <p class="panel-subtitle"
+                            style="margin-top: 2rem; border-top: 1px solid rgba(201, 171, 129, 0.15); padding-top: 1.5rem;">
+                            <strong>Latest Studio Update:</strong> Our team is currently interpolating regular/bold
+                            kerning weights and auditing structural terminal contours. Expected delivery: **June 14,
+                            2026**.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- 4. INVOICES & BILLING PANEL -->
+                <div class="dash-panel" id="panel-orders">
+                    <div class="panel-header">
+                        <h2 class="panel-title">Billing &amp; Invoices</h2>
+                        <p class="panel-subtitle">Track your transaction receipts and download printable invoices.</p>
+                    </div>
+
+                    <div class="billing-card">
+                        <div class="billing-table-wrap">
+                            <table class="billing-table">
+                                <thead>
+                                    <tr>
+                                        <th>Order ID</th>
+                                        <th>Purchased Item</th>
+                                        <th>Date</th>
+                                        <th>License Scope</th>
+                                        <th>Price</th>
+                                        <th>Status</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><code>GLP-77402</code></td>
+                                        <td>Turbo Block Typeface</td>
+                                        <td>May 24, 2026</td>
+                                        <td>Desktop + Web</td>
+                                        <td>$69.00</td>
+                                        <td><span class="billing-badge billing-badge--paid">Paid</span></td>
+                                        <td>
+                                            <a href="#" class="billing-invoice-link"
+                                                onclick="window.print(); return false;">
+                                                <svg viewBox="0 0 24 24">
+                                                    <path
+                                                        d="M6 9V2h12v7M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2M6 14h12v8H6z" />
+                                                </svg>
+                                                Print PDF
+                                            </a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>GLP-71092</code></td>
+                                        <td>Midnight Citadel Typeface</td>
+                                        <td>May 10, 2026</td>
+                                        <td>Desktop (1 Workstation)</td>
+                                        <td>$30.00</td>
+                                        <td><span class="billing-badge billing-badge--paid">Paid</span></td>
+                                        <td>
+                                            <a href="#" class="billing-invoice-link"
+                                                onclick="window.print(); return false;">
+                                                <svg viewBox="0 0 24 24">
+                                                    <path
+                                                        d="M6 9V2h12v7M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2M6 14h12v8H6z" />
+                                                </svg>
+                                                Print PDF
+                                            </a>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 5. ACCOUNT SETTINGS PANEL -->
+                <div class="dash-panel" id="panel-settings">
+                    <div class="panel-header">
+                        <h2 class="panel-title">Account Settings</h2>
+                        <p class="panel-subtitle">Review your active client metadata profile.</p>
+                    </div>
+
+                    <div class="profile-card">
+                        <div class="profile-editor-layout">
+                            <div class="avatar-uploader-column">
+                                <div class="avatar-preview-wrap">
+                                    <svg viewBox="0 0 24 24">
+                                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                                        <circle cx="12" cy="7" r="4"></circle>
+                                    </svg>
+                                </div>
+                                <span class="avatar-upload-hint">Glyphere simulated blank designer profile.</span>
+                            </div>
+
+                            <div class="profile-form-column">
+                                <div class="profile-grid">
+                                    <div>
+                                        <span class="profile-field-label">Full Name</span>
+                                        <div class="profile-field-value" id="profile-name">Client Name</div>
+                                    </div>
+                                    <div>
+                                        <span class="profile-field-label">Email Address</span>
+                                        <div class="profile-field-value" id="profile-email">email@client.com</div>
+                                    </div>
+                                    <div>
+                                        <span class="profile-field-label">Client Tier</span>
+                                        <div class="profile-field-value" style="color: var(--gold); font-weight: 700;">
+                                            Foundry Member</div>
+                                    </div>
+                                    <div>
+                                        <span class="profile-field-label">Secure API Token</span>
+                                        <div class="profile-field-value"
+                                            style="font-family: var(--font-mono); font-size: 0.75rem; text-overflow: ellipsis; overflow: hidden; white-space: nowrap;">
+                                            gl_fnd_42109xbcda940212</div>
+                                    </div>
+                                </div>
+                                <button type="button" class="profile-save-btn"
+                                    onclick="alert('Profile updates is a mock service. Member profile is secure.')">Update
+                                    Password</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+    <!-- ═══════════════════════════════════════
+       FOOTER
+    ═══════════════════════════════════════ -->
+    <footer class="site-footer">
+        <div class="footer-grid">
+            <div>
+                <p class="footer-brand-name">Glyphere</p>
+                <p class="footer-brand-desc">Custom fonts &amp; premium typefaces crafted with soul.</p>
+            </div>
+            <nav>
+                <h3 class="footer-col-title">Marketplace</h3>
+                <ul class="footer-links-list">
+                    <li><a href="/main-website/marketplace.html">All Fonts</a></li>
+                    <li><a href="/main-website/marketplace.html">Serifs</a></li>
+                    <li><a href="/main-website/marketplace.html">Display</a></li>
+                </ul>
+            </nav>
+            <nav>
+                <h3 class="footer-col-title">Services</h3>
+                <ul class="footer-links-list">
+                    <li><a href="/main-website/custom_font_services/custom_font_services.html">Custom Design</a></li>
+                    <li><a href="/main-website/custom_font_services/custom_font_services.html">Brand Typography</a></li>
+                    <li><a href="/main-website/licensing.html">Licensing</a></li>
+                </ul>
+            </nav>
+            <nav>
+                <h3 class="footer-col-title">Follow</h3>
+                <ul class="footer-links-list">
+                    <li><a href="#">Instagram</a></li>
+                    <li><a href="#">Twitter / X</a></li>
+                    <li><a href="#">LinkedIn</a></li>
+                </ul>
+            </nav>
+        </div>
+        <div class="footer-bottom">
+            <p class="footer-copy">© 2024 Glyphere. All Rights Reserved.</p>
+            <nav class="footer-legal">
+                <a href="/main-website/licensing.html">Licensing Terms</a>
+                <a href="/main-website/cookie-policy.html">Cookie Policy</a>
+            </nav>
+        </div>
+    </footer>
+
+    <!-- ═══════════════════════════════════════
+       SCRIPTS & INTERACTIONS
+    ═══════════════════════════════════════ -->
+    <script src="globalscript.js" defer></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+
+            /* ── Preloader Removal ── */
+            const preloader = document.getElementById('preloader');
+            if (preloader) {
+                window.addEventListener('load', function () {
+                    setTimeout(function () {
+                        preloader.style.opacity = '0';
+                        preloader.style.visibility = 'hidden';
+                        setTimeout(function () {
+                            preloader.style.display = 'none';
+                        }, 500);
+                    }, 650);
+                });
+            }
+
+            /* ── Load active session credentials ── */
+            var currentUser = JSON.parse(localStorage.getItem('glyphere_current_user') || '{"name":"Designer","email":"client@glyphere.com"}');
+            document.getElementById('dash-username').textContent = currentUser.name;
+            document.getElementById('profile-name').textContent = currentUser.name;
+            document.getElementById('profile-email').textContent = currentUser.email;
+
+            /* ── Sidebar Tab Switches ── */
+            const menuBtns = document.querySelectorAll('.dash-menu-btn');
+            const panels = document.querySelectorAll('.dash-panel');
+
+            menuBtns.forEach(btn => {
+                btn.addEventListener('click', function () {
+                    menuBtns.forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+
+                    const target = this.dataset.target;
+                    panels.forEach(panel => {
+                        if (panel.id === target) {
+                            panel.classList.add('active');
+                        } else {
+                            panel.classList.remove('active');
+                        }
+                    });
+                });
+            });
+
+
+
+        });
+
+        /* ── Simulated Download Progress Tracker ── */
+        function triggerDownload(btn, filename) {
+            if (btn.classList.contains('downloading')) return;
+
+            var originalHtml = btn.innerHTML;
+            btn.classList.add('downloading');
+            btn.innerHTML = '\
+                <svg style="animation: spin 1s linear infinite;" viewBox="0 0 24 24"><line x1="12" y1="2" x2="12" y2="6"></line><line x1="12" y1="18" x2="12" y2="22"></line><line x1="4.93" y1="4.93" x2="7.76" y2="7.76"></line><line x1="16.24" y1="16.24" x2="19.07" y2="19.07"></line><line x1="2" y1="12" x2="6" y2="12"></line><line x1="18" y1="12" x2="22" y2="12"></line><line x1="4.93" y1="19.07" x2="7.76" y2="16.24"></line><line x1="16.24" y1="7.76" x2="19.07" y2="4.93"></line></svg>\
+                Syncing...\
+            ';
+
+            setTimeout(function () {
+                btn.innerHTML = '\
+                    <svg viewBox="0 0 24 24" style="stroke: #22c55e;"><polyline points="20 6 9 17 4 12"></polyline></svg>\
+                    Saved!\
+                ';
+
+                // Trigger simulated client download
+                var anchor = document.createElement('a');
+                anchor.href = 'data:text/plain;charset=utf-8,' + encodeURIComponent('Glyphere Simulated Foundry Asset Package - ' + filename);
+                anchor.download = filename;
+                document.body.appendChild(anchor);
+                anchor.click();
+                document.body.removeChild(anchor);
+
+                setTimeout(function () {
+                    btn.classList.remove('downloading');
+                    btn.innerHTML = originalHtml;
+                }, 1500);
+            }, 1200);
+        }
+    </script>
+    <style>
+        @keyframes spin {
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+</body>
+
+</html>

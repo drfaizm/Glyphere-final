@@ -4,6 +4,9 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="/main-website/glyphere.png" />
     <title>Glyphere — Custom Fonts &amp; Premium Typefaces</title>
     <meta name="description"
         content="Glyphere is a premium type foundry specialising in custom font design, logo typography, and high-quality digital typefaces." />
@@ -26,7 +29,7 @@
        font so the browser fetches them at highest priority
        before the parser hits them in <body>.
   ══════════════════════════════════════════════════ -->
-    <link rel="stylesheet" href="../main-website/css/globalstyle.css" />
+    <link rel="stylesheet" href="css/globalstyle.css" />
     <link rel="stylesheet" href="javascript/loginmodel.css">
 
     <!-- ══════════════════════════════════════════════════
@@ -71,11 +74,11 @@
     </noscript>
 
     <!-- Global stylesheet — render-critical, loaded synchronously -->
-    <link rel="stylesheet" href="../css/globalstyle.css" />
+    <link rel="stylesheet" href="css/globalstyle.css" />
 
     <!-- Prefetch likely next navigations -->
-    <link rel="prefetch" href="/marketplace.html" as="document" />
-    <link rel="prefetch" href="/custom_font_services/code.html" as="document" />
+    <link rel="prefetch" href="/main-website/marketplace.html" as="document" />
+    <link rel="prefetch" href="/main-website/custom_font_services/custom_font_services.html" as="document" />
 
     <style>
         /* =====================================================
@@ -99,6 +102,7 @@
        HERO SECTION
     ───────────────────────────────────────── */
         .hero-section {
+            position: relative;
             display: flex;
             flex-direction: row;
             align-items: center;
@@ -107,6 +111,28 @@
             min-height: 100vh;
             padding: 8rem 0 4rem;
             gap: 0;
+        }
+
+        .hero-badges-row {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-bottom: 0.5rem;
+        }
+
+        .hero-capsule-badge {
+            font-family: 'Instrument Sans', sans-serif;
+            font-size: 0.6125rem;
+            font-weight: 500;
+            letter-spacing: 0.05em;
+            color: var(--gold-dark);
+            background: rgba(201, 171, 129, 0.06);
+            border: 0.1px solid rgba(201, 171, 129, 0.25);
+            padding: 4px 10px;
+            border-radius: 40px;
+            width: fit-content;
+            text-transform: uppercase;
         }
 
         .status-badge {
@@ -135,6 +161,76 @@
         .hero-text-col {
             width: 55%;
             padding: 0 2rem;
+        }
+
+        /* ── Minimalist Scroll Down Anchor ── */
+        .hero-scroll-indicator {
+            position: absolute;
+            bottom: 2.2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            pointer-events: none;
+            opacity: 0.85;
+            z-index: 3;
+        }
+
+        .hero-scroll-text {
+            font-family: 'Instrument Sans', sans-serif;
+            font-size: 0.55rem;
+            font-weight: 600;
+            letter-spacing: 0.24em;
+            text-transform: uppercase;
+            color: var(--gold-dark);
+            animation: textPulse 3s ease-in-out infinite;
+        }
+
+        .hero-scroll-line-wrap {
+            position: relative;
+            width: 1px;
+            height: 40px;
+            background: rgba(28, 24, 18, 0.07);
+            overflow: hidden;
+        }
+
+        .hero-scroll-line {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--gold);
+            transform: translateY(-100%);
+            animation: scrollLineAnimation 2.2s cubic-bezier(0.16, 1, 0.3, 1) infinite;
+        }
+
+        @keyframes textPulse {
+
+            0%,
+            100% {
+                opacity: 0.55;
+            }
+
+            50% {
+                opacity: 1;
+            }
+        }
+
+        @keyframes scrollLineAnimation {
+            0% {
+                transform: translateY(-100%);
+            }
+
+            60% {
+                transform: translateY(0);
+            }
+
+            100% {
+                transform: translateY(100%);
+            }
         }
 
         .hero-text {
@@ -1054,11 +1150,15 @@
         }
 
         .swiper-slide-active .testimonial-card {
-            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 25px 60px rgba(138, 108, 62, 0.12);
         }
 
         .swiper-slide-active .testimonial-card-wrap {
-            animation: float 5s ease-in-out infinite;
+            animation: float 6s ease-in-out infinite;
+            background: linear-gradient(135deg, var(--gold-light) 0%, var(--gold) 50%, rgba(138, 108, 62, 0.2) 100%);
+            box-shadow:
+                0 25px 50px -12px rgba(138, 108, 62, 0.15),
+                0 0 40px rgba(201, 171, 129, 0.05);
         }
 
         .testimonial-card-wrap {
@@ -1066,17 +1166,20 @@
             max-width: 420px;
             padding: 2px;
             border-radius: 1.5rem;
-            background: linear-gradient(to bottom right, #ffffff, rgba(229, 231, 235, 0.5));
-            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.05);
+            background: linear-gradient(135deg, var(--gold) 0%, rgba(201, 171, 129, 0.05) 50%, rgba(255, 255, 255, 0.02) 100%);
+            box-shadow:
+                0 15px 35px rgba(28, 24, 18, 0.03),
+                inset 0 1px 0 rgba(255, 255, 255, 0.3);
+            transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
         }
 
         .testimonial-card {
             border-radius: 22px;
-            padding: 2rem;
-            background: rgba(255, 255, 255, 0.85);
+            padding: 2.5rem 2.25rem;
+            background: rgba(254, 253, 251, 0.88);
             backdrop-filter: blur(24px);
             -webkit-backdrop-filter: blur(24px);
-            border: 1px solid rgba(255, 255, 255, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.6);
             transition: transform 0.1s ease-out;
             transform-style: preserve-3d;
             position: relative;
@@ -1086,6 +1189,26 @@
 
         .testimonial-card>* {
             transform: translateZ(20px);
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Giant background quote glyph */
+        .testimonial-card__bg-quote {
+            position: absolute;
+            top: -20px;
+            right: 20px;
+            font-family: var(--font-serif);
+            font-size: 10rem;
+            line-height: 1;
+            font-weight: 700;
+            font-style: italic;
+            color: var(--gold);
+            opacity: 0.06;
+            pointer-events: none;
+            user-select: none;
+            z-index: 1;
+            transform: translateZ(5px);
         }
 
         .testimonial-card__stars {
@@ -1097,11 +1220,22 @@
         }
 
         .testimonial-card__text {
-            color: #1f2937;
-            font-size: 1.125rem;
-            line-height: 1.75;
+            color: var(--color-on-surface);
+            font-family: var(--font-serif);
+            font-size: 1.15rem;
+            line-height: 1.8;
             font-style: italic;
             margin-bottom: 2rem;
+            font-weight: 400;
+        }
+
+        .testimonial-card__text .highlight {
+            font-family: var(--font-headline);
+            font-style: normal;
+            font-weight: 700;
+            background: linear-gradient(120deg, rgba(201, 171, 129, 0.15) 0%, rgba(201, 171, 129, 0.05) 100%);
+            padding: 0 4px;
+            border-radius: 4px;
         }
 
         .testimonial-card__author {
@@ -1116,12 +1250,25 @@
             border-radius: 9999px;
             box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
             border: 2px solid white;
+            transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease;
+        }
+
+        .swiper-slide-active .testimonial-card__author img {
+            box-shadow: 0 0 0 4px rgba(201, 171, 129, 0.2);
+            transform: scale(1.05);
+        }
+
+        .testimonial-card__author-info {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
         }
 
         .testimonial-card__author-name {
             font-weight: 600;
             color: #111827;
             margin: 0;
+            font-size: 0.95rem;
         }
 
         .testimonial-card__author-role {
@@ -1131,6 +1278,74 @@
             letter-spacing: 0.05em;
             color: #9ca3af;
             margin: 0;
+        }
+
+        .testimonial-card__country {
+            display: inline-flex;
+            align-items: center;
+            margin: 0.15rem 0 0;
+        }
+
+        /* Country Pill Badge */
+        .testimonial-card__country-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            background: var(--color-surface-container-low);
+            padding: 2px 8px;
+            border-radius: 100px;
+            font-size: 0.65rem;
+            color: var(--color-outline);
+            border: 1px solid rgba(138, 108, 62, 0.08);
+            font-weight: 600;
+        }
+
+        .testimonial-card__country-flag {
+            font-size: 0.9rem;
+            line-height: 1;
+        }
+
+        /* Typeface Link Tag */
+        .testimonial-card__specimen-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            margin-top: 1.75rem;
+            padding: 5px 12px;
+            background: rgba(201, 171, 129, 0.08);
+            border: 1px solid rgba(201, 171, 129, 0.2);
+            border-radius: 100px;
+            font-family: var(--font-mono);
+            font-size: 0.625rem;
+            color: var(--gold-dark);
+            font-weight: 600;
+            letter-spacing: 0.02em;
+            width: fit-content;
+        }
+
+        .testimonial-card__specimen-tag .specimen-icon {
+            font-size: 0.75rem;
+        }
+
+        /* Dynamic Interactive Shimmer effect on hover */
+        .testimonial-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -150%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg,
+                    rgba(255, 255, 255, 0) 0%,
+                    rgba(255, 255, 255, 0.4) 50%,
+                    rgba(255, 255, 255, 0) 100%);
+            transition: all 0.6s ease;
+            transform: skewX(-20deg);
+            z-index: 3;
+        }
+
+        .testimonial-card:hover::after {
+            left: 150%;
         }
 
         .swiper-pagination {
@@ -1809,6 +2024,729 @@
                 font-size: 1.05rem;
             }
         }
+
+        /* ══════════════════════════════════════════════════
+           HIGH-FIDELITY UPGRADE STYLES (OPTION A)
+        ══════════════════════════════════════════════════ */
+
+        /* ── Parallax badge animations reset ── */
+        .browser-frame,
+        .float-badge--rating,
+        .float-badge--live,
+        .float-badge--stat {
+            animation: none !important;
+            will-change: transform;
+        }
+
+        /* ── Trust Ribbon ── */
+        .trust-ribbon {
+            width: 100%;
+            background: #fff;
+            border-top: 1px solid rgba(28, 24, 18, 0.06);
+            border-bottom: 1px solid rgba(28, 24, 18, 0.06);
+            padding: 1.5rem 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            z-index: 5;
+            box-shadow: inset 0 8px 24px rgba(28, 24, 18, 0.015);
+        }
+
+        .trust-ribbon__inner {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+            max-width: 1200px;
+            width: 100%;
+            padding: 0 3rem;
+        }
+
+        .trust-pill {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            background: #faf7f2;
+            border: 1px solid rgba(201, 171, 129, 0.2);
+            border-radius: 50px;
+            padding: 8px 20px 8px 14px;
+            transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+            box-shadow: 0 2px 8px rgba(28, 24, 18, 0.02);
+            cursor: default;
+        }
+
+        .trust-pill:hover {
+            transform: translateY(-2px);
+            border-color: var(--gold);
+            background: #fff;
+            box-shadow: 0 6px 18px rgba(201, 171, 129, 0.12);
+        }
+
+        .trust-pill__logo {
+            height: 24px;
+            width: auto;
+            object-fit: contain;
+            filter: grayscale(1) contrast(1.2);
+            transition: filter 0.3s ease;
+            opacity: 0.8;
+        }
+
+        .trust-pill:hover .trust-pill__logo {
+            filter: grayscale(0) contrast(1);
+            opacity: 1;
+        }
+
+        .trust-pill__info {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+            font-family: 'Instrument Sans', sans-serif;
+        }
+
+        .trust-pill__title {
+            font-size: 0.725rem;
+            font-weight: 600;
+            color: var(--color-on-surface);
+            letter-spacing: 0.02em;
+        }
+
+        .trust-pill__rating {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 0.65rem;
+        }
+
+        .trust-pill__stars {
+            color: var(--gold);
+            letter-spacing: -0.5px;
+        }
+
+        .trust-pill__score {
+            font-weight: 700;
+            color: var(--color-on-surface);
+        }
+
+        .trust-pill__count {
+            color: #8a7e70;
+        }
+
+        .trust-ribbon__divider {
+            width: 1px;
+            height: 32px;
+            background: rgba(28, 24, 18, 0.08);
+        }
+
+        /* ── Live Font Tester Playground ── */
+        .tester-section {
+            padding: 80px 0;
+            background: var(--color-background);
+        }
+
+        .tester-inner {
+            max-width: 1200px;
+            margin: auto;
+            padding: 0 3rem;
+        }
+
+        .tester-header {
+            text-align: center;
+            margin-bottom: 3.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+            align-items: center;
+        }
+
+        .tester-kicker {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-family: 'Instrument Sans', sans-serif;
+            font-size: 0.6875rem;
+            font-weight: 600;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: var(--gold-dark);
+        }
+
+        .tester-kicker::before,
+        .tester-kicker::after {
+            content: '';
+            display: inline-block;
+            width: 28px;
+            height: 1px;
+            background: var(--gold);
+            opacity: 0.5;
+        }
+
+        .tester-title {
+            font-family: 'Bricolage Grotesque', sans-serif;
+            font-size: clamp(2rem, 4.5vw, 3.5rem);
+            font-weight: 800;
+            line-height: 1.0;
+            letter-spacing: -2px;
+            color: var(--color-primary);
+        }
+
+        .tester-subtitle {
+            font-family: 'Instrument Sans', sans-serif;
+            font-size: 1rem;
+            font-weight: 300;
+            color: var(--color-on-surface-variant);
+            max-width: 600px;
+        }
+
+        .tester-playground {
+            background: #fff;
+            border: 1px solid rgba(28, 24, 18, 0.09);
+            border-radius: 20px;
+            box-shadow: 0 20px 50px rgba(28, 24, 18, 0.04), 0 4px 12px rgba(28, 24, 18, 0.02);
+            overflow: hidden;
+        }
+
+        .tester-controls {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 2rem;
+            background: #faf7f2;
+            border-bottom: 1px solid rgba(28, 24, 18, 0.07);
+            gap: 1.5rem;
+        }
+
+        .tester-tabs-container {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .tester-tabs {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .tester-tab {
+            background: #fff;
+            border: 1px solid rgba(28, 24, 18, 0.09);
+            color: #555;
+            padding: 0.5rem 1rem;
+            border-radius: 40px;
+            font-family: 'Instrument Sans', sans-serif;
+            font-size: 0.775rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        .tester-tab:hover {
+            border-color: var(--gold);
+            color: var(--color-on-surface);
+        }
+
+        .tester-tab.active {
+            background: var(--color-on-surface);
+            color: #fff;
+            border-color: var(--color-on-surface);
+            box-shadow: 0 4px 12px rgba(28, 24, 18, 0.15);
+        }
+
+        .tester-slider-group {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            font-family: 'Instrument Sans', sans-serif;
+            font-size: 0.825rem;
+            font-weight: 600;
+            color: var(--color-on-surface);
+        }
+
+        .tester-slider-label {
+            min-width: 80px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .tester-slider {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 150px;
+            height: 4px;
+            border-radius: 2px;
+            background: rgba(28, 24, 18, 0.1);
+            outline: none;
+        }
+
+        .tester-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: var(--gold);
+            cursor: pointer;
+            transition: transform 0.1s ease;
+            border: 1px solid var(--gold-dark);
+            box-shadow: 0 2px 6px rgba(201, 171, 129, 0.4);
+        }
+
+        .tester-slider::-webkit-slider-thumb:hover {
+            transform: scale(1.2);
+        }
+
+        .tester-canvas-container {
+            position: relative;
+            padding: 4rem 2rem;
+            background: #fff;
+            min-height: 250px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .tester-text {
+            width: 100%;
+            outline: none;
+            border: none;
+            text-align: center;
+            background: transparent;
+            word-wrap: break-word;
+            white-space: pre-wrap;
+            line-height: 1.2;
+            color: var(--color-on-surface);
+            caret-color: var(--gold);
+            font-size: 48px;
+            transition: font-size 0.1s ease;
+        }
+
+        .tester-grid-lines {
+            position: absolute;
+            inset: 20px;
+            pointer-events: none;
+        }
+
+        .tester-grid-line {
+            position: absolute;
+            border-color: rgba(28, 24, 18, 0.03);
+            border-style: dashed;
+        }
+
+        .tester-grid-line--h {
+            width: 100%;
+            border-width: 1px 0 0;
+        }
+
+        .tester-grid-line--v {
+            height: 100%;
+            border-width: 0 1px 0 0;
+        }
+
+        .tester-grid-line--top {
+            top: 20px;
+        }
+
+        .tester-grid-line--mid {
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .tester-grid-line--bot {
+            bottom: 20px;
+        }
+
+        .tester-grid-line--left {
+            left: 40px;
+        }
+
+        .tester-grid-line--right {
+            right: 40px;
+        }
+
+        .tester-grid-corner {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            border: 1px solid rgba(201, 171, 129, 0.18);
+        }
+
+        .tester-grid-corner--tl {
+            top: 18px;
+            left: 38px;
+            border-right: none;
+            border-bottom: none;
+        }
+
+        .tester-grid-corner--tr {
+            top: 18px;
+            right: 38px;
+            border-left: none;
+            border-bottom: none;
+        }
+
+        .tester-grid-corner--bl {
+            bottom: 18px;
+            left: 38px;
+            border-right: none;
+            border-top: none;
+        }
+
+        .tester-grid-corner--br {
+            bottom: 18px;
+            right: 38px;
+            border-left: none;
+            border-top: none;
+        }
+
+        .tester-reset-btn {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            background: #fff;
+            border: 1px solid rgba(28, 24, 18, 0.08);
+            color: #8a7e70;
+            padding: 5px 12px;
+            border-radius: 4px;
+            font-size: 0.65rem;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            cursor: pointer;
+            font-family: 'Instrument Sans', sans-serif;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .tester-reset-btn:hover {
+            color: var(--color-on-surface);
+            border-color: rgba(28, 24, 18, 0.2);
+            background: #faf7f2;
+        }
+
+        /* ── Before/After comparison slider ── */
+        .slider-section {
+            padding: 100px 0 80px;
+            background: #fff;
+            border-top: 1px solid rgba(28, 24, 18, 0.05);
+            border-bottom: 1px solid rgba(28, 24, 18, 0.05);
+        }
+
+        .slider-inner {
+            max-width: 1200px;
+            margin: auto;
+            padding: 0 3rem;
+        }
+
+        .slider-header {
+            text-align: center;
+            margin-bottom: 3.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+            align-items: center;
+        }
+
+        .slider-kicker {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-family: 'Instrument Sans', sans-serif;
+            font-size: 0.6875rem;
+            font-weight: 600;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: var(--gold-dark);
+        }
+
+        .slider-kicker::before,
+        .slider-kicker::after {
+            content: '';
+            display: inline-block;
+            width: 28px;
+            height: 1px;
+            background: var(--gold);
+            opacity: 0.5;
+        }
+
+        .slider-title {
+            font-family: 'Bricolage Grotesque', sans-serif;
+            font-size: clamp(2rem, 4.5vw, 3.5rem);
+            font-weight: 800;
+            line-height: 1.0;
+            letter-spacing: -2px;
+            color: var(--color-primary);
+        }
+
+        .slider-subtitle {
+            font-family: 'Instrument Sans', sans-serif;
+            font-size: 1rem;
+            font-weight: 300;
+            color: var(--color-on-surface-variant);
+            max-width: 620px;
+        }
+
+        .comparison-slider {
+            position: relative;
+            width: 100%;
+            height: 380px;
+            background: #faf7f2;
+            border-radius: 24px;
+            border: 1px solid rgba(28, 24, 18, 0.09);
+            box-shadow: 0 20px 45px rgba(28, 24, 18, 0.03);
+            overflow: hidden;
+            user-select: none;
+            -webkit-user-select: none;
+        }
+
+        .slider-layer {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .slider-content {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            text-align: center;
+            box-sizing: border-box;
+        }
+
+        .slider-layer--before {
+            background: #faf7f2;
+            color: #8a7e70;
+        }
+
+        .slider-layer--after {
+            background: #1c1812;
+            color: #f2e7d5;
+            width: 50%;
+            z-index: 2;
+            border-right: none;
+        }
+
+        .slider-layer--after .slider-content {
+            width: 100%;
+            min-width: 100%;
+            left: 0;
+        }
+
+        .slider-badge {
+            font-family: 'Instrument Sans', sans-serif;
+            font-size: 0.55rem;
+            font-weight: 600;
+            letter-spacing: 0.15em;
+            padding: 4px 12px;
+            border-radius: 100px;
+            text-transform: uppercase;
+            margin-bottom: 2rem;
+        }
+
+        .slider-badge--before {
+            background: rgba(28, 24, 18, 0.05);
+            border: 1px solid rgba(28, 24, 18, 0.12);
+            color: #8a7e70;
+        }
+
+        .slider-badge--after {
+            background: rgba(201, 171, 129, 0.1);
+            border: 1px solid rgba(201, 171, 129, 0.3);
+            color: var(--gold);
+        }
+
+        .slider-statement {
+            font-size: clamp(3rem, 8vw, 6.5rem);
+            font-weight: 900;
+            line-height: 1;
+            letter-spacing: -0.04em;
+            margin-bottom: 1.5rem;
+        }
+
+        .font-standard {
+            font-family: 'Arial', sans-serif !important;
+            letter-spacing: 0em !important;
+            text-transform: uppercase;
+        }
+
+        .font-bespoke {
+            font-family: 'Turbo_Block', sans-serif !important;
+            text-transform: uppercase;
+            background: linear-gradient(135deg, #f2e7d5 0%, var(--gold) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .slider-desc {
+            font-family: 'Instrument Sans', sans-serif;
+            font-size: 0.875rem;
+            font-weight: 400;
+            max-width: 480px;
+            line-height: 1.5;
+        }
+
+        .slider-desc.font-bespoke {
+            color: #b8aa97;
+        }
+
+        .slider-drag-handle {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            width: 2px;
+            background: var(--gold);
+            z-index: 3;
+            cursor: ew-resize;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            pointer-events: auto;
+            transform: translateX(-50%);
+        }
+
+        .slider-handle-line {
+            width: 2px;
+            flex: 1;
+            background: linear-gradient(to bottom, rgba(201, 171, 129, 0.1), var(--gold) 40%, var(--gold) 60%, rgba(201, 171, 129, 0.1));
+        }
+
+        .slider-handle-button {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: #fff;
+            border: 2.5px solid var(--gold);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--color-on-surface);
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.35);
+            transition: transform 0.15s cubic-bezier(0.23, 1, 0.32, 1), background 0.15s;
+        }
+
+        .slider-drag-handle:hover .slider-handle-button {
+            transform: scale(1.1);
+            background: var(--gold-light);
+            color: var(--gold-dark);
+        }
+
+        /* ── Specimen Card Quick Add ── */
+        .specimen-card-wrap {
+            position: relative;
+        }
+
+        .quick-add-btn {
+            position: absolute;
+            top: 24px;
+            right: 24px;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: #fff;
+            border: 1px solid rgba(28, 24, 18, 0.12);
+            color: var(--color-on-surface);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 10;
+            transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+            box-shadow: 0 4px 12px rgba(28, 24, 18, 0.08);
+        }
+
+        .quick-add-btn:hover {
+            transform: scale(1.1) translateY(-2px);
+            border-color: var(--gold);
+            color: var(--gold-dark);
+            box-shadow: 0 8px 20px rgba(201, 171, 129, 0.22);
+        }
+
+        .quick-add-btn.added {
+            background: var(--gold);
+            border-color: var(--gold);
+            color: #fff;
+            box-shadow: 0 4px 12px rgba(201, 171, 129, 0.4);
+        }
+
+        .quick-add-btn svg {
+            pointer-events: none;
+            transition: transform 0.3s ease;
+        }
+
+        /* Font styles for playground */
+        .font-Turbo_Block {
+            font-family: 'Turbo_Block', sans-serif !important;
+            letter-spacing: -0.03em !important;
+        }
+
+        .font-Nova_Legacy {
+            font-family: 'Nova Legacy', serif !important;
+        }
+
+        .font-Midnight_Citadel {
+            font-family: 'Midnight_Citadel', sans-serif !important;
+        }
+
+        .font-Pebble_Sans {
+            font-family: 'Pebble_Sans', sans-serif !important;
+        }
+
+        .font-Storybook_Sans {
+            font-family: 'Storybook_Sans', sans-serif !important;
+        }
+
+        .font-Sonnet_Italic {
+            font-family: 'Sonnet Italic', serif !important;
+            font-style: italic !important;
+        }
+
+        @media (max-width: 768px) {
+            .trust-ribbon__divider {
+                display: none;
+            }
+
+            .trust-ribbon__inner {
+                gap: 1rem;
+                padding: 0 1.5rem;
+            }
+
+            .trust-pill {
+                flex: 1 1 100%;
+                justify-content: center;
+            }
+
+            .tester-inner,
+            .slider-inner {
+                padding: 0 1.5rem;
+            }
+
+            .comparison-slider {
+                height: 320px;
+            }
+
+            .slider-statement {
+                font-size: clamp(2rem, 7vw, 4rem);
+            }
+
+            .slider-desc {
+                font-size: 0.75rem;
+                padding: 0 1rem;
+            }
+        }
     </style>
 </head>
 
@@ -1820,8 +2758,9 @@
     <div id="preloader" role="status" aria-label="Loading Glyphere">
         <div class="preloader-inner">
             <div class="preloader-brand">
-                <img class="preloader-brand__image" src="/main-website/homepage-updated/faiz.jpeg" alt=""
-                    aria-hidden="true" width="220" height="220" />
+                <div class="preloader-glyph-container">
+                    <div class="preloader-glyph"></div>
+                </div>
                 <p class="preloader-brand__name">Glyphere</p>
                 <p class="preloader-brand__tagline">From Glyph to Identity</p>
             </div>
@@ -1834,20 +2773,28 @@
     <header class="header-nav">
         <nav class="nav-inner" aria-label="Main navigation">
             <div class="nav-logo-group">
-                <a href="/homepage.html">
-                    <img src="/main-website/homepage-updated/faiz.jpeg" class="nav-logo-img" alt="Glyphere" width="40"
-                        height="40" />
+                <a href="/main-website/homepage.html">
+                    <img src="/main-website/glyphere.png" class="nav-logo-img" alt="Glyphere" width="40" height="40" />
                 </a>
-                <a class="nav-logo-name" href="/homepage.html">Glyphere</a>
+                <a class="nav-logo-name" href="/main-website/homepage.html">Glyphere</a>
             </div>
             <ul class="nav-links" role="list">
                 <li><a class="nav-link" href="/main-website/marketplace.html">Marketplace</a></li>
-                <li><a class="nav-link" href="/custom_font_services/code.html">Services</a></li>
-                <li><a class="nav-link" href="/about_the_designer/about.html">About</a></li>
+                <li><a class="nav-link" href="/main-website/custom_font_services/custom_font_services.html">Services</a>
+                </li>
+                <!-- <li><a class="nav-link" href="/main-website/font-finder.html">Font Finder</a></li> -->
+                <li><a class="nav-link" href="/main-website/about.html">About</a></li>
             </ul>
             <div class="nav-actions">
-                <a class="nav-login" href="http://localhost:5173/">Login</a>
-                <a class="nav-signup" href="http://localhost:5173/">Sign Up</a>
+                <a class="nav-cart" href="/main-website/cart.html" id="navCartBtn" aria-label="Shopping cart">
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                        <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z" />
+                        <line x1="3" y1="6" x2="21" y2="6" />
+                        <path d="M16 10a4 4 0 0 1-8 0" />
+                    </svg>
+                    <span class="nav-cart__badge" id="navCartBadge" data-count="0">0</span>
+                </a>
+                <a class="nav-signup" href="/main-website/signup-login.html">Log In</a>
             </div>
             <button class="nav-hamburger" aria-label="Menu" aria-expanded="false">
                 <span class="nav-hamburger__line"></span>
@@ -1860,12 +2807,21 @@
     <div class="nav-mobile-menu" role="dialog" aria-label="Mobile navigation">
         <div class="nav-mobile-menu__links">
             <a class="nav-mobile-menu__link" href="/main-website/marketplace.html">Marketplace</a>
-            <a class="nav-mobile-menu__link" href="/main-website/custom_font_services/code.html">Services</a>
-            <a class="nav-mobile-menu__link" href="/main-website/about_the_designer/about.html">About</a>
+            <a class="nav-mobile-menu__link"
+                href="/main-website/custom_font_services/custom_font_services.html">Services</a>
+            <!-- <a class="nav-mobile-menu__link" href="/main-website/font-finder.html">Font Finder</a> -->
+            <a class="nav-mobile-menu__link" href="/main-website/about.html">About</a>
         </div>
         <div class="nav-mobile-menu__actions">
-            <a class="nav-mobile-menu__login" href="http://localhost:5173/">Login</a>
-            <a class="nav-mobile-menu__signup" href="http://localhost:5173/">Sign Up</a>
+            <a class="nav-mobile-menu__cart" href="/main-website/cart.html" aria-label="Shopping cart">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z" />
+                    <line x1="3" y1="6" x2="21" y2="6" />
+                    <path d="M16 10a4 4 0 0 1-8 0" />
+                </svg>
+                Cart
+            </a>
+            <a class="nav-mobile-menu__signup" href="/main-website/signup-login.html">Log in</a>
         </div>
     </div>
 
@@ -1878,9 +2834,17 @@
         <section class="hero-section" aria-label="Hero">
 
             <div class="hero-text-col">
-                <div class="status-badge">
-                    <span class="status-badge__dot" aria-hidden="true"></span>
-                    Currently accepting commissions
+                <div class="hero-badges-row">
+                    <div class="status-badge">
+                        <span class="status-badge__dot" aria-hidden="true"></span>
+                        Currently accepting commissions
+                    </div>
+                    <div class="hero-capsule-badge">
+                        Est. 2026
+                    </div>
+                    <div class="hero-capsule-badge">
+                        Independent Foundry
+                    </div>
                 </div>
 
                 <div class="hero-text">
@@ -1891,24 +2855,29 @@
                         and businesses seeking a distinctive visual identity.
                     </p>
                     <div class="hero-actions">
-                        <button class="cta-btn">
-                            Browse Fonts
-                            <span class="cta-btn__arrow" aria-hidden="true">
-                                <svg viewBox="0 0 10 10" fill="none" width="9" height="9">
-                                    <path d="M2 8L8 2M8 2H3M8 2V7" stroke="#f2e7d5" stroke-width="1.5"
-                                        stroke-linecap="round" stroke-linejoin="round" />
-                                </svg>
-                            </span>
-                        </button>
-                        <button class="cta-btn">
-                            Request Custom Font
-                            <span class="cta-btn__arrow" aria-hidden="true">
-                                <svg viewBox="0 0 10 10" fill="none" width="9" height="9">
-                                    <path d="M2 8L8 2M8 2H3M8 2V7" stroke="#f2e7d5" stroke-width="1.5"
-                                        stroke-linecap="round" stroke-linejoin="round" />
-                                </svg>
-                            </span>
-                        </button>
+                        <a href="/main-website/marketplace.html" style="text-decoration:none;">
+                            <button class="cta-btn">
+                                Browse Fonts
+                                <span class="cta-btn__arrow" aria-hidden="true">
+                                    <svg viewBox="0 0 10 10" fill="none" width="9" height="9">
+                                        <path d="M2 8L8 2M8 2H3M8 2V7" stroke="#f2e7d5" stroke-width="1.5"
+                                            stroke-linecap="round" stroke-linejoin="round" />
+                                    </svg>
+                                </span>
+                            </button>
+                        </a>
+                        <a href="/main-website/custom_font_services/custom_font_services.html"
+                            style="text-decoration:none;">
+                            <button class="cta-btn">
+                                Request Custom Font
+                                <span class="cta-btn__arrow" aria-hidden="true">
+                                    <svg viewBox="0 0 10 10" fill="none" width="9" height="9">
+                                        <path d="M2 8L8 2M8 2H3M8 2V7" stroke="#f2e7d5" stroke-width="1.5"
+                                            stroke-linecap="round" stroke-linejoin="round" />
+                                    </svg>
+                                </span>
+                            </button>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -1959,7 +2928,10 @@
                                 <div class="browser-frame__skeleton-line"></div>
                                 <div class="browser-frame__skeleton-line"></div>
                             </div>
-                            <div class="browser-frame__cta">Start Project →</div>
+                            <a href="/main-website/custom_font_services/custom_font_services.html"
+                                style="text-decoration:none;">
+                                <div class="browser-frame__cta">Start Project →</div>
+                            </a>
                         </div>
                         <div class="browser-frame__features">
                             <div class="browser-frame__feature-item">
@@ -1995,6 +2967,80 @@
                     </div>
                 </div>
             </div>
+
+            <!-- Scroll Indicator -->
+            <div class="hero-scroll-indicator" aria-hidden="true">
+                <span class="hero-scroll-text">Scroll to Explore</span>
+                <div class="hero-scroll-line-wrap">
+                    <div class="hero-scroll-line"></div>
+                </div>
+            </div>
+        </section>
+        <!-- ─── LIVE FONT TESTER PLAYGROUND ─── -->
+        <section class="tester-section" aria-label="Font Tester Playground">
+            <div class="tester-inner">
+                <header class="tester-header">
+                    <p class="tester-kicker">Experience the Craft</p>
+                    <h2 class="tester-title">Interactive Font Tester</h2>
+                    <p class="tester-subtitle">Type your own brand text below and toggle between Glyphere's premium
+                        custom typefaces in real time.</p>
+                </header>
+
+                <div class="tester-playground">
+                    <!-- Controls Bar -->
+                    <div class="tester-controls">
+                        <div class="tester-tabs-container">
+                            <div class="tester-tabs" role="tablist" aria-label="Font Family Selection">
+                                <button class="tester-tab active" role="tab" aria-selected="true"
+                                    data-font="Turbo_Block">Turbo Block</button>
+                                <button class="tester-tab" role="tab" aria-selected="false" data-font="Nova Legacy">Nova
+                                    Legacy</button>
+                                <button class="tester-tab" role="tab" aria-selected="false"
+                                    data-font="Midnight_Citadel">Midnight Citadel</button>
+                                <button class="tester-tab" role="tab" aria-selected="false"
+                                    data-font="Pebble_Sans">Pebble Sans</button>
+                                <button class="tester-tab" role="tab" aria-selected="false"
+                                    data-font="Storybook_Sans">Storybook Sans</button>
+                                <button class="tester-tab" role="tab" aria-selected="false"
+                                    data-font="Sonnet Italic">Sonnet Italic</button>
+                            </div>
+                        </div>
+
+                        <div class="tester-slider-group">
+                            <label for="fontTesterSize" class="tester-slider-label">Size: <span
+                                    id="testerSizeValue">48px</span></label>
+                            <input type="range" id="fontTesterSize" min="20" max="100" value="48" step="1"
+                                class="tester-slider" aria-label="Font size resizer">
+                        </div>
+                    </div>
+
+                    <!-- Testing Canvas -->
+                    <div class="tester-canvas-container">
+                        <div class="tester-grid-lines" aria-hidden="true">
+                            <div class="tester-grid-line tester-grid-line--h tester-grid-line--top"></div>
+                            <div class="tester-grid-line tester-grid-line--h tester-grid-line--mid"></div>
+                            <div class="tester-grid-line tester-grid-line--h tester-grid-line--bot"></div>
+                            <div class="tester-grid-line tester-grid-line--v tester-grid-line--left"></div>
+                            <div class="tester-grid-line tester-grid-line--v tester-grid-line--right"></div>
+                            <div class="tester-grid-corner tester-grid-corner--tl"></div>
+                            <div class="tester-grid-corner tester-grid-corner--tr"></div>
+                            <div class="tester-grid-corner tester-grid-corner--bl"></div>
+                            <div class="tester-grid-corner tester-grid-corner--br"></div>
+                        </div>
+                        <div id="testerText" class="tester-text font-Turbo_Block" contenteditable="true"
+                            spellcheck="false">G<span style="letter-spacing: -0.15em;">L</span>YPHERE / CRAFTED SOUL
+                        </div>
+                        <button id="testerReset" class="tester-reset-btn" aria-label="Reset text">
+                            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l.73-.72" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                            </svg>
+                            Reset
+                        </button>
+                    </div>
+                </div>
+            </div>
         </section>
 
 
@@ -2011,7 +3057,7 @@
                         </div>
                         <p class="specimens-subtitle">Meticulously crafted for digital clarity and editorial soul.</p>
                     </div>
-                    <a class="specimens-view-all" href="/marketplace.html">View All Releases</a>
+                    <a class="specimens-view-all" href="/main-website/marketplace.html">View All Releases</a>
                 </header>
 
                 <div class="specimens-grid">
@@ -2392,6 +3438,56 @@
             </div>
         </section>
 
+        <!-- ─── BEFORE/AFTER TYPOGRAPHIC SLIDER ─── -->
+        <section class="slider-section" aria-label="Typographic Uplift Comparison">
+            <div class="slider-inner">
+                <header class="slider-header">
+                    <p class="slider-kicker">Bespoke vs. Standard</p>
+                    <h2 class="slider-title">The Power of Custom Type</h2>
+                    <p class="slider-subtitle">Move the slider handle to witness the dramatic visual uplift between a
+                        generic browser font and Glyphere's custom-designed editorial font.</p>
+                </header>
+
+                <div class="comparison-slider" id="compSlider">
+                    <!-- Before Layer (Arial fallback) -->
+                    <div class="slider-layer slider-layer--before">
+                        <div class="slider-content">
+                            <span class="slider-badge slider-badge--before">STANDARD BRANDING</span>
+                            <div class="slider-statement font-standard">
+                                GLYPHERE
+                            </div>
+                            <p class="slider-desc font-standard">A generic typeface makes you blend in, losing brand
+                                identity.</p>
+                        </div>
+                    </div>
+
+                    <!-- After Layer (Bespoke custom font, clipped) -->
+                    <div class="slider-layer slider-layer--after" id="afterLayer">
+                        <div class="slider-content">
+                            <span class="slider-badge slider-badge--after">GLYPHERE IDENTITY</span>
+                            <div class="slider-statement font-bespoke">
+                                G<span style="letter-spacing: -0.15em;">L</span>YPHERE
+                            </div>
+                            <p class="slider-desc font-bespoke">Bespoke type elements design your soul, commanding
+                                attention.</p>
+                        </div>
+                    </div>
+
+                    <!-- Draggable handle -->
+                    <div class="slider-drag-handle" id="sliderHandle" aria-label="Drag comparison slider handle">
+                        <div class="slider-handle-line"></div>
+                        <div class="slider-handle-button">
+                            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor"
+                                stroke-width="2.5">
+                                <path d="m8 18-6-6 6-6M16 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                        </div>
+                        <div class="slider-handle-line"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
 
         <!-- ─── TESTIMONIALS ─── -->
         <section class="testimonials-section" aria-label="Client testimonials">
@@ -2407,19 +3503,29 @@
                     <div class="swiper-slide">
                         <div class="testimonial-card-wrap">
                             <article class="testimonial-card">
+                                <span class="testimonial-card__bg-quote">“</span>
                                 <div class="testimonial-card__stars" aria-label="5 stars">★★★★★</div>
                                 <blockquote class="testimonial-card__text">
-                                    "This completely transformed our brand presence. The attention to typographic detail
-                                    is unlike anything we've seen."
+                                    "Great work. Made my pre-designed font in an <span class="highlight">OTF/TTF
+                                        file</span> in no time."
                                 </blockquote>
                                 <footer class="testimonial-card__author">
-                                    <img src="https://i.pravatar.cc/100?img=11" alt="Ali Raza" width="48" height="48"
-                                        loading="lazy" />
-                                    <div>
-                                        <p class="testimonial-card__author-name">Ali Raza</p>
+                                    <img src="/main-website/Client's Photos/bradpittstop.jpg" alt="bradpittstop"
+                                        width="48" height="48" loading="lazy" />
+                                    <div class="testimonial-card__author-info">
+                                        <p class="testimonial-card__author-name">bradpittstop</p>
                                         <p class="testimonial-card__author-role">Product Designer</p>
+                                        <p class="testimonial-card__country">
+                                            <span class="testimonial-card__country-badge">
+                                                <span class="testimonial-card__country-flag">🇩🇪</span> Germany
+                                            </span>
+                                        </p>
                                     </div>
                                 </footer>
+                                <div class="testimonial-card__specimen-tag">
+                                    <span class="specimen-icon">✦</span>
+                                    <span class="specimen-label">Font Generation &amp; Conversion</span>
+                                </div>
                             </article>
                         </div>
                     </div>
@@ -2427,19 +3533,31 @@
                     <div class="swiper-slide">
                         <div class="testimonial-card-wrap">
                             <article class="testimonial-card">
+                                <span class="testimonial-card__bg-quote">“</span>
                                 <div class="testimonial-card__stars" aria-label="5 stars">★★★★★</div>
                                 <blockquote class="testimonial-card__text">
-                                    "The fonts are masterpieces. Our conversion rates improved simply by switching to
-                                    Glyphere's modern typefaces."
+                                    "They did an incredible job creating a custom font for our brand, <span
+                                        class="highlight">REP STRENGTH</span>. They took our vision and brought it to
+                                    life perfectly. The turnaround time was impressive, and the overall experience was
+                                    seamless."
                                 </blockquote>
                                 <footer class="testimonial-card__author">
-                                    <img src="https://i.pravatar.cc/100?img=32" alt="Sarah Jenkins" width="48"
+                                    <img src="/main-website/Client's Photos/rce1322.jpg" alt="rce1322" width="48"
                                         height="48" loading="lazy" />
-                                    <div>
-                                        <p class="testimonial-card__author-name">Sarah Jenkins</p>
-                                        <p class="testimonial-card__author-role">Creative Director</p>
+                                    <div class="testimonial-card__author-info">
+                                        <p class="testimonial-card__author-name">rce1322</p>
+                                        <p class="testimonial-card__author-role">Founder of Rep Strength</p>
+                                        <p class="testimonial-card__country">
+                                            <span class="testimonial-card__country-badge">
+                                                <span class="testimonial-card__country-flag">🇺🇸</span> United States
+                                            </span>
+                                        </p>
                                     </div>
                                 </footer>
+                                <div class="testimonial-card__specimen-tag">
+                                    <span class="specimen-icon">✦</span>
+                                    <span class="specimen-label">Custom Brand Typeface</span>
+                                </div>
                             </article>
                         </div>
                     </div>
@@ -2447,39 +3565,29 @@
                     <div class="swiper-slide">
                         <div class="testimonial-card-wrap">
                             <article class="testimonial-card">
+                                <span class="testimonial-card__bg-quote">“</span>
                                 <div class="testimonial-card__stars" aria-label="5 stars">★★★★★</div>
                                 <blockquote class="testimonial-card__text">
-                                    "Integration was seamless, and the licensing model is the fairest I've seen in the
-                                    industry. Highly recommended!"
+                                    "Exactly what I asked for and it was <span class="highlight">super fast</span>. I
+                                    got my delivery after a few hours. Highly recommend!"
                                 </blockquote>
                                 <footer class="testimonial-card__author">
-                                    <img src="https://i.pravatar.cc/100?img=44" alt="Marcus Chen" width="48" height="48"
-                                        loading="lazy" />
-                                    <div>
-                                        <p class="testimonial-card__author-name">Marcus Chen</p>
-                                        <p class="testimonial-card__author-role">Web Developer</p>
-                                    </div>
-                                </footer>
-                            </article>
-                        </div>
-                    </div>
-
-                    <div class="swiper-slide">
-                        <div class="testimonial-card-wrap">
-                            <article class="testimonial-card">
-                                <div class="testimonial-card__stars" aria-label="5 stars">★★★★★</div>
-                                <blockquote class="testimonial-card__text">
-                                    "The fonts are masterpieces. Our conversion rates improved simply by switching to
-                                    Glyphere's modern typefaces."
-                                </blockquote>
-                                <footer class="testimonial-card__author">
-                                    <img src="https://i.pravatar.cc/100?img=32" alt="Sarah Jenkins" width="48"
+                                    <img src="/main-website/Client's Photos/asapon319.jpg" alt="asapon319" width="48"
                                         height="48" loading="lazy" />
-                                    <div>
-                                        <p class="testimonial-card__author-name">Sarah Jenkins</p>
-                                        <p class="testimonial-card__author-role">Creative Director</p>
+                                    <div class="testimonial-card__author-info">
+                                        <p class="testimonial-card__author-name">asapon319</p>
+                                        <p class="testimonial-card__author-role">Fiverr Client</p>
+                                        <p class="testimonial-card__country">
+                                            <span class="testimonial-card__country-badge">
+                                                <span class="testimonial-card__country-flag">🇺🇸</span> United States
+                                            </span>
+                                        </p>
                                     </div>
                                 </footer>
+                                <div class="testimonial-card__specimen-tag">
+                                    <span class="specimen-icon">✦</span>
+                                    <span class="specimen-label">Express Delivery Project</span>
+                                </div>
                             </article>
                         </div>
                     </div>
@@ -2487,19 +3595,60 @@
                     <div class="swiper-slide">
                         <div class="testimonial-card-wrap">
                             <article class="testimonial-card">
+                                <span class="testimonial-card__bg-quote">“</span>
                                 <div class="testimonial-card__stars" aria-label="5 stars">★★★★★</div>
                                 <blockquote class="testimonial-card__text">
-                                    "Turnaround was quick and the quality was exceptional. The custom typeface perfectly
-                                    captured our brand's voice."
+                                    "Super Arbeit! Hat unsere Schrift mit <span class="highlight">allen
+                                        Sonderzeichen</span> und Wünschen innerhalb kurzer Zeit fertiggestellt. Danke
+                                    sagen die Wraprebellen.de"
                                 </blockquote>
                                 <footer class="testimonial-card__author">
-                                    <img src="https://i.pravatar.cc/100?img=56" alt="Layla Hassan" width="48"
-                                        height="48" loading="lazy" />
-                                    <div>
-                                        <p class="testimonial-card__author-name">Layla Hassan</p>
-                                        <p class="testimonial-card__author-role">Brand Strategist</p>
+                                    <img src="/main-website/Client's Photos/xxx_solutions.png" alt="xxx_solutions"
+                                        width="48" height="48" loading="lazy" />
+                                    <div class="testimonial-card__author-info">
+                                        <p class="testimonial-card__author-name">xxx_solutions</p>
+                                        <p class="testimonial-card__author-role">Company Client</p>
+                                        <p class="testimonial-card__country">
+                                            <span class="testimonial-card__country-badge">
+                                                <span class="testimonial-card__country-flag">🇩🇪</span> Germany
+                                            </span>
+                                        </p>
                                     </div>
                                 </footer>
+                                <div class="testimonial-card__specimen-tag">
+                                    <span class="specimen-icon">✦</span>
+                                    <span class="specimen-label">Special Glyphs &amp; Accents</span>
+                                </div>
+                            </article>
+                        </div>
+                    </div>
+
+                    <div class="swiper-slide">
+                        <div class="testimonial-card-wrap">
+                            <article class="testimonial-card">
+                                <span class="testimonial-card__bg-quote">“</span>
+                                <div class="testimonial-card__stars" aria-label="5 stars">★★★★★</div>
+                                <blockquote class="testimonial-card__text">
+                                    "Very quick response, good work, will use in future. <span
+                                        class="highlight">Understood everything</span> I required perfectly."
+                                </blockquote>
+                                <footer class="testimonial-card__author">
+                                    <img src="/main-website/Client's Photos/william7731.jpeg" alt="william7731"
+                                        width="48" height="48" loading="lazy" />
+                                    <div class="testimonial-card__author-info">
+                                        <p class="testimonial-card__author-name">william7731</p>
+                                        <p class="testimonial-card__author-role">Fiverr Client</p>
+                                        <p class="testimonial-card__country">
+                                            <span class="testimonial-card__country-badge">
+                                                <span class="testimonial-card__country-flag">🇬🇧</span> United Kingdom
+                                            </span>
+                                        </p>
+                                    </div>
+                                </footer>
+                                <div class="testimonial-card__specimen-tag">
+                                    <span class="specimen-icon">✦</span>
+                                    <span class="specimen-label">Bespoke Custom Lettering</span>
+                                </div>
                             </article>
                         </div>
                     </div>
@@ -2604,15 +3753,17 @@
                     I am currently accepting commissions for exclusive typeface design and brand-wide typographic
                     systems.
                 </p>
-                <button class="cta-btn">
-                    Start a Project
-                    <span class="cta-btn__arrow" aria-hidden="true">
-                        <svg viewBox="0 0 10 10" fill="none" width="9" height="9">
-                            <path d="M2 8L8 2M8 2H3M8 2V7" stroke="#f2e7d5" stroke-width="1.5" stroke-linecap="round"
-                                stroke-linejoin="round" />
-                        </svg>
-                    </span>
-                </button>
+                <a href="/main-website/custom_font_services/custom_font_services.html" style="text-decoration:none;">
+                    <button class="cta-btn">
+                        Start a Project
+                        <span class="cta-btn__arrow" aria-hidden="true">
+                            <svg viewBox="0 0 10 10" fill="none" width="9" height="9">
+                                <path d="M2 8L8 2M8 2H3M8 2V7" stroke="#f2e7d5" stroke-width="1.5"
+                                    stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                        </span>
+                    </button>
+                </a>
             </div>
         </section>
 
@@ -2624,49 +3775,41 @@
   ═══════════════════════════════════════ -->
     <footer class="site-footer">
         <div class="footer-grid">
-            <div class="footer-brand">
-                <p class="footer-brand-name">The Typographic Gallery</p>
-                <p class="footer-brand-desc">Curated font designs for the modern digital landscape. Etched with
-                    precision, crafted with soul.</p>
-                <div class="footer-social-icons">
-                    <span class="material-symbols-outlined footer-icon">language</span>
-                    <span class="material-symbols-outlined footer-icon">public</span>
-                </div>
-            </div>
-            <nav aria-label="Collections">
-                <h3 class="footer-col-title">Collections</h3>
-                <ul class="footer-links">
-                    <li><a href="#">The Serif Set</a></li>
-                    <li><a href="#">Modernist Sans</a></li>
-                    <li><a href="#">Display Specials</a></li>
-                    <li><a href="#">Free Trials</a></li>
-                </ul>
-            </nav>
-            <nav aria-label="Social">
-                <h3 class="footer-col-title">Follow Us</h3>
-                <ul class="footer-links">
-                    <li><a href="#">Instagram</a></li>
-                    <li><a href="#">Twitter</a></li>
-                    <li><a href="#">LinkedIn</a></li>
-                    <li><a href="#">Privacy Policy</a></li>
-                </ul>
-            </nav>
             <div>
-                <h3 class="footer-col-title">Newsletter</h3>
-                <p class="footer-newsletter-desc">Get notified about new releases and type studies.</p>
-                <div class="footer-form">
-                    <label class="sr-only" for="footerEmail">Email address</label>
-                    <input id="footerEmail" class="footer-email-input" placeholder="email@address.com" type="email" />
-                    <button class="material-symbols-outlined footer-submit" type="button"
-                        aria-label="Subscribe">arrow_forward</button>
-                </div>
+                <p class="footer-brand-name">Glyphere</p>
+                <p class="footer-brand-desc">Custom fonts &amp; premium typefaces crafted with soul.</p>
             </div>
+            <nav>
+                <h3 class="footer-col-title">Marketplace</h3>
+                <ul class="footer-links-list">
+                    <li><a href="/main-website/marketplace.html">All Fonts</a></li>
+                    <li><a href="/main-website/marketplace.html">Serifs</a></li>
+                    <li><a href="/main-website/marketplace.html">Display</a></li>
+                    <!-- <li><a href="/main-website/font-finder.html">Font Finder</a></li> -->
+                </ul>
+            </nav>
+            <nav>
+                <h3 class="footer-col-title">Services</h3>
+                <ul class="footer-links-list">
+                    <li><a href="/main-website/custom_font_services/custom_font_services.html">Custom Design</a></li>
+                    <li><a href="/main-website/custom_font_services/custom_font_services.html">Brand Typography</a></li>
+                    <li><a href="/main-website/custom_font_services/custom_font_services.html">Licensing</a></li>
+                </ul>
+            </nav>
+            <nav>
+                <h3 class="footer-col-title">Follow</h3>
+                <ul class="footer-links-list">
+                    <li><a href="#">Instagram</a></li>
+                    <li><a href="#">Twitter / X</a></li>
+                    <li><a href="#">LinkedIn</a></li>
+                </ul>
+            </nav>
         </div>
         <div class="footer-bottom">
-            <p class="footer-copy">© 2024 The Typographic Gallery. Etched in Epilogue.</p>
-            <nav class="footer-legal" aria-label="Legal">
-                <a href="#">Licensing Terms</a>
-                <a href="#">Cookie Policy</a>
+            <p class="footer-copy">© 2024 Glyphere. All Rights Reserved.</p>
+            <nav class="footer-legal">
+                <a href="/main-website/licensing.html">Licensing Terms</a>
+                <a href="/main-website/cookie-policy.html">Cookie Policy</a>
             </nav>
         </div>
     </footer>
@@ -2797,7 +3940,250 @@
                 cards.forEach(function (c) { obs.observe(c); });
             })();
 
+            /* ── Cart badge — sync from localStorage ── */
+            (function () {
+                function updateCartBadge() {
+                    const badge = document.getElementById('navCartBadge');
+                    if (!badge) return;
+                    const cart = JSON.parse(localStorage.getItem('glyphereCart') || '[]');
+                    const count = cart.reduce(function (sum, item) { return sum + (item.qty || 1); }, 0);
+                    badge.textContent = count;
+                    badge.setAttribute('data-count', count);
+                }
+                updateCartBadge();
+                window.addEventListener('storage', updateCartBadge);
+                /* Bounce the badge on add-to-cart events fired by other pages */
+                window.addEventListener('cartUpdated', function () {
+                    updateCartBadge();
+                    var badge = document.getElementById('navCartBadge');
+                    if (badge) {
+                        badge.style.transition = 'none';
+                        badge.style.transform = 'scale(1.5)';
+                        requestAnimationFrame(function () {
+                            badge.style.transition = '';
+                            badge.style.transform = '';
+                        });
+                    }
+                });
+            })();
 
+            /* =====================================================
+               HIGH-FIDELITY INTERACTIVE CONTROLLERS (OPTION A)
+               ==================================================== */
+
+            /* ── A. Cursor & Scroll Parallax Controller ── */
+            (function () {
+                const container = document.querySelector('.hero-section');
+                const frame = document.querySelector('.browser-frame');
+                const badgeRating = document.querySelector('.float-badge--rating');
+                const badgeLive = document.querySelector('.float-badge--live');
+                const badgeStat = document.querySelector('.float-badge--stat');
+
+                if (!container || !frame) return;
+
+                let targetX = 0, targetY = 0;
+                let currentX = 0, currentY = 0;
+                let scrollY = 0;
+
+                container.addEventListener('mousemove', function (e) {
+                    const rect = container.getBoundingClientRect();
+                    const centerX = rect.left + rect.width / 2;
+                    const centerY = rect.top + rect.height / 2;
+                    targetX = (e.clientX - centerX) / (rect.width / 2);
+                    targetY = (e.clientY - centerY) / (rect.height / 2);
+                });
+
+                container.addEventListener('mouseleave', function () {
+                    targetX = 0;
+                    targetY = 0;
+                });
+
+                window.addEventListener('scroll', function () {
+                    scrollY = window.pageYOffset || document.documentElement.scrollTop;
+                }, { passive: true });
+
+                function updateParallax() {
+                    currentX += (targetX - currentX) * 0.08;
+                    currentY += (targetY - currentY) * 0.08;
+
+                    const rotX = -currentY * 4.5;
+                    const rotY = currentX * 4.5;
+
+                    frame.style.transform = 'perspective(1000px) rotateX(' + rotX + 'deg) rotateY(' + rotY + 'deg) translate3d(' + (currentX * 6) + 'px, ' + (currentY * 6) + 'px, 0)';
+
+                    const scrollOffsetBadgeA = scrollY * -0.06;
+                    const scrollOffsetBadgeB = scrollY * -0.12;
+                    const scrollOffsetBadgeC = scrollY * -0.08;
+
+                    if (badgeRating) {
+                        badgeRating.style.transform = 'translate3d(' + (-currentX * 15) + 'px, ' + (-currentY * 15 + scrollOffsetBadgeA) + 'px, 40px)';
+                    }
+                    if (badgeLive) {
+                        badgeLive.style.transform = 'translate3d(' + (-currentX * 22) + 'px, ' + (-currentY * 22 + scrollOffsetBadgeC) + 'px, 60px)';
+                    }
+                    if (badgeStat) {
+                        badgeStat.style.transform = 'translate3d(' + (currentX * 28) + 'px, ' + (currentY * 28 + scrollOffsetBadgeB) + 'px, 80px)';
+                    }
+
+                    requestAnimationFrame(updateParallax);
+                }
+                requestAnimationFrame(updateParallax);
+            })();
+
+            /* ── B. Live Font Tester Playground Controller ── */
+            (function () {
+                const tabs = document.querySelectorAll('.tester-tab');
+                const sizeInput = document.getElementById('fontTesterSize');
+                const sizeLabel = document.getElementById('testerSizeValue');
+                const canvasText = document.getElementById('testerText');
+                const resetBtn = document.getElementById('testerReset');
+
+                if (!canvasText) return;
+
+                tabs.forEach(function (tab) {
+                    tab.addEventListener('click', function () {
+                        const activeTab = document.querySelector('.tester-tab.active');
+                        if (activeTab) {
+                            activeTab.classList.remove('active');
+                            activeTab.setAttribute('aria-selected', 'false');
+                        }
+
+                        tab.classList.add('active');
+                        tab.setAttribute('aria-selected', 'true');
+
+                        const classes = canvasText.className.split(' ');
+                        classes.forEach(function (c) {
+                            if (c.startsWith('font-')) {
+                                canvasText.classList.remove(c);
+                            }
+                        });
+
+                        const selectedFont = tab.getAttribute('data-font');
+                        const sanitizedFontClass = 'font-' + selectedFont.replace(/ /g, '_');
+                        canvasText.classList.add(sanitizedFontClass);
+                    });
+                });
+
+                if (sizeInput && sizeLabel) {
+                    sizeInput.addEventListener('input', function () {
+                        const val = sizeInput.value;
+                        sizeLabel.textContent = val + 'px';
+                        canvasText.style.fontSize = val + 'px';
+                    });
+                }
+
+                if (resetBtn) {
+                    resetBtn.addEventListener('click', function () {
+                        canvasText.innerHTML = 'G<span style="letter-spacing: -0.15em;">L</span>YPHERE / CRAFTED SOUL';
+                    });
+                }
+            })();
+
+            /* ── C. Before/After slider Drag Controller ── */
+            (function () {
+                const slider = document.getElementById('compSlider');
+                const afterLayer = document.getElementById('afterLayer');
+                const handle = document.getElementById('sliderHandle');
+
+                if (!slider || !afterLayer || !handle) return;
+
+                let isDragging = false;
+
+                function getPercentage(clientX) {
+                    const rect = slider.getBoundingClientRect();
+                    const x = clientX - rect.left;
+                    return Math.max(0, Math.min(100, (x / rect.width) * 100));
+                }
+
+                function setPosition(percentage) {
+                    afterLayer.style.width = percentage + '%';
+                    handle.style.left = percentage + '%';
+                }
+
+                function startDrag(e) {
+                    isDragging = true;
+                    slider.classList.add('is-dragging');
+                    e.preventDefault();
+                }
+
+                function endDrag() {
+                    isDragging = false;
+                    slider.classList.remove('is-dragging');
+                }
+
+                function onDrag(e) {
+                    if (!isDragging) return;
+                    const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+                    const pct = getPercentage(clientX);
+                    requestAnimationFrame(function () {
+                        setPosition(pct);
+                    });
+                }
+
+                handle.addEventListener('mousedown', startDrag);
+                handle.addEventListener('touchstart', startDrag, { passive: false });
+
+                window.addEventListener('mouseup', endDrag);
+                window.addEventListener('touchend', endDrag);
+                window.addEventListener('mousemove', onDrag);
+                window.addEventListener('touchmove', onDrag, { passive: false });
+
+                slider.addEventListener('click', function (e) {
+                    if (e.target.closest('.slider-drag-handle')) return;
+                    const pct = getPercentage(e.clientX);
+                    requestAnimationFrame(function () {
+                        setPosition(pct);
+                    });
+                });
+            })();
+
+            /* ── D. Specimens Quick-Add Cart Controller ── */
+            (function () {
+                const quickAddBtns = document.querySelectorAll('.quick-add-btn');
+
+                quickAddBtns.forEach(function (btn) {
+                    btn.addEventListener('click', function (e) {
+                        e.preventDefault();
+                        e.stopPropagation();
+
+                        const name = btn.getAttribute('data-font');
+                        const price = Number(btn.getAttribute('data-price') || 49);
+                        const license = btn.getAttribute('data-license') || 'Desktop';
+
+                        let cart = [];
+                        try {
+                            cart = JSON.parse(localStorage.getItem('glyphereCart') || '[]');
+                        } catch (err) {
+                            cart = [];
+                        }
+
+                        const existing = cart.find(item => item.name === name && item.license === license);
+                        if (existing) {
+                            existing.qty = (existing.qty || 1) + 1;
+                        } else {
+                            cart.push({
+                                name: name,
+                                price: price,
+                                license: license,
+                                qty: 1
+                            });
+                        }
+
+                        localStorage.setItem('glyphereCart', JSON.stringify(cart));
+
+                        btn.classList.add('added');
+                        btn.innerHTML = `<svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+
+                        window.dispatchEvent(new Event('storage'));
+                        window.dispatchEvent(new Event('cartUpdated'));
+
+                        setTimeout(function () {
+                            btn.classList.remove('added');
+                            btn.innerHTML = `<svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+                        }, 2000);
+                    });
+                });
+            })();
 
         }); /* end DOMContentLoaded */
     </script>

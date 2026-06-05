@@ -4,6 +4,9 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="/main-website/glyphere.png" />
   <title>Font — Glyphere</title>
   <meta name="description" content="Premium typeface from Glyphere." />
 
@@ -16,6 +19,7 @@
     rel="stylesheet" />
 
   <link rel="stylesheet" href="javascript/loginmodel.css">
+  <link rel="stylesheet" href="css/globalstyle.css">
 
   <style>
     /* ===================================================
@@ -33,7 +37,19 @@
       background: #f7f5f2;
       color: #1c1812;
       font-family: 'Manrope', sans-serif;
-      line-height: 1.5
+      line-height: 1.5;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      width: 100vw;
+      height: 100vh;
+      opacity: 0.03;
+      pointer-events: none;
+      z-index: 9999;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
     }
 
     a {
@@ -532,8 +548,18 @@
         display: flex
       }
 
+      /* Keep nav-actions visible on mobile next to hamburger button, showing only the cart icon */
       .nav-actions {
-        display: none
+        display: flex;
+        margin-left: auto;
+        margin-right: 0.75rem;
+        gap: 0.75rem
+      }
+
+      /* Hide desktop-only auth and avatar elements inside navbar on mobile */
+      .nav-actions .nav-signup,
+      .nav-actions .nav-user-avatar-container {
+        display: none !important
       }
     }
 
@@ -1063,6 +1089,7 @@
     .fd-range {
       width: 100%;
       -webkit-appearance: none;
+      appearance: none;
       height: 3px;
       background: rgba(201, 171, 129, .2);
       border-radius: 2px;
@@ -2021,6 +2048,498 @@
         font-size: 1.375rem
       }
     }
+
+    /* ===================================================
+   MOCKUP GENERATOR
+=================================================== */
+    .fd-mockups-section {
+      padding: 5rem 0;
+      border-top: 1px solid rgba(201, 171, 129, .1);
+    }
+    
+    .fd-mockup-layout-picker {
+      display: flex;
+      justify-content: center;
+      gap: 0.5rem;
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+    }
+    
+    .fd-mockup-tab-btn {
+      font-family: 'Instrument Sans', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      padding: 0.6rem 1.25rem;
+      border-radius: 100px;
+      background: var(--surface-low);
+      border: 1px solid rgba(201, 171, 129, 0.15);
+      color: var(--on-surface-var);
+      cursor: pointer;
+      transition: all 0.25s cubic-bezier(0.25, 1, 0.5, 1);
+    }
+    
+    .fd-mockup-tab-btn:hover {
+      background: var(--surface-high);
+      color: var(--primary);
+    }
+    
+    .fd-mockup-tab-btn.is-active {
+      background: var(--primary);
+      color: var(--on-primary);
+      border-color: var(--primary);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+    
+    .fd-mockup-playground {
+      display: grid;
+      grid-template-columns: 1fr 340px;
+      gap: 3rem;
+      align-items: center;
+    }
+    
+    @media (max-width: 960px) {
+      .fd-mockup-playground {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+    }
+    
+    .fd-mockup-canvas-wrapper {
+      background: var(--surface-low);
+      border: 1px solid rgba(201, 171, 129, 0.15);
+      border-radius: 1.5rem;
+      padding: 3rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 440px;
+      position: relative;
+      overflow: hidden;
+      box-shadow: inset 0 0 40px rgba(0,0,0,0.02);
+    }
+    
+    .fd-mockup-card {
+      width: 100%;
+      max-width: 380px;
+      aspect-ratio: 3 / 4;
+      background: #fff;
+      border-radius: 8px;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.18), 0 0 1px rgba(0,0,0,0.1);
+      position: relative;
+      overflow: hidden;
+      transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+      display: none;
+    }
+    
+    .fd-mockup-card.is-active {
+      display: flex;
+      animation: fadeInUp 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+    }
+    
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(12px) scale(0.98); }
+      to { opacity: 1; transform: translateY(0) scale(1); }
+    }
+    
+    /* 1. Poster Layout */
+    .fd-poster-layout {
+      background: #151413;
+      color: #eae6df;
+      padding: 2.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      border: 6px solid #1a1918;
+    }
+    .fd-poster-top {
+      font-size: 0.5rem;
+      text-transform: uppercase;
+      letter-spacing: 0.25em;
+      opacity: 0.6;
+      border-bottom: 1px solid rgba(234, 230, 223, 0.15);
+      padding-bottom: 0.5rem;
+    }
+    .fd-poster-middle {
+      font-size: 2.6rem;
+      line-height: 0.95;
+      text-align: center;
+      word-break: break-word;
+      font-weight: 700;
+      color: #c9ab81;
+      margin: auto 0;
+      outline: none;
+    }
+    .fd-poster-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      font-size: 0.5rem;
+      letter-spacing: 0.15em;
+      opacity: 0.7;
+    }
+    
+    /* 2. Luxury Label Layout */
+    .fd-label-layout {
+      background: #fbfaf7;
+      color: #1a1a17;
+      padding: 2rem;
+      border: 1px solid #d4ccb6;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    }
+    .fd-label-layout::before {
+      content: '';
+      position: absolute;
+      inset: 8px;
+      border: 1px solid #d4ccb6;
+      pointer-events: none;
+    }
+    .fd-label-layout::after {
+      content: '';
+      position: absolute;
+      inset: 12px;
+      border: 2px solid #b89c6d;
+      pointer-events: none;
+    }
+    .fd-label-badge {
+      font-size: 0.5rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      color: #8a6c3e;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+      z-index: 2;
+    }
+    .fd-label-title {
+      font-size: 2.2rem;
+      line-height: 1.05;
+      font-weight: 400;
+      color: #1a1a17;
+      margin-bottom: 0.75rem;
+      z-index: 2;
+      outline: none;
+      word-break: break-word;
+      max-width: 90%;
+    }
+    .fd-label-desc {
+      font-size: 0.55rem;
+      font-family: 'JetBrains Mono', monospace;
+      color: #7c7263;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-top: 1rem;
+      z-index: 2;
+    }
+    
+    /* 3. Book Cover Layout */
+    .fd-book-layout {
+      background: linear-gradient(135deg, #1f2721 0%, #0d120e 100%);
+      color: #e4e9e4;
+      padding: 3rem 2rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      box-shadow: inset 5px 0 10px rgba(0,0,0,0.5);
+    }
+    .fd-book-stripe {
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 8px;
+      background: rgba(255,255,255,0.06);
+    }
+    .fd-book-author {
+      font-family: 'Instrument Sans', sans-serif;
+      font-size: 0.65rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      color: #92a294;
+      text-align: center;
+      outline: none;
+    }
+    .fd-book-title {
+      font-size: 2.3rem;
+      line-height: 1.0;
+      font-weight: 700;
+      text-align: center;
+      color: #fff;
+      word-break: break-word;
+      outline: none;
+      margin: auto 0;
+    }
+    .fd-book-footer {
+      font-size: 0.5rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      text-align: center;
+      opacity: 0.5;
+    }
+    
+    /* Mockup Control Panel */
+    .fd-mockup-panel {
+      background: var(--surface-low);
+      border: 1px solid rgba(201, 171, 129, 0.15);
+      border-radius: 1.5rem;
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+    .fd-mockup-panel h3 {
+      font-family: 'Bricolage Grotesque', sans-serif;
+      font-size: 1.25rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      color: var(--primary);
+    }
+    .fd-mockup-panel p {
+      font-size: 0.8125rem;
+      color: var(--on-surface-var);
+      line-height: 1.5;
+    }
+    .fd-mockup-input-wrap {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+    .fd-mockup-input-wrap label {
+      font-size: 0.625rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--on-surface-var);
+    }
+    .fd-mockup-text-input {
+      background: var(--surface-container);
+      border: 1px solid rgba(201, 171, 129, 0.18);
+      border-radius: 0.5rem;
+      padding: 0.75rem 1rem;
+      font-family: inherit;
+      font-size: 0.875rem;
+      color: var(--primary);
+      outline: none;
+      transition: all 0.2s;
+    }
+    .fd-mockup-text-input:focus {
+      border-color: var(--gold-dark);
+      background: var(--surface-lowest);
+    }
+
+    /* ===================================================
+   LICENSING WIZARD
+=================================================== */
+    .fd-wizard-wrapper {
+      margin-bottom: 2rem;
+      background: var(--surface-low);
+      border: 1px solid rgba(201, 171, 129, 0.18);
+      border-radius: 1.5rem;
+      padding: 1.75rem;
+      transition: all 0.3s;
+    }
+    .fd-wizard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.25rem;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+    .fd-wizard-header h3 {
+      font-family: 'Bricolage Grotesque', sans-serif;
+      font-size: 1.15rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      color: var(--primary);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .fd-wizard-header h3 span {
+      color: var(--gold-dark);
+    }
+    .fd-wizard-steps {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+    }
+    @media (max-width: 640px) {
+      .fd-wizard-steps {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+      }
+    }
+    .fd-wizard-select-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+    .fd-wizard-label {
+      font-size: 0.625rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--on-surface-var);
+    }
+    .fd-wizard-select {
+      background: var(--surface-container);
+      border: 1px solid rgba(201, 171, 129, 0.2);
+      border-radius: 0.75rem;
+      padding: 0.75rem 1rem;
+      font-family: inherit;
+      font-size: 0.8125rem;
+      color: var(--primary);
+      outline: none;
+      cursor: pointer;
+      appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%238a6c3e' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 1rem center;
+      transition: all 0.2s;
+    }
+    .fd-wizard-select:focus {
+      border-color: var(--gold-dark);
+      background-color: var(--surface-lowest);
+    }
+    .fd-license-card.is-recommended {
+      border-color: var(--gold) !important;
+      box-shadow: 0 0 0 3px rgba(201, 171, 129, 0.25), 0 16px 32px rgba(17,17,17,0.08) !important;
+      transform: translateY(-4px) scale(1.01);
+    }
+
+    /* ── OpenType switches ── */
+    .fd-tester-ot-group {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      padding-top: 1.25rem;
+      border-top: 1px solid rgba(201, 171, 129, 0.12);
+    }
+
+    .fd-ot-toggle-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      cursor: pointer;
+    }
+
+    .fd-ot-toggle-row span:first-child {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .fd-ot-name {
+      font-size: 0.7rem;
+      font-weight: 700;
+      color: var(--primary);
+    }
+
+    .fd-ot-desc {
+      font-size: 0.55rem;
+      color: var(--on-surface-var);
+      opacity: 0.7;
+      text-transform: none !important;
+      letter-spacing: 0px !important;
+    }
+
+    /* Sleek Switch design */
+    .fd-switch-input {
+      display: none;
+    }
+
+    .fd-switch-slider {
+      position: relative;
+      width: 32px;
+      height: 18px;
+      background-color: var(--surface-container);
+      border: 1px solid rgba(201, 171, 129, 0.25);
+      border-radius: 10px;
+      transition: background-color 0.2s, border-color 0.2s;
+    }
+
+    .fd-switch-slider::before {
+      content: "";
+      position: absolute;
+      width: 12px;
+      height: 12px;
+      left: 2px;
+      bottom: 2px;
+      background-color: var(--on-surface-var);
+      border-radius: 50%;
+      transition: transform 0.2s, background-color 0.2s;
+    }
+
+    .fd-switch-input:checked + .fd-switch-slider {
+      background-color: var(--primary);
+      border-color: var(--primary);
+    }
+
+    .fd-switch-input:checked + .fd-switch-slider::before {
+      transform: translateX(14px);
+      background-color: var(--on-primary);
+    }
+
+    /* ── Weight axis range input ── */
+    .fd-specimen-slider-block {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      width: 100%;
+      margin-top: 1.5rem;
+      padding-top: 1.25rem;
+      border-top: 1px solid rgba(201, 171, 129, 0.12);
+    }
+
+    .fd-specimen-slider-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .fd-specimen-slider-header span {
+      font-family: 'Instrument Sans', sans-serif;
+      font-size: 0.5625rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(242, 231, 213, 0.4);
+    }
+
+    .fd-spec-weight-val {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.6875rem;
+      font-weight: 700;
+      color: var(--gold);
+    }
+
+    .fd-specimen-weight-slider {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 100%;
+      height: 2px;
+      background: rgba(201, 171, 129, 0.2);
+      border-radius: 1px;
+      outline: none;
+      cursor: pointer;
+    }
+
+    .fd-specimen-weight-slider::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--gold);
+      cursor: pointer;
+      border: 2px solid rgba(17, 17, 17, 0.5);
+    }
   </style>
 </head>
 
@@ -2030,17 +2549,26 @@
   <header class="header-nav">
     <nav class="nav-inner">
       <div class="nav-logo-group">
-        <a href="/homepage.html"><img src="/homepage-updated/faiz.jpeg" class="nav-logo-img" alt="Glyphere" /></a>
-        <a class="nav-logo-name" href="/homepage.html">Glyphere</a>
+        <a href="/main-website/homepage.html"><img src="/main-website/glyphere.png" class="nav-logo-img"
+            alt="Glyphere" /></a>
+        <a class="nav-logo-name" href="/main-website/homepage.html">Glyphere</a>
       </div>
       <ul class="nav-links" role="list">
-        <li><a class="nav-link" href="/marketplace.html">Marketplace</a></li>
-        <li><a class="nav-link" href="/custom_font_services/code.html">Services</a></li>
-        <li><a class="nav-link" href="/about_the_designer/about.html">About</a></li>
+        <li><a class="nav-link" href="/main-website/marketplace.html">Marketplace</a></li>
+        <li><a class="nav-link" href="/main-website/custom_font_services/custom_font_services.html">Services</a></li>
+        <!-- <li><a class="nav-link" href="/main-website/font-finder.html">Font Finder</a></li> -->
+        <li><a class="nav-link" href="/main-website/about.html">About</a></li>
       </ul>
       <div class="nav-actions">
-        <a class="nav-login" href="/signup-login.html">Login</a>
-        <a class="nav-signup" href="/signup-login.html">Sign Up</a>
+        <a class="nav-cart" href="/main-website/cart.html" id="navCartBtn" aria-label="Shopping cart">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z" />
+            <line x1="3" y1="6" x2="21" y2="6" />
+            <path d="M16 10a4 4 0 0 1-8 0" />
+          </svg>
+          <span class="nav-cart__badge" id="navCartBadge" data-count="0">0</span>
+        </a>
+        <a class="nav-signup" href="/main-website/signup-login.html">Login / Register</a>
       </div>
       <button class="nav-hamburger" aria-label="Menu" aria-expanded="false">
         <span class="nav-hamburger__line"></span>
@@ -2052,13 +2580,21 @@
 
   <div class="nav-mobile-menu">
     <div class="nav-mobile-menu__links">
-      <a class="nav-mobile-menu__link" href="/marketplace.html">Marketplace</a>
-      <a class="nav-mobile-menu__link" href="/custom_font_services/code.html">Services</a>
-      <a class="nav-mobile-menu__link" href="/about_the_designer/about.html">About</a>
+      <a class="nav-mobile-menu__link" href="/main-website/marketplace.html">Marketplace</a>
+      <a class="nav-mobile-menu__link" href="/main-website/custom_font_services/custom_font_services.html">Services</a>
+      <!-- <a class="nav-mobile-menu__link" href="/main-website/font-finder.html">Font Finder</a> -->
+      <a class="nav-mobile-menu__link" href="/main-website/about.html">About</a>
     </div>
     <div class="nav-mobile-menu__actions">
-      <a class="nav-mobile-menu__login" href="/signup-login.html">Login</a>
-      <a class="nav-mobile-menu__signup" href="/signup-login.html">Sign Up</a>
+      <a class="nav-mobile-menu__cart" href="/main-website/cart.html" aria-label="Shopping cart">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z" />
+          <line x1="3" y1="6" x2="21" y2="6" />
+          <path d="M16 10a4 4 0 0 1-8 0" />
+        </svg>
+        Cart
+      </a>
+      <a class="nav-mobile-menu__signup" href="/main-website/signup-login.html">Login / Register</a>
     </div>
   </div>
 
@@ -2092,17 +2628,18 @@
       <nav>
         <h3 class="footer-col-title">Marketplace</h3>
         <ul class="footer-links-list">
-          <li><a href="/marketplace.html">All Fonts</a></li>
-          <li><a href="/marketplace.html">Serifs</a></li>
-          <li><a href="/marketplace.html">Display</a></li>
+          <li><a href="/main-website/marketplace.html">All Fonts</a></li>
+          <li><a href="/main-website/marketplace.html">Serifs</a></li>
+          <li><a href="/main-website/marketplace.html">Display</a></li>
+          <!-- <li><a href="/main-website/font-finder.html">Font Finder</a></li> -->
         </ul>
       </nav>
       <nav>
         <h3 class="footer-col-title">Services</h3>
         <ul class="footer-links-list">
-          <li><a href="/custom_font_services/code.html">Custom Design</a></li>
-          <li><a href="/custom_font_services/code.html">Brand Typography</a></li>
-          <li><a href="/custom_font_services/code.html">Licensing</a></li>
+          <li><a href="/main-website/custom_font_services/custom_font_services.html">Custom Design</a></li>
+          <li><a href="/main-website/custom_font_services/custom_font_services.html">Brand Typography</a></li>
+          <li><a href="/main-website/custom_font_services/custom_font_services.html">Licensing</a></li>
         </ul>
       </nav>
       <nav>
@@ -2117,8 +2654,8 @@
     <div class="footer-bottom">
       <p class="footer-copy">© 2024 Glyphere. All Rights Reserved.</p>
       <nav class="footer-legal">
-        <a href="#">Licensing Terms</a>
-        <a href="#">Cookie Policy</a>
+        <a href="/main-website/licensing.html">Licensing Terms</a>
+        <a href="/main-website/cookie-policy.html">Cookie Policy</a>
       </nav>
     </div>
   </footer>
@@ -2567,10 +3104,12 @@
       </div>`;
         return;
       }
-      
+
 
       const font = getFont(slug);
       loadFont(font);
+
+      /* Reverted background morphing styles */
 
       /* SEO */
       document.title = `${font.name} — Glyphere`;
@@ -2627,10 +3166,12 @@
               <input type="range" class="fd-spec-range" id="fd-hero-size" min="28" max="120" value="64"/>
               <span class="fd-spec-size-val" id="fd-hero-size-v">64</span>
             </div>
-            <div class="fd-style-pills-wrap" id="fd-hero-pills">
-              <button class="fd-style-pill-btn active" data-style="normal" data-weight="400">Regular</button>
-              <button class="fd-style-pill-btn" data-style="italic" data-weight="400">Italic</button>
-              <button class="fd-style-pill-btn" data-style="normal" data-weight="700">Bold</button>
+            <div class="fd-specimen-slider-block">
+              <div class="fd-specimen-slider-header">
+                <span>Weight</span>
+                <span class="fd-spec-weight-val" id="fd-hero-weight-v">Regular (400)</span>
+              </div>
+              <input type="range" class="fd-specimen-weight-slider" id="fd-hero-weight-slider" min="100" max="900" step="100" value="400"/>
             </div>
           </div>
         </div>
@@ -2674,6 +3215,38 @@
             <span style="font-size:.625rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--on-surface-var)">Background</span>
             <button class="fd-dark-toggle" id="fd-dark" aria-pressed="false">Dark</button>
           </div>
+
+          <!-- OpenType Features Switch Group -->
+          <div class="fd-tester-ot-group">
+            <span style="font-size:.625rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--on-surface-var);margin-bottom:4px;">OpenType Features</span>
+            
+            <label class="fd-ot-toggle-row">
+              <span>
+                <strong class="fd-ot-name">Standard Ligatures</strong>
+                <span class="fd-ot-desc">Combines fi, fl, tt, etc.</span>
+              </span>
+              <input type="checkbox" id="ot-liga" class="fd-switch-input" checked>
+              <span class="fd-switch-slider"></span>
+            </label>
+
+            <label class="fd-ot-toggle-row">
+              <span>
+                <strong class="fd-ot-name">Stylistic Alternates</strong>
+                <span class="fd-ot-desc">Use design variants</span>
+              </span>
+              <input type="checkbox" id="ot-salt" class="fd-switch-input">
+              <span class="fd-switch-slider"></span>
+            </label>
+
+            <label class="fd-ot-toggle-row">
+              <span>
+                <strong class="fd-ot-name">Tabular Figures</strong>
+                <span class="fd-ot-desc">Equal-width numbers</span>
+              </span>
+              <input type="checkbox" id="ot-tnum" class="fd-switch-input">
+              <span class="fd-switch-slider"></span>
+            </label>
+          </div>
         </div>
         <div class="fd-tester-surface" id="fd-surface">
           <p class="fd-tester-preview" id="fd-preview" style="font-family:${ff};">${font.previewText || 'The quick brown fox'}</p>
@@ -2712,6 +3285,59 @@
       </div>
     </section>
 
+    <!-- TYPE IN CONTEXT -->
+    <section class="fd-section fd-mockups-section" id="fd-mockups-section">
+      <div class="fd-section-header" style="text-align: center;">
+        <span class="fd-eyebrow">Type in Context</span>
+        <h2 class="fd-section-title">Editorial Mockup Generator</h2>
+        <p class="fd-section-sub">See ${font.name} in high-fidelity design contexts.</p>
+      </div>
+      
+      <div class="fd-mockup-layout-picker">
+        <button class="fd-mockup-tab-btn is-active" data-mockup="poster">1. Vintage Poster</button>
+        <button class="fd-mockup-tab-btn" data-mockup="label">2. Luxury Spirit Label</button>
+        <button class="fd-mockup-tab-btn" data-mockup="book">3. Editorial Novel Cover</button>
+      </div>
+      
+      <div class="fd-mockup-playground">
+        <div class="fd-mockup-canvas-wrapper">
+          <!-- 1. Poster -->
+          <div class="fd-mockup-card fd-poster-layout is-active" id="mk-poster">
+            <div class="fd-poster-top">Glyphere Specimen — Series 04</div>
+            <div class="fd-poster-middle" style="font-family:${ff};" contenteditable="true" spellcheck="false">DRAFTING FUTURE</div>
+            <div class="fd-poster-bottom">
+              <div>EST. 2024</div>
+              <div>CRAFTED FOR BRAND AUTHORITY</div>
+            </div>
+          </div>
+          
+          <!-- 2. Label -->
+          <div class="fd-mockup-card fd-label-layout" id="mk-label">
+            <div class="fd-label-badge">Single Batch</div>
+            <div class="fd-label-title" style="font-family:${ff};" contenteditable="true" spellcheck="false">VALE & CO.</div>
+            <div class="fd-label-desc">Botanical Alchemy · Estd. 1886</div>
+          </div>
+          
+          <!-- 3. Novel Cover -->
+          <div class="fd-mockup-card fd-book-layout" id="mk-book">
+            <div class="fd-book-stripe"></div>
+            <div class="fd-book-author">A Novel by F. Muhammad</div>
+            <div class="fd-book-title" style="font-family:${ff};" contenteditable="true" spellcheck="false">THE SILENT STONE</div>
+            <div class="fd-book-footer">Glyphere Publications</div>
+          </div>
+        </div>
+        
+        <div class="fd-mockup-panel">
+          <h3>Interactive Layout Settings</h3>
+          <p>This sandbox renders the custom loaded font in real-time layout templates. Select a layout and type directly inside the design mockup on the left, or use the input box below.</p>
+          <div class="fd-mockup-input-wrap">
+            <label for="fd-mk-text-field">Layout Text Content</label>
+            <input type="text" class="fd-mockup-text-input" id="fd-mk-text-field" value="DRAFTING FUTURE"/>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- LICENSING & FORMATS -->
     <section class="fd-section">
       <div class="fd-section-header">
@@ -2719,6 +3345,33 @@
         <h2 class="fd-section-title">Pick Your License</h2>
         <p class="fd-section-sub">One-time purchase. Yours forever.</p>
       </div>
+
+      <!-- WIZARD -->
+      <div class="fd-wizard-wrapper">
+        <div class="fd-wizard-header">
+          <h3><span>✦</span> License Recommendation Assistant</h3>
+          <p style="font-size:0.75rem;opacity:0.8;margin:0;">Select your needs to find the perfect fit.</p>
+        </div>
+        <div class="fd-wizard-steps">
+          <div class="fd-wizard-select-group">
+            <label class="fd-wizard-label" for="fd-wiz-use">Usage Medium</label>
+            <select class="fd-wizard-select" id="fd-wiz-use">
+              <option value="personal">Personal / Client Presentation / Static PDF</option>
+              <option value="web" selected>Website / Web Application / SaaS Product</option>
+              <option value="commercial">Advertising / Broadcast / Corporate Enterprise</option>
+            </select>
+          </div>
+          <div class="fd-wizard-select-group">
+            <label class="fd-wizard-label" for="fd-wiz-scale">Audience / Scale</label>
+            <select class="fd-wizard-select" id="fd-wiz-scale">
+              <option value="small">Small (1-5 Users or under 50K visitors/mo)</option>
+              <option value="medium" selected>Medium (Up to 10 Users or 500K visitors/mo)</option>
+              <option value="large">Enterprise (Unlimited Users / Large Scale audience)</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
       <div class="fd-license-cards">
         <div class="fd-license-card">
           <span class="fd-lc-badge">Personal</span>
@@ -2739,7 +3392,7 @@
           <p class="fd-lc-price"><sup>$</sup>${hasSale ? font.salePrice : font.price}</p>
           <ul class="fd-lc-perks">
             ${(font.formats || ['OTF', 'TTF', 'WOFF2']).map(f => `<li class="fd-lc-perk"><span class="fd-lc-check">✦</span>.${f} included</li>`).join('')}
-            <li class="fd-lc-perk"><span class="fd-lc-check">✦</span>Up to 500k monthly pageviews</li>
+            <li class="fd-lc-perk"><span class="fd-lc-check">✦</span>Up to 10 Desktop users</li>
             <li class="fd-lc-perk"><span class="fd-lc-check">✦</span>Desktop license included</li>
           </ul>
           <button class="fd-lc-btn fd-lc-btn--dark fd-lc-buy-btn">Buy Web License</button>
@@ -2751,11 +3404,11 @@
           <p class="fd-lc-price"><sup>$</sup>${Math.round((hasSale ? font.salePrice : font.price) * 1.50)}</p>
           <ul class="fd-lc-perks">
             <li class="fd-lc-perk"><span class="fd-lc-check">✦</span>Unlimited desktop users</li>
-            <li class="fd-lc-perk"><span class="fd-lc-check">✦</span>Unlimited web traffic</li>
-            <li class="fd-lc-perk"><span class="fd-lc-check">✦</span>App &amp; SaaS embedding</li>
-            <li class="fd-lc-perk"><span class="fd-lc-check">✦</span>Broadcast &amp; film usage</li>
+            <li class="fd-lc-perk"><span class="fd-lc-check">✦</span>All font files included</li>
+            <li class="fd-lc-perk"><span class="fd-lc-check">✦</span>source files included</li>
+            <li class="fd-lc-perk"><span class="fd-lc-check">✦</span>24/7 Email Support</li>
           </ul>
-          <button class="fd-lc-btn fd-lc-btn--outline fd-lc-buy-btn">Contact for Quote</button>
+          <button class="fd-lc-btn fd-lc-btn--outline fd-lc-buy-btn">Buy Commercial License</button>
         </div>
       </div>
 
@@ -2803,6 +3456,20 @@
     </section>` : ''}
   `;
 
+      /* ── Wire license card buy buttons ── */
+      document.querySelectorAll('.fd-lc-buy-btn').forEach(btn => {
+        btn.addEventListener('click', function () {
+          const card = this.closest('.fd-license-card');
+          const licenseType = card?.querySelector('.fd-lc-name')?.textContent.trim() || 'Desktop License';
+          const priceText = card?.querySelector('.fd-lc-price')?.textContent || '0';
+          const price = parseFloat(priceText.replace(/[^0-9.]/g, '')) || 0;
+          fdAddToCart(this, licenseType, price);
+          const orig = this.textContent;
+          this.textContent = '✓ Added!';
+          setTimeout(() => { this.textContent = orig; }, 1600);
+        });
+      });
+
       /* ── Wire up tester ── */
       const preview = document.getElementById('fd-preview');
       const textArea = document.getElementById('fd-text');
@@ -2826,12 +3493,36 @@
         sizeV.textContent = sizeIn.value + 'px';
         lsV.textContent = lsIn.value + 'px';
         lhV.textContent = parseFloat(lhIn.value).toFixed(2);
+
+        // Construct OpenType feature settings string
+        const otLiga = document.getElementById('ot-liga');
+        const otSalt = document.getElementById('ot-salt');
+        const otTnum = document.getElementById('ot-tnum');
+        
+        let otSettings = [];
+        if (otLiga && otLiga.checked) otSettings.push('"liga" 1, "clig" 1');
+        else otSettings.push('"liga" 0, "clig" 0');
+        
+        if (otSalt && otSalt.checked) otSettings.push('"salt" 1, "ss01" 1');
+        if (otTnum && otTnum.checked) otSettings.push('"tnum" 1');
+        else otSettings.push('"pnum" 1');
+
+        preview.style.fontFeatureSettings = otSettings.join(', ');
       }
 
       textArea.addEventListener('input', updatePreview);
       sizeIn.addEventListener('input', updatePreview);
       lsIn.addEventListener('input', updatePreview);
       lhIn.addEventListener('input', updatePreview);
+
+      // OpenType Switches Listeners
+      const switchLiga = document.getElementById('ot-liga');
+      const switchSalt = document.getElementById('ot-salt');
+      const switchTnum = document.getElementById('ot-tnum');
+
+      if (switchLiga) switchLiga.addEventListener('change', updatePreview);
+      if (switchSalt) switchSalt.addEventListener('change', updatePreview);
+      if (switchTnum) switchTnum.addEventListener('change', updatePreview);
 
       caseGrp.addEventListener('click', e => {
         const btn = e.target.closest('[data-case]');
@@ -2864,7 +3555,8 @@
       const heroPreview = document.getElementById('fd-hero-preview');
       const heroSizeIn = document.getElementById('fd-hero-size');
       const heroSizeV = document.getElementById('fd-hero-size-v');
-      const heroPills = document.getElementById('fd-hero-pills');
+      const heroWeightSlider = document.getElementById('fd-hero-weight-slider');
+      const heroWeightVal = document.getElementById('fd-hero-weight-v');
 
       function updateHeroSize() {
         if (!heroPreview || !heroSizeIn) return;
@@ -2877,15 +3569,28 @@
         updateHeroSize(); // init
       }
 
-      if (heroPills) {
-        heroPills.addEventListener('click', e => {
-          const btn = e.target.closest('[data-style]');
-          if (!btn || !heroPreview) return;
-          qsa('.fd-style-pill-btn', heroPills).forEach(b => b.classList.remove('active'));
-          btn.classList.add('active');
-          heroPreview.style.fontStyle = btn.dataset.style || 'normal';
-          heroPreview.style.fontWeight = btn.dataset.weight || '400';
-        });
+      function updateHeroWeight() {
+        if (!heroPreview || !heroWeightSlider || !heroWeightVal) return;
+        const val = parseInt(heroWeightSlider.value);
+        heroPreview.style.fontWeight = val;
+        
+        const labels = {
+          100: 'Hairline (100)',
+          200: 'Thin (200)',
+          300: 'Light (300)',
+          400: 'Regular (400)',
+          500: 'Medium (500)',
+          600: 'SemiBold (600)',
+          700: 'Bold (700)',
+          800: 'ExtraBold (800)',
+          900: 'Black (900)'
+        };
+        heroWeightVal.textContent = labels[val] || `Weight (${val})`;
+      }
+
+      if (heroWeightSlider) {
+        heroWeightSlider.addEventListener('input', updateHeroWeight);
+        updateHeroWeight(); // init
       }
 
       // Keep font-family when user edits contenteditable
@@ -2909,8 +3614,88 @@
         });
       }
 
+      /* ── Cart utilities (font-detail) ── */
+      function glCart_get() {
+        try { return JSON.parse(localStorage.getItem('glyphereCart') || '[]'); } catch { return []; }
+      }
+      function glCart_save(cart) {
+        localStorage.setItem('glyphereCart', JSON.stringify(cart));
+        window.dispatchEvent(new CustomEvent('cartUpdated', { detail: { count: cart.length } }));
+      }
+      function glCart_add(item) {
+        const cart = glCart_get();
+        const existing = cart.find(i => i.id === item.id && i.license === item.license);
+        if (existing) { existing.qty = (existing.qty || 1) + 1; }
+        else { cart.push({ ...item, qty: 1 }); }
+        glCart_save(cart);
+        return cart.length;
+      }
+      function glCart_syncBadge() {
+        const badge = document.getElementById('navCartBadge');
+        if (!badge) return;
+        const count = glCart_get().reduce((s, i) => s + (i.qty || 1), 0);
+        badge.textContent = count;
+        badge.setAttribute('data-count', count);
+        badge.style.transform = count > 0 ? 'scale(1)' : 'scale(0)';
+      }
+      glCart_syncBadge();
+
+      let _fdToastEl = null, _fdToastTimer = null;
+      function glCart_toast(fontName) {
+        if (!_fdToastEl) {
+          _fdToastEl = document.createElement('div');
+          _fdToastEl.className = 'cart-toast';
+          _fdToastEl.innerHTML = `<span class="cart-toast__icon">✦</span><span class="cart-toast__msg"></span><a class="cart-toast__action" href="/main-website/cart.html">View Cart →</a>`;
+          document.body.appendChild(_fdToastEl);
+        }
+        _fdToastEl.querySelector('.cart-toast__msg').textContent = `${fontName} added to cart`;
+        clearTimeout(_fdToastTimer);
+        _fdToastEl.classList.add('cart-toast--visible');
+        _fdToastTimer = setTimeout(() => _fdToastEl.classList.remove('cart-toast--visible'), 3200);
+      }
+      function glCart_flyParticle(fromEl) {
+        const cartBtn = document.getElementById('navCartBtn');
+        if (!cartBtn || !fromEl) return;
+        const src = fromEl.getBoundingClientRect();
+        const dst = cartBtn.getBoundingClientRect();
+        const p = document.createElement('div');
+        p.className = 'cart-fly-particle';
+        p.style.left = (src.left + src.width / 2) + 'px';
+        p.style.top = (src.top + src.height / 2) + 'px';
+        document.body.appendChild(p);
+        requestAnimationFrame(() => {
+          p.style.transition = 'left 0.55s cubic-bezier(0.42,0,0.58,1), top 0.55s cubic-bezier(0.42,0,0.58,1), opacity 0.15s ease 0.4s, transform 0.55s ease';
+          p.style.left = (dst.left + dst.width / 2) + 'px';
+          p.style.top = (dst.top + dst.height / 2) + 'px';
+          p.style.opacity = '0';
+          p.style.transform = 'translate(-50%,-50%) scale(0.3)';
+        });
+        setTimeout(() => p.remove(), 620);
+        setTimeout(() => {
+          const badge = document.getElementById('navCartBadge');
+          if (badge) {
+            badge.classList.remove('nav-cart__badge--bounce');
+            void badge.offsetWidth;
+            badge.classList.add('nav-cart__badge--bounce');
+            setTimeout(() => badge.classList.remove('nav-cart__badge--bounce'), 600);
+          }
+          cartBtn.classList.add('nav-cart--pulse');
+          setTimeout(() => cartBtn.classList.remove('nav-cart--pulse'), 700);
+        }, 500);
+      }
+      function fdAddToCart(btn, licenseType, price) {
+        const id = font.slug || font.name.toLowerCase().replace(/\s+/g, '-');
+        glCart_flyParticle(btn);
+        glCart_add({ id, name: font.name, price, license: licenseType, image: font.fontFaceUrl });
+        glCart_syncBadge();
+        glCart_toast(`${font.name} (${licenseType})`);
+      }
+
       /* ── Hero buy/demo buttons ── */
-      document.getElementById('hero-buy')?.addEventListener('click', () => toast(`${font.name} added to cart ✦`));
+      document.getElementById('hero-buy')?.addEventListener('click', function () {
+        const price = hasSale ? Math.round(font.salePrice * 0.60) : font.price;
+        fdAddToCart(this, 'Desktop', price);
+      });
       document.getElementById('hero-demo')?.addEventListener('click', () => {
         document.getElementById('fd-tester-section')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
       });
@@ -2925,7 +3710,10 @@
       stickyName.textContent = font.name;
       stickyPrc.textContent = `Buy from ${fmt(hasSale ? Math.round(font.salePrice * 0.60) : font.price)}`;
 
-      stickyBuy.addEventListener('click', () => toast(`${font.name} added to cart ✦`));
+      stickyBuy.addEventListener('click', function () {
+        const price = hasSale ? Math.round(font.salePrice * 0.60) : font.price;
+        fdAddToCart(this, 'Desktop', price);
+      });
       stickyDemo.addEventListener('click', () => {
         document.getElementById('fd-tester-section')?.scrollIntoView({ behavior: 'smooth' });
       });
@@ -2954,6 +3742,98 @@
       }
       buildTesterRows('');
       testerInput?.addEventListener('input', function () { buildTesterRows(this.value); });
+
+      /* ── Mockup Generator Interactivity ── */
+      const mockupBtns = qsa('.fd-mockup-tab-btn');
+      const mockupCards = qsa('.fd-mockup-card');
+      const mockupTextInput = document.getElementById('fd-mk-text-field');
+      
+      const posterText = document.querySelector('#mk-poster .fd-poster-middle');
+      const labelText = document.querySelector('#mk-label .fd-label-title');
+      const bookText = document.querySelector('#mk-book .fd-book-title');
+
+      function updateAllMockupTexts(val) {
+        if (posterText) posterText.textContent = val;
+        if (labelText) labelText.textContent = val;
+        if (bookText) bookText.textContent = val;
+      }
+
+      mockupBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          mockupBtns.forEach(b => b.classList.remove('is-active'));
+          btn.classList.add('is-active');
+          
+          mockupCards.forEach(c => c.classList.remove('is-active'));
+          const targetCard = document.getElementById(`mk-${btn.dataset.mockup}`);
+          if (targetCard) targetCard.classList.add('is-active');
+          
+          if (targetCard && mockupTextInput) {
+            const editable = targetCard.querySelector('[contenteditable]');
+            if (editable) {
+              mockupTextInput.value = editable.textContent.trim();
+            }
+          }
+        });
+      });
+
+      if (mockupTextInput) {
+        mockupTextInput.addEventListener('input', function() {
+          updateAllMockupTexts(this.value);
+        });
+      }
+
+      [posterText, labelText, bookText].forEach(el => {
+        if (!el) return;
+        el.addEventListener('input', () => {
+          if (mockupTextInput) mockupTextInput.value = el.textContent;
+          updateAllMockupTexts(el.textContent);
+        });
+        el.addEventListener('keydown', e => {
+          if (e.key === 'Enter') e.preventDefault();
+        });
+      });
+
+      /* ── Licensing Recommendation Assistant Logic ── */
+      const wizUse = document.getElementById('fd-wiz-use');
+      const wizScale = document.getElementById('fd-wiz-scale');
+      const licenseCards = qsa('.fd-license-card');
+
+      function calculateLicenseRecommendation() {
+        if (!wizUse || !wizScale) return;
+        const use = wizUse.value;
+        const scale = wizScale.value;
+        
+        let targetIndex = 1; // Default to Web
+        
+        if (use === 'personal' && scale === 'small') {
+          targetIndex = 0; // Desktop
+        } else if (use === 'commercial' || scale === 'large') {
+          targetIndex = 2; // Commercial
+        }
+        
+        licenseCards.forEach((card, idx) => {
+          if (idx === targetIndex) {
+            card.classList.add('is-recommended');
+            const h = card.querySelector('.fd-lc-badge');
+            if (h && !h.textContent.includes('★ RECOMMENDED')) {
+              h.dataset.origText = h.textContent;
+              h.textContent = '★ RECOMMENDED - ' + h.textContent;
+            }
+          } else {
+            card.classList.remove('is-recommended');
+            const h = card.querySelector('.fd-lc-badge');
+            if (h && h.dataset.origText) {
+              h.textContent = h.dataset.origText;
+            }
+          }
+        });
+      }
+
+      if (wizUse && wizScale) {
+        wizUse.addEventListener('change', calculateLicenseRecommendation);
+        wizScale.addEventListener('change', calculateLicenseRecommendation);
+        calculateLicenseRecommendation(); // Run initial recommendation
+      }
     }
 
     function fmtDesc(f) {
@@ -2989,6 +3869,7 @@
   </script>
 
 
+  <script src="globalscript.js" defer></script>
   <script src="javascript/loginmodel.js" defer></script>
 
 </body>

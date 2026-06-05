@@ -187,3 +187,162 @@ window.addEventListener('scroll', function () {
   });
 })();
 
+
+/* ─────────────────────────────────────────
+   5. CART BADGE — GLOBAL SYNC
+   Reads glyphereCart from localStorage on
+   every page load and listens for updates.
+───────────────────────────────────────── */
+(function () {
+  'use strict';
+
+  function syncCartBadge() {
+    var badge = document.getElementById('navCartBadge');
+    if (!badge) return;
+    var cart = [];
+    try { cart = JSON.parse(localStorage.getItem('glyphereCart') || '[]'); } catch (e) {}
+    var count = cart.reduce(function (s, i) { return s + (i.qty || 1); }, 0);
+    badge.textContent = count;
+    badge.setAttribute('data-count', count);
+    badge.style.transform = count > 0 ? 'scale(1)' : 'scale(0)';
+  }
+
+  document.addEventListener('DOMContentLoaded', syncCartBadge);
+  window.addEventListener('storage', function (e) {
+    if (e.key === 'glyphereCart') syncCartBadge();
+  });
+  window.addEventListener('cartUpdated', syncCartBadge);
+})();
+
+/* ─────────────────────────────────────────
+   6. USER SESSION — GLOBAL NAVIGATION SYNC
+   Checks for active sessions and renders
+   premium profile avatars dynamically.
+───────────────────────────────────────── */
+(function () {
+  'use strict';
+
+  function syncUserNavigation() {
+    var currentUser = null;
+    try {
+      currentUser = JSON.parse(localStorage.getItem('glyphere_current_user') || 'null');
+    } catch (e) {
+      console.error('Error parsing user session:', e);
+    }
+
+    if (!currentUser) return;
+
+    // ── Desktop Navigation Replacement ──
+    var navSignups = document.querySelectorAll('.nav-signup');
+    navSignups.forEach(function (btn) {
+      // Check if already replaced
+      if (btn.parentNode && btn.parentNode.classList.contains('nav-user-avatar-container')) return;
+
+      var container = document.createElement('div');
+      container.className = 'nav-user-avatar-container';
+      container.innerHTML = '\
+        <div class="nav-user-avatar" title="' + currentUser.name + '">\
+          <svg viewBox="0 0 24 24">\
+            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>\
+            <circle cx="12" cy="7" r="4"></circle>\
+          </svg>\
+        </div>\
+        <div class="nav-user-dropdown">\
+          <div class="nav-user-dropdown__header">\
+            <span class="nav-user-dropdown__name">' + currentUser.name + '</span>\
+            <span class="nav-user-dropdown__email">' + currentUser.email + '</span>\
+          </div>\
+          <div class="nav-user-dropdown__divider"></div>\
+          <a class="nav-user-dropdown__item" href="/main-website/dashboard.html">\
+            <svg viewBox="0 0 24 24">\
+              <rect x="3" y="3" width="7" height="9"></rect>\
+              <rect x="14" y="3" width="7" height="5"></rect>\
+              <rect x="14" y="12" width="7" height="9"></rect>\
+              <rect x="3" y="16" width="7" height="5"></rect>\
+            </svg>\
+            Designer Dashboard\
+          </a>\
+          <div class="nav-user-dropdown__divider"></div>\
+          <a class="nav-user-dropdown__item nav-user-dropdown__item--logout" id="navLogoutBtn">\
+            <svg viewBox="0 0 24 24">\
+              <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>\
+              <polyline points="16 17 21 12 16 7"></polyline>\
+              <line x1="21" y1="12" x2="9" y2="12"></line>\
+            </svg>\
+            Log Out\
+          </a>\
+        </div>\
+      ';
+
+      if (btn.parentNode) {
+        btn.parentNode.replaceChild(container, btn);
+      }
+    });
+
+    // ── Mobile Dropdown Navigation Replacement ──
+    var mobileSignups = document.querySelectorAll('.nav-mobile-menu__signup');
+    mobileSignups.forEach(function (btn) {
+      // Check if already replaced
+      if (btn.parentNode && btn.parentNode.classList.contains('mobile-user-card')) return;
+
+      var card = document.createElement('div');
+      card.className = 'mobile-user-card';
+      card.innerHTML = '\
+        <div class="mobile-user-card__avatar">\
+          <svg viewBox="0 0 24 24">\
+            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>\
+            <circle cx="12" cy="7" r="4"></circle>\
+          </svg>\
+        </div>\
+        <span class="mobile-user-card__name">' + currentUser.name + '</span>\
+        <span class="mobile-user-card__email">' + currentUser.email + '</span>\
+        <a class="mobile-user-card__logout" href="/main-website/dashboard.html" style="background: rgba(201, 171, 129, 0.12); border: 1px solid rgba(201, 171, 129, 0.25); color: var(--gold); margin-bottom: 0.5rem; text-decoration: none;">\
+          <svg viewBox="0 0 24 24" style="stroke: currentColor;"><rect x="3" y="3" width="7" height="9"></rect><rect x="14" y="3" width="7" height="5"></rect><rect x="14" y="12" width="7" height="9"></rect><rect x="3" y="16" width="7" height="5"></rect></svg>\
+          Dashboard\
+        </a>\
+        <button class="mobile-user-card__logout" id="mobileLogoutBtn">\
+          <svg viewBox="0 0 24 24">\
+            <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>\
+            <polyline points="16 17 21 12 16 7"></polyline>\
+            <line x1="21" y1="12" x2="9" y2="12"></line>\
+          </svg>\
+          Log Out\
+        </button>\
+      ';
+
+      if (btn.parentNode) {
+        var parent = btn.parentNode;
+        
+        // Hide mobile login link if present
+        var mobileLogin = parent.querySelector('.nav-mobile-menu__login');
+        if (mobileLogin) {
+          mobileLogin.style.display = 'none';
+        }
+
+        parent.replaceChild(card, btn);
+      }
+    });
+  }
+
+  // Bind interactions globally
+  document.addEventListener('DOMContentLoaded', syncUserNavigation);
+  
+  // Watch for storage changes (allows instant synchronization across multiple tabs)
+  window.addEventListener('storage', function (e) {
+    if (e.key === 'glyphere_current_user') {
+      syncUserNavigation();
+    }
+  });
+
+  // Event delegation to capture logouts seamlessly
+  document.addEventListener('click', function (e) {
+    var logoutBtn = e.target.closest('#navLogoutBtn, #mobileLogoutBtn');
+    if (logoutBtn) {
+      e.preventDefault();
+      localStorage.removeItem('glyphere_current_user');
+      window.dispatchEvent(new Event('storage'));
+      window.location.reload();
+    }
+  });
+
+})();

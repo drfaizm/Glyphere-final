@@ -11,35 +11,36 @@
     padding: 0;
 }
 
- 
+
 /* ─────────────────────────────────────────
    BACKDROP — full-screen overlay
 ───────────────────────────────────────── */
 .glm-backdrop {
-  position: fixed;
-  inset: 0;
-  z-index: 9000;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 1.5rem;
- 
-  /* frosted dark overlay */
-  background: rgba(17, 12, 8, 0.55);
-  backdrop-filter: blur(6px);
-  -webkit-backdrop-filter: blur(6px);
- 
-  /* hidden by default */
-  opacity: 0;
-  pointer-events: none;
-  visibility: hidden;
-  transition: opacity 0.3s ease, visibility 0.3s ease;
+    position: fixed;
+    inset: 0;
+    z-index: 9000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem;
+
+    /* frosted dark overlay */
+    background: rgba(17, 12, 8, 0.55);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+
+    /* hidden by default */
+    opacity: 0;
+    pointer-events: none;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
 }
 
 .glm-backdrop.glm-open {
     opacity: 1;
     pointer-events: auto;
-    visibility: visible; /* ← FIX: children bhi interactive ho jaate hain */
+    visibility: visible;
+    /* ← FIX: children bhi interactive ho jaate hain */
 }
 
 /* ─────────────────────────────────────────

@@ -1,0 +1,947 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="/main-website/glyphere.png" />
+    <title>Font Finder | Glyphere — Simulated AI Typeface Matching & Discovery</title>
+    <meta name="description"
+        content="Identify custom typefaces instantly with Glyphere Font Finder. Upload an image of any font specimen, run our simulated neural-scan analyzer, and unlock matching Glyphere fonts." />
+
+    <!-- Preconnect -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <!-- Google Fonts -->
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=Manrope:wght@300;400;500;600;700&family=Instrument+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=JetBrains+Mono:wght@300;400;700&display=swap"
+        media="print" onload="this.media='all'" />
+    <noscript>
+        <link rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=Manrope:wght@300;400;500;600;700&family=Instrument+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=JetBrains+Mono:wght@300;400;700&display=swap" />
+    </noscript>
+
+    <!-- Material Symbols -->
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" />
+
+    <!-- Global + Feature Styles -->
+    <link rel="stylesheet" href="/main-website/css/globalstyle.css" />
+    <link rel="stylesheet" href="/main-website/css/font_finder.css" />
+    <link rel="stylesheet" href="/main-website/javascript/loginmodel.css" />
+</head>
+
+<body>
+
+    <!-- ═══════════════════════════════════════
+       PRELOADER
+    ═══════════════════════════════════════ -->
+    <div id="preloader" role="status" aria-label="Loading Glyphere">
+        <div class="preloader-inner">
+            <div class="preloader-brand">
+                <div class="preloader-glyph-container">
+                    <div class="preloader-glyph"></div>
+                </div>
+                <p class="preloader-brand__name">Glyphere</p>
+                <p class="preloader-brand__tagline">From Glyph to Identity</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════
+       SITE HEADER & NAV
+    ═══════════════════════════════════════ -->
+    <header class="header-nav">
+        <nav class="nav-inner" aria-label="Main navigation">
+            <div class="nav-logo-group">
+                <a href="/main-website/homepage.html">
+                    <img src="/main-website/glyphere.png" class="nav-logo-img" alt="Glyphere" width="40" height="40" />
+                </a>
+                <a class="nav-logo-name" href="/main-website/homepage.html">Glyphere</a>
+            </div>
+            <ul class="nav-links" role="list">
+                <li><a class="nav-link" href="/main-website/marketplace.html">Marketplace</a></li>
+                <li><a class="nav-link" href="/main-website/custom_font_services/custom_font_services.html">Services</a>
+                </li>
+                <!-- <li><a class="nav-link" href="/main-website/font-finder.html">Font Finder</a></li> -->
+                <li><a class="nav-link" href="/main-website/about.html">About</a></li>
+            </ul>
+            <div class="nav-actions">
+                <a class="nav-cart" href="/main-website/cart.html" id="navCartBtn" aria-label="Shopping cart">
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                        <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z" />
+                        <line x1="3" y1="6" x2="21" y2="6" />
+                        <path d="M16 10a4 4 0 0 1-8 0" />
+                    </svg>
+                    <span class="nav-cart__badge" id="navCartBadge" data-count="0">0</span>
+                </a>
+                <a class="nav-signup" href="/main-website/signup-login.html">Login / Register</a>
+            </div>
+            <button class="nav-hamburger" aria-label="Menu" aria-expanded="false">
+                <span class="nav-hamburger__line"></span>
+                <span class="nav-hamburger__line"></span>
+                <span class="nav-hamburger__line"></span>
+            </button>
+        </nav>
+    </header>
+
+    <div class="nav-mobile-menu" role="dialog" aria-label="Mobile navigation">
+        <div class="nav-mobile-menu__links">
+            <a class="nav-mobile-menu__link" href="/main-website/marketplace.html">Marketplace</a>
+            <a class="nav-mobile-menu__link"
+                href="/main-website/custom_font_services/custom_font_services.html">Services</a>
+            <!-- <a class="nav-mobile-menu__link" href="/main-website/font-finder.html">Font Finder</a> -->
+            <a class="nav-mobile-menu__link" href="/main-website/about.html">About</a>
+        </div>
+        <div class="nav-mobile-menu__actions">
+            <a class="nav-mobile-menu__cart" href="/main-website/cart.html" aria-label="Shopping cart">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z" />
+                    <line x1="3" y1="6" x2="21" y2="6" />
+                    <path d="M16 10a4 4 0 0 1-8 0" />
+                </svg>
+                Cart
+            </a>
+            <a class="nav-mobile-menu__signup" href="/main-website/signup-login.html">Login / Register</a>
+        </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════
+       MAIN CONTENT
+    ═══════════════════════════════════════ -->
+    <main class="finder-main" id="content">
+        <div class="ambient-glow" aria-hidden="true"></div>
+        <div class="ambient-glow-2" aria-hidden="true"></div>
+
+        <!-- ─── HERO ─── -->
+        <section class="finder-hero" aria-label="Font Finder intro">
+            <span class="finder-eyebrow">Interactive Specimen Search</span>
+            <h1 class="finder-title">Identify any <span>Typeface.</span></h1>
+            <p class="finder-desc">
+                Have an image or screenshot of a beautiful font? Upload it below, or select a sample specimen, and our
+                simulated neural matching scanner will analyze its metrics to find candidates from Glyphere's catalog.
+            </p>
+        </section>
+
+        <!-- ─── WORKSPACE ─── -->
+        <section class="finder-workspace" aria-label="Font Finder workspace">
+            <div class="glass-panel" id="workspacePanel">
+
+                <!-- STAGE 1: Drag & Drop Zone -->
+                <div id="uploadStage">
+                    <div class="finder-dropzone" id="dropzone" role="button" tabindex="0"
+                        aria-label="Upload specimen area">
+                        <input type="file" id="fileInput" class="finder-dropzone-input" accept="image/*" />
+                        <div class="finder-dropzone-content">
+                            <span class="material-symbols-outlined finder-dropzone-icon"
+                                aria-hidden="true">image_search</span>
+                            <h2 class="finder-dropzone-title">Upload an image of a font</h2>
+                            <p class="finder-dropzone-sub">Drag & drop your screenshot here, or click to browse</p>
+                            <p class="finder-dropzone-limits">PNG, JPG, or WEBP · Maximum size 10MB</p>
+                        </div>
+                    </div>
+
+                    <!-- Preset Specimen Crops -->
+                    <div class="presets-section">
+                        <h3 class="presets-title">Or try a curated specimen crop</h3>
+                        <div class="presets-grid">
+                            <!-- Preset 1: Vanguard Axis -->
+                            <div class="preset-card" data-preset="1" role="button" tabindex="0">
+                                <div class="preset-card__preview" style="font-family:'Vanguard_Axis', serif;">AaBb</div>
+                                <span class="preset-card__name">High Contrast Serif</span>
+                                <span class="preset-card__tag">Vanguard Axis</span>
+                            </div>
+                            <!-- Preset 2: Midnight Citadel -->
+                            <div class="preset-card" data-preset="2" role="button" tabindex="0">
+                                <div class="preset-card__preview" style="font-family:'Midnight_Citadel', sans-serif;">
+                                    GOTH</div>
+                                <span class="preset-card__name">Geometric Display</span>
+                                <span class="preset-card__tag">Midnight Citadel</span>
+                            </div>
+                            <!-- Preset 3: Mistavio Sans -->
+                            <div class="preset-card" data-preset="3" role="button" tabindex="0">
+                                <div class="preset-card__preview" style="font-family:'Mistavio Sans', sans-serif;">Sans
+                                </div>
+                                <span class="preset-card__name">Humanist Minimalist</span>
+                                <span class="preset-card__tag">Mistavio Sans</span>
+                            </div>
+                            <!-- Preset 4: Velocity Brush -->
+                            <div class="preset-card" data-preset="4" role="button" tabindex="0">
+                                <div class="preset-card__preview"
+                                    style="font-family:'Velocity_Brush', sans-serif; font-style: bold;">FURY</div>
+                                <span class="preset-card__name">Expressive Brush</span>
+                                <span class="preset-card__tag">Velocity Brush</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- STAGE 2: Neural Scanner Panel -->
+                <div class="scanner-container" id="scannerStage">
+
+                    <!-- Left Column: Visual Scanner Grid -->
+                    <div class="scan-viewport-wrapper">
+                        <div class="scan-viewport-grid"></div>
+                        <div class="scan-image-frame" id="scanFrame">
+                            <img src="" alt="Specimen to scan" class="scan-target-image" id="scannedImage" />
+                            <div class="scanner-laser" id="laserLine"></div>
+
+                            <!-- Bounding Boxes (Simulated recognized letters) -->
+                            <div class="scan-bbox" id="bbox1"></div>
+                            <div class="scan-bbox" id="bbox2"></div>
+                            <div class="scan-bbox" id="bbox3"></div>
+                            <div class="scan-bbox" id="bbox4"></div>
+                        </div>
+                    </div>
+
+                    <!-- Right Column: Interactive Console Outputs -->
+                    <div class="scan-console-wrapper">
+                        <div class="scanner-header-block">
+                            <div class="scanner-status-badge">
+                                <span class="status-dot"></span>
+                                <span id="statusBadgeText">ANALYZING SPECIMEN...</span>
+                            </div>
+                            <h2 class="scanner-panel-title">Neural Character Recognition</h2>
+                        </div>
+
+                        <!-- Monospaced Terminal Logs -->
+                        <div class="scan-terminal" id="terminalConsole">
+                            <!-- Lines injected dynamically -->
+                        </div>
+
+                        <!-- Circular Progress Panel -->
+                        <div class="progress-panel">
+                            <div class="progress-dial">
+                                <svg>
+                                    <circle class="bg-circle" cx="30" cy="30" r="28" />
+                                    <circle class="bar-circle" id="progressBar" cx="30" cy="30" r="28" />
+                                </svg>
+                                <div class="progress-text" id="progressVal">0%</div>
+                            </div>
+                            <div class="progress-label-wrap">
+                                <span class="progress-label-title" id="progressLabelTitle">Scanning Vector
+                                    Metrics</span>
+                                <span class="progress-label-sub" id="progressLabelSub">Measuring curvature & x-height
+                                    parameters</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- STAGE 3: Search Results Panel -->
+                <div class="results-container" id="resultsStage">
+                    <div class="results-header">
+                        <div class="results-headline-wrap">
+                            <h2 class="results-headline">Matched Typefaces</h2>
+                            <span class="results-meta" id="resultsMetaText">Found 5 matches in Glyphere's catalog</span>
+                        </div>
+                        <button class="results-reset-btn" id="resetBtn">
+                            <span class="material-symbols-outlined">restart_alt</span>
+                            Find Another Font
+                        </button>
+                    </div>
+
+                    <!-- Matched Fonts Results List -->
+                    <div class="results-grid" id="resultsGrid">
+                        <!-- Dynamic Results Cards will be loaded here -->
+                    </div>
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+    <!-- ═══════════════════════════════════════
+       FOOTER
+    ═══════════════════════════════════════ -->
+    <footer class="site-footer">
+        <div class="footer-grid">
+            <div>
+                <p class="footer-brand-name">Glyphere</p>
+                <p class="footer-brand-desc">Custom fonts &amp; premium typefaces crafted with soul.</p>
+            </div>
+            <nav>
+                <h3 class="footer-col-title">Marketplace</h3>
+                <ul class="footer-links-list">
+                    <li><a href="/main-website/marketplace.html">All Fonts</a></li>
+                    <li><a href="/main-website/marketplace.html">Serifs</a></li>
+                    <li><a href="/main-website/marketplace.html">Display</a></li>
+                </ul>
+            </nav>
+            <nav>
+                <h3 class="footer-col-title">Services</h3>
+                <ul class="footer-links-list">
+                    <li><a href="/main-website/custom_font_services/custom_font_services.html">Custom Design</a></li>
+                    <li><a href="/main-website/custom_font_services/custom_font_services.html">Brand Typography</a></li>
+                    <li><a href="/main-website/custom_font_services/custom_font_services.html">Licensing</a></li>
+                </ul>
+            </nav>
+            <nav>
+                <h3 class="footer-col-title">Follow</h3>
+                <ul class="footer-links-list">
+                    <li><a href="#">Instagram</a></li>
+                    <li><a href="#">Twitter / X</a></li>
+                    <li><a href="#">LinkedIn</a></li>
+                </ul>
+            </nav>
+        </div>
+        <div class="footer-bottom">
+            <p class="footer-copy">© 2024 Glyphere. All Rights Reserved.</p>
+            <nav class="footer-legal">
+                <a href="/main-website/licensing.html">Licensing Terms</a>
+                <a href="/main-website/cookie-policy.html">Cookie Policy</a>
+            </nav>
+        </div>
+    </footer>
+
+    <!-- ═══════════════════════════════════════
+       SCRIPTS
+    ═══════════════════════════════════════ -->
+    <script src="/main-website/globalscript.js" defer></script>
+    <script src="/main-website/javascript/loginmodel.js" defer></script>
+
+    <script>
+        // Simulated Matched Fonts Data based on selected preset/image
+        const CANDIDATE_FONTS = [
+            {
+                name: 'Vanguard Axis',
+                slug: 'Vanguard_Axis',
+                family: "'Vanguard_Axis', serif",
+                category: 'Display Serif',
+                price: 12,
+                desc: 'A commanding high-contrast display serif designed for monumental headings and editorial systems.',
+                defaultText: 'AaBbCcDd',
+                matchConfidence: 98
+            },
+            {
+                name: 'Midnight Citadel',
+                slug: 'Midnight_Citadel',
+                family: "'Midnight_Citadel', sans-serif",
+                category: 'Gothic Display',
+                price: 24,
+                desc: 'A bold, heavy display gothic with geometric parameters drawn for high-contrast covers.',
+                defaultText: 'MIDNIGHT',
+                matchConfidence: 87
+            },
+            {
+                name: 'Mistavio Sans',
+                slug: 'Mistavio_Sans',
+                family: "'Mistavio Sans', sans-serif",
+                category: 'Modern Sans',
+                price: 27,
+                desc: 'An elegant, clean humanist sans-serif suited for contemporary UI layouts and premium branding.',
+                defaultText: 'Mistavio',
+                matchConfidence: 84
+            },
+            {
+                name: 'Sonnet Italic',
+                slug: 'Sonnet_Italic',
+                family: "'Sonnet Italic', serif",
+                category: 'Luxury Serif',
+                price: 24,
+                desc: 'A sophisticated high-contrast luxury serif with expressive italic ligatures and flourishes.',
+                defaultText: 'Sonnet Showcase',
+                matchConfidence: 81
+            },
+            {
+                name: 'Turbo Block',
+                slug: 'Turbo_Block',
+                family: "'Turbo_Block', sans-serif",
+                category: 'Bold Italic',
+                price: 24,
+                desc: 'An aggressive, fast-paced geometric display block typeface optimized for high-velocity branding.',
+                defaultText: 'TURBO',
+                matchConfidence: 75
+            }
+        ];
+
+        // Synthesized Web Audio API Sound Engine
+        const SynthAudio = {
+            ctx: null,
+            init() {
+                if (!this.ctx) {
+                    this.ctx = new (window.AudioContext || window.webkitAudioContext)();
+                }
+            },
+            playTick(freq = 150, duration = 0.05, type = 'triangle') {
+                this.init();
+                if (!this.ctx) return;
+
+                const osc = this.ctx.createOscillator();
+                const gain = this.ctx.createGain();
+
+                osc.type = type;
+                osc.frequency.setValueAtTime(freq, this.ctx.currentTime);
+                osc.frequency.exponentialRampToValueAtTime(freq / 2, this.ctx.currentTime + duration);
+
+                gain.gain.setValueAtTime(0.04, this.ctx.currentTime);
+                gain.gain.exponentialRampToValueAtTime(0.001, this.ctx.currentTime + duration);
+
+                osc.connect(gain);
+                gain.connect(this.ctx.destination);
+
+                osc.start();
+                osc.stop(this.ctx.currentTime + duration);
+            },
+            playSuccessChord() {
+                this.init();
+                if (!this.ctx) return;
+
+                const now = this.ctx.currentTime;
+                // Golden arpeggio chord: C5 -> E5 -> G5 -> C6 (harmonious sweep)
+                const freqs = [523.25, 659.25, 783.99, 1046.50];
+
+                freqs.forEach((freq, idx) => {
+                    const osc = this.ctx.createOscillator();
+                    const gain = this.ctx.createGain();
+
+                    osc.type = 'sine';
+                    osc.frequency.setValueAtTime(freq, now + idx * 0.06);
+
+                    gain.gain.setValueAtTime(0, now + idx * 0.06);
+                    gain.gain.linearRampToValueAtTime(0.05, now + idx * 0.06 + 0.02);
+                    gain.gain.exponentialRampToValueAtTime(0.001, now + idx * 0.06 + 0.45);
+
+                    osc.connect(gain);
+                    gain.connect(this.ctx.destination);
+
+                    osc.start(now + idx * 0.06);
+                    osc.stop(now + idx * 0.06 + 0.45);
+                });
+            },
+            playLaserSweep() {
+                this.init();
+                if (!this.ctx) return;
+
+                const osc = this.ctx.createOscillator();
+                const filter = this.ctx.createBiquadFilter();
+                const gain = this.ctx.createGain();
+
+                osc.type = 'sine';
+                osc.frequency.setValueAtTime(220, this.ctx.currentTime);
+                osc.frequency.exponentialRampToValueAtTime(440, this.ctx.currentTime + 1.5);
+
+                filter.type = 'lowpass';
+                filter.Q.setValueAtTime(8, this.ctx.currentTime);
+                filter.frequency.setValueAtTime(300, this.ctx.currentTime);
+                filter.frequency.exponentialRampToValueAtTime(1500, this.ctx.currentTime + 1.5);
+
+                gain.gain.setValueAtTime(0, this.ctx.currentTime);
+                gain.gain.linearRampToValueAtTime(0.03, this.ctx.currentTime + 0.1);
+                gain.gain.exponentialRampToValueAtTime(0.001, this.ctx.currentTime + 1.5);
+
+                osc.connect(filter);
+                filter.connect(gain);
+                gain.connect(this.ctx.destination);
+
+                osc.start();
+                osc.stop(this.ctx.currentTime + 1.5);
+            }
+        };
+
+        // DOM elements
+        const uploadStage = document.getElementById('uploadStage');
+        const scannerStage = document.getElementById('scannerStage');
+        const resultsStage = document.getElementById('resultsStage');
+
+        const dropzone = document.getElementById('dropzone');
+        const fileInput = document.getElementById('fileInput');
+        const scannedImage = document.getElementById('scannedImage');
+        const laserLine = document.getElementById('laserLine');
+
+        const terminalConsole = document.getElementById('terminalConsole');
+        const progressBar = document.getElementById('progressBar');
+        const progressVal = document.getElementById('progressVal');
+        const progressLabelTitle = document.getElementById('progressLabelTitle');
+        const progressLabelSub = document.getElementById('progressLabelSub');
+        const statusBadgeText = document.getElementById('statusBadgeText');
+
+        const bbox1 = document.getElementById('bbox1');
+        const bbox2 = document.getElementById('bbox2');
+        const bbox3 = document.getElementById('bbox3');
+        const bbox4 = document.getElementById('bbox4');
+
+        const resultsGrid = document.getElementById('resultsGrid');
+        const resetBtn = document.getElementById('resetBtn');
+
+        // Bounding box setup mapping for presets
+        const bboxPresets = {
+            '1': ['bbox-preset-1-1', 'bbox-preset-1-2', 'bbox-preset-1-3', 'bbox-preset-1-4'],
+            '2': ['bbox-preset-2-1', 'bbox-preset-2-2', 'bbox-preset-2-3'],
+            '3': ['bbox-preset-3-1', 'bbox-preset-3-2', 'bbox-preset-3-3', 'bbox-preset-3-4'],
+            '4': ['bbox-preset-4-1', 'bbox-preset-4-2'],
+            'default': ['bbox-default-1', 'bbox-default-2', 'bbox-default-3']
+        };
+
+        // Dynamic Terminal Logs content
+        const terminalLogs = [
+            { t: 0, text: "GNC ANALYZER: System startup sequence standard..." },
+            { t: 8, text: "GNC ANALYZER: Initializing simulated neural match v3.1..." },
+            { t: 15, text: "GNC ANALYZER: Detecting glyph baselines and cap-height grids..." },
+            { t: 30, text: "GNC ANALYZER: Curve parameter detected: High x-height variance." },
+            { t: 45, text: "GNC ANALYZER: Contrast assessment: 9.4 (Extremely High Serif Flourish)." },
+            { t: 60, text: "GNC ANALYZER: Classification catalog lookup: SERIF_EDITORIAL_DISPLAY." },
+            { t: 75, text: "GNC ANALYZER: Comparing contours with Glyphere vectorized repository..." },
+            { t: 88, text: "GNC ANALYZER: Match identification found. Compiling index parameters..." },
+            { t: 98, text: "GNC ANALYZER: Classification scan 100% complete. Success." }
+        ];
+
+        // Drag and Drop triggers
+        ['dragenter', 'dragover'].forEach(eventName => {
+            dropzone.addEventListener(eventName, e => {
+                e.preventDefault();
+                dropzone.classList.add('dragover');
+            }, false);
+        });
+
+        ['dragleave', 'drop'].forEach(eventName => {
+            dropzone.addEventListener(eventName, e => {
+                e.preventDefault();
+                dropzone.classList.remove('dragover');
+            }, false);
+        });
+
+        dropzone.addEventListener('drop', e => {
+            const dt = e.dataTransfer;
+            const files = dt.files;
+            if (files && files.length > 0) {
+                handleUploadedFile(files[0]);
+            }
+        });
+
+        dropzone.addEventListener('click', () => fileInput.click());
+        fileInput.addEventListener('change', e => {
+            if (e.target.files && e.target.files.length > 0) {
+                handleUploadedFile(e.target.files[0]);
+            }
+        });
+
+        // Click on preset samples
+        document.querySelectorAll('.preset-card').forEach(card => {
+            card.addEventListener('click', e => {
+                e.stopPropagation();
+                const presetId = card.dataset.preset;
+
+                // Audio initiation
+                SynthAudio.playLaserSweep();
+
+                // Load virtual stylized graphics card inside target scanner
+                let dummyDataUrl = "";
+                let virtualFontName = "";
+                if (presetId === '1') {
+                    virtualFontName = "Vanguard Axis";
+                    dummyDataUrl = createVirtualSpecimenCanvas("Vanguard", "'Vanguard_Axis', serif");
+                } else if (presetId === '2') {
+                    virtualFontName = "Midnight Citadel";
+                    dummyDataUrl = createVirtualSpecimenCanvas("CITADEL", "'Midnight_Citadel', sans-serif");
+                } else if (presetId === '3') {
+                    virtualFontName = "Mistavio Sans";
+                    dummyDataUrl = createVirtualSpecimenCanvas("Mistavio", "'Mistavio Sans', sans-serif");
+                } else if (presetId === '4') {
+                    virtualFontName = "Velocity Brush";
+                    dummyDataUrl = createVirtualSpecimenCanvas("VELOCITY", "'Velocity_Brush', sans-serif");
+                }
+
+                initiateNeuralScanner(dummyDataUrl, presetId, virtualFontName);
+            });
+        });
+
+        // Reset search to upload panel
+        resetBtn.addEventListener('click', () => {
+            resultsStage.style.display = 'none';
+            uploadStage.style.display = 'block';
+            fileInput.value = '';
+        });
+
+        // Read and load local files
+        function handleUploadedFile(file) {
+            if (!file.type.startsWith('image/')) {
+                alert('Please upload an image file (PNG, JPG, or WEBP).');
+                return;
+            }
+            const reader = new FileReader();
+            reader.readAsDataURL(file);
+            reader.onload = () => {
+                SynthAudio.playLaserSweep();
+                initiateNeuralScanner(reader.result, 'default', file.name);
+            };
+        }
+
+        // Generate synthetic stylized card of presets using canvas to feel premium
+        function createVirtualSpecimenCanvas(text, font) {
+            const canvas = document.createElement('canvas');
+            canvas.width = 600;
+            canvas.height = 350;
+            const ctx = canvas.getContext('2d');
+
+            // Premium background
+            ctx.fillStyle = '#050403';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            // Architectural grid rules
+            ctx.strokeStyle = 'rgba(201, 171, 129, 0.08)';
+            ctx.lineWidth = 1;
+            for (let i = 0; i < canvas.width; i += 30) {
+                ctx.beginPath();
+                ctx.moveTo(i, 0);
+                ctx.lineTo(i, canvas.height);
+                ctx.stroke();
+            }
+            for (let j = 0; j < canvas.height; j += 30) {
+                ctx.beginPath();
+                ctx.moveTo(0, j);
+                ctx.lineTo(canvas.width, j);
+                ctx.stroke();
+            }
+
+            // Baseline vectors
+            ctx.strokeStyle = 'rgba(201, 171, 129, 0.2)';
+            ctx.lineWidth = 1.5;
+            ctx.beginPath();
+            ctx.moveTo(30, 240);
+            ctx.lineTo(570, 240);
+            ctx.stroke();
+
+            ctx.strokeStyle = 'rgba(255, 255, 255, 0.1)';
+            ctx.beginPath();
+            ctx.moveTo(30, 120);
+            ctx.lineTo(570, 120);
+            ctx.stroke();
+
+            // Font lettering spec
+            ctx.fillStyle = '#ffffff';
+            ctx.font = `bold 100px ${font}`;
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'middle';
+
+            // Shadow depth glow
+            ctx.shadowColor = 'rgba(201, 171, 129, 0.2)';
+            ctx.shadowBlur = 10;
+            ctx.fillText(text, canvas.width / 2, 170);
+
+            return canvas.toDataURL();
+        }
+
+        // Run scanning animation loops
+        function initiateNeuralScanner(imgSrc, presetType, sourceName) {
+            // Swap stages
+            uploadStage.style.display = 'none';
+            scannerStage.style.display = 'grid';
+
+            // Clear boxes and terminal
+            clearScannerState();
+
+            // Set image
+            scannedImage.src = imgSrc;
+
+            // Trigger laser sweep
+            laserLine.classList.add('active');
+
+            // Setup preset specific bounding boxes
+            const currentBboxes = bboxPresets[presetType] || bboxPresets['default'];
+            const allBboxEls = [bbox1, bbox2, bbox3, bbox4];
+
+            // Progress tracking variables
+            let progress = 0;
+            let currentLogIndex = 0;
+            statusBadgeText.textContent = "ANALYZING SPECIMEN...";
+
+            // Interval scan
+            const scanInterval = setInterval(() => {
+                progress += 2;
+
+                // Update Progress Ring (dashoffset starts at 176 and goes to 0)
+                const offset = 176 - (176 * (progress / 100));
+                progressBar.style.strokeDashoffset = offset;
+                progressVal.textContent = progress + '%';
+
+                // Play rhythmic synthesized audio ticks (every 10%)
+                if (progress % 10 === 0 && progress < 100) {
+                    SynthAudio.playTick(180 + progress * 2, 0.04, 'triangle');
+                }
+
+                // Append Monospaced Terminal lines
+                if (currentLogIndex < terminalLogs.length && progress >= terminalLogs[currentLogIndex].t) {
+                    appendConsoleLine(terminalLogs[currentLogIndex].text);
+                    currentLogIndex++;
+                }
+
+                // Change console status text dynamically
+                if (progress === 30) {
+                    progressLabelTitle.textContent = "Calculating Aspect Ratio";
+                    progressLabelSub.textContent = "Analyzing x-height contour maps & vectors";
+                } else if (progress === 60) {
+                    progressLabelTitle.textContent = "Querying Database Indexes";
+                    progressLabelSub.textContent = "Checking glyph matches against 26 premium font families";
+                } else if (progress === 85) {
+                    progressLabelTitle.textContent = "Calculating Probabilities";
+                    progressLabelSub.textContent = "Weighting serif geometry and contrast matches";
+                }
+
+                // Activate letter-bounding boxes sequentially
+                if (progress === 20 && currentBboxes[0]) activateBbox(bbox1, currentBboxes[0]);
+                if (progress === 45 && currentBboxes[1]) activateBbox(bbox2, currentBboxes[1]);
+                if (progress === 70 && currentBboxes[2]) activateBbox(bbox3, currentBboxes[2]);
+                if (progress === 90 && currentBboxes[3]) activateBbox(bbox4, currentBboxes[3]);
+
+                // Scan Completed Success Handler
+                if (progress >= 100) {
+                    clearInterval(scanInterval);
+                    laserLine.classList.remove('active');
+                    statusBadgeText.textContent = "SCAN COMPLETED";
+
+                    // Success chime
+                    SynthAudio.playSuccessChord();
+
+                    // Delay and reveal results
+                    setTimeout(() => {
+                        scannerStage.style.display = 'none';
+                        revealResults(presetType, sourceName);
+                    }, 800);
+                }
+            }, 60);
+        }
+
+        // Clean scanner panel fields
+        function clearScannerState() {
+            terminalConsole.innerHTML = "";
+            progressBar.style.strokeDashoffset = 176;
+            progressVal.textContent = '0%';
+            progressLabelTitle.textContent = "Scanning Vector Metrics";
+            progressLabelSub.textContent = "Measuring curvature & x-height parameters";
+
+            const bboxes = [bbox1, bbox2, bbox3, bbox4];
+            bboxes.forEach(el => {
+                el.className = "scan-bbox";
+            });
+        }
+
+        // Append line inside mock terminal
+        function appendConsoleLine(text) {
+            const line = document.createElement('div');
+            line.className = "scan-terminal-line";
+
+            // Format log type elegantly
+            if (text.includes("COMPLETE") || text.includes("Success")) {
+                line.innerHTML = `<span>[COMPLETE]</span> ${text.split("complete. ")[1] || text.split("Success")[0]}`;
+            } else if (text.includes("ANALYZER")) {
+                line.innerHTML = `<span>[SYSTEM]</span> ${text.split("ANALYZER: ")[1]}`;
+            }
+
+            terminalConsole.appendChild(line);
+            terminalConsole.scrollTop = terminalConsole.scrollHeight;
+        }
+
+        // Activate Bounding Box
+        function activateBbox(element, coordsClass) {
+            element.className = "scan-bbox active " + coordsClass;
+            SynthAudio.playTick(600, 0.03, 'sine'); // light mechanical focal click
+        }
+
+        // Populate and fade in matching results stage
+        function revealResults(presetType, sourceName) {
+            resultsStage.style.display = 'block';
+
+            // Generate candidates list matching selected preset
+            let reorderedCandidates = [...CANDIDATE_FONTS];
+
+            if (presetType === '1') {
+                // Vanguard matches (Vanguard high)
+                reorderedCandidates[0].matchConfidence = 98; // Vanguard Axis
+                reorderedCandidates[3].matchConfidence = 88; // Sonnet Italic
+                reorderedCandidates[1].matchConfidence = 81; // Midnight Citadel
+                reorderedCandidates[2].matchConfidence = 74; // Mistavio Sans
+                reorderedCandidates[4].matchConfidence = 70; // Turbo Block
+            } else if (presetType === '2') {
+                // Midnight Citadel Matches
+                reorderedCandidates = [
+                    CANDIDATE_FONTS[1], // Midnight Citadel 99%
+                    CANDIDATE_FONTS[4], // Turbo Block 86%
+                    CANDIDATE_FONTS[2], // Mistavio Sans 78%
+                    CANDIDATE_FONTS[0], // Vanguard Axis 72%
+                    CANDIDATE_FONTS[3]  // Sonnet Italic 65%
+                ];
+                reorderedCandidates[0].matchConfidence = 99;
+                reorderedCandidates[1].matchConfidence = 86;
+                reorderedCandidates[2].matchConfidence = 78;
+                reorderedCandidates[3].matchConfidence = 72;
+                reorderedCandidates[4].matchConfidence = 65;
+            } else if (presetType === '3') {
+                // Mistavio Matches
+                reorderedCandidates = [
+                    CANDIDATE_FONTS[2], // Mistavio Sans 97%
+                    CANDIDATE_FONTS[1], // Midnight Citadel 83%
+                    CANDIDATE_FONTS[4], // Turbo Block 76%
+                    CANDIDATE_FONTS[0], // Vanguard Axis 68%
+                    CANDIDATE_FONTS[3]  // Sonnet Italic 62%
+                ];
+                reorderedCandidates[0].matchConfidence = 97;
+                reorderedCandidates[1].matchConfidence = 83;
+                reorderedCandidates[2].matchConfidence = 76;
+                reorderedCandidates[3].matchConfidence = 68;
+                reorderedCandidates[4].matchConfidence = 62;
+            } else if (presetType === '4') {
+                // Velocity Brush Matches
+                reorderedCandidates = [
+                    CANDIDATE_FONTS[4], // Turbo Block 95%
+                    CANDIDATE_FONTS[1], // Midnight Citadel 84%
+                    CANDIDATE_FONTS[2], // Mistavio Sans 78%
+                    CANDIDATE_FONTS[0], // Vanguard Axis 70%
+                    CANDIDATE_FONTS[3]  // Sonnet Italic 66%
+                ];
+                // Virtual swap Velocity Brush details instead of Turbo Block for full visual immersion!
+                reorderedCandidates[0] = {
+                    name: 'Velocity Brush',
+                    slug: 'Velocity_Brush',
+                    family: "'Velocity_Brush', sans-serif",
+                    category: 'Expressive Brush',
+                    price: 12,
+                    desc: 'A dynamic, high-energy textured brush font built for expressive headlines and graphic designs.',
+                    defaultText: 'VELOCITY',
+                    matchConfidence: 98
+                };
+            } else {
+                // Default uploaded images matches
+                reorderedCandidates = [...CANDIDATE_FONTS];
+                reorderedCandidates[0].matchConfidence = 92;
+                reorderedCandidates[1].matchConfidence = 84;
+                reorderedCandidates[2].matchConfidence = 79;
+                reorderedCandidates[3].matchConfidence = 71;
+                reorderedCandidates[4].matchConfidence = 65;
+            }
+
+            // Build grid nodes
+            resultsGrid.innerHTML = "";
+            reorderedCandidates.forEach(font => {
+                const card = document.createElement('div');
+                card.className = "result-card";
+                card.innerHTML = `
+                    <!-- Column 1: Info -->
+                    <div class="result-card__info">
+                        <div class="result-card__badge-wrap">
+                            <span class="result-card__match-badge">${font.matchConfidence}% MATCH</span>
+                            <span class="result-card__category">${font.category}</span>
+                        </div>
+                        <h3 class="result-card__name">${font.name}</h3>
+                        <p class="result-card__desc">${font.desc}</p>
+                    </div>
+                    
+                    <!-- Column 2: Interactive Specimen Preview -->
+                    <div class="result-card__preview-pane">
+                        <div class="result-card__specimen-display" style="font-family:${font.family};" data-default="${font.defaultText}">
+                            ${font.defaultText}
+                        </div>
+                        <div class="result-card__input-wrap">
+                            <input class="result-card__input" type="text" placeholder="Type custom letters to preview..." aria-label="Preview ${font.name}" />
+                            <span class="material-symbols-outlined result-card__input-icon">keyboard</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Column 3: Cart / Detail Actions -->
+                    <div class="result-card__actions">
+                        <button class="finder-btn-buy" data-font="${font.name}" data-price="${font.price}" data-slug="${font.slug}">
+                            <span class="material-symbols-outlined" style="font-size: 16px;">shopping_cart</span>
+                            Buy License · $${font.price}
+                        </button>
+                        <button class="finder-btn-details" data-slug="${font.slug}">
+                            View Specimen Details
+                            <span class="material-symbols-outlined" style="font-size: 16px;">arrow_forward</span>
+                        </button>
+                    </div>
+                `;
+
+                resultsGrid.appendChild(card);
+            });
+
+            // Sync typed characters on preview inputs
+            document.querySelectorAll('.result-card__input').forEach(input => {
+                input.addEventListener('input', function () {
+                    const display = this.closest('.result-card__preview-pane').querySelector('.result-card__specimen-display');
+                    const text = this.value.trim();
+                    const defaultText = display.dataset.default;
+
+                    display.textContent = text === "" ? defaultText : text;
+
+                    if (display.textContent.length > 25) {
+                        display.classList.add('text--long');
+                    } else {
+                        display.classList.remove('text--long');
+                    }
+                });
+            });
+
+            // Wire detail redirection buttons
+            document.querySelectorAll('.finder-btn-details').forEach(btn => {
+                btn.addEventListener('click', function () {
+                    const slug = this.dataset.slug;
+                    window.location.href = `/main-website/font-detail-v2.html?font=${slug}`;
+                });
+            });
+
+            // Wire Cart checkout buttons
+            document.querySelectorAll('.finder-btn-buy').forEach(btn => {
+                btn.addEventListener('click', function () {
+                    const name = this.dataset.font;
+                    const price = parseFloat(this.dataset.price);
+                    const slug = this.dataset.slug;
+                    const license = "Desktop";
+
+                    // Flying particle triggers
+                    if (window.glCart_flyParticle) {
+                        window.glCart_flyParticle(this);
+                    }
+
+                    // Add to LocalStorage cart
+                    glCart_add({
+                        id: slug.toLowerCase() + '-' + license.toLowerCase(),
+                        name: name,
+                        price: price,
+                        license: license
+                    });
+
+                    // Sync cart count
+                    glCart_syncBadge();
+
+                    // Show Toast
+                    if (window.glCart_toast) {
+                        window.glCart_toast(name, price);
+                    }
+
+                    const orig = this.innerHTML;
+                    this.innerHTML = `<span class="material-symbols-outlined" style="font-size: 16px;">check_circle</span> ✓ Added!`;
+                    setTimeout(() => { this.innerHTML = orig; }, 1600);
+                });
+            });
+        }
+
+        // Inline Cart sync helpers (fallback check)
+        function glCart_get() {
+            try { return JSON.parse(localStorage.getItem('glyphereCart') || '[]'); } catch { return []; }
+        }
+        function glCart_save(cart) {
+            localStorage.setItem('glyphereCart', JSON.stringify(cart));
+            window.dispatchEvent(new CustomEvent('cartUpdated', { detail: { count: cart.length } }));
+        }
+        function glCart_add(item) {
+            const cart = glCart_get();
+            const existing = cart.find(i => i.id === item.id && i.license === item.license);
+            if (existing) { existing.qty = (existing.qty || 1) + 1; }
+            else { cart.push({ ...item, qty: 1 }); }
+            glCart_save(cart);
+            return cart.length;
+        }
+        function glCart_syncBadge() {
+            const badge = document.getElementById('navCartBadge');
+            if (!badge) return;
+            const count = glCart_get().reduce((s, i) => s + (i.qty || 1), 0);
+            badge.textContent = count;
+            badge.setAttribute('data-count', count);
+            badge.style.transform = count > 0 ? 'scale(1)' : 'scale(0)';
+        }
+    </script>
+</body>
+
+</html>

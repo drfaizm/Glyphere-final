@@ -1,0 +1,926 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="/main-website/glyphere.png" />
+    <title>Licensing Terms | Glyphere — Premium Digital Type Foundry</title>
+    <meta name="description"
+        content="Read Glyphere's End User License Agreement (EULA) and explore licensing options including Desktop, Web, App, and Enterprise font licenses." />
+
+    <!-- Preconnect -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <!-- Google Fonts -->
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=Manrope:wght@300;400;500;600;700&family=Instrument+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=JetBrains+Mono:wght@300;400&display=swap"
+        media="print" onload="this.media='all'" />
+    <noscript>
+        <link rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=Manrope:wght@300;400;500;600;700&family=Instrument+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=JetBrains+Mono:wght@300;400&display=swap" />
+    </noscript>
+
+    <!-- Global Stylesheet -->
+    <link rel="stylesheet" href="css/globalstyle.css" />
+
+    <!-- Premium Licensing Style Overrides -->
+    <style>
+        /* ─── Hero Section Styling ─── */
+        .lic-hero {
+            padding: 8rem 2rem 4rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .lic-hero__tag {
+            font-family: var(--font-label);
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--gold-dark);
+            margin-bottom: 1.5rem;
+            display: inline-block;
+        }
+
+        .lic-hero__title {
+            font-family: var(--font-serif);
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            font-weight: 400;
+            color: var(--color-primary);
+            line-height: 1.1;
+            letter-spacing: -0.02em;
+            margin-bottom: 1.5rem;
+        }
+
+        .lic-hero__title em {
+            font-family: var(--font-serif);
+            font-style: italic;
+            color: var(--gold-dark);
+        }
+
+        .lic-hero__desc {
+            font-size: clamp(1rem, 2vw, 1.25rem);
+            color: #5a5248;
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        /* ─── Shared Layout Elements ─── */
+        .lic-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem 8rem;
+        }
+
+        .lic-section-title {
+            font-family: var(--font-headline);
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--color-primary);
+            letter-spacing: -0.03em;
+            margin-bottom: 2.5rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .lic-section-title::after {
+            content: '';
+            display: block;
+            width: 40px;
+            height: 2.5px;
+            background-color: var(--gold);
+            margin: 0.75rem auto 0;
+            border-radius: 2px;
+        }
+
+        /* ─── 4-Tier License Grid ─── */
+        .lic-grid {
+            display: grid;
+            grid-template-columns: repeat(1, 1fr);
+            gap: 2rem;
+            margin-bottom: 6rem;
+        }
+
+        @media (min-width: 768px) {
+            .lic-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .lic-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+
+        .lic-card {
+            background-color: #fcfbfa;
+            border: 1px solid rgba(201, 171, 129, 0.2);
+            border-radius: 1.5rem;
+            padding: 2.5rem 2rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), 
+                        box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1), 
+                        border-color 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .lic-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--gold-light), var(--gold-dark));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .lic-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(28, 24, 18, 0.06);
+            border-color: var(--gold);
+        }
+
+        .lic-card:hover::before {
+            opacity: 1;
+        }
+
+        .lic-card__header {
+            margin-bottom: 2rem;
+        }
+
+        .lic-card__icon {
+            color: var(--gold-dark);
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            display: inline-block;
+        }
+
+        .lic-card__name {
+            font-family: var(--font-headline);
+            font-size: 1.35rem;
+            font-weight: 800;
+            color: var(--color-primary);
+            letter-spacing: -0.02em;
+            margin-bottom: 0.5rem;
+        }
+
+        .lic-card__price {
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            color: var(--gold-dark);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 1rem;
+        }
+
+        .lic-card__desc {
+            font-size: 0.875rem;
+            color: #6a6054;
+            line-height: 1.6;
+        }
+
+        .lic-card__features {
+            list-style: none;
+            padding: 0;
+            margin: 2rem 0;
+            border-top: 1px solid rgba(201, 171, 129, 0.12);
+            padding-top: 1.5rem;
+        }
+
+        .lic-card__feature {
+            font-size: 0.8125rem;
+            color: #4a4239;
+            margin-bottom: 0.75rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 0.5rem;
+            line-height: 1.4;
+        }
+
+        .lic-card__feature svg {
+            color: var(--gold-dark);
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .lic-card__btn {
+            display: block;
+            text-align: center;
+            background-color: var(--color-primary);
+            color: var(--color-on-primary);
+            font-family: var(--font-label);
+            font-size: 0.8125rem;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            padding: 1rem;
+            border-radius: 100px;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            margin-top: auto;
+        }
+
+        .lic-card__btn:hover {
+            background-color: var(--gold-dark);
+            transform: scale(1.02);
+        }
+
+        .lic-card--featured {
+            background: linear-gradient(180deg, var(--color-primary-container) 0%, var(--color-primary) 100%);
+            border-color: var(--color-primary-container);
+            box-shadow: 0 15px 35px rgba(46, 39, 32, 0.15);
+        }
+
+        .lic-card--featured .lic-card__name {
+            color: var(--color-heading-on-gradient);
+        }
+
+        .lic-card--featured .lic-card__price {
+            color: var(--gold);
+        }
+
+        .lic-card--featured .lic-card__desc {
+            color: var(--body-text-on-gradient);
+        }
+
+        .lic-card--featured .lic-card__feature {
+            color: #dcd3c5;
+        }
+
+        .lic-card--featured .lic-card__feature svg {
+            color: var(--gold);
+        }
+
+        .lic-card--featured .lic-card__btn {
+            background-color: var(--gold);
+            color: var(--color-primary);
+        }
+
+        .lic-card--featured .lic-card__btn:hover {
+            background-color: var(--color-on-primary);
+            color: var(--color-primary);
+        }
+
+        /* ─── EULA Interactive Tabs & Text Viewer ─── */
+        .eula-section {
+            background-color: #f7f5f2;
+            border: 1px solid rgba(201, 171, 129, 0.15);
+            border-radius: 2rem;
+            padding: 3rem 2rem;
+            margin-bottom: 6rem;
+            box-shadow: inset 0 0 40px rgba(201, 171, 129, 0.02);
+        }
+
+        .eula-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-bottom: 2.5rem;
+            flex-wrap: wrap;
+            border-bottom: 1px solid rgba(201, 171, 129, 0.15);
+            padding-bottom: 1rem;
+        }
+
+        .eula-tab {
+            padding: 0.75rem 1.5rem;
+            font-family: var(--font-label);
+            font-size: 0.8125rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: #6a6054;
+            border-radius: 100px;
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            position: relative;
+        }
+
+        .eula-tab:hover {
+            color: var(--color-primary);
+            background-color: rgba(201, 171, 129, 0.08);
+        }
+
+        .eula-tab.active {
+            color: var(--color-primary);
+            background-color: var(--gold-light);
+            box-shadow: 0 4px 15px rgba(201, 171, 129, 0.15);
+        }
+
+        .eula-panels {
+            position: relative;
+        }
+
+        .eula-panel {
+            display: none;
+            opacity: 0;
+            transform: translateY(10px);
+            transition: opacity 0.4s ease, transform 0.4s ease;
+        }
+
+        .eula-panel.active {
+            display: block;
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .eula-viewer {
+            max-height: 450px;
+            overflow-y: auto;
+            background-color: rgba(17, 17, 17, 0.02);
+            border: 1px solid rgba(201, 171, 129, 0.12);
+            border-radius: 1rem;
+            padding: 2.5rem;
+            font-family: var(--font-body);
+            font-size: 0.875rem;
+            line-height: 1.8;
+            color: #4a4239;
+            scrollbar-width: thin;
+            scrollbar-color: var(--gold) transparent;
+        }
+
+        .eula-viewer::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .eula-viewer::-webkit-scrollbar-thumb {
+            background-color: var(--gold);
+            border-radius: 10px;
+        }
+
+        .eula-viewer h3 {
+            font-family: var(--font-headline);
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--color-primary);
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            letter-spacing: -0.01em;
+        }
+
+        .eula-viewer h3:first-of-type {
+            margin-top: 0;
+        }
+
+        .eula-viewer p {
+            margin-bottom: 1.5rem;
+        }
+
+        .eula-viewer ul, .eula-viewer ol {
+            margin-bottom: 1.5rem;
+            padding-left: 1.5rem;
+        }
+
+        .eula-viewer li {
+            margin-bottom: 0.5rem;
+        }
+
+        /* ─── FAQ Accordion Styling ─── */
+        .faq-section {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-accordion {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .faq-item {
+            border: 1px solid rgba(201, 171, 129, 0.15);
+            border-radius: 1.25rem;
+            background-color: #fcfbfa;
+            overflow: hidden;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .faq-item:hover {
+            border-color: var(--gold);
+            box-shadow: 0 4px 15px rgba(28, 24, 18, 0.02);
+        }
+
+        .faq-trigger {
+            width: 100%;
+            padding: 1.5rem 2rem;
+            text-align: left;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: none;
+            border: none;
+            font-family: var(--font-headline);
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--color-primary);
+            cursor: pointer;
+            outline: none;
+            transition: color 0.3s ease;
+            gap: 1rem;
+        }
+
+        .faq-trigger:hover {
+            color: var(--gold-dark);
+        }
+
+        .faq-icon-wrap {
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background-color: rgba(201, 171, 129, 0.1);
+            color: var(--gold-dark);
+            flex-shrink: 0;
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+                        background-color 0.3s ease;
+        }
+
+        .faq-item.active .faq-icon-wrap {
+            transform: rotate(45deg);
+            background-color: var(--color-primary);
+            color: var(--color-on-primary);
+        }
+
+        .faq-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+                        padding 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            padding: 0 2rem;
+            color: #5a5248;
+            font-size: 0.9rem;
+            line-height: 1.7;
+        }
+
+        .faq-item.active .faq-content {
+            padding-bottom: 1.5rem;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ═══════════════════════════════════════
+       PRELOADER
+    ═══════════════════════════════════════ -->
+    <div id="preloader" role="status" aria-label="Loading Glyphere">
+        <div class="preloader-inner">
+            <div class="preloader-brand">
+                <div class="preloader-glyph-container">
+                    <div class="preloader-glyph"></div>
+                </div>
+                <p class="preloader-brand__name">Glyphere</p>
+                <p class="preloader-brand__tagline">From Glyph to Identity</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════
+       SITE HEADER & NAV
+    ═══════════════════════════════════════ -->
+    <header class="header-nav">
+        <nav class="nav-inner" aria-label="Main navigation">
+            <div class="nav-logo-group">
+                <a href="/main-website/homepage.html">
+                    <svg class="nav-logo-svg" viewBox="0 0 40 40" width="36" height="36" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="20" cy="20" r="18" stroke="url(#logoGrad)" stroke-width="2.5" fill="rgba(201, 171, 129, 0.05)" />
+                        <path d="M25 15C23.8 13.2 21.8 12 19.5 12C15.4 12 12 15.4 12 19.5C12 23.6 15.4 27 19.5 27C23 27 26 24.5 26.8 21.2H19.5V18.8H29V20C29 25 24.7 29.5 19.5 29.5C14 29.5 9.5 25 9.5 19.5C9.5 14 14 9.5 19.5 9.5C22.6 9.5 25.5 11 27.2 13.5L25 15Z" fill="url(#logoGrad)" />
+                        <defs>
+                            <linearGradient id="logoGrad" x1="0" y1="0" x2="40" y2="40" gradientUnits="userSpaceOnUse">
+                                <stop offset="0%" stop-color="#f0dab0" />
+                                <stop offset="100%" stop-color="#c9ab81" />
+                            </linearGradient>
+                        </defs>
+                    </svg>
+                </a>
+                <a class="nav-logo-name" href="/main-website/homepage.html">Glyphere</a>
+            </div>
+            <ul class="nav-links" role="list">
+                <li><a class="nav-link" href="/main-website/marketplace.html">Marketplace</a></li>
+                <li><a class="nav-link" href="/main-website/custom_font_services/custom_font_services.html">Services</a></li>
+                <!-- <li><a class="nav-link" href="/main-website/font-finder.html">Font Finder</a></li> -->
+                <li><a class="nav-link" href="/main-website/about.html">About</a></li>
+            </ul>
+            <div class="nav-actions">
+                <a class="nav-cart" href="/main-website/cart.html" id="navCartBtn" aria-label="Shopping cart">
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                        <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z" />
+                        <line x1="3" y1="6" x2="21" y2="6" />
+                        <path d="M16 10a4 4 0 0 1-8 0" />
+                    </svg>
+                    <span class="nav-cart__badge" id="navCartBadge" data-count="0">0</span>
+                </a>
+                <a class="nav-signup" href="/main-website/signup-login.html">Login / Register</a>
+            </div>
+            <button class="nav-hamburger" aria-label="Menu" aria-expanded="false">
+                <span class="nav-hamburger__line"></span>
+                <span class="nav-hamburger__line"></span>
+                <span class="nav-hamburger__line"></span>
+            </button>
+        </nav>
+    </header>
+
+    <div class="nav-mobile-menu" role="dialog" aria-label="Mobile navigation">
+        <div class="nav-mobile-menu__links">
+            <a class="nav-mobile-menu__link" href="/main-website/marketplace.html">Marketplace</a>
+            <a class="nav-mobile-menu__link" href="/main-website/custom_font_services/custom_font_services.html">Services</a>
+            <!-- <a class="nav-mobile-menu__link" href="/main-website/font-finder.html">Font Finder</a> -->
+            <a class="nav-mobile-menu__link" href="/main-website/about.html">About</a>
+        </div>
+        <div class="nav-mobile-menu__actions">
+            <a class="nav-mobile-menu__cart" href="/main-website/cart.html" aria-label="Shopping cart">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z" />
+                    <line x1="3" y1="6" x2="21" y2="6" />
+                    <path d="M16 10a4 4 0 0 1-8 0" />
+                </svg>
+                Cart
+            </a>
+            <a class="nav-mobile-menu__signup" href="/main-website/signup-login.html">Login / Register</a>
+        </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════
+       MAIN CONTENT
+    ═══════════════════════════════════════ -->
+    <main>
+        <!-- ─── HERO ─── -->
+        <section class="lic-hero">
+            <span class="lic-hero__tag">Typeface Agreements</span>
+            <h1 class="lic-hero__title">Licensing <em>Made Simple</em></h1>
+            <p class="lic-hero__desc">
+                We craft premium custom letterforms with transparent, human-readable licensing terms. 
+                Pick the license matching your scope of work below.
+            </p>
+        </section>
+
+        <div class="lic-container">
+            <!-- ─── LICENSE GRID ─── -->
+            <section aria-label="Available font licenses">
+                <h2 class="lic-section-title">License Types</h2>
+                <div class="lic-grid">
+                    <!-- Desktop -->
+                    <article class="lic-card">
+                        <div class="lic-card__header">
+                            <span class="lic-card__icon">💻</span>
+                            <h3 class="lic-card__name">Desktop</h3>
+                            <div class="lic-card__price">From $30 (One-Time)</div>
+                            <p class="lic-card__desc">For local installation. Create vector logos, print assets, marketing materials, and merchandise.</p>
+                        </div>
+                        <ul class="lic-card__features">
+                            <li class="lic-card__feature">
+                                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                Vector/Graphic Design
+                            </li>
+                            <li class="lic-card__feature">
+                                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                Standard Print Layouts
+                            </li>
+                            <li class="lic-card__feature">
+                                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                1–3 Workstations standard
+                            </li>
+                        </ul>
+                        <a href="/main-website/marketplace.html" class="lic-card__btn">Explore Fonts</a>
+                    </article>
+
+                    <!-- Web -->
+                    <article class="lic-card lic-card--featured">
+                        <div class="lic-card__header">
+                            <span class="lic-card__icon">🌐</span>
+                            <h3 class="lic-card__name">Web</h3>
+                            <div class="lic-card__price">From $39 (One-Time)</div>
+                            <p class="lic-card__desc">Embed font files directly into your website stylesheet using @font-face styling. Fast and self-hosted.</p>
+                        </div>
+                        <ul class="lic-card__features">
+                            <li class="lic-card__feature">
+                                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                Unlimited Domain Tiers
+                            </li>
+                            <li class="lic-card__feature">
+                                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                Self-Hosted files (.woff2)
+                            </li>
+                            <li class="lic-card__feature">
+                                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                Starts at 10,000 PV/mo
+                            </li>
+                        </ul>
+                        <a href="/main-website/marketplace.html" class="lic-card__btn">Buy Web License</a>
+                    </article>
+
+                    <!-- App/ePub -->
+                    <article class="lic-card">
+                        <div class="lic-card__header">
+                            <span class="lic-card__icon">📱</span>
+                            <h3 class="lic-card__name">App / ePub</h3>
+                            <div class="lic-card__price">From $150 (One-Time)</div>
+                            <p class="lic-card__desc">Compile font files directly inside your application code (iOS, Android, macOS, Windows) or digital publications.</p>
+                        </div>
+                        <ul class="lic-card__features">
+                            <li class="lic-card__feature">
+                                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                Mobile or Desktop Apps
+                            </li>
+                            <li class="lic-card__feature">
+                                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                Kindle &amp; e-Book embedding
+                            </li>
+                            <li class="lic-card__feature">
+                                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                Unlimited App Updates
+                            </li>
+                        </ul>
+                        <a href="/main-website/marketplace.html" class="lic-card__btn">Get App License</a>
+                    </article>
+
+                    <!-- Custom / Enterprise -->
+                    <article class="lic-card">
+                        <div class="lic-card__header">
+                            <span class="lic-card__icon">👑</span>
+                            <h3 class="lic-card__name">Enterprise</h3>
+                            <div class="lic-card__price">Custom Quote</div>
+                            <p class="lic-card__desc">For unlimited domains, national broadcasting, video streaming apps, and global corporate branding campaigns.</p>
+                        </div>
+                        <ul class="lic-card__features">
+                            <li class="lic-card__feature">
+                                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                Global corporate rights
+                            </li>
+                            <li class="lic-card__feature">
+                                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                Broadcasting &amp; Video TV
+                            </li>
+                            <li class="lic-card__feature">
+                                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                Tailored support SLA
+                            </li>
+                        </ul>
+                        <a href="/main-website/custom_font_services/custom_font_services.html" class="lic-card__btn">Contact Us</a>
+                    </article>
+                </div>
+            </section>
+
+            <!-- ─── EULA PANEL VIEWER ─── -->
+            <section class="eula-section" aria-label="End User License Agreement terms">
+                <h2 class="lic-section-title">End User License Agreement (EULA)</h2>
+                
+                <div class="eula-tabs" role="tablist">
+                    <button class="eula-tab active" role="tab" aria-selected="true" aria-controls="panel-desktop" id="tab-desktop">Desktop EULA</button>
+                    <button class="eula-tab" role="tab" aria-selected="false" aria-controls="panel-web" id="tab-web">Web EULA</button>
+                    <button class="eula-tab" role="tab" aria-selected="false" aria-controls="panel-app" id="tab-app">App EULA</button>
+                </div>
+
+                <div class="eula-panels">
+                    <!-- Desktop EULA -->
+                    <div class="eula-panel active" id="panel-desktop" role="tabpanel" aria-labelledby="tab-desktop">
+                        <div class="eula-viewer">
+                            <h3>1. Grant of License</h3>
+                            <p>Upon receipt of payment in full, Glyphere grants you a non-exclusive, non-transferable, perpetual license to install and use the digital typeface files on the specified number of workstations matching your checkout selection.</p>
+                            
+                            <h3>2. Permitted Uses</h3>
+                            <p>You may use the licensed fonts to create static graphics, digital presentations, vector designs (logos, corporate identifiers), marketing materials, printed layout items, and other graphic works for personal and commercial client projects.</p>
+                            
+                            <h3>3. Restrictions</h3>
+                            <ul>
+                                <li>You may NOT edit, decompile, modify, or regenerate the font file source code (.otf, .ttf).</li>
+                                <li>You may NOT share, lease, sublicense, resell, or distribute the licensed files to third parties.</li>
+                                <li>You may NOT embed the desktop font files in website code or software applications without purchasing the matching Web or App license tier.</li>
+                            </ul>
+
+                            <h3>4. Termination</h3>
+                            <p>This license agreement terminates immediately if you breach any of the clauses outlined. Upon termination, you must delete and uninstall all digital copies of the typeface from your workstations.</p>
+                        </div>
+                    </div>
+
+                    <!-- Web EULA -->
+                    <div class="eula-panel" id="panel-web" role="tabpanel" aria-labelledby="tab-web">
+                        <div class="eula-viewer">
+                            <h3>1. Grant of Web License</h3>
+                            <p>Glyphere grants you a non-exclusive, non-transferable, perpetual license to host and embed the web font files (.woff, .woff2) on the domain specified at the time of purchase, supporting website traffic up to your selected pageviews-per-month threshold.</p>
+                            
+                            <h3>2. Permitted Embedding</h3>
+                            <p>Embedding is restricted to the browser self-hosting technique using the CSS <code>@font-face</code> selector. The font files must be secured on your own domain hosting environment.</p>
+                            
+                            <h3>3. Security &amp; Restrictions</h3>
+                            <ul>
+                                <li>You must take reasonable technical steps to ensure third parties cannot download the raw web font files.</li>
+                                <li>Using the web font files as an asset inside interactive, customizable SaaS engines (e.g. online custom card templates, design tools) is strictly prohibited under standard licenses and requires a custom SaaS integration license.</li>
+                                <li>Hotlinking directly to Glyphere files is not permitted.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- App EULA -->
+                    <div class="eula-panel" id="panel-app" role="tabpanel" aria-labelledby="tab-app">
+                        <div class="eula-viewer">
+                            <h3>1. App/ePub Embedding Rights</h3>
+                            <p>Glyphere grants you a non-exclusive, non-transferable license to compile and bundle the digital font files (.ttf, .otf, .woff) directly inside the resource bundle of your native mobile application, electronic publication (ePub), or desktop executable software program.</p>
+                            
+                            <h3>2. Unlimited Updates</h3>
+                            <p>The license is valid globally for standard operating systems (iOS, Android, macOS, Windows, Linux) and applies for the lifetime of the application, including future software version updates and releases.</p>
+                            
+                            <h3>3. Critical Restrictions</h3>
+                            <ul>
+                                <li>The font files must be stored securely inside the application package such that end users cannot extract the raw fonts from the installed app files.</li>
+                                <li>Interactive typing templates where the font is editable and the system outputs static custom user designs require an upgrade.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ─── FAQS ─── -->
+            <section class="faq-section" aria-label="Frequently Asked Questions">
+                <h2 class="lic-section-title">Licensing FAQs</h2>
+                
+                <div class="faq-accordion">
+                    <!-- Q1 -->
+                    <div class="faq-item">
+                        <button class="faq-trigger" aria-expanded="false">
+                            Can I use Glyphere trial fonts in commercial designs?
+                            <span class="faq-icon-wrap"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+                        </button>
+                        <div class="faq-content">
+                            <p>No. Trial fonts are provided solely for mockups, presentation pitches, and academic/personal testing. To use any Glyphere font in active client work or commercial branding, you must buy the appropriate license.</p>
+                        </div>
+                    </div>
+
+                    <!-- Q2 -->
+                    <div class="faq-item">
+                        <button class="faq-trigger" aria-expanded="false">
+                            Are font licenses recurring subscription-based fees?
+                            <span class="faq-icon-wrap"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+                        </button>
+                        <div class="faq-content">
+                            <p>Absolutely not. All licensing formats available on the Glyphere marketplace are strictly **one-time payments**. Once purchased, you own a lifetime perpetual license matching the selected workstation or pageview tier.</p>
+                        </div>
+                    </div>
+
+                    <!-- Q3 -->
+                    <div class="faq-item">
+                        <button class="faq-trigger" aria-expanded="false">
+                            What if my client's website pageviews exceed the Web License limits?
+                            <span class="faq-icon-wrap"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+                        </button>
+                        <div class="faq-content">
+                            <p>Don't worry! We don't automatically cut off your fonts or charge penalties. If your website traffic permanently increases beyond the original tier, simply contact us to pay the price difference and upgrade your license tier.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- ═══════════════════════════════════════
+       FOOTER
+    ═══════════════════════════════════════ -->
+    <footer class="site-footer">
+        <div class="footer-grid">
+            <div>
+                <p class="footer-brand-name">Glyphere</p>
+                <p class="footer-brand-desc">Custom fonts &amp; premium typefaces crafted with soul.</p>
+            </div>
+            <nav>
+                <h3 class="footer-col-title">Marketplace</h3>
+                <ul class="footer-links-list">
+                    <li><a href="/main-website/marketplace.html">All Fonts</a></li>
+                    <li><a href="/main-website/marketplace.html">Serifs</a></li>
+                    <li><a href="/main-website/marketplace.html">Display</a></li>
+                    <!-- <li><a href="/main-website/font-finder.html">Font Finder</a></li> -->
+                </ul>
+            </nav>
+            <nav>
+                <h3 class="footer-col-title">Services</h3>
+                <ul class="footer-links-list">
+                    <li><a href="/main-website/custom_font_services/custom_font_services.html">Custom Design</a></li>
+                    <li><a href="/main-website/custom_font_services/custom_font_services.html">Brand Typography</a></li>
+                    <li><a href="/main-website/licensing.html">Licensing</a></li>
+                </ul>
+            </nav>
+            <nav>
+                <h3 class="footer-col-title">Follow</h3>
+                <ul class="footer-links-list">
+                    <li><a href="#">Instagram</a></li>
+                    <li><a href="#">Twitter / X</a></li>
+                    <li><a href="#">LinkedIn</a></li>
+                </ul>
+            </nav>
+        </div>
+        <div class="footer-bottom">
+            <p class="footer-copy">© 2024 Glyphere. All Rights Reserved.</p>
+            <nav class="footer-legal">
+                <a href="/main-website/licensing.html">Licensing Terms</a>
+                <a href="/main-website/cookie-policy.html">Cookie Policy</a>
+            </nav>
+        </div>
+    </footer>
+
+    <!-- ═══════════════════════════════════════
+       SCRIPTS
+    ═══════════════════════════════════════ -->
+    <script src="globalscript.js" defer></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            
+            /* ── Preloader Removal ── */
+            const preloader = document.getElementById('preloader');
+            if (preloader) {
+                window.addEventListener('load', function () {
+                    setTimeout(function () {
+                        preloader.style.opacity = '0';
+                        preloader.style.visibility = 'hidden';
+                        setTimeout(function () {
+                            preloader.style.display = 'none';
+                        }, 500);
+                    }, 650);
+                });
+            }
+
+            /* ── Mobile Hamburger Menu ── */
+            const hamburger = document.querySelector('.nav-hamburger');
+            const mobileMenu = document.querySelector('.nav-mobile-menu');
+
+            if (hamburger && mobileMenu) {
+                hamburger.addEventListener('click', function () {
+                    const expanded = hamburger.getAttribute('aria-expanded') === 'true';
+                    hamburger.setAttribute('aria-expanded', !expanded);
+                    hamburger.classList.toggle('active');
+                    mobileMenu.classList.toggle('active');
+                    document.body.classList.toggle('no-scroll');
+                });
+            }
+
+            /* ── EULA Interactive Tabs ── */
+            const tabs = document.querySelectorAll('.eula-tab');
+            const panels = document.querySelectorAll('.eula-panel');
+
+            tabs.forEach(tab => {
+                tab.addEventListener('click', function () {
+                    const targetPanelId = tab.getAttribute('aria-controls');
+
+                    // Set tab states
+                    tabs.forEach(t => {
+                        t.classList.remove('active');
+                        t.setAttribute('aria-selected', 'false');
+                    });
+                    tab.classList.add('active');
+                    tab.setAttribute('aria-selected', 'true');
+
+                    // Set panel states
+                    panels.forEach(panel => {
+                        if (panel.id === targetPanelId) {
+                            panel.classList.add('active');
+                        } else {
+                            panel.classList.remove('active');
+                        }
+                    });
+                });
+            });
+
+            /* ── FAQ Accordion Toggle ── */
+            const faqItems = document.querySelectorAll('.faq-item');
+
+            faqItems.forEach(item => {
+                const trigger = item.querySelector('.faq-trigger');
+                const content = item.querySelector('.faq-content');
+
+                if (trigger && content) {
+                    trigger.addEventListener('click', function () {
+                        const isActive = item.classList.contains('active');
+
+                        // Close others
+                        faqItems.forEach(i => {
+                            i.classList.remove('active');
+                            i.querySelector('.faq-trigger').setAttribute('aria-expanded', 'false');
+                            i.querySelector('.faq-content').style.maxHeight = '0px';
+                        });
+
+                        // Toggle current
+                        if (!isActive) {
+                            item.classList.add('active');
+                            trigger.setAttribute('aria-expanded', 'true');
+                            content.style.maxHeight = content.scrollHeight + 'px';
+                        }
+                    });
+                }
+            });
+
+        });
+    </script>
+</body>
+
+</html>
