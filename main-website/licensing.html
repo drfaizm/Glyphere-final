@@ -495,23 +495,14 @@
         <nav class="nav-inner" aria-label="Main navigation">
             <div class="nav-logo-group">
                 <a href="/main-website/homepage.html">
-                    <svg class="nav-logo-svg" viewBox="0 0 40 40" width="36" height="36" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <circle cx="20" cy="20" r="18" stroke="url(#logoGrad)" stroke-width="2.5" fill="rgba(201, 171, 129, 0.05)" />
-                        <path d="M25 15C23.8 13.2 21.8 12 19.5 12C15.4 12 12 15.4 12 19.5C12 23.6 15.4 27 19.5 27C23 27 26 24.5 26.8 21.2H19.5V18.8H29V20C29 25 24.7 29.5 19.5 29.5C14 29.5 9.5 25 9.5 19.5C9.5 14 14 9.5 19.5 9.5C22.6 9.5 25.5 11 27.2 13.5L25 15Z" fill="url(#logoGrad)" />
-                        <defs>
-                            <linearGradient id="logoGrad" x1="0" y1="0" x2="40" y2="40" gradientUnits="userSpaceOnUse">
-                                <stop offset="0%" stop-color="#f0dab0" />
-                                <stop offset="100%" stop-color="#c9ab81" />
-                            </linearGradient>
-                        </defs>
-                    </svg>
+                    <img src="/main-website/glyphere.png" class="nav-logo-img" alt="Glyphere" width="40" height="40" />
                 </a>
                 <a class="nav-logo-name" href="/main-website/homepage.html">Glyphere</a>
             </div>
             <ul class="nav-links" role="list">
                 <li><a class="nav-link" href="/main-website/marketplace.html">Marketplace</a></li>
                 <li><a class="nav-link" href="/main-website/custom_font_services/custom_font_services.html">Services</a></li>
-                <!-- <li><a class="nav-link" href="/main-website/font-finder.html">Font Finder</a></li> -->
+                <li><a class="nav-link" href="/main-website/blog/index.html">Journal</a></li>
                 <li><a class="nav-link" href="/main-website/about.html">About</a></li>
             </ul>
             <div class="nav-actions">
@@ -537,7 +528,7 @@
         <div class="nav-mobile-menu__links">
             <a class="nav-mobile-menu__link" href="/main-website/marketplace.html">Marketplace</a>
             <a class="nav-mobile-menu__link" href="/main-website/custom_font_services/custom_font_services.html">Services</a>
-            <!-- <a class="nav-mobile-menu__link" href="/main-website/font-finder.html">Font Finder</a> -->
+            <a class="nav-mobile-menu__link" href="/main-website/blog/index.html">Journal</a>
             <a class="nav-mobile-menu__link" href="/main-website/about.html">About</a>
         </div>
         <div class="nav-mobile-menu__actions">
@@ -577,7 +568,7 @@
                         <div class="lic-card__header">
                             <span class="lic-card__icon">💻</span>
                             <h3 class="lic-card__name">Desktop</h3>
-                            <div class="lic-card__price">From $30 (One-Time)</div>
+                            <div class="lic-card__price">From $21 (One-Time)</div>
                             <p class="lic-card__desc">For local installation. Create vector logos, print assets, marketing materials, and merchandise.</p>
                         </div>
                         <ul class="lic-card__features">
@@ -602,7 +593,7 @@
                         <div class="lic-card__header">
                             <span class="lic-card__icon">🌐</span>
                             <h3 class="lic-card__name">Web</h3>
-                            <div class="lic-card__price">From $39 (One-Time)</div>
+                            <div class="lic-card__price">From $27 (One-Time)</div>
                             <p class="lic-card__desc">Embed font files directly into your website stylesheet using @font-face styling. Fast and self-hosted.</p>
                         </div>
                         <ul class="lic-card__features">
@@ -627,7 +618,7 @@
                         <div class="lic-card__header">
                             <span class="lic-card__icon">📱</span>
                             <h3 class="lic-card__name">App / ePub</h3>
-                            <div class="lic-card__price">From $150 (One-Time)</div>
+                            <div class="lic-card__price">From $105 (One-Time)</div>
                             <p class="lic-card__desc">Compile font files directly inside your application code (iOS, Android, macOS, Windows) or digital publications.</p>
                         </div>
                         <ul class="lic-card__features">
@@ -787,12 +778,36 @@
 
     <!-- ═══════════════════════════════════════
        FOOTER
-    ═══════════════════════════════════════ -->
+  ═══════════════════════════════════════ -->
     <footer class="site-footer">
         <div class="footer-grid">
             <div>
                 <p class="footer-brand-name">Glyphere</p>
                 <p class="footer-brand-desc">Custom fonts &amp; premium typefaces crafted with soul.</p>
+                <div class="footer-social-icons">
+                    <a href="#" class="footer-icon" aria-label="Instagram">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+                            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+                            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
+                        </svg>
+                    </a>
+                    <a href="#" class="footer-icon" aria-label="Twitter / X">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+                            <path
+                                d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.73-8.835L2.25 2.25h6.962l4.265 5.64 5.767-5.64zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+                        </svg>
+                    </a>
+                    <a href="#" class="footer-icon" aria-label="LinkedIn">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+                            <rect x="2" y="9" width="4" height="12" />
+                            <circle cx="4" cy="4" r="2" />
+                        </svg>
+                    </a>
+                </div>
             </div>
             <nav>
                 <h3 class="footer-col-title">Marketplace</h3>
@@ -800,7 +815,7 @@
                     <li><a href="/main-website/marketplace.html">All Fonts</a></li>
                     <li><a href="/main-website/marketplace.html">Serifs</a></li>
                     <li><a href="/main-website/marketplace.html">Display</a></li>
-                    <!-- <li><a href="/main-website/font-finder.html">Font Finder</a></li> -->
+
                 </ul>
             </nav>
             <nav>
@@ -808,7 +823,16 @@
                 <ul class="footer-links-list">
                     <li><a href="/main-website/custom_font_services/custom_font_services.html">Custom Design</a></li>
                     <li><a href="/main-website/custom_font_services/custom_font_services.html">Brand Typography</a></li>
-                    <li><a href="/main-website/licensing.html">Licensing</a></li>
+                    <li><a href="/main-website/custom_font_services/custom_font_services.html">Licensing</a></li>
+                </ul>
+            </nav>
+            <nav>
+                <h3 class="footer-col-title">Journal</h3>
+                <ul class="footer-links-list">
+                    <li><a href="/main-website/blog/index.html">The Journal</a></li>
+                    <li><a href="/main-website/blog/best-fonts-for-luxury-brands.html">Luxury Fonts</a></li>
+
+                    <li><a href="/main-website/blog/behind-nova-legacy.html">Behind Nova Legacy</a></li>
                 </ul>
             </nav>
             <nav>
@@ -821,7 +845,7 @@
             </nav>
         </div>
         <div class="footer-bottom">
-            <p class="footer-copy">© 2024 Glyphere. All Rights Reserved.</p>
+            <p class="footer-copy">© 2026 Glyphere. All Rights Reserved.</p>
             <nav class="footer-legal">
                 <a href="/main-website/licensing.html">Licensing Terms</a>
                 <a href="/main-website/cookie-policy.html">Cookie Policy</a>

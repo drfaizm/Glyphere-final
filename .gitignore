@@ -1,0 +1,33 @@
+# OS & IDE
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Node dependencies & build artifacts
+node_modules/
+backend/node_modules/
+login-auth/node_modules/
+dist/
+.vite/
+
+# Environment secrets (Strictly keep private from Git)
+.env
+.env.*
+*.env
+backend/.env
+backend/.env.*
+main-website/.env
+main-website/.env.*
+
+# Commercial Fonts & Source Vaults (DO NOT EXPOSE TO GIT OR PUBLIC REPOSITORIES)
+Font Vault/
+commercial-vault/
+backend/commercial-vault/
+master-fonts/
+commercial_licenses/
+*.glyphs
+*.glyphs[0-9]*
+*.ufo
+*.sfd
+*.vfb

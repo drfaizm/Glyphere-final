@@ -1,0 +1,762 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/png" href="/main-website/glyphere.png" />
+    <title>The Glyphere Journal — Typography, Type Design & Brand Identity</title>
+    <meta name="description" content="The Glyphere Journal — insights on type design, brand identity, font pairings, and the craft of great typography. Written by designers, for designers." />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@200..800&family=Manrope:wght@200..800&family=Instrument+Sans:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" />
+
+    <link rel="stylesheet" href="/main-website/css/globalstyle.css" />
+    <link rel="stylesheet" href="/main-website/javascript/loginmodel.css" />
+
+    <style>
+        /* Fonts loaded via globalstyle.css Base64 */
+
+        body { color: var(--color-on-background); }
+
+        /* ── Hero ── */
+        .blog-hero {
+            background: var(--color-gradient);
+            padding: 8rem 2.5rem 4rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .blog-hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image: radial-gradient(circle, rgba(201,171,129,0.07) 1px, transparent 1px);
+            background-size: 28px 28px;
+        }
+
+        .blog-hero__eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-family: 'Instrument Sans', sans-serif;
+            font-size: 0.6875rem;
+            font-weight: 600;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 1rem;
+            position: relative;
+        }
+        .blog-hero__eyebrow::before, .blog-hero__eyebrow::after {
+            content: ''; display: inline-block; width: 28px; height: 1px; background: var(--gold); opacity: 0.5;
+        }
+
+        .blog-hero__title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.5rem, 5.5vw, 5rem);
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            line-height: 1.05;
+            color: #f2e7d5;
+            margin-bottom: 1rem;
+            position: relative;
+        }
+
+        .blog-hero__title span {
+            font-style: italic;
+            background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .blog-hero__sub {
+            font-family: 'Instrument Sans', sans-serif;
+            font-size: 1rem;
+            font-weight: 300;
+            color: var(--body-text-on-gradient);
+            max-width: 480px;
+            margin: 0 auto;
+            line-height: 1.7;
+            position: relative;
+        }
+
+        /* ── Main ── */
+        .blog-main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2.5rem 6rem;
+        }
+
+        /* ── Category Filter ── */
+        .blog-cats {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            margin-bottom: 3rem;
+        }
+
+        .blog-cat-btn {
+            padding: 0.4rem 1rem;
+            border-radius: 40px;
+            font-family: 'Instrument Sans', sans-serif;
+            font-size: 0.75rem;
+            font-weight: 600;
+            border: 1px solid rgba(28,24,18,0.10);
+            background: var(--color-surface-container-low);
+            color: var(--color-on-surface-variant);
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .blog-cat-btn:hover {
+            border-color: var(--gold);
+            color: var(--color-on-surface);
+        }
+
+        .blog-cat-btn.active {
+            background: var(--color-on-surface);
+            color: #fff;
+            border-color: var(--color-on-surface);
+        }
+
+        /* ── Featured Article ── */
+        .blog-featured {
+            margin-bottom: 3rem;
+        }
+
+        .blog-featured__card {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            border-radius: 22px;
+            overflow: hidden;
+            background: #fff;
+            border: 1px solid rgba(28,24,18,0.08);
+            box-shadow: 0 8px 40px rgba(28,24,18,0.06);
+            text-decoration: none;
+            color: inherit;
+            transition: transform 0.35s cubic-bezier(0.34,1.2,0.64,1), box-shadow 0.35s ease;
+        }
+
+        .blog-featured__card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 24px 60px rgba(28,24,18,0.12);
+        }
+
+        .blog-featured__visual {
+            background: var(--color-gradient);
+            min-height: 340px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 3rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .blog-featured__visual::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image: radial-gradient(circle, rgba(201,171,129,0.06) 1px, transparent 1px);
+            background-size: 22px 22px;
+        }
+
+        .blog-featured__visual-text {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-size: clamp(2.5rem, 4vw, 4rem);
+            color: rgba(201,171,129,0.35);
+            text-align: center;
+            line-height: 1.1;
+            position: relative;
+            letter-spacing: -0.02em;
+        }
+
+        .blog-featured__content {
+            padding: 2.5rem 2.75rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        .blog-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            padding: 3px 10px;
+            border-radius: 40px;
+            font-family: 'Instrument Sans', sans-serif;
+            font-size: 0.6rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            width: fit-content;
+        }
+
+        .blog-tag--type-design { background: rgba(201,171,129,0.1); border: 1px solid rgba(201,171,129,0.25); color: var(--gold-dark); }
+        .blog-tag--brand { background: rgba(28,24,18,0.06); border: 1px solid rgba(28,24,18,0.12); color: #555; }
+        .blog-tag--tutorial { background: rgba(34,197,94,0.08); border: 1px solid rgba(34,197,94,0.2); color: #16a34a; }
+        .blog-tag--behind { background: rgba(99,102,241,0.08); border: 1px solid rgba(99,102,241,0.2); color: #4f46e5; }
+
+        .blog-featured__title {
+            font-family: 'Bricolage Grotesque', sans-serif;
+            font-size: clamp(1.5rem, 2.5vw, 2rem);
+            font-weight: 800;
+            letter-spacing: -0.04em;
+            line-height: 1.15;
+            color: var(--color-primary);
+        }
+
+        .blog-featured__excerpt {
+            font-family: 'Instrument Sans', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 400;
+            color: var(--color-on-surface-variant);
+            line-height: 1.7;
+        }
+
+        .blog-featured__meta {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-top: 0.5rem;
+        }
+
+        .blog-meta-author {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-family: 'Instrument Sans', sans-serif;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--color-on-surface);
+        }
+
+        .blog-meta-author__avatar {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.7rem;
+            color: #fff;
+            font-weight: 700;
+        }
+
+        .blog-meta-dot { width: 3px; height: 3px; border-radius: 50%; background: var(--color-outline); }
+
+        .blog-meta-time {
+            font-family: 'Instrument Sans', sans-serif;
+            font-size: 0.725rem;
+            color: var(--color-outline);
+        }
+
+        .blog-read-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-family: 'Instrument Sans', sans-serif;
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: var(--gold-dark);
+            border-bottom: 1.5px solid rgba(138,108,62,0.25);
+            padding-bottom: 1px;
+            transition: border-color 0.2s, color 0.2s;
+            width: fit-content;
+        }
+        .blog-featured__card:hover .blog-read-link {
+            border-color: var(--gold-dark);
+        }
+
+        /* ── Article Grid ── */
+        .blog-grid-title {
+            font-family: 'Bricolage Grotesque', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            color: var(--color-primary);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .blog-grid-title::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: rgba(28,24,18,0.08);
+        }
+
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+        }
+
+        .blog-card {
+            background: #fff;
+            border: 1px solid rgba(28,24,18,0.07);
+            border-radius: 18px;
+            overflow: hidden;
+            transition: transform 0.3s cubic-bezier(0.34,1.2,0.64,1), box-shadow 0.3s;
+            box-shadow: 0 4px 16px rgba(28,24,18,0.03);
+            text-decoration: none;
+            color: inherit;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .blog-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 18px 40px rgba(28,24,18,0.09);
+        }
+
+        .blog-card__visual {
+            height: 160px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .blog-card__visual--type { background: linear-gradient(135deg, #2e2720 0%, #1c1812 100%); }
+        .blog-card__visual--brand { background: linear-gradient(135deg, #f5f0e8 0%, #ede4d3 100%); }
+        .blog-card__visual--behind { background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%); }
+
+        .blog-card__visual-glyph {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-size: 5rem;
+            opacity: 0.18;
+            color: var(--gold);
+            line-height: 1;
+            user-select: none;
+        }
+
+        .blog-card__visual--brand .blog-card__visual-glyph {
+            font-family: 'Turbo_Block', sans-serif;
+            font-style: normal;
+            color: var(--gold-dark);
+        }
+
+        .blog-card__visual--behind .blog-card__visual-glyph {
+            font-family: 'Nova Legacy', serif;
+            color: #c9ab81;
+        }
+
+        .blog-card__content {
+            padding: 1.5rem;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .blog-card__title {
+            font-family: 'Bricolage Grotesque', sans-serif;
+            font-size: 1rem;
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            line-height: 1.25;
+            color: var(--color-primary);
+        }
+
+        .blog-card__excerpt {
+            font-family: 'Instrument Sans', sans-serif;
+            font-size: 0.8125rem;
+            color: var(--color-on-surface-variant);
+            line-height: 1.65;
+            flex: 1;
+        }
+
+        .blog-card__footer {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding-top: 0.75rem;
+            border-top: 1px solid rgba(28,24,18,0.06);
+        }
+
+        .blog-card__read-time {
+            font-family: 'Instrument Sans', sans-serif;
+            font-size: 0.65rem;
+            color: var(--color-outline);
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+        }
+
+        .blog-card__arrow {
+            font-size: 0.75rem;
+            color: var(--gold-dark);
+            font-weight: 700;
+            transition: transform 0.2s;
+        }
+
+        .blog-card:hover .blog-card__arrow { transform: translateX(3px); }
+
+        /* ── Newsletter inline ── */
+        .blog-newsletter {
+            background: var(--color-gradient);
+            border-radius: 20px;
+            padding: 3rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            margin-top: 3.5rem;
+        }
+
+        .blog-newsletter::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image: radial-gradient(circle, rgba(201,171,129,0.07) 1px, transparent 1px);
+            background-size: 24px 24px;
+        }
+
+        .blog-newsletter__title {
+            font-family: 'Bricolage Grotesque', sans-serif;
+            font-size: clamp(1.5rem, 3vw, 2rem);
+            font-weight: 800;
+            letter-spacing: -0.04em;
+            color: #f2e7d5;
+            margin-bottom: 0.5rem;
+            position: relative;
+        }
+
+        .blog-newsletter__sub {
+            font-family: 'Instrument Sans', sans-serif;
+            font-size: 0.9rem;
+            color: var(--body-text-on-gradient);
+            margin-bottom: 1.75rem;
+            position: relative;
+        }
+
+        .blog-newsletter__form {
+            display: flex;
+            gap: 0.75rem;
+            max-width: 420px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .blog-newsletter__input {
+            flex: 1;
+            padding: 0.75rem 1.25rem;
+            border: 1px solid rgba(201,171,129,0.3);
+            border-radius: 40px;
+            background: rgba(255,255,255,0.08);
+            color: #f2e7d5;
+            font-family: 'Instrument Sans', sans-serif;
+            font-size: 0.875rem;
+            outline: none;
+        }
+
+        .blog-newsletter__input::placeholder { color: rgba(242,231,213,0.45); }
+        .blog-newsletter__input:focus { border-color: var(--gold); }
+
+        .blog-newsletter__btn {
+            padding: 0.75rem 1.5rem;
+            border-radius: 40px;
+            background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+            color: #fff;
+            font-family: 'Instrument Sans', sans-serif;
+            font-size: 0.8rem;
+            font-weight: 700;
+            border: none;
+            cursor: pointer;
+            white-space: nowrap;
+            transition: all 0.2s;
+        }
+
+        .blog-newsletter__btn:hover { transform: translateY(-1px); box-shadow: 0 4px 12px rgba(138,108,62,0.5); }
+
+        .blog-newsletter__note {
+            font-family: 'Instrument Sans', sans-serif;
+            font-size: 0.65rem;
+            color: rgba(242,231,213,0.4);
+            margin-top: 0.75rem;
+            position: relative;
+        }
+
+        /* ── Responsive ── */
+        @media (max-width: 900px) {
+            .blog-featured__card { grid-template-columns: 1fr; }
+            .blog-featured__visual { min-height: 200px; }
+            .blog-grid { grid-template-columns: 1fr 1fr; }
+        }
+
+        @media (max-width: 600px) {
+            .blog-grid { grid-template-columns: 1fr; }
+            .blog-main { padding: 2.5rem 1.25rem 4rem; }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Preloader -->
+    <div id="preloader" role="status" aria-label="Loading Glyphere">
+        <div class="preloader-inner">
+            <div class="preloader-brand">
+                <div class="preloader-glyph-container"><div class="preloader-glyph"></div></div>
+                <p class="preloader-brand__name">Glyphere</p>
+                <p class="preloader-brand__tagline">From Glyph to Identity</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Nav -->
+    <header class="header-nav">
+        <nav class="nav-inner" aria-label="Main navigation">
+            <div class="nav-logo-group">
+                <a href="/main-website/homepage.html">
+                    <img src="/main-website/glyphere.png" class="nav-logo-img" alt="Glyphere" width="40" height="40" />
+                </a>
+                <a class="nav-logo-name" href="/main-website/homepage.html">Glyphere</a>
+            </div>
+            <ul class="nav-links" role="list">
+                <li><a class="nav-link" href="/main-website/marketplace.html">Marketplace</a></li>
+                <li><a class="nav-link" href="/main-website/custom_font_services/custom_font_services.html">Services</a></li>
+
+                <li><a class="nav-link nav-link--active" href="/main-website/blog/index.html">Journal</a></li>
+                <li><a class="nav-link" href="/main-website/about.html">About</a></li>
+            </ul>
+            <div class="nav-actions">
+                <a class="nav-cart" href="/main-website/cart.html" id="navCartBtn" aria-label="Shopping cart">
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                        <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z" />
+                        <line x1="3" y1="6" x2="21" y2="6" />
+                        <path d="M16 10a4 4 0 0 1-8 0" />
+                    </svg>
+                    <span class="nav-cart__badge" id="navCartBadge" data-count="0">0</span>
+                </a>
+                <a class="nav-signup" href="/main-website/signup-login.html">Log In</a>
+            </div>
+            <button class="nav-hamburger" aria-label="Menu" aria-expanded="false">
+                <span class="nav-hamburger__line"></span>
+                <span class="nav-hamburger__line"></span>
+                <span class="nav-hamburger__line"></span>
+            </button>
+        </nav>
+    </header>
+
+    <div class="nav-mobile-menu" role="dialog" aria-label="Mobile navigation">
+        <div class="nav-mobile-menu__links">
+            <a class="nav-mobile-menu__link" href="/main-website/marketplace.html">Marketplace</a>
+            <a class="nav-mobile-menu__link" href="/main-website/custom_font_services/custom_font_services.html">Services</a>
+
+            <a class="nav-mobile-menu__link" href="/main-website/blog/index.html">Journal</a>
+            <a class="nav-mobile-menu__link" href="/main-website/about.html">About</a>
+        </div>
+        <div class="nav-mobile-menu__actions">
+            <a class="nav-mobile-menu__signup" href="/main-website/signup-login.html">Log in</a>
+        </div>
+    </div>
+
+    <!-- Hero -->
+    <section class="blog-hero">
+        <p class="blog-hero__eyebrow">The Glyphere Journal</p>
+        <h1 class="blog-hero__title">Type. <span>Identity.</span> Craft.</h1>
+        <p class="blog-hero__sub">Insights on type design, brand typography, and the art of making letterforms that last.</p>
+    </section>
+
+    <!-- Main Content -->
+    <main id="content">
+        <div class="blog-main">
+
+            <!-- Category Filter -->
+            <div class="blog-cats" role="group" aria-label="Filter by category">
+                <button class="blog-cat-btn active">All</button>
+                <button class="blog-cat-btn">Type Design</button>
+                <button class="blog-cat-btn">Brand Identity</button>
+                <button class="blog-cat-btn">Tutorial</button>
+                <button class="blog-cat-btn">Behind the Scenes</button>
+            </div>
+
+            <!-- Featured Article -->
+            <div class="blog-featured">
+                <a href="/main-website/blog/best-fonts-for-luxury-brands.html" class="blog-featured__card" aria-label="Read: The 7 Best Fonts for Luxury Brands">
+                    <div class="blog-featured__visual">
+                        <div class="blog-featured__visual-text">Aa Bb<br/>Cc Dd</div>
+                    </div>
+                    <div class="blog-featured__content">
+                        <span class="blog-tag blog-tag--brand">Brand Identity</span>
+                        <h2 class="blog-featured__title">The 7 Best Fonts for Luxury Brands in 2026</h2>
+                        <p class="blog-featured__excerpt">Luxury is felt before it's read. The fonts at the top of the world's most covetable brands share subtle cues of refinement, restraint, and timeless sophistication. Here's what makes a typeface luxury — and which Glyphere fonts make the cut.</p>
+                        <div class="blog-featured__meta">
+                            <div class="blog-meta-author">
+                                <div class="blog-meta-author__avatar">G</div>
+                                Glyphere Studio
+                            </div>
+                            <span class="blog-meta-dot"></span>
+                            <span class="blog-meta-time">June 28, 2026 · 7 min read</span>
+                        </div>
+                        <span class="blog-read-link">Read Article →</span>
+                    </div>
+                </a>
+            </div>
+
+            <!-- Article Grid -->
+            <h2 class="blog-grid-title">More from the Journal</h2>
+
+            <div class="blog-grid">
+
+
+
+                <!-- Article 3 -->
+                <a href="/main-website/blog/behind-nova-legacy.html" class="blog-card">
+                    <div class="blog-card__visual blog-card__visual--behind">
+                        <span class="blog-card__visual-glyph">NL</span>
+                    </div>
+                    <div class="blog-card__content">
+                        <span class="blog-tag blog-tag--behind">Behind the Scenes</span>
+                        <h3 class="blog-card__title">Behind the Typeface: The Story of Nova Legacy</h3>
+                        <p class="blog-card__excerpt">Nova Legacy began as a sketch on a napkin. Two months of iteration later, it became one of Glyphere's most beloved typefaces. This is the story of how it came to be.</p>
+                        <div class="blog-card__footer">
+                            <span class="blog-card__read-time">6 min read</span>
+                            <span class="blog-card__arrow">→</span>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Coming Soon Card -->
+                <div class="blog-card" style="opacity:0.5;pointer-events:none;">
+                    <div class="blog-card__visual blog-card__visual--brand">
+                        <span class="blog-card__visual-glyph" style="font-family:'Turbo_Block';color:var(--gold-dark);">Tt</span>
+                    </div>
+                    <div class="blog-card__content">
+                        <span class="blog-tag blog-tag--type-design">Type Design</span>
+                        <h3 class="blog-card__title">What Makes a Typeface Truly Timeless?</h3>
+                        <p class="blog-card__excerpt">Trends come and go. The fonts that define eras do something different — they solve a human problem with elegance. We look at the anatomy of a timeless typeface.</p>
+                        <div class="blog-card__footer">
+                            <span class="blog-card__read-time">Coming soon</span>
+                            <span class="blog-card__arrow">✦</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Newsletter -->
+            <div class="blog-newsletter">
+                <h2 class="blog-newsletter__title">Get the Type Guide — Free</h2>
+                <p class="blog-newsletter__sub">Subscribe to the Glyphere Journal and receive our free Typography Guide PDF. Straight to your inbox.</p>
+                <form class="blog-newsletter__form" id="blogNewsletterForm" onsubmit="handleBlogNewsletter(event)">
+                    <input class="blog-newsletter__input" type="email" placeholder="your@email.com" required aria-label="Email address" />
+                    <button class="blog-newsletter__btn" type="submit">Get Guide</button>
+                </form>
+                <p class="blog-newsletter__note">No spam. Unsubscribe anytime.</p>
+                <div id="blogNewsletterMsg" style="display:none;margin-top:1rem;font-family:'Instrument Sans',sans-serif;font-size:0.85rem;color:var(--gold);position:relative;">
+                    ✓ You're in! Check your inbox for the Typography Guide.
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- ═══════════════════════════════════════
+       FOOTER
+  ═══════════════════════════════════════ -->
+    <footer class="site-footer">
+        <div class="footer-grid">
+            <div>
+                <p class="footer-brand-name">Glyphere</p>
+                <p class="footer-brand-desc">Custom fonts &amp; premium typefaces crafted with soul.</p>
+                <div class="footer-social-icons">
+                    <a href="#" class="footer-icon" aria-label="Instagram">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+                            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+                            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
+                        </svg>
+                    </a>
+                    <a href="#" class="footer-icon" aria-label="Twitter / X">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+                            <path
+                                d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.73-8.835L2.25 2.25h6.962l4.265 5.64 5.767-5.64zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+                        </svg>
+                    </a>
+                    <a href="#" class="footer-icon" aria-label="LinkedIn">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+                            <rect x="2" y="9" width="4" height="12" />
+                            <circle cx="4" cy="4" r="2" />
+                        </svg>
+                    </a>
+                </div>
+            </div>
+            <nav>
+                <h3 class="footer-col-title">Marketplace</h3>
+                <ul class="footer-links-list">
+                    <li><a href="/main-website/marketplace.html">All Fonts</a></li>
+                    <li><a href="/main-website/marketplace.html">Serifs</a></li>
+                    <li><a href="/main-website/marketplace.html">Display</a></li>
+
+                </ul>
+            </nav>
+            <nav>
+                <h3 class="footer-col-title">Services</h3>
+                <ul class="footer-links-list">
+                    <li><a href="/main-website/custom_font_services/custom_font_services.html">Custom Design</a></li>
+                    <li><a href="/main-website/custom_font_services/custom_font_services.html">Brand Typography</a></li>
+                    <li><a href="/main-website/custom_font_services/custom_font_services.html">Licensing</a></li>
+                </ul>
+            </nav>
+            <nav>
+                <h3 class="footer-col-title">Journal</h3>
+                <ul class="footer-links-list">
+                    <li><a href="/main-website/blog/index.html">The Journal</a></li>
+                    <li><a href="/main-website/blog/best-fonts-for-luxury-brands.html">Luxury Fonts</a></li>
+
+                    <li><a href="/main-website/blog/behind-nova-legacy.html">Behind Nova Legacy</a></li>
+                </ul>
+            </nav>
+            <nav>
+                <h3 class="footer-col-title">Follow</h3>
+                <ul class="footer-links-list">
+                    <li><a href="#">Instagram</a></li>
+                    <li><a href="#">Twitter / X</a></li>
+                    <li><a href="#">LinkedIn</a></li>
+                </ul>
+            </nav>
+        </div>
+        <div class="footer-bottom">
+            <p class="footer-copy">© 2026 Glyphere. All Rights Reserved.</p>
+            <nav class="footer-legal">
+                <a href="/main-website/licensing.html">Licensing Terms</a>
+                <a href="/main-website/cookie-policy.html">Cookie Policy</a>
+            </nav>
+        </div>
+    </footer>
+
+
+    <script src="/main-website/globalscript.js"></script>
+    <script src="/main-website/cart-manager.js"></script>
+    <script src="/main-website/javascript/auth.js"></script>
+    <script>
+        // Category filter toggle
+        document.querySelectorAll('.blog-cat-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.blog-cat-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+            });
+        });
+
+        function handleBlogNewsletter(e) {
+            e.preventDefault();
+            document.getElementById('blogNewsletterForm').style.display = 'none';
+            document.getElementById('blogNewsletterMsg').style.display = 'block';
+        }
+    </script>
+</body>
+</html>

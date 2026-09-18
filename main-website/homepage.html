@@ -10,7 +10,24 @@
     <title>Glyphere — Custom Fonts &amp; Premium Typefaces</title>
     <meta name="description"
         content="Glyphere is a premium type foundry specialising in custom font design, logo typography, and high-quality digital typefaces." />
+    <!-- ══════════════════════════════════════════════════
+       OPEN GRAPH — Rich social media link previews
+  ══════════════════════════════════════════════════ -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://glyphere.com/" />
+    <meta property="og:title" content="Glyphere — Custom Fonts &amp; Premium Typefaces" />
+    <meta property="og:description"
+        content="Premium type foundry specialising in custom font design, logo typography, and high-quality digital typefaces." />
+    <meta property="og:image" content="https://glyphere.com/main-website/glyphere.png" />
+    <meta property="og:site_name" content="Glyphere" />
 
+    <!-- Twitter / X Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content="https://glyphere.com/" />
+    <meta name="twitter:title" content="Glyphere — Custom Fonts &amp; Premium Typefaces" />
+    <meta name="twitter:description"
+        content="Premium type foundry specialising in custom font design, logo typography, and high-quality digital typefaces." />
+    <meta name="twitter:image" content="https://glyphere.com/glyphere.png" />
     <!-- ══════════════════════════════════════════════════
        CACHE CONTROL
   ══════════════════════════════════════════════════ -->
@@ -95,6 +112,10 @@
         main {
             padding: 0 2.5rem;
             background: var(--color-background);
+            overflow-x: clip;
+            width: 100%;
+            max-width: 100vw;
+            box-sizing: border-box;
             /* filter: sepia(0.1) saturate(1.2); */
         }
 
@@ -741,6 +762,43 @@
 
         .specimens-view-all:hover {
             border-bottom-color: #d6a65a;
+        }
+
+        .specimens-mobile-cta-wrap {
+            display: none;
+            justify-content: center;
+            margin-top: 2.25rem;
+            width: 100%;
+        }
+
+        .specimens-mobile-cta {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+            color: var(--color-primary);
+            font-family: var(--font-headline);
+            font-weight: 700;
+            font-size: 0.875rem;
+            padding: 13px 26px;
+            border-radius: var(--radius-full);
+            text-decoration: none;
+            box-shadow: 0 4px 18px rgba(201, 171, 129, 0.25);
+            transition: transform 0.2s, box-shadow 0.2s;
+            width: 100%;
+            max-width: 320px;
+        }
+
+        .specimens-mobile-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(201, 171, 129, 0.4);
+        }
+
+        @media (max-width: 639px) {
+            .specimens-mobile-cta-wrap {
+                display: flex;
+            }
         }
 
         .specimens-grid {
@@ -1681,8 +1739,8 @@
                 flex-direction: column;
                 align-items: flex-start;
                 min-height: auto;
-                padding: 7rem 0 4rem;
-                gap: 3rem;
+                padding: 7rem 0 3.5rem;
+                gap: 2.5rem;
             }
 
             .hero-text-col {
@@ -1696,23 +1754,26 @@
 
             .hero-mockup-col {
                 width: 100%;
+                max-width: 100%;
                 padding: 0;
                 transform: scale(1);
                 opacity: 1;
+                overflow: hidden;
             }
 
             .browser-frame-stack {
-                width: 320px;
+                width: 100%;
+                max-width: 320px;
                 margin: 0 auto;
             }
 
             .float-badge--rating,
             .float-badge--live {
-                left: -60px;
+                left: -20px;
             }
 
             .float-badge--stat {
-                right: -60px;
+                right: -20px;
             }
 
             /* Grid: 2 columns on tablet */
@@ -1754,6 +1815,8 @@
             .process-section {
                 margin-left: -1.5rem;
                 margin-right: -1.5rem;
+                overflow-x: clip;
+                max-width: 100vw;
             }
 
             .specimens-inner,
@@ -1784,12 +1847,12 @@
             }
 
             .hero-heading {
-                font-size: clamp(2.4rem, 8vw, 3.5rem);
+                font-size: clamp(2.3rem, 7.5vw, 3.2rem);
             }
 
             .hero-actions {
                 flex-wrap: wrap;
-                margin-top: 2vh;
+                margin-top: 1.5rem;
             }
 
             .cta-btn {
@@ -1798,12 +1861,12 @@
             }
 
             .float-badge {
-                display: none;
+                display: none !important;
             }
 
             .browser-frame-stack {
                 width: 100%;
-                max-width: 340px;
+                max-width: 320px;
             }
 
             .specimen-card__name {
@@ -1815,7 +1878,6 @@
             }
 
             .process-title {
-
                 letter-spacing: -1px;
                 text-align: center;
             }
@@ -1829,7 +1891,7 @@
             }
 
             .swiper-slide {
-                width: 300px;
+                width: min(320px, calc(100vw - 3rem));
             }
 
             .testimonials-inner {
@@ -1850,6 +1912,8 @@
             .process-section {
                 margin-left: -1rem;
                 margin-right: -1rem;
+                overflow-x: clip;
+                max-width: 100vw;
             }
 
             .specimens-inner,
@@ -1858,20 +1922,30 @@
             }
 
             .hero-section {
-                padding: 6rem 0 3rem;
+                padding: 5.5rem 0 2.5rem;
                 gap: 2rem;
             }
 
             .hero-heading {
-                font-size: clamp(2rem, 9vw, 2.8rem);
+                font-size: clamp(2rem, 8.5vw, 2.6rem);
+                line-height: 1.08;
             }
 
             .hero-body {
                 font-size: 0.9rem;
+                width: 100%;
             }
 
             .hero-actions {
+                flex-direction: column;
+                width: 100%;
                 gap: 0.75rem;
+                margin-top: 1.25rem;
+            }
+
+            .hero-actions a {
+                display: block;
+                width: 100%;
             }
 
             .status-badge {
@@ -1882,11 +1956,13 @@
                 width: 100%;
                 justify-content: center;
                 font-size: 0.85rem;
-                padding: 12px 18px;
+                padding: 13px 18px;
+                min-height: 48px;
             }
 
             .browser-frame-stack {
                 width: 100%;
+                max-width: 100%;
             }
 
             /* Grid: single column on small mobile */
@@ -1895,7 +1971,7 @@
             }
 
             .typewriter-heading {
-                font-size: clamp(1.6rem, 7vw, 2.4rem);
+                font-size: clamp(1.5rem, 6.5vw, 2.2rem);
                 letter-spacing: -1px;
             }
 
@@ -1932,7 +2008,7 @@
             }
 
             .process-section {
-                padding: 72px 0 80px;
+                padding: 60px 0 68px;
             }
 
             .process-steps {
@@ -1964,23 +2040,24 @@
             }
 
             .swiper {
-                padding: 3rem 0;
+                padding: 2.5rem 0;
             }
 
             .swiper-slide {
-                width: 280px;
+                width: min(290px, calc(100vw - 2.5rem));
             }
 
             .testimonial-card {
-                padding: 1.5rem;
+                padding: 1.35rem 1.15rem;
             }
 
             .testimonial-card__text {
-                font-size: 0.95rem;
+                font-size: 0.925rem;
+                line-height: 1.65;
             }
 
             .testimonials-inner {
-                padding: 3rem 1rem 0;
+                padding: 2.5rem 0.75rem 0;
             }
 
             .testimonials-kicker {
@@ -1998,22 +2075,22 @@
 
         @media (max-width: 380px) {
             main {
-                padding: 0 0.875rem;
+                padding: 0 0.75rem;
             }
 
             .specimens-section,
             .process-section {
-                margin-left: -0.875rem;
-                margin-right: -0.875rem;
+                margin-left: -0.75rem;
+                margin-right: -0.75rem;
             }
 
             .specimens-inner,
             .process-inner {
-                padding: 0 0.875rem;
+                padding: 0 0.75rem;
             }
 
             .hero-heading {
-                font-size: clamp(1.75rem, 9vw, 2.4rem);
+                font-size: clamp(1.75rem, 8.5vw, 2.2rem);
             }
 
             .specimen-card__meta-item {
@@ -2252,6 +2329,13 @@
             color: #fff;
             border-color: var(--color-on-surface);
             box-shadow: 0 4px 12px rgba(28, 24, 18, 0.15);
+        }
+
+        .tester-sliders {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
         }
 
         .tester-slider-group {
@@ -2721,7 +2805,7 @@
 
             .trust-ribbon__inner {
                 gap: 1rem;
-                padding: 0 1.5rem;
+                padding: 0 1.25rem;
             }
 
             .trust-pill {
@@ -2731,21 +2815,205 @@
 
             .tester-inner,
             .slider-inner {
-                padding: 0 1.5rem;
+                padding: 0 1.25rem;
             }
 
             .comparison-slider {
-                height: 320px;
+                height: 300px;
+                touch-action: pan-y;
+            }
+
+            .slider-drag-handle {
+                touch-action: none;
+            }
+
+            .slider-content {
+                padding: 1.5rem 1rem;
+            }
+
+            .slider-badge {
+                font-size: 0.5rem;
+                padding: 3px 8px;
+                margin-bottom: 0.85rem;
             }
 
             .slider-statement {
-                font-size: clamp(2rem, 7vw, 4rem);
+                font-size: clamp(1.75rem, 7vw, 3.2rem);
+                margin-bottom: 0.75rem;
             }
 
             .slider-desc {
                 font-size: 0.75rem;
+                padding: 0 0.5rem;
+                max-width: 300px;
+            }
+        }
+
+        /* Tester section mobile responsiveness */
+        @media (max-width: 900px) {
+            .tester-controls {
+                flex-direction: column;
+                align-items: stretch;
+                padding: 1.25rem;
+                gap: 1.25rem;
+            }
+
+            .tester-tabs-container {
+                min-width: 0;
+                width: 100%;
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
+                scrollbar-width: none;
+                padding-bottom: 4px;
+            }
+
+            .tester-tabs-container::-webkit-scrollbar {
+                display: none;
+            }
+
+            .tester-tabs {
+                flex-wrap: nowrap;
+                width: max-content;
+                gap: 0.4rem;
+            }
+
+            .tester-tab {
+                white-space: nowrap;
+                padding: 0.4rem 0.85rem;
+                font-size: 0.75rem;
+                flex-shrink: 0;
+            }
+
+            .tester-sliders {
+                width: 100%;
+                justify-content: space-between;
+                gap: 1rem;
+            }
+
+            .tester-slider-group {
+                flex: 1 1 calc(50% - 0.5rem);
+                min-width: 130px;
+            }
+
+            .tester-slider {
+                width: 100%;
+                max-width: 140px;
+            }
+
+            .tester-canvas-container {
+                padding: 2.5rem 1rem;
+                min-height: 200px;
+            }
+
+            .tester-text {
+                font-size: clamp(28px, 8vw, 48px) !important;
+            }
+        }
+
+        @media (max-width: 560px) {
+            .tester-inner {
                 padding: 0 1rem;
             }
+
+            .tester-controls {
+                padding: 1rem 0.85rem;
+                gap: 1rem;
+            }
+
+            .tester-sliders {
+                flex-direction: column;
+                align-items: stretch;
+                gap: 0.85rem;
+            }
+
+            .tester-slider-group {
+                width: 100%;
+                justify-content: space-between;
+            }
+
+            .tester-slider {
+                flex: 1;
+                max-width: none;
+                margin-left: 0.75rem;
+            }
+
+            .tester-color-group {
+                width: 100%;
+                justify-content: space-between;
+            }
+
+            .tester-reset-btn {
+                align-self: flex-end;
+            }
+
+            .tester-canvas-container {
+                padding: 2rem 0.75rem;
+                min-height: 180px;
+            }
+
+            .tester-text {
+                font-size: clamp(24px, 8.5vw, 40px) !important;
+            }
+        }
+
+        /* ── Custom Color Picker Styles for Font Tester ── */
+        .tester-color-group {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-family: 'Instrument Sans', sans-serif;
+            font-size: 0.825rem;
+            color: var(--color-on-surface);
+            font-weight: 600;
+        }
+
+        .tester-color-title {
+            text-transform: capitalize;
+        }
+
+        .tester-color-label {
+            font-weight: 500;
+            color: #555;
+            font-size: 0.775rem;
+            margin-left: 0.25rem;
+        }
+
+        .tester-color-swatch-wrapper {
+            position: relative;
+            width: 22px;
+            height: 22px;
+            border-radius: 4px;
+            overflow: hidden;
+            border: 1.5px solid rgba(28, 24, 18, 0.12);
+            cursor: pointer;
+            display: inline-block;
+            vertical-align: middle;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+            background: #1c1812;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .tester-color-swatch-wrapper:hover {
+            transform: scale(1.08);
+            box-shadow: 0 2px 6px rgba(28, 24, 18, 0.15);
+        }
+
+        .tester-color-swatch-wrapper--bg {
+            background: #ffffff;
+        }
+
+        .tester-color-input {
+            position: absolute;
+            top: -5px;
+            left: -5px;
+            width: 32px;
+            height: 32px;
+            border: none;
+            padding: 0;
+            margin: 0;
+            cursor: pointer;
+            background: none;
+            opacity: 0;
         }
     </style>
 </head>
@@ -2782,7 +3050,8 @@
                 <li><a class="nav-link" href="/main-website/marketplace.html">Marketplace</a></li>
                 <li><a class="nav-link" href="/main-website/custom_font_services/custom_font_services.html">Services</a>
                 </li>
-                <!-- <li><a class="nav-link" href="/main-website/font-finder.html">Font Finder</a></li> -->
+
+                <li><a class="nav-link" href="/main-website/blog/index.html">Journal</a></li>
                 <li><a class="nav-link" href="/main-website/about.html">About</a></li>
             </ul>
             <div class="nav-actions">
@@ -2809,7 +3078,8 @@
             <a class="nav-mobile-menu__link" href="/main-website/marketplace.html">Marketplace</a>
             <a class="nav-mobile-menu__link"
                 href="/main-website/custom_font_services/custom_font_services.html">Services</a>
-            <!-- <a class="nav-mobile-menu__link" href="/main-website/font-finder.html">Font Finder</a> -->
+
+            <a class="nav-mobile-menu__link" href="/main-website/blog/index.html">Journal</a>
             <a class="nav-mobile-menu__link" href="/main-website/about.html">About</a>
         </div>
         <div class="nav-mobile-menu__actions">
@@ -2976,73 +3246,6 @@
                 </div>
             </div>
         </section>
-        <!-- ─── LIVE FONT TESTER PLAYGROUND ─── -->
-        <section class="tester-section" aria-label="Font Tester Playground">
-            <div class="tester-inner">
-                <header class="tester-header">
-                    <p class="tester-kicker">Experience the Craft</p>
-                    <h2 class="tester-title">Interactive Font Tester</h2>
-                    <p class="tester-subtitle">Type your own brand text below and toggle between Glyphere's premium
-                        custom typefaces in real time.</p>
-                </header>
-
-                <div class="tester-playground">
-                    <!-- Controls Bar -->
-                    <div class="tester-controls">
-                        <div class="tester-tabs-container">
-                            <div class="tester-tabs" role="tablist" aria-label="Font Family Selection">
-                                <button class="tester-tab active" role="tab" aria-selected="true"
-                                    data-font="Turbo_Block">Turbo Block</button>
-                                <button class="tester-tab" role="tab" aria-selected="false" data-font="Nova Legacy">Nova
-                                    Legacy</button>
-                                <button class="tester-tab" role="tab" aria-selected="false"
-                                    data-font="Midnight_Citadel">Midnight Citadel</button>
-                                <button class="tester-tab" role="tab" aria-selected="false"
-                                    data-font="Pebble_Sans">Pebble Sans</button>
-                                <button class="tester-tab" role="tab" aria-selected="false"
-                                    data-font="Storybook_Sans">Storybook Sans</button>
-                                <button class="tester-tab" role="tab" aria-selected="false"
-                                    data-font="Sonnet Italic">Sonnet Italic</button>
-                            </div>
-                        </div>
-
-                        <div class="tester-slider-group">
-                            <label for="fontTesterSize" class="tester-slider-label">Size: <span
-                                    id="testerSizeValue">48px</span></label>
-                            <input type="range" id="fontTesterSize" min="20" max="100" value="48" step="1"
-                                class="tester-slider" aria-label="Font size resizer">
-                        </div>
-                    </div>
-
-                    <!-- Testing Canvas -->
-                    <div class="tester-canvas-container">
-                        <div class="tester-grid-lines" aria-hidden="true">
-                            <div class="tester-grid-line tester-grid-line--h tester-grid-line--top"></div>
-                            <div class="tester-grid-line tester-grid-line--h tester-grid-line--mid"></div>
-                            <div class="tester-grid-line tester-grid-line--h tester-grid-line--bot"></div>
-                            <div class="tester-grid-line tester-grid-line--v tester-grid-line--left"></div>
-                            <div class="tester-grid-line tester-grid-line--v tester-grid-line--right"></div>
-                            <div class="tester-grid-corner tester-grid-corner--tl"></div>
-                            <div class="tester-grid-corner tester-grid-corner--tr"></div>
-                            <div class="tester-grid-corner tester-grid-corner--bl"></div>
-                            <div class="tester-grid-corner tester-grid-corner--br"></div>
-                        </div>
-                        <div id="testerText" class="tester-text font-Turbo_Block" contenteditable="true"
-                            spellcheck="false">G<span style="letter-spacing: -0.15em;">L</span>YPHERE / CRAFTED SOUL
-                        </div>
-                        <button id="testerReset" class="tester-reset-btn" aria-label="Reset text">
-                            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor"
-                                stroke-width="2">
-                                <path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l.73-.72" stroke-linecap="round"
-                                    stroke-linejoin="round" />
-                            </svg>
-                            Reset
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </section>
-
 
         <!-- ─── SPECIMENS SHOWCASE ─── -->
         <section class="specimens-section" aria-label="Featured type specimens">
@@ -3435,6 +3638,111 @@
                     </article>
 
                 </div><!-- /specimens-grid -->
+
+                <div class="specimens-mobile-cta-wrap">
+                    <a class="specimens-mobile-cta" href="/main-website/marketplace.html">
+                        <span>Explore All 27 Typefaces</span>
+                        <svg viewBox="0 0 10 10" fill="none" width="10" height="10" aria-hidden="true">
+                            <path d="M2 8L8 2M8 2H3M8 2V7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- ─── LIVE FONT TESTER PLAYGROUND ─── -->
+        <section class="tester-section" aria-label="Font Tester Playground">
+            <div class="tester-inner">
+                <header class="tester-header">
+                    <p class="tester-kicker">Experience the Craft</p>
+                    <h2 class="tester-title">Interactive Font Tester</h2>
+                    <p class="tester-subtitle">Type your own brand text below and toggle between Glyphere's premium
+                        custom typefaces in real time.</p>
+                </header>
+
+                <div class="tester-playground">
+                    <!-- Controls Bar -->
+                    <div class="tester-controls">
+                        <div class="tester-tabs-container">
+                            <div class="tester-tabs" role="tablist" aria-label="Font Family Selection">
+                                <button class="tester-tab active" role="tab" aria-selected="true"
+                                    data-font="Turbo_Block">Turbo Block</button>
+                                <button class="tester-tab" role="tab" aria-selected="false" data-font="Nova Legacy">Nova
+                                    Legacy</button>
+                                <button class="tester-tab" role="tab" aria-selected="false"
+                                    data-font="Midnight_Citadel">Midnight Citadel</button>
+                                <button class="tester-tab" role="tab" aria-selected="false"
+                                    data-font="Pebble_Sans">Pebble Sans</button>
+                                <button class="tester-tab" role="tab" aria-selected="false"
+                                    data-font="Storybook_Sans">Storybook Sans</button>
+                                <button class="tester-tab" role="tab" aria-selected="false"
+                                    data-font="Sonnet Italic">Sonnet Italic</button>
+                            </div>
+                        </div>
+
+                        <div class="tester-sliders">
+                            <div class="tester-slider-group">
+                                <label for="fontTesterSize" class="tester-slider-label">Size: <span
+                                        id="testerSizeValue">48px</span></label>
+                                <input type="range" id="fontTesterSize" min="20" max="100" value="48" step="1"
+                                    class="tester-slider" aria-label="Font size resizer">
+                            </div>
+                            <div class="tester-slider-group">
+                                <label for="fontTesterSpacing" class="tester-slider-label">Spacing: <span
+                                        id="testerSpacingValue">0px</span></label>
+                                <input type="range" id="fontTesterSpacing" min="-5" max="20" value="0" step="1"
+                                    class="tester-slider" aria-label="Font letter spacing resizer">
+                            </div>
+                            <div class="tester-slider-group">
+                                <label for="fontTesterLineHeight" class="tester-slider-label">Height: <span
+                                        id="testerLineHeightValue">1.2</span></label>
+                                <input type="range" id="fontTesterLineHeight" min="0.8" max="2.5" value="1.2" step="0.1"
+                                    class="tester-slider" aria-label="Font line height resizer">
+                            </div>
+                            <div class="tester-color-group">
+                                <span class="tester-color-title">Color</span>
+                                <span class="tester-color-label">Text</span>
+                                <div class="tester-color-swatch-wrapper" id="testerTextColorWrapper"
+                                    style="background: #1c1812;">
+                                    <input type="color" id="testerTextColor" value="#1c1812" class="tester-color-input"
+                                        aria-label="Text color picker">
+                                </div>
+                                <span class="tester-color-label">BG</span>
+                                <div class="tester-color-swatch-wrapper tester-color-swatch-wrapper--bg"
+                                    id="testerBgColorWrapper" style="background: #ffffff;">
+                                    <input type="color" id="testerBgColor" value="#ffffff" class="tester-color-input"
+                                        aria-label="Background color picker">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Testing Canvas -->
+                    <div class="tester-canvas-container">
+                        <div class="tester-grid-lines" aria-hidden="true">
+                            <div class="tester-grid-line tester-grid-line--h tester-grid-line--top"></div>
+                            <div class="tester-grid-line tester-grid-line--h tester-grid-line--mid"></div>
+                            <div class="tester-grid-line tester-grid-line--h tester-grid-line--bot"></div>
+                            <div class="tester-grid-line tester-grid-line--v tester-grid-line--left"></div>
+                            <div class="tester-grid-line tester-grid-line--v tester-grid-line--right"></div>
+                            <div class="tester-grid-corner tester-grid-corner--tl"></div>
+                            <div class="tester-grid-corner tester-grid-corner--tr"></div>
+                            <div class="tester-grid-corner tester-grid-corner--bl"></div>
+                            <div class="tester-grid-corner tester-grid-corner--br"></div>
+                        </div>
+                        <div id="testerText" class="tester-text font-Turbo_Block" contenteditable="true"
+                            spellcheck="false">G<span style="letter-spacing: -0.15em;">L</span>YPHERE / CRAFTED SOUL
+                        </div>
+                        <button id="testerReset" class="tester-reset-btn" aria-label="Reset text">
+                            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l.73-.72" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                            </svg>
+                            Reset
+                        </button>
+                    </div>
+                </div>
             </div>
         </section>
 
@@ -3745,6 +4053,63 @@
         </section>
 
 
+        <!-- ─── NEWSLETTER SECTION ─── -->
+        <section class="newsletter-section" aria-label="Newsletter signup">
+            <div class="newsletter-inner">
+                <div class="newsletter-content">
+                    <div class="newsletter-icon-wrap" aria-hidden="true">
+                        <svg class="newsletter-envelope" viewBox="0 0 64 64" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <rect x="4" y="14" width="56" height="38" rx="4" stroke="currentColor" stroke-width="2.5"
+                                fill="none" />
+                            <path d="M4 18l28 20 28-20" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                        </svg>
+                        <span class="newsletter-icon-glow"></span>
+                    </div>
+                    <div class="newsletter-text">
+                        <p class="newsletter-kicker">Free Typography Guide</p>
+                        <h2 class="newsletter-title">Get our <em>Typography Guide</em> — Free</h2>
+                        <p class="newsletter-sub">Subscribe to the Glyphere Journal and receive our curated Typography
+                            Guide PDF. Learn spacing, hierarchy, font pairing, and what separates good type from great.
+                        </p>
+                        <ul class="newsletter-perks">
+                            <li>✦ 28-page illustrated Typography Guide PDF</li>
+                            <li>✦ New typeface releases first</li>
+                            <li>✦ Type tips, tutorials & behind-the-scenes</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="newsletter-form-wrap">
+                    <form class="newsletter-form" id="homepageNewsletterForm" onsubmit="handleNewsletterSubmit(event)">
+                        <div class="newsletter-field-group">
+                            <label class="newsletter-label" for="newsletterName">First Name</label>
+                            <input class="newsletter-input" type="text" id="newsletterName"
+                                placeholder="Your first name" required />
+                        </div>
+                        <div class="newsletter-field-group">
+                            <label class="newsletter-label" for="newsletterEmail">Email Address</label>
+                            <input class="newsletter-input" type="email" id="newsletterEmail"
+                                placeholder="your@email.com" required />
+                        </div>
+                        <button class="newsletter-submit" type="submit" id="newsletterSubmitBtn">
+                            <span class="newsletter-submit__text">Send Me the Guide</span>
+                            <svg class="newsletter-submit__icon" viewBox="0 0 20 20" fill="none" width="16" height="16">
+                                <path d="M3 10h14M10 4l6 6-6 6" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                        </button>
+                    </form>
+                    <div class="newsletter-success" id="newsletterSuccess" style="display:none;">
+                        <div class="newsletter-success__icon">✓</div>
+                        <p class="newsletter-success__title">You're in!</p>
+                        <p class="newsletter-success__sub">Check your inbox for the Glyphere Typography Guide.</p>
+                    </div>
+                    <p class="newsletter-privacy">No spam. Unsubscribe any time. We respect your privacy.</p>
+                </div>
+            </div>
+        </section>
+
         <!-- ─── CTA BANNER ─── -->
         <section class="cta-section" aria-label="Call to action">
             <div class="cta-banner">
@@ -3778,6 +4143,30 @@
             <div>
                 <p class="footer-brand-name">Glyphere</p>
                 <p class="footer-brand-desc">Custom fonts &amp; premium typefaces crafted with soul.</p>
+                <div class="footer-social-icons">
+                    <a href="#" class="footer-icon" aria-label="Instagram">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+                            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+                            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
+                        </svg>
+                    </a>
+                    <a href="#" class="footer-icon" aria-label="Twitter / X">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+                            <path
+                                d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.73-8.835L2.25 2.25h6.962l4.265 5.64 5.767-5.64zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+                        </svg>
+                    </a>
+                    <a href="#" class="footer-icon" aria-label="LinkedIn">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+                            <rect x="2" y="9" width="4" height="12" />
+                            <circle cx="4" cy="4" r="2" />
+                        </svg>
+                    </a>
+                </div>
             </div>
             <nav>
                 <h3 class="footer-col-title">Marketplace</h3>
@@ -3785,7 +4174,7 @@
                     <li><a href="/main-website/marketplace.html">All Fonts</a></li>
                     <li><a href="/main-website/marketplace.html">Serifs</a></li>
                     <li><a href="/main-website/marketplace.html">Display</a></li>
-                    <!-- <li><a href="/main-website/font-finder.html">Font Finder</a></li> -->
+
                 </ul>
             </nav>
             <nav>
@@ -3794,6 +4183,15 @@
                     <li><a href="/main-website/custom_font_services/custom_font_services.html">Custom Design</a></li>
                     <li><a href="/main-website/custom_font_services/custom_font_services.html">Brand Typography</a></li>
                     <li><a href="/main-website/custom_font_services/custom_font_services.html">Licensing</a></li>
+                </ul>
+            </nav>
+            <nav>
+                <h3 class="footer-col-title">Journal</h3>
+                <ul class="footer-links-list">
+                    <li><a href="/main-website/blog/index.html">The Journal</a></li>
+                    <li><a href="/main-website/blog/best-fonts-for-luxury-brands.html">Luxury Fonts</a></li>
+
+                    <li><a href="/main-website/blog/behind-nova-legacy.html">Behind Nova Legacy</a></li>
                 </ul>
             </nav>
             <nav>
@@ -3806,7 +4204,7 @@
             </nav>
         </div>
         <div class="footer-bottom">
-            <p class="footer-copy">© 2024 Glyphere. All Rights Reserved.</p>
+            <p class="footer-copy">© 2026 Glyphere. All Rights Reserved.</p>
             <nav class="footer-legal">
                 <a href="/main-website/licensing.html">Licensing Terms</a>
                 <a href="/main-website/cookie-policy.html">Cookie Policy</a>
@@ -3845,6 +4243,14 @@
                 coverflowEffect: { rotate: 5, stretch: 0, depth: 100, modifier: 2.5, slideShadows: false },
                 autoplay: { delay: 4000, disableOnInteraction: false },
                 pagination: { el: '.swiper-pagination', clickable: true },
+                breakpoints: {
+                    320: {
+                        coverflowEffect: { rotate: 0, stretch: 0, depth: 25, modifier: 1.1, slideShadows: false }
+                    },
+                    768: {
+                        coverflowEffect: { rotate: 5, stretch: 0, depth: 100, modifier: 2.5, slideShadows: false }
+                    }
+                }
             });
 
             /* ── Card tilt on hover ── */
@@ -4003,6 +4409,11 @@
                 }, { passive: true });
 
                 function updateParallax() {
+                    if (window.innerWidth <= 768) {
+                        requestAnimationFrame(updateParallax);
+                        return;
+                    }
+
                     currentX += (targetX - currentX) * 0.08;
                     currentY += (targetY - currentY) * 0.08;
 
@@ -4064,6 +4475,11 @@
                     });
                 });
 
+                const spacingInput = document.getElementById('fontTesterSpacing');
+                const spacingLabel = document.getElementById('testerSpacingValue');
+                const heightInput = document.getElementById('fontTesterLineHeight');
+                const heightLabel = document.getElementById('testerLineHeightValue');
+
                 if (sizeInput && sizeLabel) {
                     sizeInput.addEventListener('input', function () {
                         const val = sizeInput.value;
@@ -4072,10 +4488,79 @@
                     });
                 }
 
+                if (spacingInput && spacingLabel) {
+                    spacingInput.addEventListener('input', function () {
+                        const val = spacingInput.value;
+                        spacingLabel.textContent = val + 'px';
+                        canvasText.style.letterSpacing = val + 'px';
+                    });
+                }
+
+                if (heightInput && heightLabel) {
+                    heightInput.addEventListener('input', function () {
+                        const val = heightInput.value;
+                        heightLabel.textContent = val;
+                        canvasText.style.lineHeight = val;
+                    });
+                }
+
+                const textColorInput = document.getElementById('testerTextColor');
+                const textColorWrapper = document.getElementById('testerTextColorWrapper');
+                const bgColorInput = document.getElementById('testerBgColor');
+                const bgColorWrapper = document.getElementById('testerBgColorWrapper');
+                const canvasContainer = document.querySelector('.tester-canvas-container');
+
+                if (textColorInput && textColorWrapper) {
+                    textColorInput.addEventListener('input', function () {
+                        const val = textColorInput.value;
+                        canvasText.style.color = val;
+                        textColorWrapper.style.backgroundColor = val;
+                    });
+                }
+
+                if (bgColorInput && bgColorWrapper && canvasContainer) {
+                    bgColorInput.addEventListener('input', function () {
+                        const val = bgColorInput.value;
+                        canvasContainer.style.backgroundColor = val;
+                        bgColorWrapper.style.backgroundColor = val;
+                    });
+                }
+
                 if (resetBtn) {
                     resetBtn.addEventListener('click', function () {
                         canvasText.innerHTML = 'G<span style="letter-spacing: -0.15em;">L</span>YPHERE / CRAFTED SOUL';
+                        if (sizeInput && sizeLabel) {
+                            sizeInput.value = 48;
+                            sizeLabel.textContent = '48px';
+                            canvasText.style.fontSize = '48px';
+                        }
+                        if (spacingInput && spacingLabel) {
+                            spacingInput.value = 0;
+                            spacingLabel.textContent = '0px';
+                            canvasText.style.letterSpacing = '0px';
+                        }
+                        if (heightInput && heightLabel) {
+                            heightInput.value = 1.2;
+                            heightLabel.textContent = '1.2';
+                            canvasText.style.lineHeight = '1.2';
+                        }
+                        if (textColorInput && textColorWrapper) {
+                            textColorInput.value = '#1c1812';
+                            canvasText.style.color = '#1c1812';
+                            textColorWrapper.style.backgroundColor = '#1c1812';
+                        }
+                        if (bgColorInput && bgColorWrapper && canvasContainer) {
+                            bgColorInput.value = '#ffffff';
+                            canvasContainer.style.backgroundColor = '#ffffff';
+                            bgColorWrapper.style.backgroundColor = '#ffffff';
+                        }
                     });
+                }
+
+                if (window.innerWidth <= 640 && sizeInput && sizeLabel && canvasText) {
+                    sizeInput.value = 36;
+                    sizeLabel.textContent = '36px';
+                    canvasText.style.fontSize = '36px';
                 }
             })();
 
@@ -4103,7 +4588,9 @@
                 function startDrag(e) {
                     isDragging = true;
                     slider.classList.add('is-dragging');
-                    e.preventDefault();
+                    const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+                    const pct = getPercentage(clientX);
+                    setPosition(pct);
                 }
 
                 function endDrag() {
@@ -4121,12 +4608,13 @@
                 }
 
                 handle.addEventListener('mousedown', startDrag);
-                handle.addEventListener('touchstart', startDrag, { passive: false });
+                handle.addEventListener('touchstart', startDrag, { passive: true });
+                slider.addEventListener('touchstart', startDrag, { passive: true });
 
                 window.addEventListener('mouseup', endDrag);
                 window.addEventListener('touchend', endDrag);
                 window.addEventListener('mousemove', onDrag);
-                window.addEventListener('touchmove', onDrag, { passive: false });
+                window.addEventListener('touchmove', onDrag, { passive: true });
 
                 slider.addEventListener('click', function (e) {
                     if (e.target.closest('.slider-drag-handle')) return;
@@ -4186,6 +4674,646 @@
             })();
 
         }); /* end DOMContentLoaded */
+    </script>
+
+    <!-- ═══════════════════════════════════════
+       NEWSLETTER SECTION + MODAL STYLES & SCRIPTS
+    ═══════════════════════════════════════ -->
+    <style>
+        /* ── Nav Dropdown ── */
+        .nav-dropdown {
+            position: relative;
+        }
+
+        .nav-dropdown__menu {
+            position: absolute;
+            top: calc(100% + 10px);
+            left: 50%;
+            transform: translateX(-50%);
+            background: #fff;
+            border: 1px solid rgba(201, 171, 129, 0.2);
+            border-radius: 12px;
+            padding: 0.5rem;
+            min-width: 160px;
+            box-shadow: 0 12px 40px rgba(28, 24, 18, 0.12);
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.2s, transform 0.2s;
+            transform: translateX(-50%) translateY(-6px);
+            z-index: 100;
+            list-style: none;
+        }
+
+        .nav-dropdown:hover .nav-dropdown__menu,
+        .nav-dropdown:focus-within .nav-dropdown__menu {
+            opacity: 1;
+            pointer-events: auto;
+            transform: translateX(-50%) translateY(0);
+        }
+
+        .nav-dropdown__menu li a {
+            display: block;
+            padding: 0.5rem 0.875rem;
+            border-radius: 8px;
+            font-family: 'Instrument Sans', sans-serif;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--color-on-surface);
+            transition: background 0.15s, color 0.15s;
+        }
+
+        .nav-dropdown__menu li a:hover {
+            background: var(--color-surface-container-low);
+            color: var(--gold-dark);
+        }
+
+        /* ── Newsletter Section ── */
+        .newsletter-section {
+            padding: 5rem 2.5rem;
+            background: linear-gradient(135deg, var(--color-surface-container-low) 0%, #fff 100%);
+            border-top: 1px solid rgba(201, 171, 129, 0.12);
+            border-bottom: 1px solid rgba(201, 171, 129, 0.12);
+        }
+
+        .newsletter-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .newsletter-content {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .newsletter-icon-wrap {
+            position: relative;
+            width: fit-content;
+        }
+
+        .newsletter-envelope {
+            width: 56px;
+            height: 56px;
+            color: var(--gold);
+            animation: envelopeFloat 3s ease-in-out infinite;
+        }
+
+        @keyframes envelopeFloat {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-6px);
+            }
+        }
+
+        .newsletter-icon-glow {
+            position: absolute;
+            bottom: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 40px;
+            height: 8px;
+            border-radius: 50%;
+            background: rgba(201, 171, 129, 0.3);
+            filter: blur(4px);
+            animation: glowPulse 3s ease-in-out infinite;
+        }
+
+        @keyframes glowPulse {
+
+            0%,
+            100% {
+                opacity: 0.4;
+                width: 30px;
+            }
+
+            50% {
+                opacity: 0.8;
+                width: 50px;
+            }
+        }
+
+        .newsletter-kicker {
+            font-family: 'Instrument Sans', sans-serif;
+            font-size: 0.6875rem;
+            font-weight: 700;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: var(--gold-dark);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .newsletter-kicker::before {
+            content: '';
+            display: inline-block;
+            width: 24px;
+            height: 1px;
+            background: var(--gold);
+            opacity: 0.6;
+        }
+
+        .newsletter-title {
+            font-family: 'Bricolage Grotesque', sans-serif;
+            font-size: clamp(1.75rem, 3vw, 2.5rem);
+            font-weight: 800;
+            letter-spacing: -0.04em;
+            line-height: 1.1;
+            color: var(--color-primary);
+        }
+
+        .newsletter-title em {
+            font-style: italic;
+            color: var(--gold-dark);
+        }
+
+        .newsletter-sub {
+            font-family: 'Instrument Sans', sans-serif;
+            font-size: 0.9rem;
+            color: var(--color-on-surface-variant);
+            line-height: 1.7;
+        }
+
+        .newsletter-perks {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.4rem;
+        }
+
+        .newsletter-perks li {
+            font-family: 'Instrument Sans', sans-serif;
+            font-size: 0.825rem;
+            color: var(--color-on-surface);
+            font-weight: 500;
+        }
+
+        /* ── Form Side ── */
+        .newsletter-form-wrap {
+            background: #fff;
+            border: 1px solid rgba(201, 171, 129, 0.2);
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 8px 32px rgba(28, 24, 18, 0.05);
+        }
+
+        .newsletter-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .newsletter-field-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.4rem;
+        }
+
+        .newsletter-label {
+            font-family: 'Instrument Sans', sans-serif;
+            font-size: 0.725rem;
+            font-weight: 700;
+            color: var(--color-on-surface);
+        }
+
+        .newsletter-input {
+            padding: 0.75rem 1rem;
+            border: 1.5px solid rgba(28, 24, 18, 0.1);
+            border-radius: 10px;
+            font-family: 'Instrument Sans', sans-serif;
+            font-size: 0.875rem;
+            color: var(--color-on-surface);
+            background: var(--color-surface-container-low);
+            outline: none;
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+
+        .newsletter-input:focus {
+            border-color: var(--gold);
+            box-shadow: 0 0 0 3px rgba(201, 171, 129, 0.15);
+        }
+
+        .newsletter-input::placeholder {
+            color: #ccc;
+        }
+
+        .newsletter-submit {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.625rem;
+            padding: 0.875rem 1.5rem;
+            border-radius: 12px;
+            background: linear-gradient(135deg, var(--color-primary), #333);
+            color: #f2e7d5;
+            font-family: 'Instrument Sans', sans-serif;
+            font-size: 0.875rem;
+            font-weight: 700;
+            cursor: pointer;
+            border: none;
+            transition: transform 0.2s, box-shadow 0.2s;
+            margin-top: 0.25rem;
+        }
+
+        .newsletter-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(28, 24, 18, 0.2);
+        }
+
+        .newsletter-success {
+            text-align: center;
+            padding: 2rem 1rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .newsletter-success__icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .newsletter-success__title {
+            font-family: 'Bricolage Grotesque', sans-serif;
+            font-size: 1.25rem;
+            font-weight: 800;
+            color: var(--color-primary);
+        }
+
+        .newsletter-success__sub {
+            font-family: 'Instrument Sans', sans-serif;
+            font-size: 0.85rem;
+            color: var(--color-on-surface-variant);
+        }
+
+        .newsletter-privacy {
+            font-family: 'Instrument Sans', sans-serif;
+            font-size: 0.65rem;
+            color: var(--color-outline);
+            margin-top: 0.75rem;
+            text-align: center;
+        }
+
+        /* ── Newsletter Modal ── */
+        .nl-modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(28, 24, 18, 0.6);
+            backdrop-filter: blur(6px);
+            -webkit-backdrop-filter: blur(6px);
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1.5rem;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.4s ease;
+        }
+
+        .nl-modal-overlay.visible {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .nl-modal {
+            background: #fff;
+            border-radius: 24px;
+            max-width: 520px;
+            width: 100%;
+            overflow: hidden;
+            box-shadow: 0 32px 80px rgba(28, 24, 18, 0.2);
+            transform: scale(0.92) translateY(20px);
+            transition: transform 0.4s cubic-bezier(0.34, 1.2, 0.64, 1), opacity 0.4s;
+            opacity: 0;
+            position: relative;
+        }
+
+        .nl-modal-overlay.visible .nl-modal {
+            transform: scale(1) translateY(0);
+            opacity: 1;
+        }
+
+        .nl-modal__close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: var(--color-surface-container-low);
+            border: 1px solid rgba(28, 24, 18, 0.1);
+            font-size: 1rem;
+            color: var(--color-on-surface);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 10;
+            transition: background 0.2s;
+        }
+
+        .nl-modal__close:hover {
+            background: var(--color-surface-container-high);
+        }
+
+        .nl-modal__hero {
+            background: var(--color-gradient);
+            padding: 2.5rem 2rem 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .nl-modal__hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image: radial-gradient(circle, rgba(201, 171, 129, 0.07) 1px, transparent 1px);
+            background-size: 22px 22px;
+        }
+
+        .nl-modal__guide-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(201, 171, 129, 0.15);
+            border: 1px solid rgba(201, 171, 129, 0.3);
+            border-radius: 40px;
+            padding: 4px 14px;
+            font-family: 'Instrument Sans', sans-serif;
+            font-size: 0.6rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 1rem;
+            position: relative;
+        }
+
+        .nl-modal__title {
+            font-family: 'Bricolage Grotesque', sans-serif;
+            font-size: 1.75rem;
+            font-weight: 800;
+            letter-spacing: -0.04em;
+            color: #f2e7d5;
+            line-height: 1.1;
+            margin-bottom: 0.5rem;
+            position: relative;
+        }
+
+        .nl-modal__sub {
+            font-family: 'Instrument Sans', sans-serif;
+            font-size: 0.85rem;
+            color: var(--body-text-on-gradient);
+            line-height: 1.6;
+            position: relative;
+        }
+
+        .nl-modal__body {
+            padding: 1.75rem 2rem 2rem;
+        }
+
+        .nl-modal__form {
+            display: flex;
+            flex-direction: column;
+            gap: 0.875rem;
+        }
+
+        .nl-modal__input {
+            padding: 0.75rem 1rem;
+            border: 1.5px solid rgba(28, 24, 18, 0.1);
+            border-radius: 10px;
+            font-family: 'Instrument Sans', sans-serif;
+            font-size: 0.875rem;
+            color: var(--color-on-surface);
+            background: var(--color-surface-container-low);
+            outline: none;
+            transition: border-color 0.2s, box-shadow 0.2s;
+            width: 100%;
+        }
+
+        .nl-modal__input:focus {
+            border-color: var(--gold);
+            box-shadow: 0 0 0 3px rgba(201, 171, 129, 0.15);
+        }
+
+        .nl-modal__input::placeholder {
+            color: #ccc;
+        }
+
+        .nl-modal__submit {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.625rem;
+            padding: 0.875rem 1.5rem;
+            border-radius: 12px;
+            background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+            color: #fff;
+            font-family: 'Instrument Sans', sans-serif;
+            font-size: 0.875rem;
+            font-weight: 700;
+            cursor: pointer;
+            border: none;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .nl-modal__submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 18px rgba(138, 108, 62, 0.4);
+        }
+
+        .nl-modal__dismiss {
+            width: 100%;
+            text-align: center;
+            margin-top: 0.75rem;
+            font-family: 'Instrument Sans', sans-serif;
+            font-size: 0.725rem;
+            color: var(--color-outline);
+            cursor: pointer;
+            background: none;
+            border: none;
+            transition: color 0.2s;
+        }
+
+        .nl-modal__dismiss:hover {
+            color: var(--color-on-surface);
+        }
+
+        .nl-modal__success-body {
+            padding: 2.5rem 2rem;
+            text-align: center;
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .nl-modal__success-icon {
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .nl-modal__success-title {
+            font-family: 'Bricolage Grotesque', sans-serif;
+            font-size: 1.25rem;
+            font-weight: 800;
+            color: var(--color-primary);
+        }
+
+        .nl-modal__success-sub {
+            font-family: 'Instrument Sans', sans-serif;
+            font-size: 0.85rem;
+            color: var(--color-on-surface-variant);
+            line-height: 1.6;
+        }
+
+        @media (max-width: 900px) {
+            .newsletter-inner {
+                grid-template-columns: 1fr;
+                gap: 2.5rem;
+            }
+
+            .newsletter-section {
+                padding: 3rem 1.5rem;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .newsletter-section {
+                padding: 2.5rem 1rem;
+            }
+
+            .nl-modal-overlay {
+                padding: 1rem;
+                align-items: flex-end;
+            }
+
+            .nl-modal {
+                max-height: 90vh;
+                overflow-y: auto;
+                -webkit-overflow-scrolling: touch;
+                border-radius: 20px;
+            }
+
+            .nl-modal__hero {
+                padding: 2rem 1.25rem 1.5rem;
+            }
+
+            .nl-modal__title {
+                font-size: 1.45rem;
+            }
+
+            .nl-modal__body {
+                padding: 1.25rem 1.25rem 1.5rem;
+            }
+        }
+    </style>
+
+    <!-- Newsletter Modal HTML -->
+    <div class="nl-modal-overlay" id="nlModalOverlay" role="dialog" aria-modal="true" aria-label="Newsletter signup">
+        <div class="nl-modal" id="nlModal">
+            <button class="nl-modal__close" id="nlModalClose" aria-label="Close">✕</button>
+            <div class="nl-modal__hero">
+                <div class="nl-modal__guide-badge">📖 Free Typography Guide</div>
+                <h2 class="nl-modal__title">Get our Typography<br />Guide — Free</h2>
+                <p class="nl-modal__sub">28 pages of illustrated typography knowledge. Yours instantly, when you join
+                    the Glyphere Journal.</p>
+            </div>
+            <div class="nl-modal__body" id="nlModalFormWrap">
+                <form class="nl-modal__form" onsubmit="handleModalNewsletter(event)">
+                    <input class="nl-modal__input" type="email" placeholder="your@email.com" required
+                        aria-label="Email for newsletter" />
+                    <button class="nl-modal__submit" type="submit">Send Me the Guide →</button>
+                </form>
+                <button class="nl-modal__dismiss" onclick="dismissModal()">No thanks, I'll skip the free guide</button>
+            </div>
+            <div class="nl-modal__success-body" id="nlModalSuccess">
+                <div class="nl-modal__success-icon">✓</div>
+                <p class="nl-modal__success-title">You're in!</p>
+                <p class="nl-modal__success-sub">Check your inbox for the Glyphere Typography Guide. Welcome to the
+                    Journal.</p>
+                <button
+                    style="margin-top:0.5rem;padding:0.6rem 1.25rem;border-radius:40px;background:var(--color-primary);color:#f2e7d5;font-family:'Instrument Sans',sans-serif;font-size:0.8rem;font-weight:700;cursor:pointer;border:none;"
+                    onclick="dismissModal()">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // ── Newsletter form handlers ──
+        function handleNewsletterSubmit(e) {
+            e.preventDefault();
+            document.getElementById('homepageNewsletterForm').style.display = 'none';
+            document.getElementById('newsletterSuccess').style.display = 'flex';
+            // Mark as signed up
+            localStorage.setItem('glyphere_newsletter', 'signed_up');
+        }
+
+        function handleModalNewsletter(e) {
+            e.preventDefault();
+            document.getElementById('nlModalFormWrap').style.display = 'none';
+            const success = document.getElementById('nlModalSuccess');
+            success.style.display = 'flex';
+            localStorage.setItem('glyphere_newsletter', 'signed_up');
+        }
+
+        function dismissModal() {
+            const overlay = document.getElementById('nlModalOverlay');
+            overlay.classList.remove('visible');
+            localStorage.setItem('glyphere_modal_dismissed', '1');
+        }
+
+        // ── Show modal after 30s if not already dismissed/signed up ──
+        (function () {
+            const dismissed = localStorage.getItem('glyphere_modal_dismissed');
+            const signedup = localStorage.getItem('glyphere_newsletter');
+            if (dismissed || signedup) return;
+
+            setTimeout(function () {
+                const overlay = document.getElementById('nlModalOverlay');
+                if (overlay) overlay.classList.add('visible');
+            }, 30000);
+
+            // Close on overlay click
+            document.getElementById('nlModalOverlay').addEventListener('click', function (e) {
+                if (e.target === this) dismissModal();
+            });
+            document.getElementById('nlModalClose').addEventListener('click', dismissModal);
+
+            // Close on Escape
+            document.addEventListener('keydown', function (e) {
+                if (e.key === 'Escape') dismissModal();
+            });
+        })();
     </script>
 
 </body>

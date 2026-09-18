@@ -8,6 +8,10 @@
 .abt-main {
     padding: 0 2.5rem;
     background: var(--color-background);
+    overflow-x: clip;
+    width: 100%;
+    max-width: 100vw;
+    box-sizing: border-box;
 }
 
 /* ─────────────────────────────────────────
@@ -767,6 +771,8 @@
     .abt-connect {
         margin-left: -1.5rem;
         margin-right: -1.5rem;
+        overflow-x: clip;
+        max-width: 100vw;
     }
 
     .abt-philosophy__inner,
@@ -821,6 +827,8 @@
     .abt-connect {
         margin-left: -1rem;
         margin-right: -1rem;
+        overflow-x: clip;
+        max-width: 100vw;
     }
 
     .abt-philosophy__inner,
@@ -841,6 +849,28 @@
         flex-direction: column;
         align-items: flex-start;
         gap: 0.5rem;
+    }
+}
+
+@media (max-width: 380px) {
+    .abt-main {
+        padding: 0 0.75rem;
+    }
+
+    .abt-philosophy,
+    .abt-connect {
+        margin-left: -0.75rem;
+        margin-right: -0.75rem;
+    }
+
+    .abt-philosophy__inner,
+    .abt-connect__inner {
+        padding: 0 0.75rem;
+    }
+
+    .abt-stats__grid {
+        grid-template-columns: 1fr;
+        gap: 0.75rem;
     }
 }
 

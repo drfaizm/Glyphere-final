@@ -3,9 +3,7 @@
    Shared across all pages.
    ===================================================== */
 
-
-
-/* ─────────────────────────────────────────
+/* ─────────────────────────────────────────
    2. PRELOADER
    Fades out the preloader after page load
    and reveals the main content.
@@ -14,15 +12,20 @@ window.addEventListener('load', function () {
   const preloader = document.getElementById('preloader');
   const content = document.getElementById('content');
 
-  setTimeout(function () {
-    preloader.classList.add('hide');
-    if (content) content.classList.add('show');
-
+  if (preloader) {
     setTimeout(function () {
-      preloader.style.display = 'none';
-    }, 800); // matches CSS fade duration
-  }, 1200);    // initial delay before hiding
+      preloader.classList.add('hide');
+      if (content) content.classList.add('show');
+
+      setTimeout(function () {
+        preloader.style.display = 'none';
+      }, 800);
+    }, 1200);
+  } else if (content) {
+    content.classList.add('show');
+  }
 });
+
 /* ─────────────────────────────────────────
    1. NAV SCROLL SHADOW
    Adds .scrolled class to #header when
@@ -253,14 +256,13 @@ window.addEventListener('scroll', function () {
             <span class="nav-user-dropdown__email">' + currentUser.email + '</span>\
           </div>\
           <div class="nav-user-dropdown__divider"></div>\
-          <a class="nav-user-dropdown__item" href="/main-website/dashboard.html">\
+          <a class="nav-user-dropdown__item" href="/main-website/marketplace.html">\
             <svg viewBox="0 0 24 24">\
-              <rect x="3" y="3" width="7" height="9"></rect>\
-              <rect x="14" y="3" width="7" height="5"></rect>\
-              <rect x="14" y="12" width="7" height="9"></rect>\
-              <rect x="3" y="16" width="7" height="5"></rect>\
+              <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>\
+              <polyline points="2 17 12 22 22 17"></polyline>\
+              <polyline points="2 12 12 17 22 12"></polyline>\
             </svg>\
-            Designer Dashboard\
+            Explore Marketplace\
           </a>\
           <div class="nav-user-dropdown__divider"></div>\
           <a class="nav-user-dropdown__item nav-user-dropdown__item--logout" id="navLogoutBtn">\
@@ -296,9 +298,9 @@ window.addEventListener('scroll', function () {
         </div>\
         <span class="mobile-user-card__name">' + currentUser.name + '</span>\
         <span class="mobile-user-card__email">' + currentUser.email + '</span>\
-        <a class="mobile-user-card__logout" href="/main-website/dashboard.html" style="background: rgba(201, 171, 129, 0.12); border: 1px solid rgba(201, 171, 129, 0.25); color: var(--gold); margin-bottom: 0.5rem; text-decoration: none;">\
-          <svg viewBox="0 0 24 24" style="stroke: currentColor;"><rect x="3" y="3" width="7" height="9"></rect><rect x="14" y="3" width="7" height="5"></rect><rect x="14" y="12" width="7" height="9"></rect><rect x="3" y="16" width="7" height="5"></rect></svg>\
-          Dashboard\
+        <a class="mobile-user-card__logout" href="/main-website/marketplace.html" style="background: rgba(201, 171, 129, 0.12); border: 1px solid rgba(201, 171, 129, 0.25); color: var(--gold); margin-bottom: 0.5rem; text-decoration: none;">\
+          <svg viewBox="0 0 24 24" style="stroke: currentColor;"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>\
+          Marketplace\
         </a>\
         <button class="mobile-user-card__logout" id="mobileLogoutBtn">\
           <svg viewBox="0 0 24 24">\
@@ -346,3 +348,203 @@ window.addEventListener('scroll', function () {
   });
 
 })();
+
+/* ─────────────────────────────────────────
+   7. ACTIVE NAVIGATION LINK AUTO-HIGHLIGHT
+   Automatically highlights the active top-level
+   and mobile navigation links based on URL.
+───────────────────────────────────────── */
+(function () {
+  'use strict';
+
+  function syncActiveNavigation() {
+    var path = (window.location.pathname || '').toLowerCase();
+    var allLinks = document.querySelectorAll('.nav-link, .nav-mobile-menu__link');
+    if (!allLinks.length) return;
+
+    var currentSection = null;
+    if (path.indexOf('marketplace') !== -1 || path.indexOf('font-detail') !== -1 || path.indexOf('/fonts/') !== -1) {
+      currentSection = 'marketplace';
+    } else if (path.indexOf('custom_font_services') !== -1 || path.indexOf('services') !== -1) {
+      currentSection = 'services';
+    } else if (path.indexOf('/blog') !== -1 || path.indexOf('journal') !== -1) {
+      currentSection = 'journal';
+    } else if (path.indexOf('about') !== -1) {
+      currentSection = 'about';
+    }
+
+    allLinks.forEach(function (link) {
+      var href = (link.getAttribute('href') || '').toLowerCase();
+      var isMatch = false;
+
+      if (currentSection === 'marketplace' && (href.indexOf('marketplace') !== -1 || href.indexOf('font-detail') !== -1)) {
+        isMatch = true;
+      } else if (currentSection === 'services' && (href.indexOf('custom_font_services') !== -1 || href.indexOf('services') !== -1)) {
+        isMatch = true;
+      } else if (currentSection === 'journal' && (href.indexOf('/blog') !== -1 || href.indexOf('journal') !== -1)) {
+        isMatch = true;
+      } else if (currentSection === 'about' && href.indexOf('about') !== -1) {
+        isMatch = true;
+      }
+
+      if (isMatch) {
+        link.classList.add('active', 'nav-link--active');
+        link.setAttribute('aria-current', 'page');
+      } else if (currentSection !== null) {
+        link.classList.remove('active', 'nav-link--active');
+        link.removeAttribute('aria-current');
+      }
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', syncActiveNavigation);
+  } else {
+    syncActiveNavigation();
+  }
+})();
+
+/* ─────────────────────────────────────────
+   8. GLYPHERE TYPOGRAPHY SHIELD
+   Disables right-click inspection & DevTools
+   shortcuts to protect proprietary typography.
+   Allows normal typing in text inputs/areas.
+───────────────────────────────────────── */
+(function () {
+  'use strict';
+
+  var toastTimer = null;
+
+  function showShieldToast(message) {
+    var toast = document.getElementById('glyphereShieldToast');
+    if (!toast) {
+      toast = document.createElement('div');
+      toast.id = 'glyphereShieldToast';
+      toast.style.cssText = [
+        'position: fixed',
+        'bottom: 28px',
+        'left: 50%',
+        'transform: translateX(-50%) translateY(20px)',
+        'background: rgba(22, 19, 16, 0.95)',
+        'color: #e5c992',
+        'border: 1px solid rgba(201, 152, 70, 0.45)',
+        'box-shadow: 0 16px 40px rgba(0, 0, 0, 0.7), 0 0 24px rgba(201, 152, 70, 0.25)',
+        'padding: 12px 22px',
+        'border-radius: 100px',
+        'font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
+        'font-size: 0.8125rem',
+        'font-weight: 500',
+        'letter-spacing: 0.02em',
+        'display: flex',
+        'align-items: center',
+        'gap: 10px',
+        'z-index: 999999999',
+        'opacity: 0',
+        'pointer-events: none',
+        'transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1)',
+        'backdrop-filter: blur(14px)',
+        '-webkit-backdrop-filter: blur(14px)',
+        'max-width: 90vw',
+        'white-space: nowrap'
+      ].join(';');
+
+      toast.innerHTML = '<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="#d4a853" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg><span id="glyphereShieldText"></span>';
+      document.body.appendChild(toast);
+    }
+
+    var textEl = document.getElementById('glyphereShieldText');
+    if (textEl) textEl.textContent = message || 'Protected by Glyphere Typography Shield';
+
+    requestAnimationFrame(function () {
+      toast.style.opacity = '1';
+      toast.style.transform = 'translateX(-50%) translateY(0)';
+    });
+
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(function () {
+      toast.style.opacity = '0';
+      toast.style.transform = 'translateX(-50%) translateY(20px)';
+    }, 2600);
+  }
+
+  // 1. Disable Right-Click (Context Menu) except on inputs/textareas
+  document.addEventListener('contextmenu', function (e) {
+    var tag = (e.target && e.target.tagName) ? e.target.tagName.toLowerCase() : '';
+    var isEditable = e.target && (e.target.isContentEditable || tag === 'input' || tag === 'textarea');
+    if (isEditable) return; // Allow normal right-click paste/copy in text inputs
+
+    e.preventDefault();
+    e.stopPropagation();
+    showShieldToast('Protected by Glyphere Typography Shield • Right-click disabled');
+    return false;
+  }, { capture: true });
+
+  // 2. Block DevTools and Source View Keyboard Shortcuts (Chrome, Safari, Firefox, Edge)
+  document.addEventListener('keydown', function (e) {
+    var key = (e.key || '').toLowerCase();
+    var code = e.code || '';
+    var keyCode = e.keyCode || 0;
+    var isCtrlOrCmd = e.ctrlKey || e.metaKey;
+    var isShift = e.shiftKey;
+    var isAlt = e.altKey;
+
+    // F12
+    if (key === 'f12' || code === 'F12' || keyCode === 123) {
+      e.preventDefault();
+      e.stopPropagation();
+      showShieldToast('Developer tools are disabled to protect proprietary typography');
+      return false;
+    }
+
+    // Ctrl+Shift+I / Cmd+Option+I (Inspect Element) - Handles Mac Safari dead-key (Option+I produces ˆ)
+    if (isCtrlOrCmd && (isShift || isAlt) && (key === 'i' || key === 'ˆ' || code === 'KeyI' || keyCode === 73)) {
+      e.preventDefault();
+      e.stopPropagation();
+      showShieldToast('Developer inspection is disabled to protect proprietary typography');
+      return false;
+    }
+
+    // Ctrl+Shift+J / Cmd+Option+J (Console) - Handles Mac Safari Option+J (produces ∆)
+    if (isCtrlOrCmd && (isShift || isAlt) && (key === 'j' || key === '∆' || code === 'KeyJ' || keyCode === 74)) {
+      e.preventDefault();
+      e.stopPropagation();
+      showShieldToast('Developer console is disabled');
+      return false;
+    }
+
+    // Ctrl+Shift+C / Cmd+Option+C (Inspect Element cursor) - Handles Mac Safari Option+C (produces ç)
+    if (isCtrlOrCmd && (isShift || isAlt) && (key === 'c' || key === 'ç' || code === 'KeyC' || keyCode === 67)) {
+      e.preventDefault();
+      e.stopPropagation();
+      showShieldToast('Element inspection is disabled');
+      return false;
+    }
+
+    // Ctrl+U / Cmd+Option+U (View Source) - Handles Mac Safari Option+U (produces ¨)
+    if (isCtrlOrCmd && (key === 'u' || key === '¨' || code === 'KeyU' || keyCode === 85)) {
+      e.preventDefault();
+      e.stopPropagation();
+      showShieldToast('Source viewing is disabled');
+      return false;
+    }
+
+    // Ctrl+S / Cmd+S (Save Page)
+    if (isCtrlOrCmd && (key === 's' || code === 'KeyS' || keyCode === 83)) {
+      e.preventDefault();
+      e.stopPropagation();
+      showShieldToast('Page saving is disabled');
+      return false;
+    }
+  }, { capture: true });
+
+  // 3. Prevent dragging font specimen elements / cards
+  document.addEventListener('dragstart', function (e) {
+    var tag = (e.target && e.target.tagName) ? e.target.tagName.toLowerCase() : '';
+    if (tag === 'img' || tag === 'svg' || (e.target && e.target.classList && e.target.classList.contains('font-card'))) {
+      e.preventDefault();
+    }
+  }, { passive: false });
+
+})();
+
+

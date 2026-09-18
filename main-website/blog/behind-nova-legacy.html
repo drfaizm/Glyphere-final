@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/png" href="/main-website/glyphere.png" />
+    <title>Behind the Typeface: The Story of Nova Legacy | Glyphere Journal</title>
+    <meta name="description" content="Nova Legacy began as a sketch on a napkin. Two months of iteration later, it became one of Glyphere's most beloved typefaces. This is the story of how it came to be." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@200..800&family=Manrope:wght@200..800&family=Instrument+Sans:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" />
+    <link rel="stylesheet" href="/main-website/css/globalstyle.css" />
+    <link rel="stylesheet" href="/main-website/javascript/loginmodel.css" />
+        /* Fonts loaded via globalstyle.css Base64 */
+        body { color: var(--color-on-background); }
+
+        .art-header { background: var(--color-gradient); padding: 8rem 2.5rem 5rem; position: relative; overflow: hidden; }
+        .art-header::before { content: ''; position: absolute; inset: 0; background-image: radial-gradient(circle, rgba(201,171,129,0.07) 1px, transparent 1px); background-size: 28px 28px; }
+        .art-header__inner { max-width: 780px; margin: 0 auto; position: relative; }
+        .art-breadcrumb { display: flex; align-items: center; gap: 6px; font-family: 'Instrument Sans', sans-serif; font-size: 0.7rem; color: rgba(242,231,213,0.5); margin-bottom: 1.5rem; }
+        .art-breadcrumb a { color: rgba(242,231,213,0.5); text-decoration: none; }
+        .art-breadcrumb a:hover { color: var(--gold); }
+        .art-tag { display: inline-flex; align-items: center; gap: 5px; padding: 4px 12px; border-radius: 40px; font-family: 'Instrument Sans', sans-serif; font-size: 0.6rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; background: rgba(99,102,241,0.12); border: 1px solid rgba(99,102,241,0.25); color: #818cf8; margin-bottom: 1.25rem; width: fit-content; }
+        .art-title { font-family: 'Bricolage Grotesque', sans-serif; font-size: clamp(2rem, 4vw, 3.25rem); font-weight: 800; letter-spacing: -0.04em; line-height: 1.1; color: #f2e7d5; margin-bottom: 1.25rem; }
+        .art-meta { display: flex; align-items: center; gap: 1rem; font-family: 'Instrument Sans', sans-serif; font-size: 0.775rem; color: rgba(242,231,213,0.55); flex-wrap: wrap; }
+        .art-meta__author { display: flex; align-items: center; gap: 8px; color: rgba(242,231,213,0.8); font-weight: 600; }
+        .art-meta__avatar { width: 30px; height: 30px; border-radius: 50%; background: linear-gradient(135deg, var(--gold), var(--gold-dark)); display: flex; align-items: center; justify-content: center; font-size: 0.7rem; color: #fff; font-weight: 700; }
+        .art-body { max-width: 780px; margin: 0 auto; padding: 4rem 2.5rem 6rem; }
+        .art-lead { font-family: 'Playfair Display', serif; font-size: 1.25rem; font-style: italic; line-height: 1.75; color: var(--color-on-surface); margin-bottom: 2.5rem; padding-bottom: 2.5rem; border-bottom: 1px solid rgba(28,24,18,0.08); }
+        .art-body h2 { font-family: 'Bricolage Grotesque', sans-serif; font-size: 1.5rem; font-weight: 800; letter-spacing: -0.04em; color: var(--color-primary); margin: 2.5rem 0 1rem; }
+        .art-body p { font-family: 'Instrument Sans', sans-serif; font-size: 1rem; line-height: 1.8; color: var(--color-on-surface-variant); margin-bottom: 1.25rem; }
+        .art-body strong { color: var(--color-on-surface); font-weight: 700; }
+        .art-body a { color: var(--gold-dark); font-weight: 600; text-decoration: underline; text-underline-offset: 2px; }
+
+        /* ── Nova Showcase ── */
+        .nova-showcase {
+            background: var(--color-gradient);
+            border-radius: 20px;
+            padding: 3rem 2rem;
+            text-align: center;
+            margin: 2.5rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .nova-showcase::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image: radial-gradient(circle, rgba(201,171,129,0.06) 1px, transparent 1px);
+            background-size: 22px 22px;
+        }
+
+        .nova-showcase__text {
+            font-family: 'Nova Legacy', serif;
+            font-size: clamp(2.5rem, 5vw, 5rem);
+            color: var(--gold);
+            line-height: 1.1;
+            position: relative;
+            letter-spacing: 0.02em;
+        }
+
+        .nova-showcase__sub {
+            font-family: 'Instrument Sans', sans-serif;
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            color: rgba(201,171,129,0.5);
+            margin-top: 1rem;
+            position: relative;
+        }
+
+        /* ── Process Timeline ── */
+        .timeline {
+            margin: 2rem 0;
+            position: relative;
+            padding-left: 2rem;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(to bottom, var(--gold), transparent);
+            border-radius: 2px;
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 2rem;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -2.4rem;
+            top: 0.35rem;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: var(--gold);
+            border: 2px solid #fff;
+            box-shadow: 0 0 0 2px var(--gold);
+        }
+
+        .timeline-item__phase {
+            font-family: 'Instrument Sans', sans-serif;
+            font-size: 0.6rem;
+            font-weight: 700;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--gold-dark);
+            margin-bottom: 0.25rem;
+        }
+
+        .timeline-item__title {
+            font-family: 'Bricolage Grotesque', sans-serif;
+            font-size: 1rem;
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            color: var(--color-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-item__desc {
+            font-family: 'Instrument Sans', sans-serif;
+            font-size: 0.875rem;
+            line-height: 1.7;
+            color: var(--color-on-surface-variant);
+        }
+
+        /* ── Alphabet Display ── */
+        .alpha-grid {
+            background: #fff;
+            border: 1px solid rgba(28,24,18,0.08);
+            border-radius: 16px;
+            padding: 2rem;
+            margin: 2rem 0;
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(28,24,18,0.03);
+        }
+
+        .alpha-grid__label {
+            font-family: 'Instrument Sans', sans-serif;
+            font-size: 0.6rem;
+            font-weight: 700;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--gold-dark);
+            margin-bottom: 1rem;
+        }
+
+        .alpha-grid__chars {
+            font-family: 'Nova Legacy', serif;
+            font-size: 2rem;
+            line-height: 1.5;
+            color: var(--color-primary);
+            letter-spacing: 0.05em;
+        }
+
+        .alpha-grid__nums {
+            font-family: 'Nova Legacy', serif;
+            font-size: 1.25rem;
+            color: var(--color-on-surface-variant);
+            margin-top: 0.5rem;
+            letter-spacing: 0.1em;
+        }
+
+        .art-callout { background: linear-gradient(135deg, rgba(201,171,129,0.08), rgba(201,171,129,0.03)); border-left: 3px solid var(--gold); border-radius: 0 12px 12px 0; padding: 1.25rem 1.5rem; margin: 2rem 0; }
+        .art-callout p { margin: 0; font-family: 'Playfair Display', serif; font-style: italic; font-size: 1rem; color: var(--color-on-surface); line-height: 1.7; }
+
+        .art-cta { background: var(--color-gradient); border-radius: 18px; padding: 2.5rem; text-align: center; margin-top: 3rem; position: relative; overflow: hidden; }
+        .art-cta::before { content: ''; position: absolute; inset: 0; background-image: radial-gradient(circle, rgba(201,171,129,0.07) 1px, transparent 1px); background-size: 22px 22px; }
+        .art-cta__title { font-family: 'Bricolage Grotesque', sans-serif; font-size: 1.5rem; font-weight: 800; letter-spacing: -0.04em; color: #f2e7d5; margin-bottom: 0.5rem; position: relative; }
+        .art-cta__sub { font-family: 'Instrument Sans', sans-serif; font-size: 0.875rem; color: var(--body-text-on-gradient); margin-bottom: 1.5rem; position: relative; }
+        .art-cta__btns { display: flex; gap: 0.75rem; justify-content: center; flex-wrap: wrap; position: relative; }
+        .art-btn { display: inline-flex; align-items: center; gap: 6px; padding: 0.7rem 1.5rem; border-radius: 40px; font-family: 'Instrument Sans', sans-serif; font-size: 0.825rem; font-weight: 600; cursor: pointer; transition: all 0.2s; text-decoration: none; }
+        .art-btn--gold { background: linear-gradient(135deg, var(--gold), var(--gold-dark)); color: #fff; border: none; }
+        .art-btn--gold:hover { transform: translateY(-2px); box-shadow: 0 6px 18px rgba(138,108,62,0.45); }
+        .art-btn--ghost { background: transparent; color: #f2e7d5; border: 1px solid rgba(242,231,213,0.3); }
+        .art-btn--ghost:hover { background: rgba(242,231,213,0.08); }
+        .art-nav { display: flex; justify-content: space-between; align-items: center; padding: 2rem 0; border-top: 1px solid rgba(28,24,18,0.08); margin-top: 2rem; gap: 1rem; }
+        .art-nav__link { display: flex; flex-direction: column; gap: 4px; text-decoration: none; }
+        .art-nav__label { font-family: 'Instrument Sans', sans-serif; font-size: 0.6rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--color-outline); }
+        .art-nav__title { font-family: 'Bricolage Grotesque', sans-serif; font-size: 0.9rem; font-weight: 700; letter-spacing: -0.02em; color: var(--color-primary); transition: color 0.2s; }
+        .art-nav__link:hover .art-nav__title { color: var(--gold-dark); }
+
+        @media (max-width: 600px) {
+            .art-body { padding: 2.5rem 1.25rem 4rem; }
+            .art-header { padding: 7rem 1.25rem 3.5rem; }
+        }
+    </style>
+</head>
+<body>
+    <div id="preloader" role="status" aria-label="Loading Glyphere">
+        <div class="preloader-inner">
+            <div class="preloader-brand">
+                <div class="preloader-glyph-container"><div class="preloader-glyph"></div></div>
+                <p class="preloader-brand__name">Glyphere</p>
+                <p class="preloader-brand__tagline">From Glyph to Identity</p>
+            </div>
+        </div>
+    </div>
+    <header class="header-nav">
+        <nav class="nav-inner" aria-label="Main navigation">
+            <div class="nav-logo-group">
+                <a href="/main-website/homepage.html"><img src="/main-website/glyphere.png" class="nav-logo-img" alt="Glyphere" width="40" height="40" /></a>
+                <a class="nav-logo-name" href="/main-website/homepage.html">Glyphere</a>
+            </div>
+            <ul class="nav-links" role="list">
+                <li><a class="nav-link" href="/main-website/marketplace.html">Marketplace</a></li>
+                <li><a class="nav-link" href="/main-website/custom_font_services/custom_font_services.html">Services</a></li>
+
+                <li><a class="nav-link nav-link--active" href="/main-website/blog/index.html">Journal</a></li>
+                <li><a class="nav-link" href="/main-website/about.html">About</a></li>
+            </ul>
+            <div class="nav-actions">
+                <a class="nav-cart" href="/main-website/cart.html" id="navCartBtn" aria-label="Shopping cart">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z" /><line x1="3" y1="6" x2="21" y2="6" /><path d="M16 10a4 4 0 0 1-8 0" /></svg>
+                    <span class="nav-cart__badge" id="navCartBadge" data-count="0">0</span>
+                </a>
+                <a class="nav-signup" href="/main-website/signup-login.html">Log In</a>
+            </div>
+            <button class="nav-hamburger" aria-label="Menu" aria-expanded="false">
+                <span class="nav-hamburger__line"></span><span class="nav-hamburger__line"></span><span class="nav-hamburger__line"></span>
+            </button>
+        </nav>
+    </header>
+
+    <header class="art-header">
+        <div class="art-header__inner">
+            <div class="art-breadcrumb">
+                <a href="/main-website/homepage.html">Home</a><span>/</span>
+                <a href="/main-website/blog/index.html">Journal</a><span>/</span>
+                <span>Behind the Scenes</span>
+            </div>
+            <span class="art-tag">Behind the Scenes</span>
+            <h1 class="art-title">Behind the Typeface: The Story of Nova Legacy</h1>
+            <div class="art-meta">
+                <div class="art-meta__author"><div class="art-meta__avatar">G</div>Glyphere Studio</div>
+                <span>·</span><span>June 20, 2026</span><span>·</span><span>6 min read</span>
+            </div>
+        </div>
+    </header>
+
+    <main id="content">
+        <article class="art-body">
+
+            <p class="art-lead">Nova Legacy began as a sketch on a napkin in a coffee shop in Lahore. Two months of iteration later, it became one of Glyphere's most beloved typefaces — a warm, bold serif that somehow feels both timeless and completely contemporary.</p>
+
+            <div class="nova-showcase">
+                <div class="nova-showcase__text">Nova Legacy</div>
+                <div class="nova-showcase__sub">Glyphere Typefaces · Est. 2026</div>
+            </div>
+
+            <h2>Where It Started</h2>
+            <p>The original idea for Nova Legacy came from a frustration: <strong>there weren't enough warm serifs built for the digital screen</strong>. Most serifs were designed for print — for the ink-on-paper weight distribution that translates poorly to pixels. We wanted something that felt heritage and warm, but was built from the beginning to live on screens.</p>
+            <p>The first sketches played with high stroke contrast — the kind you see in classic display serifs from the 19th century — but softened. The terminals were rounded slightly. The serifs were bracketed but not razor-sharp. The result, on paper, already had character.</p>
+
+            <div class="art-callout">
+                <p>"We weren't trying to reinvent the serif. We were trying to remember what made the best ones so compelling — and bring that forward."</p>
+            </div>
+
+            <h2>The Design Process</h2>
+
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-item__phase">Week 1–2</div>
+                    <div class="timeline-item__title">Concept & Sketching</div>
+                    <p class="timeline-item__desc">Hand-drawn exploration of the key characters — A, G, a, g, n, o, e. These 7 characters define the personality of any serif. Getting them right sets the DNA for every other glyph.</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-item__phase">Week 3–4</div>
+                    <div class="timeline-item__title">Digitisation & Key Metrics</div>
+                    <p class="timeline-item__desc">Moving into Glyphs App, establishing the UPM, x-height, cap height, and overshoot. These foundational metrics determine how the font will look at every size.</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-item__phase">Week 5–6</div>
+                    <div class="timeline-item__title">Full Glyph Set</div>
+                    <p class="timeline-item__desc">Building out the complete Latin character set — uppercase, lowercase, numerals, punctuation, and a selection of diacritical marks for international support.</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-item__phase">Week 7–8</div>
+                    <div class="timeline-item__title">Spacing, Kerning & Testing</div>
+                    <p class="timeline-item__desc">Spacing is where typefaces live or die. Two weeks of optical spacing work, followed by kerning pairs, followed by testing in browser at every size from 12px to 120px.</p>
+                </div>
+            </div>
+
+            <h2>The Full Character Set</h2>
+            <div class="alpha-grid">
+                <div class="alpha-grid__label">Nova Legacy — Full Latin Uppercase &amp; Lowercase</div>
+                <div class="alpha-grid__chars">ABCDEFGHIJKLMNOPQRSTUVWXYZ<br/>abcdefghijklmnopqrstuvwxyz</div>
+                <div class="alpha-grid__nums">0123456789 !@#&amp;().,?</div>
+            </div>
+
+            <h2>What Makes It Work</h2>
+            <p>Nova Legacy's appeal comes from a tension between things that shouldn't quite go together: <strong>bold without being heavy, warm without being casual, historical without feeling dated</strong>. The stroke contrast is high enough to feel editorial, but the terminals are soft enough to feel approachable.</p>
+            <p>At headline sizes, it commands. At smaller sizes, it reads cleanly. This range — which is rare in display serifs — is what makes it so versatile across brand, editorial, and digital applications.</p>
+
+            <div class="art-callout">
+                <p>"A typeface succeeds when you stop noticing it and start feeling what it's saying."</p>
+            </div>
+
+            <h2>Where It Lives Best</h2>
+            <p>Nova Legacy is happiest as a headline or display typeface for brands that value warmth and authority. It works particularly well in editorial design, luxury brand identity, heritage fashion, hospitality, and food &amp; drink — anywhere that the writing should feel personal but considered.</p>
+            <p>Pair it with a clean modern sans-serif like Mistavio Sans or Pebble Sans for maximum contrast and readability.</p>
+
+            <div class="art-cta">
+                <h2 class="art-cta__title">Nova Legacy is available now</h2>
+                <p class="art-cta__sub">Own the typeface that started with a napkin sketch and ended up on a screen near you.</p>
+                <div class="art-cta__btns">
+                    <a href="/main-website/font-detail-v2.html?font=Nova_Legacy" class="art-btn art-btn--gold">View Font Details</a>
+                    <a href="/main-website/marketplace.html" class="art-btn art-btn--ghost">Browse Marketplace</a>
+                </div>
+            </div>
+
+            <nav class="art-nav" aria-label="Article navigation">
+
+                <a href="/main-website/blog/index.html" class="art-nav__link" style="text-align:right;">
+                    <span class="art-nav__label">Back to</span>
+                    <span class="art-nav__title">The Journal →</span>
+                </a>
+            </nav>
+        </article>
+    </main>
+
+
+    <!-- ═══════════════════════════════════════
+       FOOTER
+  ═══════════════════════════════════════ -->
+    <footer class="site-footer">
+        <div class="footer-grid">
+            <div>
+                <p class="footer-brand-name">Glyphere</p>
+                <p class="footer-brand-desc">Custom fonts &amp; premium typefaces crafted with soul.</p>
+                <div class="footer-social-icons">
+                    <a href="#" class="footer-icon" aria-label="Instagram">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+                            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+                            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
+                        </svg>
+                    </a>
+                    <a href="#" class="footer-icon" aria-label="Twitter / X">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+                            <path
+                                d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.73-8.835L2.25 2.25h6.962l4.265 5.64 5.767-5.64zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+                        </svg>
+                    </a>
+                    <a href="#" class="footer-icon" aria-label="LinkedIn">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+                            <rect x="2" y="9" width="4" height="12" />
+                            <circle cx="4" cy="4" r="2" />
+                        </svg>
+                    </a>
+                </div>
+            </div>
+            <nav>
+                <h3 class="footer-col-title">Marketplace</h3>
+                <ul class="footer-links-list">
+                    <li><a href="/main-website/marketplace.html">All Fonts</a></li>
+                    <li><a href="/main-website/marketplace.html">Serifs</a></li>
+                    <li><a href="/main-website/marketplace.html">Display</a></li>
+
+                </ul>
+            </nav>
+            <nav>
+                <h3 class="footer-col-title">Services</h3>
+                <ul class="footer-links-list">
+                    <li><a href="/main-website/custom_font_services/custom_font_services.html">Custom Design</a></li>
+                    <li><a href="/main-website/custom_font_services/custom_font_services.html">Brand Typography</a></li>
+                    <li><a href="/main-website/custom_font_services/custom_font_services.html">Licensing</a></li>
+                </ul>
+            </nav>
+            <nav>
+                <h3 class="footer-col-title">Journal</h3>
+                <ul class="footer-links-list">
+                    <li><a href="/main-website/blog/index.html">The Journal</a></li>
+                    <li><a href="/main-website/blog/best-fonts-for-luxury-brands.html">Luxury Fonts</a></li>
+
+                    <li><a href="/main-website/blog/behind-nova-legacy.html">Behind Nova Legacy</a></li>
+                </ul>
+            </nav>
+            <nav>
+                <h3 class="footer-col-title">Follow</h3>
+                <ul class="footer-links-list">
+                    <li><a href="#">Instagram</a></li>
+                    <li><a href="#">Twitter / X</a></li>
+                    <li><a href="#">LinkedIn</a></li>
+                </ul>
+            </nav>
+        </div>
+        <div class="footer-bottom">
+            <p class="footer-copy">© 2026 Glyphere. All Rights Reserved.</p>
+            <nav class="footer-legal">
+                <a href="/main-website/licensing.html">Licensing Terms</a>
+                <a href="/main-website/cookie-policy.html">Cookie Policy</a>
+            </nav>
+        </div>
+    </footer>
+
+    <script src="/main-website/globalscript.js"></script>
+    <script src="/main-website/cart-manager.js"></script>
+    <script src="/main-website/javascript/auth.js"></script>
+</body>
+</html>

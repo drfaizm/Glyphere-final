@@ -26,6 +26,8 @@
     <script src="globalscript.js" defer></script>
 
     <style>
+        /* ── Custom Fonts loaded via globalstyle.css Base64 ── */
+
         :root {
             /* Keep core gold variables */
             --gold: #c9ab81;
@@ -777,6 +779,28 @@
             box-shadow: 0 0 8px rgba(22, 163, 74, 0.2);
         }
 
+        /* ── Checkout Progress Popup Styles ── */
+        @keyframes pulseDot {
+            0%, 100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+            50% {
+                transform: scale(1.4);
+                opacity: 0.45;
+            }
+        }
+
+        .copy-email-btn:hover {
+            background: rgba(201, 171, 129, 0.1) !important;
+            border-color: var(--gold-dark) !important;
+            color: var(--gold-dark) !important;
+        }
+
+        .copy-email-btn:active {
+            transform: scale(0.96);
+        }
+
         /* ── Interactive License Selector Styles ── */
         .license-select-wrapper {
             position: relative;
@@ -1204,17 +1228,22 @@
 
         @media (max-width: 768px) {
             main {
-                padding: 2rem 1.5rem;
+                padding: 1.5rem 1.25rem 3rem;
+            }
+
+            .cart-title {
+                font-size: 2.25rem;
+                margin-bottom: 1.5rem;
             }
 
             .cart-items {
-                padding: 1.75rem;
+                padding: 1.5rem 1.25rem;
             }
 
             .cart-item {
                 flex-direction: column;
                 align-items: flex-start;
-                gap: 1.5rem;
+                gap: 1.25rem;
                 max-height: none;
             }
 
@@ -1222,7 +1251,7 @@
                 width: 100%;
                 justify-content: space-between;
                 flex-wrap: wrap;
-                gap: 1.25rem;
+                gap: 1rem;
             }
 
             .cart-sidebar {
@@ -1232,6 +1261,28 @@
             .item-total {
                 text-align: left;
                 min-width: auto;
+            }
+        }
+
+        @media (max-width: 480px) {
+            main {
+                padding: 1rem 0.85rem 2.5rem;
+            }
+
+            .cart-title {
+                font-size: 1.85rem;
+            }
+
+            .cart-items {
+                padding: 1.15rem 0.85rem;
+            }
+
+            .item-name {
+                font-size: 1.3rem;
+            }
+
+            .order-summary {
+                padding: 1.5rem 1rem;
             }
         }
     </style>
@@ -1266,9 +1317,8 @@
             </div>
             <ul class="nav-links" role="list">
                 <li><a class="nav-link" href="/main-website/marketplace.html">Marketplace</a></li>
-                <li><a class="nav-link" href="/main-website/custom_font_services/custom_font_services.html">Services</a>
-                </li>
-                <!-- <li><a class="nav-link" href="/main-website/font-finder.html">Font Finder</a></li> -->
+                <li><a class="nav-link" href="/main-website/custom_font_services/custom_font_services.html">Services</a></li>
+                <li><a class="nav-link" href="/main-website/blog/index.html">Journal</a></li>
                 <li><a class="nav-link" href="/main-website/about.html">About</a></li>
             </ul>
             <div class="nav-actions">
@@ -1293,9 +1343,8 @@
     <div class="nav-mobile-menu" role="dialog" aria-label="Mobile navigation">
         <div class="nav-mobile-menu__links">
             <a class="nav-mobile-menu__link" href="/main-website/marketplace.html">Marketplace</a>
-            <a class="nav-mobile-menu__link"
-                href="/main-website/custom_font_services/custom_font_services.html">Services</a>
-            <!-- <a class="nav-mobile-menu__link" href="/main-website/font-finder.html">Font Finder</a> -->
+            <a class="nav-mobile-menu__link" href="/main-website/custom_font_services/custom_font_services.html">Services</a>
+            <a class="nav-mobile-menu__link" href="/main-website/blog/index.html">Journal</a>
             <a class="nav-mobile-menu__link" href="/main-website/about.html">About</a>
         </div>
         <div class="nav-mobile-menu__actions">
@@ -1333,6 +1382,11 @@
                         <span id="total">$0.00</span>
                     </div>
                     <button class="checkout-btn" id="checkout-btn" disabled>Proceed to Checkout</button>
+                    <div style="text-align: center; margin-top: 0.95rem;">
+                        <button id="inquireEmailBtn" type="button" style="background: none; border: none; font-size: 0.8rem; color: var(--cart-text-muted); cursor: pointer; text-decoration: underline; font-family: inherit; transition: color 0.2s; padding: 0.2rem 0.5rem;" onmouseover="this.style.color='var(--gold-dark)'" onmouseout="this.style.color='var(--cart-text-muted)'">
+                            Need custom licensing invoice or wire transfer? Inquire via Email
+                        </button>
+                    </div>
 
                     <!-- Dynamic Promo System -->
                     <div class="promo-section">
@@ -1350,10 +1404,89 @@
     </main>
 
     <!-- ═══════════════════════════════════════
-       FULLSCREEN CHECKOUT simulation
+       FOOTER
+  ═══════════════════════════════════════ -->
+    <footer class="site-footer">
+        <div class="footer-grid">
+            <div>
+                <p class="footer-brand-name">Glyphere</p>
+                <p class="footer-brand-desc">Custom fonts &amp; premium typefaces crafted with soul.</p>
+                <div class="footer-social-icons">
+                    <a href="#" class="footer-icon" aria-label="Instagram">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+                            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+                            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
+                        </svg>
+                    </a>
+                    <a href="#" class="footer-icon" aria-label="Twitter / X">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+                            <path
+                                d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.73-8.835L2.25 2.25h6.962l4.265 5.64 5.767-5.64zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+                        </svg>
+                    </a>
+                    <a href="#" class="footer-icon" aria-label="LinkedIn">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+                            <rect x="2" y="9" width="4" height="12" />
+                            <circle cx="4" cy="4" r="2" />
+                        </svg>
+                    </a>
+                </div>
+            </div>
+            <nav>
+                <h3 class="footer-col-title">Marketplace</h3>
+                <ul class="footer-links-list">
+                    <li><a href="/main-website/marketplace.html">All Fonts</a></li>
+                    <li><a href="/main-website/marketplace.html">Serifs</a></li>
+                    <li><a href="/main-website/marketplace.html">Display</a></li>
+
+                </ul>
+            </nav>
+            <nav>
+                <h3 class="footer-col-title">Services</h3>
+                <ul class="footer-links-list">
+                    <li><a href="/main-website/custom_font_services/custom_font_services.html">Custom Design</a></li>
+                    <li><a href="/main-website/custom_font_services/custom_font_services.html">Brand Typography</a></li>
+                    <li><a href="/main-website/custom_font_services/custom_font_services.html">Licensing</a></li>
+                </ul>
+            </nav>
+            <nav>
+                <h3 class="footer-col-title">Journal</h3>
+                <ul class="footer-links-list">
+                    <li><a href="/main-website/blog/index.html">The Journal</a></li>
+                    <li><a href="/main-website/blog/best-fonts-for-luxury-brands.html">Luxury Fonts</a></li>
+
+                    <li><a href="/main-website/blog/behind-nova-legacy.html">Behind Nova Legacy</a></li>
+                </ul>
+            </nav>
+            <nav>
+                <h3 class="footer-col-title">Follow</h3>
+                <ul class="footer-links-list">
+                    <li><a href="#">Instagram</a></li>
+                    <li><a href="#">Twitter / X</a></li>
+                    <li><a href="#">LinkedIn</a></li>
+                </ul>
+            </nav>
+        </div>
+        <div class="footer-bottom">
+            <p class="footer-copy">© 2026 Glyphere. All Rights Reserved.</p>
+            <nav class="footer-legal">
+                <a href="/main-website/licensing.html">Licensing Terms</a>
+                <a href="/main-website/cookie-policy.html">Cookie Policy</a>
+            </nav>
+        </div>
+    </footer>
+
+    <!-- ═══════════════════════════════════════
+       FULLSCREEN STRIPE CHECKOUT MODAL
     ═══════════════════════════════════════ -->
     <div id="checkoutOverlay" class="checkout-overlay" aria-hidden="true" role="dialog">
         <div class="checkout-modal-card" style="position: relative; overflow: hidden;">
+            <button id="checkoutOverlayClose" aria-label="Cancel"
+                style="position: absolute; top: 1.25rem; right: 1.5rem; font-size: 2rem; color: var(--cart-text-muted); cursor: pointer; background: none; border: none; outline: none; font-weight: 300; line-height: 1;">&times;</button>
             <canvas id="confettiCanvas"></canvas>
             <div id="checkoutSpinnerContainer" class="checkout-spinner-container">
                 <div class="checkout-spinner"></div>
@@ -1369,15 +1502,15 @@
             <div class="checkout-bullets">
                 <div class="checkout-bullet-item active" id="bullet-step-1">
                     <div class="checkout-bullet-dot"></div>
-                    <span>Secure Encryption handshake</span>
+                    <span>Secure encryption handshake</span>
                 </div>
                 <div class="checkout-bullet-item" id="bullet-step-2">
                     <div class="checkout-bullet-dot"></div>
-                    <span>Validating transaction credentials</span>
+                    <span>Configuring Stripe payment gateway</span>
                 </div>
                 <div class="checkout-bullet-item" id="bullet-step-3">
                     <div class="checkout-bullet-dot"></div>
-                    <span>Generating bespoke digital font licenses</span>
+                    <span>Redirecting to Stripe Checkout</span>
                 </div>
             </div>
         </div>
@@ -1387,29 +1520,188 @@
        AUTHENTICATION REQUIRED MODAL
     ═══════════════════════════════════════ -->
     <div id="authRequiredOverlay" class="checkout-overlay" aria-hidden="true" role="dialog">
-        <div class="checkout-modal-card" style="position: relative; overflow: hidden; max-width: 520px; border: 1.5px solid var(--cart-border-gold); padding: 4.5rem 3.5rem;">
-            <button class="glm-close" id="authClose" aria-label="Close" style="position: absolute; top: 1.5rem; right: 2rem; font-size: 2.2rem; color: var(--cart-text-muted); cursor: pointer; background: none; border: none; outline: none; font-weight: 300;">&times;</button>
-            <div style="width: 76px; height: 76px; border-radius: 50%; background: rgba(201, 171, 129, 0.12); display: flex; align-items: center; justify-content: center; margin-bottom: 2rem; border: 1.5px solid var(--gold);">
-                <svg viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="var(--gold-dark)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-                    <circle cx="12" cy="11" r="3"/>
-                    <path d="M12 14v4"/>
+        <div class="checkout-modal-card"
+            style="position: relative; overflow: hidden; max-width: 520px; border: 1.5px solid var(--cart-border-gold); padding: 4.5rem 3.5rem;">
+            <button class="glm-close" id="authClose" aria-label="Close"
+                style="position: absolute; top: 1.5rem; right: 2rem; font-size: 2.2rem; color: var(--cart-text-muted); cursor: pointer; background: none; border: none; outline: none; font-weight: 300;">&times;</button>
+            <div
+                style="width: 76px; height: 76px; border-radius: 50%; background: rgba(201, 171, 129, 0.12); display: flex; align-items: center; justify-content: center; margin-bottom: 2rem; border: 1.5px solid var(--gold);">
+                <svg viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="var(--gold-dark)" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                    <circle cx="12" cy="11" r="3" />
+                    <path d="M12 14v4" />
                 </svg>
             </div>
-            <h2 class="checkout-step-title" style="font-size: 2.1rem; margin-bottom: 1rem; font-family: 'Bricolage Grotesque', sans-serif;">Authentication Required</h2>
-            <p class="checkout-step-desc" style="max-width: 380px; margin-bottom: 2.5rem; font-size: 0.95rem; color: var(--cart-text-muted);">To secure your perpetual typography licensing certificates, view active domains, and download your typeface assets, please log in or create an account.</p>
-            
+            <h2 class="checkout-step-title"
+                style="font-size: 2.1rem; margin-bottom: 1rem; font-family: 'Bricolage Grotesque', sans-serif;">
+                Authentication Required</h2>
+            <p class="checkout-step-desc"
+                style="max-width: 380px; margin-bottom: 2.5rem; font-size: 0.95rem; color: var(--cart-text-muted);">To
+                secure your perpetual typography licensing certificates, view active domains, and download your typeface
+                assets, please log in or create an account.</p>
+
             <div style="display: flex; flex-direction: column; width: 100%; gap: 1rem;">
-                <button class="checkout-btn" style="margin-top: 0; padding: 1.15rem;" onclick="window.location.href='/main-website/signup-login.html?tab=login&redirect=' + encodeURIComponent(window.location.pathname)">Log In to Account</button>
-                <button class="checkout-btn auth-secondary-btn" style="margin-top: 0; padding: 1.15rem;" onclick="window.location.href='/main-website/signup-login.html?tab=register&redirect=' + encodeURIComponent(window.location.pathname)">Create New Account</button>
+                <button class="checkout-btn" style="margin-top: 0; padding: 1.15rem;"
+                    onclick="window.location.href='/main-website/signup-login.html?tab=login&redirect=' + encodeURIComponent(window.location.pathname)">Log
+                    In to Account</button>
+                <button class="checkout-btn auth-secondary-btn" style="margin-top: 0; padding: 1.15rem;"
+                    onclick="window.location.href='/main-website/signup-login.html?tab=register&redirect=' + encodeURIComponent(window.location.pathname)">Create
+                    New Account</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════
+       CHECKOUT IN PROGRESS POPUP MODAL
+    ═══════════════════════════════════════ -->
+    <div id="checkoutProgressOverlay" class="checkout-overlay" aria-hidden="true" role="dialog" aria-labelledby="checkoutProgressTitle">
+        <div class="checkout-modal-card checkout-progress-card"
+            style="position: relative; overflow: hidden; max-width: 540px; border: 1.5px solid var(--cart-border-gold); padding: 3.5rem 3rem; text-align: center;">
+            <button class="glm-close" id="checkoutProgressClose" aria-label="Close"
+                style="position: absolute; top: 1.25rem; right: 1.5rem; font-size: 2rem; color: var(--cart-text-muted); cursor: pointer; background: none; border: none; outline: none; font-weight: 300; line-height: 1;">&times;</button>
+            
+            <!-- Luxury Badge Icon -->
+            <div class="checkout-progress-icon-wrap"
+                style="width: 76px; height: 76px; border-radius: 50%; background: rgba(201, 171, 129, 0.12); display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem auto; border: 1.5px solid var(--gold); box-shadow: 0 0 24px rgba(201, 171, 129, 0.2);">
+                <svg viewBox="0 0 24 24" width="34" height="34" fill="none" stroke="var(--gold-dark)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="2" y="4" width="20" height="16" rx="2" />
+                    <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
+                </svg>
+            </div>
+
+            <div style="display: inline-flex; align-items: center; gap: 0.5rem; background: rgba(201, 171, 129, 0.12); border: 1px solid rgba(201, 171, 129, 0.3); padding: 0.35rem 0.9rem; border-radius: 100px; margin-bottom: 1.25rem;">
+                <span style="width: 7px; height: 7px; border-radius: 50%; background: var(--gold-dark); animation: pulseDot 1.8s infinite;"></span>
+                <span style="font-size: 0.78rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--gold-dark);">Under Progress</span>
+            </div>
+
+            <h2 id="checkoutProgressTitle" class="checkout-step-title"
+                style="font-size: 2rem; margin-bottom: 0.85rem; font-family: 'Bricolage Grotesque', sans-serif; line-height: 1.2;">
+                Checkout Under Progress
+            </h2>
+
+            <p class="checkout-step-desc"
+                style="max-width: 440px; margin: 0 auto 1.75rem auto; font-size: 0.95rem; line-height: 1.6; color: var(--cart-text-muted);">
+                Our automated checkout gateway is currently under progress. Meanwhile, if you would like to buy this font, please send a message to our Gmail address.
+            </p>
+
+            <!-- Interactive Email Box with 1-Click Copy -->
+            <div class="checkout-email-box"
+                style="background: #faf8f5; border: 1.5px dashed var(--cart-border-gold); border-radius: 12px; padding: 1.15rem 1.35rem; margin-bottom: 1.75rem; width: 100%; display: flex; align-items: center; justify-content: space-between; gap: 1rem; text-align: left;">
+                <div style="display: flex; align-items: center; gap: 0.75rem; min-width: 0;">
+                    <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="var(--gold-dark)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0;">
+                        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                        <polyline points="22,6 12,13 2,6"/>
+                    </svg>
+                    <div style="min-width: 0;">
+                        <div style="font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--cart-text-muted); font-weight: 600;">Official Gmail Address</div>
+                        <a href="mailto:glyphere@gmail.com" id="checkoutEmailAddress" style="font-family: 'Bricolage Grotesque', sans-serif; font-size: 1.15rem; font-weight: 700; color: var(--cart-text); letter-spacing: -0.01em; text-decoration: none; word-break: break-all;">glyphere@gmail.com</a>
+                    </div>
+                </div>
+                <button id="copyEmailBtn" class="copy-email-btn"
+                    style="background: #ffffff; border: 1px solid var(--cart-border-gold); color: var(--cart-text); font-size: 0.85rem; font-weight: 600; padding: 0.55rem 0.95rem; border-radius: 8px; cursor: pointer; display: flex; align-items: center; gap: 0.4rem; transition: all 0.2s; white-space: nowrap; flex-shrink: 0;">
+                    <svg id="copyIcon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                    </svg>
+                    <span id="copyEmailText">Copy</span>
+                </button>
+            </div>
+
+            <!-- Action Buttons -->
+            <div style="display: flex; flex-direction: column; width: 100%; gap: 0.85rem;">
+                <a id="sendEmailBtn" href="mailto:glyphere@gmail.com?subject=Font%20Purchase%20Inquiry%20-%20Glyphere"
+                    class="checkout-btn"
+                    style="margin-top: 0; padding: 1.1rem; text-decoration: none; display: flex; align-items: center; justify-content: center; gap: 0.55rem; font-size: 0.95rem;">
+                    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="22" y1="2" x2="11" y2="13"></line>
+                        <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                    </svg>
+                    <span>Send Message to Buy Font</span>
+                </a>
+                <button id="checkoutProgressBackBtn" class="checkout-btn auth-secondary-btn"
+                    style="margin-top: 0; padding: 0.95rem; font-size: 0.9rem;">
+                    Back to Cart
+                </button>
             </div>
         </div>
     </div>
 
     <script>
+        /* ── Helper to remove any duplicate trailing license text in item.name ── */
+        function cleanFontItemName(rawName) {
+            if (!rawName) return 'Font';
+            return rawName.replace(/(\s*\((Desktop|Web|Commercial)(\s+License)?\))+/gi, '').trim();
+        }
+
+        /* ── Font Family Mapping Registry for Live Specimen Rendering ── */
+        const FONT_SPECIMEN_MAP = [
+            { id: 'mistavio', family: "'Mistavio_Sans', 'Mistavio Sans'", fallback: "sans-serif" },
+            { id: 'turbo_block', family: "'Turbo_Block', 'Turbo Block'", fallback: "sans-serif" },
+            { id: 'midnight_citadel', family: "'Midnight_Citadel', 'Midnight Citadel'", fallback: "serif" },
+            { id: 'pebble_sans', family: "'Pebble_Sans', 'Pebble Sans'", fallback: "sans-serif" },
+            { id: 'storybook_sans', family: "'Storybook_Sans', 'Storybook Sans'", fallback: "sans-serif" },
+            { id: 'vellum_flow', family: "'Vellum_Flow', 'Vellum Flow'", fallback: "serif" },
+            { id: 'brushfield', family: "'Brushfield_Fury', 'Brushfield Fury', 'Brushfield-Fury'", fallback: "cursive, sans-serif" },
+            { id: 'block_italic', family: "'BLOCK_ITALIC', 'BLOCK ITALIC', 'Block Italic'", fallback: "sans-serif" },
+            { id: 'stadium_bold', family: "'Stadium_Bold', 'Stadium Bold'", fallback: "sans-serif" },
+            { id: 'strata_bold', family: "'Strata_Bold', 'Strata Bold'", fallback: "sans-serif" },
+            { id: 'funkadelic', family: "'Funkadelic_Serif', 'Funkadelic Serif'", fallback: "serif" },
+            { id: 'velocity_brush', family: "'Velocity_Brush', 'Velocity Brush'", fallback: "cursive, sans-serif" },
+            { id: 'goliath_soft', family: "'Goliath_Soft', 'Goliath Soft'", fallback: "sans-serif" },
+            { id: 'velvet_monoline', family: "'Velvet_Monoline', 'Velvet Monoline'", fallback: "sans-serif" },
+            { id: 'prose_bold', family: "'Prose_Bold', 'Prose Bold'", fallback: "serif" },
+            { id: 'zenith_spark', family: "'Zenith_Spark', 'Zenith Spark'", fallback: "sans-serif" },
+            { id: 'glissade', family: "'Glissade'", fallback: "serif" },
+            { id: 'sonnet', family: "'Sonnet_Italic', 'Sonnet Italic'", fallback: "serif" },
+            { id: 'nova_legacy', family: "'Nova_Legacy', 'Nova Legacy'", fallback: "sans-serif" },
+            { id: 'nova_shell', family: "'Nova_Shell', 'Nova Shell'", fallback: "sans-serif" },
+            { id: 'boutique_seraphina', family: "'Boutique_Seraphina', 'Boutique Seraphina'", fallback: "serif" },
+            { id: 'onyx_dynasty', family: "'Onyx_Dynasty', 'Onyx Dynasty'", fallback: "serif" },
+            { id: 'apex_rounded', family: "'Apex_Rounded', 'Apex Rounded'", fallback: "sans-serif" },
+            { id: 'throttle_street', family: "'Throttle_Street', 'Throttle Street'", fallback: "sans-serif" },
+            { id: 'vanguard_axis', family: "'Vanguard_Axis', 'Vanguard Axis'", fallback: "sans-serif" },
+            { id: 'volo_scale', family: "'Volo_Scale', 'Volo Scale'", fallback: "sans-serif" },
+            { id: 'midfield', family: "'Midfield-Regular', 'Midfield Regular', 'Midfield_Regular', 'Midfield'", fallback: "sans-serif" }
+        ];
+
+        function getFontFamilyForCartItem(itemName, item) {
+            if (!itemName) return "'Manrope', sans-serif";
+            const searchKey = `${itemName} ${(item && item.id) || ''} ${(item && item.image) || ''}`.toLowerCase().replace(/[^a-z0-9]/g, '');
+
+            for (const font of FONT_SPECIMEN_MAP) {
+                const targetKey = font.id.toLowerCase().replace(/[^a-z0-9]/g, '');
+                if (searchKey.includes(targetKey)) {
+                    return `${font.family}, ${font.fallback}, 'Manrope', sans-serif`;
+                }
+            }
+
+            const cleanBase = itemName
+                .replace(/\s*\((Desktop|Web|Commercial|Complete Family)(\s+License)?\)/gi, '')
+                .replace(/\b(Regular|Bold|Italic|Light|Medium|Black|SemiBold|Thin|Complete Family)\b/gi, '')
+                .trim();
+            const underscore = cleanBase.replace(/\s+/g, '_');
+            return `'${cleanBase}', '${underscore}', 'Manrope', sans-serif`;
+        }
+
         /* ── Read/write glyphereCart (same key as add-to-cart system) ── */
         function cartGet() {
-            try { return JSON.parse(localStorage.getItem('glyphereCart') || '[]'); } catch { return []; }
+            try {
+                const raw = JSON.parse(localStorage.getItem('glyphereCart') || '[]');
+                let modified = false;
+                const cleaned = raw.map(i => {
+                    const cName = cleanFontItemName(i.name);
+                    if (cName !== i.name) {
+                        i.name = cName;
+                        modified = true;
+                    }
+                    return i;
+                });
+                if (modified) {
+                    localStorage.setItem('glyphereCart', JSON.stringify(cleaned));
+                }
+                return cleaned;
+            } catch { return []; }
         }
         function cartSave(cart) {
             localStorage.setItem('glyphereCart', JSON.stringify(cart));
@@ -1476,14 +1768,14 @@
                 const lic = item.license || 'Desktop';
                 const sys = getLicenseSystem(item);
                 const basePrice = getBasePrice(item);
-                // Convert readable family name to valid font-family token (e.g. Midnight Citadel -> Midnight_Citadel)
-                const fontFamily = item.name.replace(/\s+/g, '_');
+                const cleanName = cleanFontItemName(item.name);
+                const fontFamilyCSS = getFontFamilyForCartItem(item.name, item);
 
                 return `
                 <div class="cart-item-container" style="display: flex; flex-direction: column; width: 100%; border-bottom: 1px solid var(--cart-border); padding: 2.2rem 0; transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);" data-idx="${idx}">
                     <div class="cart-item" style="border: none; padding: 0; max-height: none; width: 100%;" data-idx="${idx}">
                         <div class="item-info">
-                            <div class="item-name">${item.name}</div>
+                            <div class="item-name">${cleanName}</div>
                             
                             <!-- Sleek Interactive License Dropdown -->
                             <div class="license-select-wrapper">
@@ -1537,8 +1829,8 @@
                     <div class="cart-item-specimen" id="specimen-drawer-${idx}">
                         <div class="specimen-card theme-sand" id="specimen-card-${idx}">
                             <div class="specimen-showcase">
-                                <span class="specimen-showcase-label">${item.name} Live Specimen</span>
-                                <div class="specimen-display-text" id="specimen-text-${idx}" style="font-family: '${fontFamily}', 'Manrope', -apple-system, sans-serif;">
+                                <span class="specimen-showcase-label">${cleanName} Live Specimen</span>
+                                <div class="specimen-display-text" id="specimen-text-${idx}" style="font-family: ${fontFamilyCSS};">
                                     Bespoke Editorial Geometry
                                 </div>
                                 <div class="specimen-meta">
@@ -2018,79 +2310,261 @@
             });
         }
 
-        // Fullscreen Checkout Simulation Sequence
-        document.getElementById('checkout-btn').addEventListener('click', () => {
-            // Check if user is logged in
-            const currentUser = localStorage.getItem('glyphere_current_user');
-            if (!currentUser) {
-                if (authOverlay) {
-                    playChime('click');
-                    authOverlay.classList.add('active');
-                    authOverlay.setAttribute('aria-hidden', 'false');
-                }
+        // Checkout In Progress Modal Logic
+        const progressOverlay = document.getElementById('checkoutProgressOverlay');
+        const progressClose = document.getElementById('checkoutProgressClose');
+        const progressBackBtn = document.getElementById('checkoutProgressBackBtn');
+        const copyEmailBtn = document.getElementById('copyEmailBtn');
+        const copyEmailText = document.getElementById('copyEmailText');
+
+        function openCheckoutProgressModal() {
+            const cart = cartGet();
+            if (!cart || cart.length === 0) return;
+
+            // Generate contextual email subject and body with current cart items
+            let itemsSummary = cart.map(i => `• ${cleanFontItemName(i.name)} (${i.license || 'Desktop'} License) — $${Number(i.price).toFixed(2)}`).join('\n');
+            const total = cart.reduce((s, i) => s + (Number(i.price) * (i.qty || 1)), 0);
+            
+            const subject = encodeURIComponent(`Font Purchase Request — Glyphere (${cart.length} item${cart.length > 1 ? 's' : ''})`);
+            const body = encodeURIComponent(
+                `Hello Glyphere Team,\n\nI would like to acquire a license for the following typeface(s):\n\n${itemsSummary}\n\nEstimated Total: $${total.toFixed(2)}\n\nPlease provide payment details and instructions for license delivery.\n\nThank you!`
+            );
+
+            const sendEmailBtn = document.getElementById('sendEmailBtn');
+            if (sendEmailBtn) {
+                sendEmailBtn.href = `mailto:glyphere@gmail.com?subject=${subject}&body=${body}`;
+            }
+
+            if (progressOverlay) {
+                playChime('click');
+                progressOverlay.classList.add('active');
+                progressOverlay.setAttribute('aria-hidden', 'false');
+            }
+        }
+
+        function closeCheckoutProgressModal() {
+            if (progressOverlay) {
+                progressOverlay.classList.remove('active');
+                progressOverlay.setAttribute('aria-hidden', 'true');
+            }
+        }
+
+        // ═══════════════════════════════════════
+        // REAL STRIPE CHECKOUT INTEGRATION
+        // ═══════════════════════════════════════
+        const checkoutOverlay = document.getElementById('checkoutOverlay');
+        const checkoutOverlayClose = document.getElementById('checkoutOverlayClose');
+        const stepTitle = document.getElementById('checkoutStepTitle');
+        const stepDesc = document.getElementById('checkoutStepDesc');
+        const bullet1 = document.getElementById('bullet-step-1');
+        const bullet2 = document.getElementById('bullet-step-2');
+        const bullet3 = document.getElementById('bullet-step-3');
+        const spinnerContainer = document.getElementById('checkoutSpinnerContainer');
+
+        function closeStripeCheckoutModal() {
+            if (checkoutOverlay) {
+                checkoutOverlay.classList.remove('active');
+                checkoutOverlay.setAttribute('aria-hidden', 'true');
+            }
+        }
+
+        // Intelligent API Endpoint Resolver (supports Hostinger PHP, /main-website subfolder, and local dev)
+        function resolveApiUrl(endpoint) {
+            // Local dev server on port 3000
+            if (window.location.port === '3000') {
+                return endpoint;
+            }
+            // Local file:// or other port (e.g. VS Code Live Server on 5500)
+            if (window.location.protocol === 'file:' || window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+                return `http://localhost:3000${endpoint}`;
+            }
+            // On Live Production (Hostinger / Apache / LiteSpeed)
+            const isSubfolder = window.location.pathname.startsWith('/main-website');
+            const basePrefix = isSubfolder ? '/main-website' : '';
+
+            let target = endpoint;
+            if (target.includes('?')) {
+                const [basePath, query] = target.split('?');
+                const cleanPath = basePath.endsWith('.php') ? basePath : (basePath + '.php');
+                target = `${cleanPath}?${query}`;
+            } else {
+                target = target.endsWith('.php') ? target : (target + '.php');
+            }
+
+            if (basePrefix && !target.startsWith('/main-website')) {
+                target = basePrefix + (target.startsWith('/') ? target : ('/' + target));
+            }
+
+            return target;
+        }
+
+        async function startStripeCheckout() {
+            const cart = cartGet();
+            if (!cart || cart.length === 0) {
+                alert('Your cart is empty.');
                 return;
             }
 
-            const overlay = document.getElementById('checkoutOverlay');
-            const spinnerContainer = document.getElementById('checkoutSpinnerContainer');
-            const stepTitle = document.getElementById('checkoutStepTitle');
-            const stepDesc = document.getElementById('checkoutStepDesc');
+            // Reset modal elements to initial state
+            if (spinnerContainer) spinnerContainer.classList.remove('success');
+            if (bullet1) { bullet1.className = 'checkout-bullet-item active'; }
+            if (bullet2) { bullet2.className = 'checkout-bullet-item'; }
+            if (bullet3) { bullet3.className = 'checkout-bullet-item'; }
 
-            const step1 = document.getElementById('bullet-step-1');
-            const step2 = document.getElementById('bullet-step-2');
-            const step3 = document.getElementById('bullet-step-3');
+            if (stepTitle) stepTitle.textContent = 'Securing Checkout';
+            if (stepDesc) stepDesc.textContent = 'Initiating encrypted Stripe gateway...';
 
-            if (!overlay) return;
-
-            // Soft click chime on entry
+            if (checkoutOverlay) {
+                checkoutOverlay.classList.add('active');
+                checkoutOverlay.setAttribute('aria-hidden', 'false');
+            }
             playChime('click');
 
-            overlay.classList.add('active');
-            overlay.setAttribute('aria-hidden', 'false');
+            try {
+                // Step 1: Handshake animation
+                await new Promise(r => setTimeout(r, 450));
+                if (bullet1) bullet1.className = 'checkout-bullet-item done';
+                if (bullet2) bullet2.className = 'checkout-bullet-item active';
+                if (stepDesc) stepDesc.textContent = 'Preparing bespoke typeface order with Stripe...';
 
-            // Step 1: Encrypting
-            setTimeout(() => {
-                playChime('click');
-                step1.classList.add('done');
-                step1.classList.remove('active');
-                step2.classList.add('active');
-                stepTitle.textContent = 'Verifying Transaction';
-                stepDesc.textContent = 'Processing encrypted payments with banking networks...';
+                const apiUrl = resolveApiUrl('/api/create-checkout-session');
+                let response;
 
-                // Step 2: Validating credentials
+                try {
+                    response = await fetch(apiUrl, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({
+                            items: cart,
+                            appliedDiscount: typeof appliedDiscount !== 'undefined' ? appliedDiscount : 0,
+                            couponCode: typeof activeCouponCode !== 'undefined' ? activeCouponCode : ''
+                        })
+                    });
+                } catch (netErr) {
+                    throw new Error(`Unable to reach payment server at ${apiUrl}. Please check your connection.`);
+                }
+
+                const rawText = await response.text();
+                let data;
+                try {
+                    data = JSON.parse(rawText);
+                } catch (parseErr) {
+                    if (rawText.trim().startsWith('<')) {
+                        throw new Error(`Payment gateway script not found at ${apiUrl}. Please ensure the "api" folder (with create-checkout-session.php) is uploaded to Hostinger.`);
+                    }
+                    throw new Error(`Server returned invalid response: ${rawText.substring(0, 100)}`);
+                }
+
+                if (!response.ok || !data.url) {
+                    throw new Error(data.error || 'Failed to initialize checkout session with Stripe.');
+                }
+
+                // Step 2 & 3: Success & Redirect
+                if (bullet2) bullet2.className = 'checkout-bullet-item done';
+                if (bullet3) bullet3.className = 'checkout-bullet-item active done';
+                if (stepTitle) stepTitle.textContent = 'Redirecting to Stripe';
+                if (stepDesc) stepDesc.textContent = 'Transferring securely to Stripe Checkout...';
+                if (spinnerContainer) spinnerContainer.classList.add('success');
+                playChime('chime');
+
                 setTimeout(() => {
+                    window.location.href = data.url;
+                }, 600);
+
+            } catch (err) {
+                console.error('Stripe checkout error:', err);
+                if (stepTitle) stepTitle.textContent = 'Checkout Error';
+                if (stepDesc) {
+                    stepDesc.innerHTML = `
+                        <span style="color: #dc2626; font-size: 0.92rem; display: block; margin-bottom: 1.25rem; line-height: 1.5;">
+                            ${err.message}
+                        </span>
+                        <div style="display: flex; gap: 0.6rem; justify-content: center;">
+                            <button id="retryCheckoutBtn" style="background: var(--gold-dark); color: #fff; border: none; padding: 0.65rem 1.25rem; border-radius: 8px; cursor: pointer; font-weight: 600; font-size: 0.85rem;">Try Again</button>
+                            <button id="cancelCheckoutBtn" style="background: #faf8f5; color: var(--cart-text); border: 1px solid var(--cart-border); padding: 0.65rem 1.25rem; border-radius: 8px; cursor: pointer; font-weight: 600; font-size: 0.85rem;">Cancel</button>
+                        </div>
+                    `;
+                    const retryBtn = document.getElementById('retryCheckoutBtn');
+                    if (retryBtn) retryBtn.onclick = startStripeCheckout;
+                    const cancelBtn = document.getElementById('cancelCheckoutBtn');
+                    if (cancelBtn) cancelBtn.onclick = closeStripeCheckoutModal;
+                }
+            }
+        }
+
+        // Trigger on Checkout Button Click -> Stripe
+        const checkoutBtn = document.getElementById('checkout-btn');
+        if (checkoutBtn) {
+            checkoutBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                startStripeCheckout();
+            });
+        }
+
+        // Inquire via Email Trigger
+        const inquireEmailBtn = document.getElementById('inquireEmailBtn');
+        if (inquireEmailBtn) {
+            inquireEmailBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                openCheckoutProgressModal();
+            });
+        }
+
+        // Close handlers for Stripe Checkout modal
+        if (checkoutOverlayClose) checkoutOverlayClose.addEventListener('click', closeStripeCheckoutModal);
+        if (checkoutOverlay) {
+            checkoutOverlay.addEventListener('click', (e) => {
+                if (e.target === checkoutOverlay) closeStripeCheckoutModal();
+            });
+        }
+
+        // Close handlers for Email Progress modal
+        if (progressClose) progressClose.addEventListener('click', closeCheckoutProgressModal);
+        if (progressBackBtn) progressBackBtn.addEventListener('click', closeCheckoutProgressModal);
+        if (progressOverlay) {
+            progressOverlay.addEventListener('click', (e) => {
+                if (e.target === progressOverlay) closeCheckoutProgressModal();
+            });
+        }
+
+        // Copy Email to Clipboard Handler
+        if (copyEmailBtn && copyEmailText) {
+            copyEmailBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                navigator.clipboard.writeText('glyphere@gmail.com').then(() => {
+                    copyEmailText.textContent = 'Copied! ✓';
+                    copyEmailBtn.style.borderColor = 'var(--gold-dark)';
+                    copyEmailBtn.style.color = 'var(--gold-dark)';
                     playChime('click');
-                    step2.classList.add('done');
-                    step2.classList.remove('active');
-                    step3.classList.add('active');
-                    stepTitle.textContent = 'Generating Assets';
-                    stepDesc.textContent = 'Compiling unique, cryptographic licensing certificates...';
-
-                    // Step 3: Success state
                     setTimeout(() => {
-                        // Play golden chime & start physics sparks confetti
-                        playChime('success');
-                        startConfetti();
+                        copyEmailText.textContent = 'Copy';
+                        copyEmailBtn.style.borderColor = '';
+                        copyEmailBtn.style.color = '';
+                    }, 2500);
+                }).catch(() => {
+                    // Fallback for older browsers
+                    const temp = document.createElement('textarea');
+                    temp.value = 'glyphere@gmail.com';
+                    document.body.appendChild(temp);
+                    temp.select();
+                    document.execCommand('copy');
+                    document.body.removeChild(temp);
+                    copyEmailText.textContent = 'Copied! ✓';
+                    setTimeout(() => { copyEmailText.textContent = 'Copy'; }, 2500);
+                });
+            });
+        }
 
-                        step3.classList.add('done');
-                        step3.classList.remove('active');
-                        if (spinnerContainer) spinnerContainer.classList.add('success');
-                        stepTitle.textContent = 'Checkout Success! ✨';
-                        stepDesc.textContent = 'Font packages have been authenticated. Downloading licenses...';
-
-                        // Clear Cart
-                        cartSave([]);
-
-                        // Final Redirect
-                        setTimeout(() => {
-                            window.location.href = '/main-website/marketplace.html';
-                        }, 2200);
-
-                    }, 1500);
-
-                }, 1500);
-
-            }, 1300);
+        // Global Escape Key Listener for Modals
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                closeStripeCheckoutModal();
+                closeCheckoutProgressModal();
+                if (authOverlay) {
+                    authOverlay.classList.remove('active');
+                    authOverlay.setAttribute('aria-hidden', 'true');
+                }
+            }
         });
 
         // Initialize UI

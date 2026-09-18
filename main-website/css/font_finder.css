@@ -4,12 +4,7 @@
    aesthetic of Glyphere.
    ===================================================== */
 
-@font-face {
-    font-family: 'Vanguard_Axis';
-    src: url('/main-website/homepage-updated/fonts/Vanguard_Axis.woff2') format('woff2');
-    font-weight: 400;
-    font-style: normal;
-}
+/* Fonts loaded via globalstyle.css Base64 */
 
 :root {
     --finder-dark: #0f0c08;

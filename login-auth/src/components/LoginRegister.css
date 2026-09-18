@@ -4,14 +4,14 @@
    CSS VARIABLES — Glyphere Design System
 ───────────────────────────────────────── */
 :root {
-  --color-surface:         #f7f5f2;
-  --color-primary:         #111111;
-  --color-on-surface:      #1c1812;
-  --color-outline:         #8a7e70;
+  --color-surface: #f7f5f2;
+  --color-primary: #111111;
+  --color-on-surface: #1c1812;
+  --color-outline: #8a7e70;
   --color-outline-variant: #cec4b4;
-  --gold-dark:             #8a6c3e;
-  --font-headline:         'Bricolage Grotesque', sans-serif;
-  --font-body:             'Manrope', sans-serif;
+  --gold-dark: #8a6c3e;
+  --font-headline: 'Bricolage Grotesque', sans-serif;
+  --font-body: 'Manrope', sans-serif;
 }
 
 /* ─────────────────────────────────────────
@@ -25,9 +25,9 @@
   border-radius: 16px;
   overflow: hidden;
   box-shadow:
-    0 2px 4px  rgba(17,17,17,0.04),
-    0 8px 24px rgba(17,17,17,0.08),
-    0 0 0 1px  var(--color-outline-variant);
+    0 2px 4px rgba(17, 17, 17, 0.04),
+    0 8px 24px rgba(17, 17, 17, 0.08),
+    0 0 0 1px var(--color-outline-variant);
 }
 
 /* ─────────────────────────────────────────
@@ -64,6 +64,7 @@
   opacity: 0;
   pointer-events: none;
 }
+
 .container.log-in-active .sign-in-container {
   opacity: 1;
   pointer-events: auto;
@@ -160,19 +161,19 @@ button {
   font-weight: 600;
   letter-spacing: 0.02em;
   cursor: pointer;
-  box-shadow: 0 2px 12px rgba(17,17,17,0.15);
+  box-shadow: 0 2px 12px rgba(17, 17, 17, 0.15);
   transition: background 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
 }
 
 button:hover {
   background: #2e2720;
   transform: translateY(-2px);
-  box-shadow: 0 4px 18px rgba(17,17,17,0.22);
+  box-shadow: 0 4px 18px rgba(17, 17, 17, 0.22);
 }
 
 button:active {
   transform: translateY(0);
-  box-shadow: 0 2px 8px rgba(17,17,17,0.12);
+  box-shadow: 0 2px 8px rgba(17, 17, 17, 0.12);
 }
 
 /* ─────────────────────────────────────────
@@ -240,11 +241,25 @@ button:active {
   z-index: 1;
 }
 
-.overlay-left  { left: 0;  opacity: 1; text-align: left;  }
-.overlay-right { right: 0; opacity: 0; text-align: right; }
+.overlay-left {
+  left: 0;
+  opacity: 1;
+  text-align: left;
+}
 
-.container.log-in-active .overlay-left  { opacity: 0; }
-.container.log-in-active .overlay-right { opacity: 1; }
+.overlay-right {
+  right: 0;
+  opacity: 0;
+  text-align: right;
+}
+
+.container.log-in-active .overlay-left {
+  opacity: 0;
+}
+
+.container.log-in-active .overlay-right {
+  opacity: 1;
+}
 
 .overlay-panel h2 {
   font-family: var(--font-headline);
@@ -271,9 +286,11 @@ button:active {
 
   .container {
     width: min(420px, 92vw);
-    height: auto;           /* content drives height */
+    height: auto;
+    /* content drives height */
     border-radius: 14px;
-    overflow: visible;      /* allow natural height, no clipping */
+    overflow: visible;
+    /* allow natural height, no clipping */
   }
 
   .overlay-container {
@@ -300,8 +317,13 @@ button:active {
   }
 
   /* Login active */
-  .container.log-in-active .sign-in-container { display: flex; }
-  .container.log-in-active .sign-up-container { display: none;  }
+  .container.log-in-active .sign-in-container {
+    display: flex;
+  }
+
+  .container.log-in-active .sign-up-container {
+    display: none;
+  }
 
   h1 {
     font-size: 1.7rem;

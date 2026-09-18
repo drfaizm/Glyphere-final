@@ -4,7 +4,9 @@
    on inputs respects padding — without this
    inputs overflow their container.
 ───────────────────────────────────────── */
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;

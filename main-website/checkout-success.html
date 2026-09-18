@@ -1,0 +1,1106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Acquisition Confirmed — Glyphere</title>
+    <meta name="description" content="Thank you for your typeface license acquisition with Glyphere.">
+    <link rel="icon" type="image/png" href="/main-website/glyphere.png">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;700;800&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+
+    <link rel="stylesheet" href="css/globalstyle.css">
+
+    <style>
+        :root {
+            --bg: #fbf9f6;
+            --surface: #ffffff;
+            --border: #e9e4dc;
+            --text: #141009;
+            --text-muted: #6e6559;
+            --gold-dark: #8c6d3b;
+            --gold-subtle: #f5efe6;
+            --green: #16a34a;
+            --green-bg: rgba(22, 163, 74, 0.08);
+            --radius: 16px;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+            font-family: 'Manrope', sans-serif;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .success-page {
+            flex: 1;
+            max-width: 680px;
+            margin: 3.5rem auto 5rem auto;
+            padding: 0 1.5rem;
+            width: 100%;
+            box-sizing: border-box;
+            text-align: center;
+        }
+
+        /* Checkmark */
+        .check-icon-wrap {
+            width: 72px;
+            height: 72px;
+            border-radius: 50%;
+            background: var(--green-bg);
+            border: 2px solid rgba(22, 163, 74, 0.25);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem auto;
+        }
+
+        .check-icon-wrap svg {
+            width: 34px;
+            height: 34px;
+            stroke: var(--green);
+            fill: none;
+            stroke-width: 2.5;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .page-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.45rem;
+            background: var(--green-bg);
+            border: 1px solid rgba(22, 163, 74, 0.2);
+            color: #15803d;
+            padding: 0.35rem 0.95rem;
+            border-radius: 100px;
+            font-size: 0.78rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            margin-bottom: 1rem;
+        }
+
+        .page-badge-dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: var(--green);
+        }
+
+        .page-title {
+            font-family: 'Bricolage Grotesque', sans-serif;
+            font-size: 2.75rem;
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            line-height: 1.15;
+            margin: 0 0 0.85rem 0;
+            color: var(--text);
+        }
+
+        .page-desc {
+            color: var(--text-muted);
+            font-size: 1.02rem;
+            line-height: 1.6;
+            margin: 0 auto 2.5rem auto;
+            max-width: 520px;
+        }
+
+        /* Clean Receipt Card */
+        .receipt-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            box-shadow: 0 10px 30px rgba(20, 16, 9, 0.03);
+            padding: 2.25rem 2rem;
+            text-align: left;
+            margin-bottom: 1.75rem;
+        }
+
+        .receipt-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.25rem;
+            padding-bottom: 1.75rem;
+            border-bottom: 1px solid var(--border);
+            margin-bottom: 1.75rem;
+        }
+
+        .receipt-col-label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--text-muted);
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+
+        .receipt-col-val {
+            font-family: 'Bricolage Grotesque', sans-serif;
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--text);
+            word-break: break-all;
+        }
+
+        .manifest-label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--text-muted);
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        /* Item Row */
+        .items-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0.85rem;
+            margin-bottom: 1.75rem;
+        }
+
+        .item-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1rem 1.15rem;
+            background: #faf8f5;
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            gap: 1rem;
+        }
+
+        .item-row-left {
+            display: flex;
+            align-items: center;
+            gap: 0.85rem;
+            min-width: 0;
+        }
+
+        .item-glyph-box {
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            background: #ffffff;
+            border: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Bricolage Grotesque', sans-serif;
+            font-weight: 800;
+            font-size: 1.2rem;
+            color: var(--gold-dark);
+            flex-shrink: 0;
+        }
+
+        .item-info {
+            min-width: 0;
+        }
+
+        .item-name {
+            font-family: 'Bricolage Grotesque', sans-serif;
+            font-weight: 700;
+            font-size: 1.05rem;
+            color: var(--text);
+        }
+
+        .item-sub {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin-top: 0.15rem;
+        }
+
+        .item-price {
+            font-family: 'Bricolage Grotesque', sans-serif;
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: var(--text);
+            white-space: nowrap;
+        }
+
+        /* Total Row */
+        .total-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 1.25rem;
+            border-top: 1px solid var(--border);
+        }
+
+        .total-label {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--text-muted);
+        }
+
+        .total-amount {
+            font-family: 'Bricolage Grotesque', sans-serif;
+            font-size: 1.85rem;
+            font-weight: 800;
+            color: var(--text);
+            letter-spacing: -0.02em;
+        }
+
+        /* Simple Delivery Box */
+        .delivery-note {
+            background: #faf8f5;
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 1.5rem 1.75rem;
+            text-align: left;
+            margin-bottom: 2.25rem;
+            display: flex;
+            gap: 1.15rem;
+            align-items: flex-start;
+        }
+
+        .delivery-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: #ffffff;
+            border: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            color: var(--gold-dark);
+        }
+
+        .delivery-text h4 {
+            margin: 0 0 0.35rem 0;
+            font-family: 'Bricolage Grotesque', sans-serif;
+            font-size: 1.08rem;
+            font-weight: 700;
+            color: var(--text);
+        }
+
+        .delivery-text p {
+            margin: 0;
+            font-size: 0.9rem;
+            line-height: 1.55;
+            color: var(--text-muted);
+        }
+
+        .delivery-text a {
+            color: var(--gold-dark);
+            text-decoration: underline;
+            font-weight: 600;
+        }
+
+        /* Instant Download Buttons & Badges */
+        .format-badges {
+            display: inline-flex;
+            gap: 0.35rem;
+            margin-top: 0.35rem;
+            flex-wrap: wrap;
+        }
+
+        .format-badge {
+            display: inline-block;
+            font-size: 0.66rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            padding: 0.15rem 0.45rem;
+            border-radius: 4px;
+            background: #ede8df;
+            color: #4a4237;
+        }
+
+        .format-badge--license {
+            background: var(--green-bg);
+            color: #15803d;
+            border: 1px solid rgba(22, 163, 74, 0.2);
+        }
+
+        .item-actions-wrap {
+            display: flex;
+            align-items: center;
+            gap: 0.85rem;
+            flex-shrink: 0;
+        }
+
+        .item-dl-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.45rem;
+            background: #141009;
+            color: #ffffff;
+            border: none;
+            padding: 0.55rem 0.95rem;
+            border-radius: 8px;
+            font-family: 'Manrope', sans-serif;
+            font-size: 0.82rem;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+            white-space: nowrap;
+        }
+
+        .item-dl-btn:hover {
+            background: #2a251e;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(20, 16, 9, 0.15);
+        }
+
+        .item-dl-btn:active {
+            transform: translateY(0);
+        }
+
+        .item-dl-btn svg {
+            width: 15px;
+            height: 15px;
+            stroke: currentColor;
+            fill: none;
+            stroke-width: 2.2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            transition: transform 0.2s;
+        }
+
+        .item-dl-btn:hover svg {
+            transform: translateY(1px);
+        }
+
+        .item-dl-btn.is-downloading {
+            background: #4a4237;
+            pointer-events: none;
+        }
+
+        .item-dl-btn.is-done {
+            background: #15803d;
+        }
+
+        /* Master Download Card */
+        .download-center-card {
+            background: linear-gradient(145deg, #ffffff 0%, #faf8f5 100%);
+            border: 1.5px solid #dfd8cc;
+            border-radius: var(--radius);
+            box-shadow: 0 12px 36px rgba(20, 16, 9, 0.05);
+            padding: 1.75rem 2rem;
+            text-align: left;
+            margin-bottom: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .download-center-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #d4af37, #8c6d3b, #22c55e);
+        }
+
+        .download-center-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .download-center-title {
+            font-family: 'Bricolage Grotesque', sans-serif;
+            font-size: 1.35rem;
+            font-weight: 800;
+            color: var(--text);
+            margin: 0 0 0.25rem 0;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .download-center-desc {
+            font-size: 0.88rem;
+            color: var(--text-muted);
+            margin: 0;
+            line-height: 1.5;
+        }
+
+        .btn-download-all {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            background: #141009;
+            color: #ffffff;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            padding: 0.75rem 1.45rem;
+            border-radius: 10px;
+            font-weight: 700;
+            font-size: 0.92rem;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+            box-shadow: 0 4px 16px rgba(20, 16, 9, 0.12);
+        }
+
+        .btn-download-all:hover {
+            background: #2a251e;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(20, 16, 9, 0.18);
+        }
+
+        .btn-download-all svg {
+            width: 18px;
+            height: 18px;
+            stroke: currentColor;
+            fill: none;
+            stroke-width: 2.2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        /* Collapsible Guide Accordion */
+        .guide-accordion {
+            background: #faf8f5;
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            margin-bottom: 2rem;
+            text-align: left;
+            overflow: hidden;
+            transition: border-color 0.2s;
+        }
+
+        .guide-accordion__trigger {
+            width: 100%;
+            background: none;
+            border: none;
+            padding: 1.15rem 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            cursor: pointer;
+            font-family: 'Bricolage Grotesque', sans-serif;
+            font-size: 1.02rem;
+            font-weight: 700;
+            color: var(--text);
+            text-align: left;
+        }
+
+        .guide-accordion__trigger svg {
+            width: 20px;
+            height: 20px;
+            stroke: currentColor;
+            fill: none;
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            transition: transform 0.25s ease;
+        }
+
+        .guide-accordion.is-open .guide-accordion__trigger svg {
+            transform: rotate(180deg);
+        }
+
+        .guide-accordion__body {
+            display: none;
+            padding: 0 1.5rem 1.5rem 1.5rem;
+            border-top: 1px solid var(--border);
+            font-size: 0.88rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+
+        .guide-accordion.is-open .guide-accordion__body {
+            display: block;
+        }
+
+        .guide-steps-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.25rem;
+            margin-top: 1.25rem;
+        }
+
+        .guide-step {
+            background: #ffffff;
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 1rem 1.15rem;
+        }
+
+        .guide-step__title {
+            font-family: 'Bricolage Grotesque', sans-serif;
+            font-weight: 700;
+            font-size: 0.92rem;
+            color: var(--text);
+            margin: 0 0 0.35rem 0;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .guide-step__text {
+            font-size: 0.82rem;
+            margin: 0;
+            color: var(--text-muted);
+            line-height: 1.5;
+        }
+
+        /* Buttons */
+        .btn-group {
+            display: flex;
+            gap: 0.85rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            background: var(--text);
+            color: #ffffff;
+            text-decoration: none;
+            padding: 0.95rem 1.85rem;
+            border-radius: 10px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.2s;
+        }
+
+        .btn-primary:hover {
+            background: #2a251e;
+            transform: translateY(-1px);
+        }
+
+        .btn-secondary {
+            background: #ffffff;
+            color: var(--text);
+            text-decoration: none;
+            padding: 0.95rem 1.75rem;
+            border-radius: 10px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            border: 1px solid var(--border);
+            transition: all 0.2s;
+        }
+
+        .btn-secondary:hover {
+            background: #f7f4ee;
+            border-color: #d8cebe;
+        }
+
+        @media (max-width: 600px) {
+            .page-title { font-size: 2.2rem; }
+            .receipt-grid { grid-template-columns: 1fr; gap: 1rem; }
+            .receipt-card { padding: 1.75rem 1.25rem; }
+            .delivery-note { flex-direction: column; gap: 0.85rem; padding: 1.25rem; }
+            .btn-group { flex-direction: column; }
+            .btn-group a { text-align: center; justify-content: center; width: 100%; box-sizing: border-box; }
+            .item-row { flex-direction: column; align-items: flex-start; gap: 0.85rem; }
+            .item-actions-wrap { width: 100%; justify-content: space-between; border-top: 1px dashed var(--border); padding-top: 0.65rem; }
+            .download-center-header { flex-direction: column; align-items: flex-start; }
+            .btn-download-all { width: 100%; justify-content: center; box-sizing: border-box; }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- HEADER -->
+    <header class="header-nav">
+        <nav class="nav-inner" aria-label="Main navigation">
+            <div class="nav-logo-group">
+                <a href="/main-website/homepage.html">
+                    <img src="/main-website/glyphere.png" class="nav-logo-img" alt="Glyphere" width="40" height="40" />
+                </a>
+                <a class="nav-logo-name" href="/main-website/homepage.html">Glyphere</a>
+            </div>
+            <ul class="nav-links" role="list">
+                <li><a class="nav-link" href="/main-website/marketplace.html">Marketplace</a></li>
+                <li><a class="nav-link" href="/main-website/custom_font_services/custom_font_services.html">Services</a></li>
+                <li><a class="nav-link" href="/main-website/blog/index.html">Journal</a></li>
+                <li><a class="nav-link" href="/main-website/about.html">About</a></li>
+            </ul>
+            <div class="nav-actions">
+                <a class="nav-cart" href="/main-website/cart.html" id="navCartBtn" aria-label="Shopping cart">
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                        <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z" />
+                        <line x1="3" y1="6" x2="21" y2="6" />
+                        <path d="M16 10a4 4 0 0 1-8 0" />
+                    </svg>
+                    <span class="nav-cart__badge" id="navCartBadge" data-count="0">0</span>
+                </a>
+                <a class="nav-signup" href="/main-website/signup-login.html">Login / Register</a>
+            </div>
+            <button class="nav-hamburger" aria-label="Menu" aria-expanded="false">
+                <span class="nav-hamburger__line"></span>
+                <span class="nav-hamburger__line"></span>
+                <span class="nav-hamburger__line"></span>
+            </button>
+        </nav>
+    </header>
+
+    <div class="nav-mobile-menu" role="dialog" aria-label="Mobile navigation">
+        <div class="nav-mobile-menu__links">
+            <a class="nav-mobile-menu__link" href="/main-website/marketplace.html">Marketplace</a>
+            <a class="nav-mobile-menu__link" href="/main-website/custom_font_services/custom_font_services.html">Services</a>
+            <a class="nav-mobile-menu__link" href="/main-website/blog/index.html">Journal</a>
+            <a class="nav-mobile-menu__link" href="/main-website/about.html">About</a>
+        </div>
+        <div class="nav-mobile-menu__actions">
+            <a class="nav-mobile-menu__cart" href="/main-website/cart.html" aria-label="Shopping cart">Cart</a>
+            <a class="nav-mobile-menu__signup" href="/main-website/signup-login.html">Login / Register</a>
+        </div>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <main class="success-page">
+        <div class="check-icon-wrap">
+            <svg viewBox="0 0 24 24">
+                <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+        </div>
+
+        <div class="page-badge">
+            <span class="page-badge-dot"></span>
+            <span>Payment Verified by Stripe</span>
+        </div>
+
+        <h1 class="page-title">Acquisition Confirmed</h1>
+        <p class="page-desc">
+            Thank you for acquiring typeface licenses from Glyphere. Your order has been securely processed and recorded.
+        </p>
+
+        <!-- Receipt Card -->
+        <div class="receipt-card">
+            <div class="receipt-grid">
+                <div>
+                    <div class="receipt-col-label">Customer Email</div>
+                    <div class="receipt-col-val" id="orderEmailDisplay">Loading...</div>
+                </div>
+                <div>
+                    <div class="receipt-col-label">Payment Status</div>
+                    <div class="receipt-col-val" style="color: var(--green);" id="orderStatusDisplay">Completed &amp; Paid ✓</div>
+                </div>
+            </div>
+
+            <div class="manifest-label">Purchased Typefaces &amp; Licenses</div>
+
+            <div class="items-list" id="orderItemsContainer">
+                <div style="padding: 1.5rem; text-align: center; color: var(--text-muted); font-size: 0.9rem;">
+                    Loading purchased items...
+                </div>
+            </div>
+
+            <div class="total-row">
+                <div class="total-label">Total Amount Paid</div>
+                <div class="total-amount" id="orderTotalDisplay">$0.00 USD</div>
+            </div>
+        </div>
+
+        <!-- Instant Download Center Card -->
+        <div class="download-center-card" id="downloadCenterCard">
+            <div class="download-center-header">
+                <div>
+                    <h2 class="download-center-title">
+                        <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--gold-dark);">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                            <polyline points="7 10 12 15 17 10"/>
+                            <line x1="12" y1="15" x2="12" y2="3"/>
+                        </svg>
+                        Instant Digital Delivery Center
+                    </h2>
+                    <p class="download-center-desc">
+                        Un-subsetted desktop OTF/TTF, web WOFF2 archives, and your signed commercial EULA are ready.
+                    </p>
+                </div>
+                <div id="downloadAllBtnContainer" style="display: none;">
+                    <button class="btn-download-all" id="downloadAllMasterBtn" onclick="triggerDownloadAll(this)">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                            <polyline points="7 10 12 15 17 10"/>
+                            <line x1="12" y1="15" x2="12" y2="3"/>
+                        </svg>
+                        <span>Download Complete Order (.ZIP)</span>
+                    </button>
+                </div>
+            </div>
+
+            <div style="font-size: 0.84rem; color: var(--text-muted); line-height: 1.5; border-top: 1px solid var(--border); padding-top: 1rem; display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap;">
+                <span style="display: inline-flex; align-items: center; gap: 0.3rem; color: var(--green); font-weight: 600;">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                    Commercial Clearance Active
+                </span>
+                <span style="color: var(--border);">&bull;</span>
+                <span>Authorized for Desktop, Web, App &amp; Commercial Branding</span>
+            </div>
+        </div>
+
+        <!-- Collapsible Installation & Integration Guide -->
+        <div class="guide-accordion" id="guideAccordion">
+            <button class="guide-accordion__trigger" type="button" onclick="toggleGuideAccordion()">
+                <span style="display: flex; align-items: center; gap: 0.6rem;">
+                    <span class="material-symbols-outlined" style="font-size: 1.25rem; color: var(--gold-dark);">auto_stories</span>
+                    Quick Installation &amp; Web Setup Guide
+                </span>
+                <svg viewBox="0 0 24 24">
+                    <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+            </button>
+            <div class="guide-accordion__body">
+                <div class="guide-steps-grid">
+                    <div class="guide-step">
+                        <div class="guide-step__title">
+                            <span class="material-symbols-outlined" style="font-size: 1.1rem; color: var(--gold-dark);">laptop_mac</span>
+                            1. macOS / Windows
+                        </div>
+                        <p class="guide-step__text">
+                            Unzip your archive. Double-click the <code>.otf</code> or <code>.ttf</code> file and select <strong>"Install Font"</strong>. It immediately appears in Figma, Adobe Suite, Pages, and Office.
+                        </p>
+                    </div>
+
+                    <div class="guide-step">
+                        <div class="guide-step__title">
+                            <span class="material-symbols-outlined" style="font-size: 1.1rem; color: var(--gold-dark);">code</span>
+                            2. Web Self-Hosting
+                        </div>
+                        <p class="guide-step__text">
+                            Upload the full <code>.woff2</code> file to your web server and embed it with <code>@font-face { font-family: '...'; src: url('...woff2') format('woff2'); }</code>.
+                        </p>
+                    </div>
+
+                    <div class="guide-step">
+                        <div class="guide-step__title">
+                            <span class="material-symbols-outlined" style="font-size: 1.1rem; color: var(--gold-dark);">verified_user</span>
+                            3. License Certificate
+                        </div>
+                        <p class="guide-step__text">
+                            Keep the enclosed <code>GLYPHERE_COMMERCIAL_EULA.txt</code> for proof of perpetual commercial authorization on behalf of your agency or client.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Clean Delivery Note & Support -->
+        <div class="delivery-note">
+            <div class="delivery-icon">
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="2" y="4" width="20" height="16" rx="2"/>
+                    <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
+                </svg>
+            </div>
+            <div class="delivery-text">
+                <h4>Permanent Archive &amp; Email Dispatch</h4>
+                <p>
+                    In addition to instant download, order records and license keys have been dispatched to: <strong id="deliveryEmailDisplay" style="color: var(--text);">your email</strong>.
+                    Please save your downloaded font packages and order confirmation for your records.
+                    <br>Foundry studio contact: <a href="mailto:glyphere@gmail.com">glyphere@gmail.com</a>.
+                </p>
+            </div>
+        </div>
+
+        <!-- Buttons -->
+        <div class="btn-group">
+            <a href="/main-website/marketplace.html" class="btn-primary">
+                <span>Explore More Typefaces</span>
+                <span class="material-symbols-outlined" style="font-size: 1.1rem;">arrow_forward</span>
+            </a>
+            <a href="/main-website/homepage.html" class="btn-secondary">
+                Return to Homepage
+            </a>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <p style="text-align: center; padding: 2rem 0; color: var(--text-muted); font-size: 0.82rem; border-top: 1px solid var(--border);">
+            &copy; 2026 Glyphere Type Foundry. All rights reserved. Secured by Stripe.
+        </p>
+    </footer>
+
+    <script>
+        // Clear cart
+        try {
+            localStorage.removeItem('glyphereCart');
+            window.dispatchEvent(new CustomEvent('cartUpdated', { detail: { count: 0 } }));
+            const badge = document.getElementById('navCartBadge');
+            if (badge) {
+                badge.textContent = '0';
+                badge.style.transform = 'scale(0)';
+            }
+        } catch (e) {}
+
+        function resolveApiUrl(endpoint) {
+            // Local dev server on port 3000
+            if (window.location.port === '3000') {
+                return endpoint;
+            }
+            // Local file:// or other port (e.g. VS Code Live Server on 5500)
+            if (window.location.protocol === 'file:' || window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+                return `http://localhost:3000${endpoint}`;
+            }
+
+            // On Live Production (Hostinger / Apache / LiteSpeed)
+            const isSubfolder = window.location.pathname.startsWith('/main-website');
+            const basePrefix = isSubfolder ? '/main-website' : '';
+
+            let target = endpoint;
+            if (target.includes('?')) {
+                const [basePath, query] = target.split('?');
+                const cleanPath = basePath.endsWith('.php') ? basePath : (basePath + '.php');
+                target = `${cleanPath}?${query}`;
+            } else {
+                target = target.endsWith('.php') ? target : (target + '.php');
+            }
+
+            if (basePrefix && !target.startsWith('/main-website')) {
+                target = basePrefix + (target.startsWith('/') ? target : ('/' + target));
+            }
+
+            return target;
+        }
+
+        const urlParams = new URLSearchParams(window.location.search);
+        const sessionId = urlParams.get('session_id');
+
+        const orderEmailEl = document.getElementById('orderEmailDisplay');
+        const deliveryEmailEl = document.getElementById('deliveryEmailDisplay');
+        const orderStatusEl = document.getElementById('orderStatusDisplay');
+        const orderItemsEl = document.getElementById('orderItemsContainer');
+        const orderTotalEl = document.getElementById('orderTotalDisplay');
+        const downloadAllContainer = document.getElementById('downloadAllBtnContainer');
+        const downloadAllBtn = document.getElementById('downloadAllMasterBtn');
+
+        let currentDownloadAllUrl = '';
+
+        function toggleGuideAccordion() {
+            const accordion = document.getElementById('guideAccordion');
+            if (accordion) accordion.classList.toggle('is-open');
+        }
+
+        function downloadFont(btn, downloadUrl, fontName) {
+            if (!btn || btn.classList.contains('is-downloading')) return;
+
+            const origHtml = btn.innerHTML;
+            btn.classList.add('is-downloading');
+            btn.innerHTML = `
+                <svg viewBox="0 0 24 24" style="animation: spin 1s linear infinite;"><line x1="12" y1="2" x2="12" y2="6"></line><line x1="12" y1="18" x2="12" y2="22"></line><line x1="4.93" y1="4.93" x2="7.76" y2="7.76"></line><line x1="16.24" y1="16.24" x2="19.07" y2="19.07"></line><line x1="2" y1="12" x2="6" y2="12"></line><line x1="18" y1="12" x2="22" y2="12"></line><line x1="4.93" y1="19.07" x2="7.76" y2="16.24"></line><line x1="16.24" y1="7.76" x2="19.07" y2="4.93"></line></svg>
+                <span>Preparing...</span>
+            `;
+
+            const fullUrl = resolveApiUrl(downloadUrl);
+            const anchor = document.createElement('a');
+            anchor.href = fullUrl;
+            anchor.style.display = 'none';
+            document.body.appendChild(anchor);
+            anchor.click();
+            setTimeout(() => document.body.removeChild(anchor), 1000);
+
+            setTimeout(() => {
+                btn.classList.remove('is-downloading');
+                btn.classList.add('is-done');
+                btn.innerHTML = `
+                    <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                    <span>Downloaded ✓</span>
+                `;
+                setTimeout(() => {
+                    btn.classList.remove('is-done');
+                    btn.innerHTML = origHtml;
+                }, 3500);
+            }, 1200);
+        }
+
+        function triggerDownloadAll(btn) {
+            if (!btn || btn.classList.contains('is-downloading')) return;
+
+            if (currentDownloadAllUrl) {
+                const origHtml = btn.innerHTML;
+                btn.classList.add('is-downloading');
+                btn.innerHTML = `<span>Bundling All Packages...</span>`;
+
+                const fullUrl = resolveApiUrl(currentDownloadAllUrl);
+                const anchor = document.createElement('a');
+                anchor.href = fullUrl;
+                document.body.appendChild(anchor);
+                anchor.click();
+                setTimeout(() => document.body.removeChild(anchor), 1000);
+
+                setTimeout(() => {
+                    btn.classList.remove('is-downloading');
+                    btn.innerHTML = `<span>Order Bundle Downloaded ✓</span>`;
+                    setTimeout(() => { btn.innerHTML = origHtml; }, 4000);
+                }, 2000);
+            } else {
+                // Fallback: click all download buttons sequentially
+                const btns = document.querySelectorAll('.item-dl-btn');
+                btns.forEach((b, idx) => {
+                    setTimeout(() => b.click(), idx * 600);
+                });
+            }
+        }
+
+        if (sessionId) {
+            const apiUrl = resolveApiUrl(`/api/get-checkout-session?session_id=${encodeURIComponent(sessionId)}`);
+            fetch(apiUrl)
+                .then(res => {
+                    const contentType = res.headers.get('content-type') || '';
+                    if (contentType.includes('application/json')) {
+                        return res.json();
+                    }
+                    throw new Error('Non-JSON response from server');
+                })
+                .then(data => {
+                    if (data.error) {
+                        renderFallbackState();
+                        return;
+                    }
+
+                    const email = data.customer_email || 'Customer';
+                    orderEmailEl.textContent = email;
+                    if (deliveryEmailEl) deliveryEmailEl.textContent = email;
+
+                    if (data.payment_status) {
+                        orderStatusEl.textContent = data.payment_status === 'paid' ? 'Completed & Paid ✓' : 'Authorized ✓';
+                    }
+
+                    if (data.amount_total) {
+                        orderTotalEl.textContent = `$${Number(data.amount_total).toFixed(2)} ${data.currency || 'USD'}`;
+                    }
+
+                    if (data.download_all_url) {
+                        currentDownloadAllUrl = data.download_all_url;
+                    }
+
+                    if (data.items && data.items.length > 0) {
+                        if (data.items.length > 1 && downloadAllContainer) {
+                            downloadAllContainer.style.display = 'block';
+                        }
+
+                        orderItemsEl.innerHTML = data.items.map(item => {
+                            const desc = item.description || 'Typeface License';
+                            const fontName = item.font_name || desc.split('—')[0].trim();
+                            const license = item.license_type || 'Commercial Authorization';
+                            const initial = fontName.charAt(0).toUpperCase();
+                            const slug = item.font_slug || fontName.toLowerCase().replace(/[^a-z0-9]+/g, '-');
+                            const downloadUrl = item.download_url || `/api/download-font?session_id=${encodeURIComponent(sessionId)}&font=${encodeURIComponent(slug)}`;
+
+                            return `
+                                <div class="item-row">
+                                    <div class="item-row-left">
+                                        <div class="item-glyph-box">${initial}</div>
+                                        <div class="item-info">
+                                            <div class="item-name">${fontName}</div>
+                                            <div class="item-sub">${license} &bull; Perpetual Commercial Authorization</div>
+                                            <div class="format-badges">
+                                                <span class="format-badge">OTF Desktop</span>
+                                                <span class="format-badge">TTF</span>
+                                                <span class="format-badge">WOFF2 Web</span>
+                                                <span class="format-badge format-badge--license">EULA Included</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="item-actions-wrap">
+                                        <div class="item-price">$${Number(item.amount_total).toFixed(2)}</div>
+                                        <button class="item-dl-btn" onclick="downloadFont(this, '${downloadUrl}', '${fontName}')" title="Download font package archive">
+                                            <svg viewBox="0 0 24 24">
+                                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                                                <polyline points="7 10 12 15 17 10"/>
+                                                <line x1="12" y1="15" x2="12" y2="3"/>
+                                            </svg>
+                                            <span>Download (.ZIP)</span>
+                                        </button>
+                                    </div>
+                                </div>
+                            `;
+                        }).join('');
+
+                        // Save licensed fonts to localStorage
+                        try {
+                            const existing = JSON.parse(localStorage.getItem('glyphere_licensed_fonts') || '[]');
+                            const additions = data.items.map(item => ({
+                                id: item.font_slug || item.font_name.toLowerCase().replace(/[^a-z0-9]+/g, '-'),
+                                name: item.font_name,
+                                license: item.license_type || 'Desktop License',
+                                price: item.amount_total,
+                                date: new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })
+                            }));
+                            const merged = [...additions, ...existing.filter(e => !additions.some(a => a.name === e.name))];
+                            localStorage.setItem('glyphere_licensed_fonts', JSON.stringify(merged));
+                        } catch (e) {}
+                    } else {
+                        renderFallbackState();
+                    }
+                })
+                .catch(() => renderFallbackState());
+        } else {
+            renderFallbackState();
+        }
+
+        function renderFallbackState() {
+            orderEmailEl.textContent = 'Purchased via Stripe Checkout';
+            if (deliveryEmailEl) deliveryEmailEl.textContent = 'your registered email';
+            orderStatusEl.textContent = 'Completed & Paid ✓';
+            orderTotalEl.textContent = '$120.00 USD';
+
+            if (downloadAllContainer) downloadAllContainer.style.display = 'block';
+            currentDownloadAllUrl = '/api/download-font?session_id=demo&all=1';
+
+            const demoFonts = [
+                { name: 'Midnight Citadel', slug: 'midnight-citadel', license: 'Desktop License', price: '60.00' },
+                { name: 'Turbo Block', slug: 'turbo-block', license: 'Desktop + Web License', price: '60.00' }
+            ];
+
+            orderItemsEl.innerHTML = demoFonts.map(font => {
+                const initial = font.name.charAt(0).toUpperCase();
+                const downloadUrl = `/api/download-font?session_id=demo&font=${font.slug}`;
+                return `
+                    <div class="item-row">
+                        <div class="item-row-left">
+                            <div class="item-glyph-box">${initial}</div>
+                            <div class="item-info">
+                                <div class="item-name">${font.name}</div>
+                                <div class="item-sub">${font.license} &bull; Perpetual Commercial Authorization</div>
+                                <div class="format-badges">
+                                    <span class="format-badge">OTF Desktop</span>
+                                    <span class="format-badge">TTF</span>
+                                    <span class="format-badge">WOFF2 Web</span>
+                                    <span class="format-badge format-badge--license">EULA Included</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item-actions-wrap">
+                            <div class="item-price">$${font.price}</div>
+                            <button class="item-dl-btn" onclick="downloadFont(this, '${downloadUrl}', '${font.name}')" title="Download font package archive">
+                                <svg viewBox="0 0 24 24">
+                                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                                    <polyline points="7 10 12 15 17 10"/>
+                                    <line x1="12" y1="15" x2="12" y2="3"/>
+                                </svg>
+                                <span>Download (.ZIP)</span>
+                            </button>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        // Hamburger Menu
+        const hamburger = document.querySelector('.nav-hamburger');
+        const mobileMenu = document.querySelector('.nav-mobile-menu');
+        if (hamburger && mobileMenu) {
+            hamburger.addEventListener('click', () => {
+                hamburger.classList.toggle('is-open');
+                mobileMenu.classList.toggle('is-open');
+            });
+        }
+    </script>
+</body>
+
+</html>
