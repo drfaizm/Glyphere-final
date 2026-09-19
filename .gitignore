@@ -11,16 +11,33 @@ login-auth/node_modules/
 dist/
 .vite/
 
+# Logs & Temporary Files
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+tmp/
+temp/
+
+# Archive & Database dumps
+*.zip
+*.tar
+*.tar.gz
+*.sql
+*.bak
+
 # Environment secrets (Strictly keep private from Git)
 .env
 .env.*
 *.env
+!.env.example
 backend/.env
 backend/.env.*
-main-website/.env
-main-website/.env.*
+login-auth/.env
+login-auth/.env.*
 
-# Commercial Fonts & Source Vaults (DO NOT EXPOSE TO GIT OR PUBLIC REPOSITORIES)
+# Master Typeface Vaults & Commercial Archives (Keep private from Git)
+font-vault/
 Font Vault/
 commercial-vault/
 backend/commercial-vault/

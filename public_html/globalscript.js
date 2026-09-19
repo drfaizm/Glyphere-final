@@ -256,7 +256,7 @@ window.addEventListener('scroll', function () {
             <span class="nav-user-dropdown__email">' + currentUser.email + '</span>\
           </div>\
           <div class="nav-user-dropdown__divider"></div>\
-          <a class="nav-user-dropdown__item" href="/main-website/marketplace.html">\
+          <a class="nav-user-dropdown__item" href="/marketplace.html">\
             <svg viewBox="0 0 24 24">\
               <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>\
               <polyline points="2 17 12 22 22 17"></polyline>\
@@ -298,7 +298,7 @@ window.addEventListener('scroll', function () {
         </div>\
         <span class="mobile-user-card__name">' + currentUser.name + '</span>\
         <span class="mobile-user-card__email">' + currentUser.email + '</span>\
-        <a class="mobile-user-card__logout" href="/main-website/marketplace.html" style="background: rgba(201, 171, 129, 0.12); border: 1px solid rgba(201, 171, 129, 0.25); color: var(--gold); margin-bottom: 0.5rem; text-decoration: none;">\
+        <a class="mobile-user-card__logout" href="/marketplace.html" style="background: rgba(201, 171, 129, 0.12); border: 1px solid rgba(201, 171, 129, 0.25); color: var(--gold); margin-bottom: 0.5rem; text-decoration: none;">\
           <svg viewBox="0 0 24 24" style="stroke: currentColor;"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>\
           Marketplace\
         </a>\

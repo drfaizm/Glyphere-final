@@ -7,8 +7,10 @@ Uses only Python built-in standard library (no pip packages needed).
 import os
 import base64
 
-FONTS_DIR = "/Users/drfaizmuhammad/Desktop/Glyphere /Glyhphere MAIN/main-website/homepage-updated/fonts"
-OUTPUT_CSS = "/Users/drfaizmuhammad/Desktop/Glyphere /Glyhphere MAIN/main-website/css/fonts-base64.css"
+SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
+REPO_ROOT = os.path.dirname(os.path.dirname(SCRIPT_DIR))
+FONTS_DIR = os.path.join(REPO_ROOT, "public_html", "assets", "fonts")
+OUTPUT_CSS = os.path.join(REPO_ROOT, "public_html", "css", "fonts-base64.css")
 
 MIME_TYPES = {
     ".woff2": "font/woff2",

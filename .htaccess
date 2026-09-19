@@ -1,39 +1,29 @@
 # ═══════════════════════════════════════════════════════════════════════════════
-# GLYPHERE ROOT CONFIGURATION & HARDENED SECURITY (.htaccess)
+# GLYPHERE ROOT SECURITY CONFIGURATION (.htaccess)
+# Strictly protects private directories at domain root
 # ═══════════════════════════════════════════════════════════════════════════════
 
 # 1. Disable directory indexing
 Options -Indexes
 
-# 2. Font MIME Types
-AddType font/woff2 .woff2
-AddType font/woff .woff
-AddType font/ttf .ttf
-AddType font/otf .otf
-
-# 3. Safe Cross-Origin & Security Headers
+# 2. Safe Cross-Origin & Security Headers
 <IfModule mod_headers.c>
     Header set Access-Control-Allow-Origin "*"
     Header set X-Content-Type-Options "nosniff"
 </IfModule>
 
-# 4. Strict Security: Forbid access to backend/, Font Vault/, .env, and sensitive files
+# 3. Strict Security: Forbid browser access to private folders, .env, and sensitive files
 <IfModule mod_rewrite.c>
     RewriteEngine On
 
-    # Deny direct browser access to backend and Font Vault folders
+    # Deny direct browser access to private folders
     RewriteRule ^backend(/.*)?$ - [F,L]
+    RewriteRule ^font-vault(/.*)?$ - [F,L]
     RewriteRule ^Font\ Vault(/.*)?$ - [F,L]
+    RewriteRule ^login-auth(/.*)?$ - [F,L]
+    RewriteRule ^docs(/.*)?$ - [F,L]
     RewriteRule ^commercial-vault(/.*)?$ - [F,L]
     RewriteRule ^\.env.*$ - [F,L]
-
-    # Route root request to main-website homepage
-    RewriteRule ^$ main-website/homepage.html [L]
-
-    # Route top-level /api/* to main-website/api/*
-    RewriteRule ^api/create-checkout-session/?$ main-website/api/create-checkout-session.php [L,QSA]
-    RewriteRule ^api/get-checkout-session/?$ main-website/api/get-checkout-session.php [L,QSA]
-    RewriteRule ^api/download-font/?$ main-website/api/download-font.php [L,QSA]
 </IfModule>
 
 <IfModule mod_authz_core.c>

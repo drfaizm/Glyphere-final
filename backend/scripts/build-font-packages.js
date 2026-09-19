@@ -10,9 +10,13 @@ const fs = require('fs');
 const path = require('path');
 const { execSync } = require('child_process');
 
-const VAULT_DIR = fs.existsSync(path.resolve(__dirname, '..', '..', 'Font Vault'))
-  ? path.resolve(__dirname, '..', '..', 'Font Vault')
-  : path.resolve(__dirname, '..', 'Font Vault');
+const candidateVaults = [
+  path.resolve(__dirname, '..', '..', 'font-vault'),
+  path.resolve(__dirname, '..', 'font-vault'),
+  path.resolve(__dirname, '..', '..', 'Font Vault'),
+  path.resolve(__dirname, '..', 'Font Vault'),
+];
+const VAULT_DIR = candidateVaults.find(p => fs.existsSync(p)) || candidateVaults[0];
 const OUTPUT_DIR = path.resolve(__dirname, '..', 'commercial-vault', 'packages');
 
 if (!fs.existsSync(OUTPUT_DIR)) {

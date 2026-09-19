@@ -4,11 +4,11 @@
  * Zero secret keys stored here. Delegates to private backend handler.
  */
 $backendCandidates = [
-    dirname(__DIR__, 3) . '/backend/api/download-font.php',
     dirname(__DIR__, 2) . '/backend/api/download-font.php',
-    __DIR__ . '/../../../backend/api/download-font.php',
     __DIR__ . '/../../backend/api/download-font.php',
     ($_SERVER['DOCUMENT_ROOT'] ?? '') . '/../backend/api/download-font.php',
+    dirname(__DIR__, 3) . '/backend/api/download-font.php',
+    __DIR__ . '/../../../backend/api/download-font.php',
     ($_SERVER['DOCUMENT_ROOT'] ?? '') . '/backend/api/download-font.php'
 ];
 

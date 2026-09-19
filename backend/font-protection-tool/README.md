@@ -32,7 +32,7 @@ python3 subset_fonts.py --input /path/to/MyMasterFont.otf --output /path/to/MyMa
 ### 3. Protect a Whole Folder of Master Fonts in Batch
 To convert all your master fonts directly into the website's preview font folder:
 ```bash
-python3 subset_fonts.py --batch /path/to/master_fonts/ --outdir ../main-website/homepage-updated/fonts/
+python3 subset_fonts.py --batch /path/to/master_fonts/ --outdir ../../public_html/assets/fonts/
 ```
 
 ---
@@ -45,6 +45,6 @@ python3 subset_fonts.py --batch /path/to/master_fonts/ --outdir ../main-website/
               │                                (Sent ONLY to paying buyers)
               │
               └── Run 'subset_fonts.py' ────► Output stripped .woff2
-                                               (Placed in 'main-website/homepage-updated/fonts/')
+                                               (Placed in 'public_html/assets/fonts/')
                                                (Safe for public web preview)
 ```

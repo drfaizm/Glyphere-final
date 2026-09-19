@@ -20,7 +20,18 @@ AddType font/otf .otf
     Header set X-Content-Type-Options "nosniff"
 </IfModule>
 
-# 5. Strict Security: Block access to hidden files and sensitive file extensions
+# 5. Browser Cache Rules for Fonts and Static Assets
+<IfModule mod_expires.c>
+    ExpiresActive On
+    ExpiresByType font/woff2 "access plus 1 year"
+    ExpiresByType font/woff "access plus 1 year"
+    ExpiresByType font/ttf "access plus 1 year"
+    ExpiresByType font/otf "access plus 1 year"
+    ExpiresByType image/png "access plus 1 month"
+    ExpiresByType image/jpeg "access plus 1 month"
+</IfModule>
+
+# 6. Strict Security: Block access to hidden files and sensitive file extensions
 <IfModule mod_authz_core.c>
     # Block .env, .git, .vscode, etc.
     <FilesMatch "^\.">
@@ -39,7 +50,7 @@ AddType font/otf .otf
     </FilesMatch>
 </IfModule>
 
-# 6. URL Rewrites & Redirects
+# 7. URL Rewrites & Redirects
 <IfModule mod_rewrite.c>
     RewriteEngine On
 
@@ -47,8 +58,14 @@ AddType font/otf .otf
     RewriteRule ^homepage\.html$ /index.html [R=301,L]
     RewriteRule ^main-website/homepage\.html$ /index.html [R=301,L]
 
-    # Route top-level /api requests to PHP handlers in main-website/api/
-    RewriteRule ^api/create-checkout-session/?$ main-website/api/create-checkout-session.php [L,QSA]
-    RewriteRule ^api/get-checkout-session/?$ main-website/api/get-checkout-session.php [L,QSA]
-    RewriteRule ^api/download-font/?$ main-website/api/download-font.php [L,QSA]
+    # Redirect legacy main-website wrapper URLs cleanly to root
+    RewriteRule ^main-website/(.*)$ /$1 [R=301,L]
+
+    # Redirect legacy custom_font_services folder to custom-font-services
+    RewriteRule ^custom_font_services/(.*)$ /custom-font-services/$1 [R=301,L]
+
+    # Route top-level /api requests to PHP bridge handlers in api/
+    RewriteRule ^api/create-checkout-session/?$ api/create-checkout-session.php [L,QSA]
+    RewriteRule ^api/get-checkout-session/?$ api/get-checkout-session.php [L,QSA]
+    RewriteRule ^api/download-font/?$ api/download-font.php [L,QSA]
 </IfModule>

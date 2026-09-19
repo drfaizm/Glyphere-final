@@ -17,7 +17,7 @@ Usage:
     python3 subset_fonts.py --input master.otf --output preview.woff2
 
     # Batch process a whole directory:
-    python3 subset_fonts.py --batch ./master-fonts --outdir ../main-website/homepage-updated/fonts/
+    python3 subset_fonts.py --batch ./master-fonts --outdir ../../public_html/assets/fonts/
 """
 
 import sys

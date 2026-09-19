@@ -55,10 +55,17 @@ const server = http.createServer(async (req, res) => {
     pathname = parsedUrl.pathname || '/';
   }
 
-  // Normalize homepage aliases
+  // Normalize homepage aliases & strip legacy main-website prefix
   let cleanPath = pathname;
-  if (cleanPath === '/' || cleanPath === '/homepage.html' || cleanPath === '/main-website/homepage.html' || cleanPath === '/index.html') {
+  if (cleanPath === '/' || cleanPath === '/homepage.html' || cleanPath === '/main-website/homepage.html' || cleanPath === '/index.html' || cleanPath === '/main-website/' || cleanPath === '/main-website/index.html') {
     cleanPath = '/index.html';
+  } else if (cleanPath.startsWith('/main-website/')) {
+    cleanPath = cleanPath.replace('/main-website/', '/');
+  }
+
+  // Rewrite legacy custom_font_services URL to custom-font-services
+  if (cleanPath.startsWith('/custom_font_services/')) {
+    cleanPath = cleanPath.replace('/custom_font_services/', '/custom-font-services/');
   }
 
   // Handle CORS preflight
@@ -130,9 +137,11 @@ const server = http.createServer(async (req, res) => {
     lowerPath.includes('.env') ||
     lowerPath.includes('.git') ||
     lowerPath.includes('commercial-vault') ||
+    lowerPath.includes('font-vault') ||
     lowerPath.includes('backend') ||
+    lowerPath.includes('docs') ||
     lowerPath.endsWith('.lock') ||
-    lowerPath.endsWith('.json') && !lowerPath.includes('manifest')
+    (lowerPath.endsWith('.json') && !lowerPath.includes('manifest'))
   ) {
     res.status(404);
     res.setHeader('Content-Type', 'text/html');
@@ -140,16 +149,8 @@ const server = http.createServer(async (req, res) => {
     return;
   }
 
-  // 3. Static File Serving from public_html/
+  // 3. Static File Serving directly from public_html/
   let filePath = path.join(PUBLIC_DIR, cleanPath === '/' ? 'index.html' : cleanPath);
-
-  // If path doesn't exist directly, check inside main-website/
-  if (!fs.existsSync(filePath)) {
-    const candidatePath = path.join(PUBLIC_DIR, 'main-website', cleanPath);
-    if (fs.existsSync(candidatePath)) {
-      filePath = candidatePath;
-    }
-  }
 
   // Prevent path traversal
   if (!filePath.startsWith(PUBLIC_DIR)) {
@@ -190,6 +191,6 @@ server.listen(PORT, () => {
   console.log(`\n✦ Glyphere Backend & Dev Server running at: http://localhost:${PORT}`);
   console.log(`  Frontend Root: ${PUBLIC_DIR}`);
   console.log(`  Homepage: http://localhost:${PORT}/`);
-  console.log(`  Cart URL: http://localhost:${PORT}/main-website/cart.html`);
+  console.log(`  Cart URL: http://localhost:${PORT}/cart.html`);
   console.log(`  Stripe API endpoint active: http://localhost:${PORT}/api/create-checkout-session\n`);
 });
