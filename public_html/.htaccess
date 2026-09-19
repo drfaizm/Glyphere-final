@@ -1,0 +1,54 @@
+# ═══════════════════════════════════════════════════════════════════════════════
+# GLYPHERE WEB ROOT — HOSTINGER & LITESPEED HARDENED CONFIGURATION (.htaccess)
+# ═══════════════════════════════════════════════════════════════════════════════
+
+# 1. Set default directory index
+DirectoryIndex index.html
+
+# 2. Disable directory indexing (prevents browsing folder file lists)
+Options -Indexes
+
+# 3. Font MIME Types
+AddType font/woff2 .woff2
+AddType font/woff .woff
+AddType font/ttf .ttf
+AddType font/otf .otf
+
+# 4. Safe Cross-Origin & Security Headers (100% LiteSpeed / Apache compatible)
+<IfModule mod_headers.c>
+    Header set Access-Control-Allow-Origin "*"
+    Header set X-Content-Type-Options "nosniff"
+</IfModule>
+
+# 5. Strict Security: Block access to hidden files and sensitive file extensions
+<IfModule mod_authz_core.c>
+    # Block .env, .git, .vscode, etc.
+    <FilesMatch "^\.">
+        Require all denied
+    </FilesMatch>
+    # Block sensitive development & source files
+    <FilesMatch "\.(env|log|md|lock|json|glyphs|ufo|sfd|vfb|py|sh|bak|sql)$">
+        Require all denied
+    </FilesMatch>
+</IfModule>
+
+<IfModule !mod_authz_core.c>
+    <FilesMatch "^\.|\.(env|log|md|lock|json|glyphs|ufo|sfd|vfb|py|sh|bak|sql)$">
+        Order allow,deny
+        Deny from all
+    </FilesMatch>
+</IfModule>
+
+# 6. URL Rewrites & Redirects
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+
+    # Redirect legacy homepage.html URLs to /index.html
+    RewriteRule ^homepage\.html$ /index.html [R=301,L]
+    RewriteRule ^main-website/homepage\.html$ /index.html [R=301,L]
+
+    # Route top-level /api requests to PHP handlers in main-website/api/
+    RewriteRule ^api/create-checkout-session/?$ main-website/api/create-checkout-session.php [L,QSA]
+    RewriteRule ^api/get-checkout-session/?$ main-website/api/get-checkout-session.php [L,QSA]
+    RewriteRule ^api/download-font/?$ main-website/api/download-font.php [L,QSA]
+</IfModule>

@@ -6,7 +6,7 @@ const fs = require('fs');
 const url = require('url');
 
 const PORT = process.env.PORT || 3000;
-const PUBLIC_DIR = path.resolve(__dirname, '../main-website');
+const PUBLIC_DIR = path.resolve(__dirname, '../public_html');
 
 const MIME_TYPES = {
   '.html': 'text/html; charset=utf-8',
@@ -48,14 +48,17 @@ const downloadFontHandler = require('./api/download-font');
 const server = http.createServer(async (req, res) => {
   enhanceResponse(res);
   const parsedUrl = url.parse(req.url, true);
-  let pathname = parsedUrl.pathname || '/';
+  let pathname = '/';
+  try {
+    pathname = decodeURIComponent(parsedUrl.pathname || '/');
+  } catch (e) {
+    pathname = parsedUrl.pathname || '/';
+  }
 
-  // Normalize /main-website prefix if requested
+  // Normalize homepage aliases
   let cleanPath = pathname;
-  if (cleanPath.startsWith('/main-website/')) {
-    cleanPath = cleanPath.replace('/main-website', '');
-  } else if (cleanPath === '/main-website') {
-    cleanPath = '/';
+  if (cleanPath === '/' || cleanPath === '/homepage.html' || cleanPath === '/main-website/homepage.html' || cleanPath === '/index.html') {
+    cleanPath = '/index.html';
   }
 
   // Handle CORS preflight
@@ -66,8 +69,10 @@ const server = http.createServer(async (req, res) => {
     return res.status(200).end();
   }
 
-  // 1. API Routes
-  if (cleanPath === '/api/create-checkout-session' || cleanPath === '/api/create-checkout-session.php') {
+  // 1. API Routes (support both root /api and /main-website/api prefixes)
+  const isCreateCheckout = cleanPath === '/api/create-checkout-session' || cleanPath === '/api/create-checkout-session.php' ||
+                           cleanPath === '/main-website/api/create-checkout-session' || cleanPath === '/main-website/api/create-checkout-session.php';
+  if (isCreateCheckout) {
     let bodyData = '';
     req.on('data', chunk => { bodyData += chunk; });
     req.on('end', async () => {
@@ -89,7 +94,9 @@ const server = http.createServer(async (req, res) => {
     return;
   }
 
-  if (cleanPath === '/api/get-checkout-session' || cleanPath === '/api/get-checkout-session.php') {
+  const isGetCheckout = cleanPath === '/api/get-checkout-session' || cleanPath === '/api/get-checkout-session.php' ||
+                        cleanPath === '/main-website/api/get-checkout-session' || cleanPath === '/main-website/api/get-checkout-session.php';
+  if (isGetCheckout) {
     req.query = parsedUrl.query;
     try {
       await getCheckoutHandler(req, res);
@@ -102,7 +109,9 @@ const server = http.createServer(async (req, res) => {
     return;
   }
 
-  if (cleanPath === '/api/download-font' || cleanPath === '/api/download-font.php') {
+  const isDownloadFont = cleanPath === '/api/download-font' || cleanPath === '/api/download-font.php' ||
+                         cleanPath === '/main-website/api/download-font' || cleanPath === '/main-website/api/download-font.php';
+  if (isDownloadFont) {
     req.query = parsedUrl.query;
     try {
       await downloadFontHandler(req, res);
@@ -131,8 +140,16 @@ const server = http.createServer(async (req, res) => {
     return;
   }
 
-  // 3. Static File Serving from main-website/
-  let filePath = path.join(PUBLIC_DIR, cleanPath === '/' ? 'homepage.html' : cleanPath);
+  // 3. Static File Serving from public_html/
+  let filePath = path.join(PUBLIC_DIR, cleanPath === '/' ? 'index.html' : cleanPath);
+
+  // If path doesn't exist directly, check inside main-website/
+  if (!fs.existsSync(filePath)) {
+    const candidatePath = path.join(PUBLIC_DIR, 'main-website', cleanPath);
+    if (fs.existsSync(candidatePath)) {
+      filePath = candidatePath;
+    }
+  }
 
   // Prevent path traversal
   if (!filePath.startsWith(PUBLIC_DIR)) {
@@ -172,6 +189,7 @@ const server = http.createServer(async (req, res) => {
 server.listen(PORT, () => {
   console.log(`\n✦ Glyphere Backend & Dev Server running at: http://localhost:${PORT}`);
   console.log(`  Frontend Root: ${PUBLIC_DIR}`);
-  console.log(`  Cart URL: http://localhost:${PORT}/cart.html`);
+  console.log(`  Homepage: http://localhost:${PORT}/`);
+  console.log(`  Cart URL: http://localhost:${PORT}/main-website/cart.html`);
   console.log(`  Stripe API endpoint active: http://localhost:${PORT}/api/create-checkout-session\n`);
 });

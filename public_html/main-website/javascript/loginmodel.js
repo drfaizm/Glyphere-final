@@ -2,7 +2,7 @@
  * loginModal.js — Glyphere Login / Register Modal
  * ─────────────────────────────────────────────────
  * Drop this file in  main-website/javascript/
- * Then add to homepage.html  (before </body>):
+ * Then add to index.html  (before </body>):
  *
  *   <link rel="stylesheet" href="../javascript/loginModal.css">
  *   <script src="../javascript/loginModal.js" defer></script>

@@ -478,10 +478,10 @@
     <header class="header-nav">
         <nav class="nav-inner" aria-label="Main navigation">
             <div class="nav-logo-group">
-                <a href="/main-website/homepage.html">
+                <a href="/index.html">
                     <img src="/main-website/glyphere.png" class="nav-logo-img" alt="Glyphere" width="40" height="40" />
                 </a>
-                <a class="nav-logo-name" href="/main-website/homepage.html">Glyphere</a>
+                <a class="nav-logo-name" href="/index.html">Glyphere</a>
             </div>
             <ul class="nav-links" role="list">
                 <li><a class="nav-link" href="/main-website/marketplace.html">Marketplace</a></li>
@@ -1020,7 +1020,7 @@
 
                         showSuccessOverlay('Access Granted', 'Your active designer session is now secure. Redirecting...');
                         setTimeout(() => {
-                            window.location.href = '/main-website/homepage.html';
+                            window.location.href = '/index.html';
                         }, 1800);
                     })
                     .catch(err => {
@@ -1042,7 +1042,7 @@
 
                                     showSuccessOverlay('Access Granted', 'Logged in via secure local fallback. Redirecting...');
                                     setTimeout(() => {
-                                        window.location.href = '/main-website/homepage.html';
+                                        window.location.href = '/index.html';
                                     }, 1800);
                                     return;
                                 } else {
@@ -1062,7 +1062,7 @@
 
                                 showSuccessOverlay('Demo Granted', 'Instant bypass access granted for demonstration. Redirecting...');
                                 setTimeout(() => {
-                                    window.location.href = '/main-website/homepage.html';
+                                    window.location.href = '/index.html';
                                 }, 1800);
                                 return;
                             }
@@ -1123,7 +1123,7 @@
 
                         showSuccessOverlay('Identity Created', 'Welcome to Glyphere. Your designer account is ready. Redirecting...');
                         setTimeout(() => {
-                            window.location.href = '/main-website/homepage.html';
+                            window.location.href = '/index.html';
                         }, 1800);
                     })
                     .catch(err => {
@@ -1151,7 +1151,7 @@
 
                             showSuccessOverlay('Identity Initialized', 'Account initialized locally. Welcome to Glyphere! Redirecting...');
                             setTimeout(() => {
-                                window.location.href = '/main-website/homepage.html';
+                                window.location.href = '/index.html';
                             }, 1800);
                         } else {
                             // Real backend rejected
