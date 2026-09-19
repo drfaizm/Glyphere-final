@@ -1,0 +1,91 @@
+name: Deploy Glyphere to Hostinger
+
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: read
+
+jobs:
+  deploy:
+    name: Deploy to Hostinger
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Configure SSH
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.HOSTINGER_SSH_KEY }}
+          SSH_HOST: ${{ secrets.HOSTINGER_HOST }}
+          SSH_PORT: ${{ secrets.HOSTINGER_PORT }}
+        run: |
+          mkdir -p ~/.ssh
+
+          printf '%s\n' "$SSH_PRIVATE_KEY" > ~/.ssh/glyphere_hostinger
+          chmod 600 ~/.ssh/glyphere_hostinger
+
+          ssh-keyscan -p "$SSH_PORT" -H "$SSH_HOST" >> ~/.ssh/known_hosts
+
+      - name: Test SSH connection
+        run: |
+          ssh \
+            -i ~/.ssh/glyphere_hostinger \
+            -p "${{ secrets.HOSTINGER_PORT }}" \
+            "${{ secrets.HOSTINGER_USER }}@${{ secrets.HOSTINGER_HOST }}" \
+            "echo 'SSH connection successful'"
+
+      - name: Ensure deployment directories exist
+        run: |
+          ssh \
+            -i ~/.ssh/glyphere_hostinger \
+            -p "${{ secrets.HOSTINGER_PORT }}" \
+            "${{ secrets.HOSTINGER_USER }}@${{ secrets.HOSTINGER_HOST }}" \
+            "mkdir -p \
+            '${{ secrets.HOSTINGER_DOMAIN_ROOT }}/public_html' \
+            '${{ secrets.HOSTINGER_DOMAIN_ROOT }}/backend' \
+            '${{ secrets.HOSTINGER_DOMAIN_ROOT }}/login-auth' \
+            '${{ secrets.HOSTINGER_DOMAIN_ROOT }}/font-vault'"
+
+      - name: Deploy public website
+        run: |
+          rsync -az \
+            --exclude='.env' \
+            --exclude='.env.*' \
+            -e "ssh -i ~/.ssh/glyphere_hostinger -p ${{ secrets.HOSTINGER_PORT }}" \
+            public_html/ \
+            "${{ secrets.HOSTINGER_USER }}@${{ secrets.HOSTINGER_HOST }}:${{ secrets.HOSTINGER_DOMAIN_ROOT }}/public_html/"
+
+      - name: Deploy backend
+        run: |
+          rsync -az \
+            --exclude='.env' \
+            --exclude='.env.local' \
+            --exclude='.env.production' \
+            -e "ssh -i ~/.ssh/glyphere_hostinger -p ${{ secrets.HOSTINGER_PORT }}" \
+            backend/ \
+            "${{ secrets.HOSTINGER_USER }}@${{ secrets.HOSTINGER_HOST }}:${{ secrets.HOSTINGER_DOMAIN_ROOT }}/backend/"
+
+      - name: Deploy login authentication
+        run: |
+          rsync -az \
+            --exclude='.env' \
+            --exclude='.env.local' \
+            --exclude='.env.production' \
+            -e "ssh -i ~/.ssh/glyphere_hostinger -p ${{ secrets.HOSTINGER_PORT }}" \
+            login-auth/ \
+            "${{ secrets.HOSTINGER_USER }}@${{ secrets.HOSTINGER_HOST }}:${{ secrets.HOSTINGER_DOMAIN_ROOT }}/login-auth/"
+
+      - name: Deploy font vault
+        run: |
+          rsync -az \
+            -e "ssh -i ~/.ssh/glyphere_hostinger -p ${{ secrets.HOSTINGER_PORT }}" \
+            font-vault/ \
+            "${{ secrets.HOSTINGER_USER }}@${{ secrets.HOSTINGER_HOST }}:${{ secrets.HOSTINGER_DOMAIN_ROOT }}/font-vault/"
+
+      - name: Deployment completed
+        run: |
+          echo "Glyphere deployment completed successfully."
