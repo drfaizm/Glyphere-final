@@ -37,8 +37,9 @@ login-auth/.env
 login-auth/.env.*
 
 # Master Typeface Vaults & Commercial Archives (Keep private from Git)
-font-vault/
-Font Vault/
+# Keep font-vault directory, but ignore its contents
+font-vault/*
+!font-vault/.gitkeep
 commercial-vault/
 backend/commercial-vault/
 master-fonts/
