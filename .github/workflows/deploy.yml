@@ -5,6 +5,8 @@ on:
     branches:
       - main
 
+  workflow_dispatch:
+
 permissions:
   contents: read
 
@@ -24,10 +26,8 @@ jobs:
           SSH_PORT: ${{ secrets.HOSTINGER_PORT }}
         run: |
           mkdir -p ~/.ssh
-
           printf '%s\n' "$SSH_PRIVATE_KEY" > ~/.ssh/glyphere_hostinger
           chmod 600 ~/.ssh/glyphere_hostinger
-
           ssh-keyscan -p "$SSH_PORT" -H "$SSH_HOST" >> ~/.ssh/known_hosts
 
       - name: Test SSH connection
@@ -79,17 +79,17 @@ jobs:
             login-auth/ \
             "${{ secrets.HOSTINGER_USER }}@${{ secrets.HOSTINGER_HOST }}:${{ secrets.HOSTINGER_DOMAIN_ROOT }}/login-auth/"
 
-     - name: Deploy font vault
-  run: |
-    if [ -d "font-vault" ]; then
-      echo "font-vault found. Deploying..."
-      rsync -az \
-        -e "ssh -i ~/.ssh/glyphere_hostinger -p ${{ secrets.HOSTINGER_PORT }}" \
-        font-vault/ \
-        "${{ secrets.HOSTINGER_USER }}@${{ secrets.HOSTINGER_HOST }}:${{ secrets.HOSTINGER_DOMAIN_ROOT }}/font-vault/"
-    else
-      echo "font-vault is not tracked in Git. Skipping deployment."
-    fi
-      - name: Deployment completed
+      - name: Deploy font vault
         run: |
-          echo "Glyphere deployment completed successfully."
+          if [ -d "font-vault" ]; then
+            echo "font-vault found. Deploying..."
+            rsync -az \
+              -e "ssh -i ~/.ssh/glyphere_hostinger -p ${{ secrets.HOSTINGER_PORT }}" \
+              font-vault/ \
+              "${{ secrets.HOSTINGER_USER }}@${{ secrets.HOSTINGER_HOST }}:${{ secrets.HOSTINGER_DOMAIN_ROOT }}/font-vault/"
+          else
+            echo "font-vault is not tracked in Git. Skipping deployment."
+          fi
+
+      - name: Deployment completed
+        run: echo "Glyphere deployment completed successfully."
