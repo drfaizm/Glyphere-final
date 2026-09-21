@@ -36,6 +36,9 @@ backend/.env.*
 login-auth/.env
 login-auth/.env.*
 
+# Order & Download Registries (Private)
+backend/data/
+
 # Master Typeface Vaults & Commercial Archives (Keep private from Git)
 # Keep font-vault directory, but ignore its contents
 font-vault/*

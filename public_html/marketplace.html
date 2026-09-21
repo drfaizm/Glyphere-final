@@ -6,7 +6,7 @@
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
 
     <!-- Favicon -->
-    <link rel="icon" type="image/png" href="/assets/images/glyphere.png" />
+    <link rel="icon" type="image/png" href="assets/images/glyphere.png" />
     <title>Glyphere | Marketplace</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -23,7 +23,8 @@
         rel="stylesheet">
 
     <!-- Global styles -->
-    <link rel="stylesheet" href="/css/globalstyle.css" />
+    <link rel="stylesheet" href="css/globalstyle.css" />
+    <link rel="stylesheet" href="css/fonts-base64.css" />
 
     <link rel="stylesheet" href="javascript/loginmodel.css">
 
@@ -100,10 +101,12 @@
                 transform: scale(0.95);
                 box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7);
             }
+
             70% {
                 transform: scale(1);
                 box-shadow: 0 0 0 6px rgba(34, 197, 94, 0);
             }
+
             100% {
                 transform: scale(0.95);
                 box-shadow: 0 0 0 0 rgba(34, 197, 94, 0);
@@ -420,22 +423,151 @@
             font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 20;
         }
 
+                .font-card__main-row {
+            display: contents;
+        }
+
+        .font-card__previews-row {
+            display: none;
+        }
+
+        /* ─── White Background Multi-Line Font Specimen Previews ─── */
+        .fc-subspecimen {
+            background: #ffffff !important;
+            color: #111111 !important;
+            border: 1px solid rgba(200, 187, 168, 0.45);
+            border-radius: 16px;
+            padding: 26px 20px 24px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            box-shadow: 0 4px 16px rgba(17, 17, 17, 0.04), 0 1px 3px rgba(17, 17, 17, 0.02);
+            transition: transform 0.25s cubic-bezier(0.23, 1, 0.32, 1),
+                box-shadow 0.25s cubic-bezier(0.23, 1, 0.32, 1),
+                border-color 0.2s ease;
+            cursor: pointer;
+            box-sizing: border-box;
+            min-height: 175px;
+            user-select: none;
+        }
+
+        .fc-subspecimen:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 30px rgba(17, 17, 17, 0.09), 0 2px 8px rgba(17, 17, 17, 0.04);
+            border-color: rgba(201, 171, 129, 0.85);
+        }
+
+        .fc-subspecimen__line {
+            width: 100%;
+            max-width: 100%;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            color: #111111 !important;
+            transition: color 0.15s ease;
+        }
+
+        .fc-subspecimen__line--1 {
+            font-size: clamp(1.35rem, calc(var(--specimen-size, 96px) * 0.28), 2.2rem);
+            font-weight: 700;
+            line-height: 1.2;
+            letter-spacing: -0.01em;
+            margin-bottom: 7px;
+        }
+
+        .fc-subspecimen__line--2 {
+            font-size: clamp(1.1rem, calc(var(--specimen-size, 96px) * 0.22), 1.7rem);
+            font-weight: 500;
+            line-height: 1.2;
+            opacity: 0.92;
+            margin-bottom: 7px;
+        }
+
+        .fc-subspecimen__line--3 {
+            font-size: clamp(1.2rem, calc(var(--specimen-size, 96px) * 0.24), 1.95rem);
+            font-weight: 700;
+            line-height: 1.2;
+            letter-spacing: -0.01em;
+            margin-bottom: 7px;
+        }
+
+        .fc-subspecimen__line--4 {
+            font-size: clamp(0.875rem, calc(var(--specimen-size, 96px) * 0.15), 1.2rem);
+            font-weight: 400;
+            line-height: 1.25;
+            opacity: 0.72;
+            letter-spacing: 0.03em;
+        }
+
         /* ── List View Morphing Styles (Desktop & Tablet) ── */
         @media (min-width: 768px) {
             .mp-grid.list-view {
                 grid-template-columns: 1fr !important;
-                gap: 2rem;
+                gap: 2.5rem;
             }
 
             .mp-grid.list-view .font-card {
                 display: flex;
-                flex-direction: row;
+                flex-direction: column;
                 align-items: stretch;
-                min-height: 240px;
-                overflow: visible !important;
                 width: 100%;
                 position: relative;
+                background: #ffffff !important;
+                border: 1px solid rgba(28, 24, 18, 0.09) !important;
+                box-shadow: 0 4px 24px rgba(28, 24, 18, 0.04), 0 1px 3px rgba(28, 24, 18, 0.02) !important;
+                border-radius: 24px !important;
+                padding: 24px 28px !important;
+                cursor: default;
+                gap: 18px;
+                min-height: 0 !important;
+                box-sizing: border-box;
+                transition: transform 0.25s cubic-bezier(0.23, 1, 0.32, 1),
+                    box-shadow 0.25s cubic-bezier(0.23, 1, 0.32, 1),
+                    border-color 0.2s ease;
             }
+
+            .mp-grid.list-view .font-card:hover {
+                transform: translateY(-3px) !important;
+                box-shadow: 0 16px 40px rgba(28, 24, 18, 0.07), 0 2px 6px rgba(28, 24, 18, 0.03) !important;
+                border-color: rgba(201, 171, 129, 0.5) !important;
+            }
+
+            .mp-grid.list-view .font-card.fc-card--hidden,
+            .mp-grid .font-card.fc-card--hidden,
+            .font-card.fc-card--hidden,
+            .font-card[style*="display: none"] {
+                display: none !important;
+            }
+
+            .mp-grid.list-view .font-card__main-row {
+                display: flex !important;
+                flex-direction: row !important;
+                align-items: stretch;
+                min-height: 220px;
+                width: 100%;
+                border-radius: 18px;
+                position: relative;
+                overflow: visible !important;
+                cursor: pointer;
+                background: #faf7f2 !important;
+                border: 1px solid rgba(28, 24, 18, 0.06);
+                transition: background 0.2s ease, border-color 0.2s ease;
+            }
+
+            .mp-grid.list-view .font-card__main-row:hover {
+                transform: none;
+                background: #fdfbf7 !important;
+                border-color: rgba(201, 171, 129, 0.4);
+            }
+
+            /* Card themes for main row in List View */
+            .mp-grid.list-view .fc-t1 .font-card__main-row { background: #faf7f2; color: #1c1812; }
+            .mp-grid.list-view .fc-t2 .font-card__main-row { background: #181512; color: #f5efe4; }
+            .mp-grid.list-view .fc-t3 .font-card__main-row { background: #1a221a; color: #eef5ee; }
+            .mp-grid.list-view .fc-t4 .font-card__main-row { background: #221c18; color: #f5f0ec; }
+            .mp-grid.list-view .fc-t5 .font-card__main-row { background: #181d24; color: #eef2f7; }
 
             .mp-grid.list-view .font-card__preview {
                 flex: 1 1 0;
@@ -443,12 +575,12 @@
                 width: 0;
                 max-width: calc(100% - 280px);
                 overflow: hidden;
-                border-radius: 20px 0 0 20px;
+                border-radius: 18px 0 0 18px;
                 border-bottom: none;
                 display: flex;
                 flex-direction: column;
                 justify-content: space-between;
-                padding: 32px 40px;
+                padding: 28px 36px;
                 box-sizing: border-box;
             }
 
@@ -463,11 +595,11 @@
                 flex-direction: column;
                 justify-content: center;
                 align-items: center;
-                padding: 32px 28px;
-                border-left: 1px solid rgba(0, 0, 0, 0.08);
-                background: rgba(0, 0, 0, 0.04);
-                border-radius: 0 20px 20px 0;
-                gap: 20px;
+                padding: 28px 24px;
+                border-left: 1px solid rgba(28, 24, 18, 0.08);
+                background: rgba(28, 24, 18, 0.03);
+                border-radius: 0 18px 18px 0;
+                gap: 16px;
                 text-align: center;
                 box-sizing: border-box;
                 position: relative;
@@ -511,11 +643,15 @@
                 font-size: var(--specimen-size, 96px);
                 margin-bottom: 8px;
                 white-space: nowrap;
-                overflow: hidden;
+                overflow-x: auto;
+                scrollbar-width: none;
                 text-overflow: ellipsis;
                 max-width: 100%;
                 width: 100%;
                 display: block;
+            }
+            .mp-grid.list-view .font-card__big::-webkit-scrollbar {
+                display: none;
             }
 
             /* Theme overrides for List View borders and backgrounds */
@@ -561,8 +697,101 @@
                 background: rgba(255, 255, 255, 0.04);
                 box-sizing: border-box;
             }
+
+            /* Previews Row in List View */
+            .mp-grid.list-view .font-card__previews-row {
+                display: flex !important;
+                flex-direction: row !important;
+                gap: 16px;
+                width: 100%;
+                box-sizing: border-box;
+                overflow-x: auto !important;
+                scroll-snap-type: x mandatory;
+                scroll-behavior: smooth;
+                -webkit-overflow-scrolling: touch;
+                scrollbar-width: none;
+                padding-bottom: 2px;
+            }
+
+            .mp-grid.list-view .font-card__previews-row::-webkit-scrollbar {
+                display: none;
+            }
+
+            .mp-grid.list-view .fc-subspecimen {
+                flex: 1 0 calc(33.333% - 11px);
+                min-width: 280px;
+                max-width: 100%;
+                scroll-snap-align: start;
+                box-sizing: border-box;
+                overflow: hidden !important;
+                background: #ffffff !important;
+                border: 1px solid rgba(200, 187, 168, 0.45);
+                box-shadow: 0 2px 10px rgba(17, 17, 17, 0.03);
+            }
         }
 
+        /* ── List View on Mobile (< 768px) ── */
+        @media (max-width: 767px) {
+            .mp-grid.list-view .font-card {
+                background: #ffffff !important;
+                box-shadow: 0 4px 16px rgba(28, 24, 18, 0.04) !important;
+                border: 1px solid rgba(28, 24, 18, 0.08) !important;
+                border-radius: 20px !important;
+                padding: 16px !important;
+                display: flex !important;
+                flex-direction: column !important;
+                gap: 14px;
+                min-height: 0 !important;
+                cursor: default;
+                box-sizing: border-box;
+            }
+
+            .mp-grid.list-view .font-card.fc-card--hidden,
+            .mp-grid .font-card.fc-card--hidden,
+            .font-card.fc-card--hidden,
+            .font-card[style*="display: none"] {
+                display: none !important;
+            }
+
+            .mp-grid.list-view .font-card:hover {
+                transform: none !important;
+                box-shadow: 0 4px 16px rgba(28, 24, 18, 0.04) !important;
+            }
+
+            .mp-grid.list-view .font-card__main-row {
+                display: flex !important;
+                flex-direction: column !important;
+                border-radius: 16px;
+                overflow: hidden;
+                background: #faf7f2 !important;
+                border: 1px solid rgba(28, 24, 18, 0.06);
+            }
+
+            .mp-grid.list-view .fc-t1 .font-card__main-row { background: #faf7f2; color: #1c1812; }
+
+            .mp-grid.list-view .font-card__previews-row {
+                display: flex !important;
+                flex-direction: row !important;
+                gap: 12px;
+                width: 100%;
+                overflow-x: auto !important;
+                scroll-snap-type: x mandatory;
+                scrollbar-width: none;
+                box-sizing: border-box;
+                padding-bottom: 4px;
+            }
+            .mp-grid.list-view .font-card__previews-row::-webkit-scrollbar {
+                display: none;
+            }
+
+            .mp-grid.list-view .fc-subspecimen {
+                flex: 0 0 82% !important;
+                min-width: 250px !important;
+                scroll-snap-align: start;
+                box-sizing: border-box;
+                overflow: hidden !important;
+            }
+        }
 
         /* ─────────────────────────────────────────
            FONT GRID
@@ -2396,18 +2625,17 @@
     <header class="header-nav">
         <nav class="nav-inner" aria-label="Main navigation">
             <div class="nav-logo-group">
-                <a href="/index.html"><img src="/assets/images/glyphere.png" class="nav-logo-img"
-                        alt="Glyphere" /></a>
-                <a class="nav-logo-name" href="/index.html">Glyphere</a>
+                <a href="index.html"><img src="assets/images/glyphere.png" class="nav-logo-img" alt="Glyphere" /></a>
+                <a class="nav-logo-name" href="index.html">Glyphere</a>
             </div>
             <ul class="nav-links" role="list">
-                <li><a class="nav-link active" href="/marketplace.html" aria-current="page">Marketplace</a></li>
-                <li><a class="nav-link" href="/custom-font-services/custom_font_services.html">Services</a></li>
-                <li><a class="nav-link" href="/blog/index.html">Journal</a></li>
-                <li><a class="nav-link" href="/about.html">About</a></li>
+                <li><a class="nav-link active" href="marketplace.html" aria-current="page">Marketplace</a></li>
+                <li><a class="nav-link" href="custom-font-services/custom_font_services.html">Services</a></li>
+                <li><a class="nav-link" href="blog/index.html">Journal</a></li>
+                <li><a class="nav-link" href="about.html">About</a></li>
             </ul>
             <div class="nav-actions">
-                <a class="nav-cart" href="/cart.html" id="navCartBtn" aria-label="Shopping cart">
+                <a class="nav-cart" href="cart.html" id="navCartBtn" aria-label="Shopping cart">
                     <svg viewBox="0 0 24 24" aria-hidden="true">
                         <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z" />
                         <line x1="3" y1="6" x2="21" y2="6" />
@@ -2415,7 +2643,7 @@
                     </svg>
                     <span class="nav-cart__badge" id="navCartBadge" data-count="0">0</span>
                 </a>
-                <a class="nav-signup" href="/signup-login.html">Log In</a>
+                <a class="nav-signup" href="signup-login.html">Log In</a>
             </div>
             <button class="nav-hamburger" aria-label="Menu" aria-expanded="false">
                 <span class="nav-hamburger__line"></span>
@@ -2427,13 +2655,15 @@
 
     <div class="nav-mobile-menu" role="dialog" aria-label="Mobile navigation">
         <ul class="nav-mobile-menu__links">
-            <li><a class="nav-mobile-menu__link active" href="/marketplace.html" aria-current="page">Marketplace</a></li>
-            <li><a class="nav-mobile-menu__link" href="/custom-font-services/custom_font_services.html">Services</a></li>
-            <li><a class="nav-mobile-menu__link" href="/blog/index.html">Journal</a></li>
-            <li><a class="nav-mobile-menu__link" href="/about.html">About</a></li>
+            <li><a class="nav-mobile-menu__link active" href="marketplace.html" aria-current="page">Marketplace</a>
+            </li>
+            <li><a class="nav-mobile-menu__link" href="custom-font-services/custom_font_services.html">Services</a>
+            </li>
+            <li><a class="nav-mobile-menu__link" href="blog/index.html">Journal</a></li>
+            <li><a class="nav-mobile-menu__link" href="about.html">About</a></li>
         </ul>
         <div class="nav-mobile-menu__actions">
-            <a class="nav-mobile-menu__cart" href="/cart.html" aria-label="Shopping cart">
+            <a class="nav-mobile-menu__cart" href="cart.html" aria-label="Shopping cart">
                 <svg viewBox="0 0 24 24" aria-hidden="true">
                     <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z" />
                     <line x1="3" y1="6" x2="21" y2="6" />
@@ -2441,7 +2671,7 @@
                 </svg>
                 Cart
             </a>
-            <a class="nav-mobile-menu__signup" href="/signup-login.html">Log In</a>
+            <a class="nav-mobile-menu__signup" href="signup-login.html">Log In</a>
         </div>
     </div>
 
@@ -2565,23 +2795,24 @@
             </div>
 
             <div class="mp-view-toggle" role="group" aria-label="Layout view">
-                <button class="mp-view-btn mp-view-btn--active" id="view-grid" title="Grid View" aria-label="Grid View">
+                <button class="mp-view-btn" id="view-grid" title="Grid View" aria-label="Grid View">
                     <span class="material-symbols-outlined">grid_view</span>
                 </button>
-                <button class="mp-view-btn" id="view-list" title="List View" aria-label="List View">
+                <button class="mp-view-btn mp-view-btn--active" id="view-list" title="List View" aria-label="List View">
                     <span class="material-symbols-outlined">format_list_bulleted</span>
                 </button>
             </div>
         </div>
 
         <!-- ── Font Grid ── -->
-        <div class="mp-grid" id="marketplace-grid">
+        <div class="mp-grid list-view" id="marketplace-grid">
 
 
 
             <!-- Card 1: Turbo Block -->
             <article class="font-card fc-t1" data-category="sans-serif" data-index="1">
-                <div class="font-card__preview">
+                <div class="font-card__main-row">
+    <div class="font-card__preview">
                     <div class="font-card__badges">
                         <span class="fc-badge fc-badge--type">Sans Serif</span>
                         <span class="fc-badge fc-badge--sale">Uppercase,Lowercase,Numbers,Symbols</span>
@@ -2606,12 +2837,34 @@
                         <button class="fc-btn-buy font-card__cta-buy">Buy Now</button>
                     </div>
                 </div>
+                </div>
+                <div class="font-card__previews-row">
+                    <div class="fc-subspecimen" style="font-family:'Turbo_Block', sans-serif;">
+                        <div class="fc-subspecimen__line fc-subspecimen__line--1">TURBO BLOCK</div>
+                        <div class="fc-subspecimen__line fc-subspecimen__line--2">Architectural Force</div>
+                        <div class="fc-subspecimen__line fc-subspecimen__line--3">Form Follows Impact</div>
+                        <div class="fc-subspecimen__line fc-subspecimen__line--4">since 1980</div>
+                    </div>
+                    <div class="fc-subspecimen" style="font-family:'Turbo_Block', sans-serif;">
+                        <div class="fc-subspecimen__line fc-subspecimen__line--1">Bircks and Boots</div>
+                        <div class="fc-subspecimen__line fc-subspecimen__line--2">Wherever it is</div>
+                        <div class="fc-subspecimen__line fc-subspecimen__line--3">Bold Vibing</div>
+                        <div class="fc-subspecimen__line fc-subspecimen__line--4">since 1980</div>
+                    </div>
+                    <div class="fc-subspecimen" style="font-family:'Turbo_Block', sans-serif;">
+                        <div class="fc-subspecimen__line fc-subspecimen__line--1">THE QUICK BROWN FOX</div>
+                        <div class="fc-subspecimen__line fc-subspecimen__line--2">Jumps Over Lazy Dog</div>
+                        <div class="fc-subspecimen__line fc-subspecimen__line--3">Aa Bb Cc Dd · 0123</div>
+                        <div class="fc-subspecimen__line fc-subspecimen__line--4">Heavy Display Weight</div>
+                    </div>
+                </div>
             </article>
 
 
             <!-- Card 2: Vellum Flow (Handwriting) -->
             <article class="font-card fc-t1" data-category="handwriting" data-index="2">
-                <div class="font-card__preview">
+                <div class="font-card__main-row">
+    <div class="font-card__preview">
                     <div class="font-card__badges">
                         <span class="fc-badge fc-badge--type">Handwriting</span>
                         <span class="fc-badge fc-badge--sale">Uppercase,Lowercase</span>
@@ -2635,10 +2888,32 @@
                         <button class="fc-btn-buy font-card__cta-buy">Buy Now</button>
                     </div>
                 </div>
+                </div>
+                <div class="font-card__previews-row">
+                    <div class="fc-subspecimen" style="font-family:'Vellum_Flow', handwriting;">
+                        <div class="fc-subspecimen__line fc-subspecimen__line--1">Vellum & Flow</div>
+                        <div class="fc-subspecimen__line fc-subspecimen__line--2">Personal Journals</div>
+                        <div class="fc-subspecimen__line fc-subspecimen__line--3">Notes from a Dreamer</div>
+                        <div class="fc-subspecimen__line fc-subspecimen__line--4">since 1980</div>
+                    </div>
+                    <div class="fc-subspecimen" style="font-family:'Vellum_Flow', handwriting;">
+                        <div class="fc-subspecimen__line fc-subspecimen__line--1">Bircks and Boots</div>
+                        <div class="fc-subspecimen__line fc-subspecimen__line--2">Wherever it is</div>
+                        <div class="fc-subspecimen__line fc-subspecimen__line--3">Bold Vibing</div>
+                        <div class="fc-subspecimen__line fc-subspecimen__line--4">since 1980</div>
+                    </div>
+                    <div class="fc-subspecimen" style="font-family:'Vellum_Flow', handwriting;">
+                        <div class="fc-subspecimen__line fc-subspecimen__line--1">Handwritten Memories</div>
+                        <div class="fc-subspecimen__line fc-subspecimen__line--2">Letters from the Heart</div>
+                        <div class="fc-subspecimen__line fc-subspecimen__line--3">Aa Bb Cc Dd · 0123</div>
+                        <div class="fc-subspecimen__line fc-subspecimen__line--4">Organic Cursive Stroke</div>
+                    </div>
+                </div>
             </article>
             <!-- Card 3: Mistavio Sans — Custom woff2 (Sans-Serif / Warm Cream) -->
             <article class="font-card fc-t1" data-category="sans-serif" data-index="3">
-                <div class="font-card__preview">
+                <div class="font-card__main-row">
+    <div class="font-card__preview">
                     <div class="font-card__badges">
                         <span class="fc-badge fc-badge--type">Sans Serif</span>
                         <span class="fc-badge fc-badge--sale">Uppercase,Lowercase,Numbers,Symbols</span>
@@ -2661,11 +2936,33 @@
                         <button class="fc-btn-buy font-card__cta-buy">Buy Now</button>
                     </div>
                 </div>
+                </div>
+                <div class="font-card__previews-row">
+                    <div class="fc-subspecimen" style="font-family:'Mistavio Sans', sans-serif;">
+                        <div class="fc-subspecimen__line fc-subspecimen__line--1">HAUTE COUTURE</div>
+                        <div class="fc-subspecimen__line fc-subspecimen__line--2">Editorial Rhythm</div>
+                        <div class="fc-subspecimen__line fc-subspecimen__line--3">Vogue & Architecture</div>
+                        <div class="fc-subspecimen__line fc-subspecimen__line--4">since 1980</div>
+                    </div>
+                    <div class="fc-subspecimen" style="font-family:'Mistavio Sans', sans-serif;">
+                        <div class="fc-subspecimen__line fc-subspecimen__line--1">Bircks and Boots</div>
+                        <div class="fc-subspecimen__line fc-subspecimen__line--2">Wherever it is</div>
+                        <div class="fc-subspecimen__line fc-subspecimen__line--3">Bold Vibing</div>
+                        <div class="fc-subspecimen__line fc-subspecimen__line--4">since 1980</div>
+                    </div>
+                    <div class="fc-subspecimen" style="font-family:'Mistavio Sans', sans-serif;">
+                        <div class="fc-subspecimen__line fc-subspecimen__line--1">CONTEMPORARY LUXURY</div>
+                        <div class="fc-subspecimen__line fc-subspecimen__line--2">High Fashion Aesthetics</div>
+                        <div class="fc-subspecimen__line fc-subspecimen__line--3">Aa Bb Cc Dd · 0123</div>
+                        <div class="fc-subspecimen__line fc-subspecimen__line--4">Display & Editorial</div>
+                    </div>
+                </div>
             </article>
 
             <!-- Card 4: BLOCK ITALIC -->
             <article class="font-card fc-t1" data-category="logo" data-index="4">
-                <div class="font-card__preview">
+                <div class="font-card__main-row">
+    <div class="font-card__preview">
                     <div class="font-card__badges">
                         <span class="fc-badge fc-badge--type">Logo Font</span>
                         <span class="fc-badge fc-badge--sale">Uppercase,Numbers,Symbols</span>
@@ -2688,11 +2985,33 @@
                         <button class="fc-btn-buy font-card__cta-buy">Buy Now</button>
                     </div>
                 </div>
+                </div>
+                <div class="font-card__previews-row">
+                    <div class="fc-subspecimen" style="font-family:'BLOCK_ITALIC', sans-serif;">
+                        <div class="fc-subspecimen__line fc-subspecimen__line--1">DYNAMIC SPEED</div>
+                        <div class="fc-subspecimen__line fc-subspecimen__line--2">Championship Drive</div>
+                        <div class="fc-subspecimen__line fc-subspecimen__line--3">High Velocity Power</div>
+                        <div class="fc-subspecimen__line fc-subspecimen__line--4">since 1980</div>
+                    </div>
+                    <div class="fc-subspecimen" style="font-family:'BLOCK_ITALIC', sans-serif;">
+                        <div class="fc-subspecimen__line fc-subspecimen__line--1">Bircks and Boots</div>
+                        <div class="fc-subspecimen__line fc-subspecimen__line--2">Wherever it is</div>
+                        <div class="fc-subspecimen__line fc-subspecimen__line--3">Bold Vibing</div>
+                        <div class="fc-subspecimen__line fc-subspecimen__line--4">since 1980</div>
+                    </div>
+                    <div class="fc-subspecimen" style="font-family:'BLOCK_ITALIC', sans-serif;">
+                        <div class="fc-subspecimen__line fc-subspecimen__line--1">MOTORSPORT & RACING</div>
+                        <div class="fc-subspecimen__line fc-subspecimen__line--2">Maximum Forward Thrust</div>
+                        <div class="fc-subspecimen__line fc-subspecimen__line--3">Aa Bb Cc Dd · 0123</div>
+                        <div class="fc-subspecimen__line fc-subspecimen__line--4">Bold Oblique Angle</div>
+                    </div>
+                </div>
             </article>
 
             <!-- Card 5: Brushfield Fury -->
             <article class="font-card fc-t1" data-category="logo" data-index="4">
-                <div class="font-card__preview">
+                <div class="font-card__main-row">
+    <div class="font-card__preview">
                     <div class="font-card__badges">
                         <span class="fc-badge fc-badge--type">Logo Font</span>
                         <span class="fc-badge fc-badge--sale">Uppercase,Lowercase,Numbers,Symbols</span>
@@ -2717,11 +3036,33 @@
                         <button class="fc-btn-buy font-card__cta-buy">Buy Now</button>
                     </div>
                 </div>
+                </div>
+                <div class="font-card__previews-row">
+                    <div class="fc-subspecimen" style="font-family:'Brushfield_Fury', sans-serif;">
+                        <div class="fc-subspecimen__line fc-subspecimen__line--1">WILD CONFIDENCE</div>
+                        <div class="fc-subspecimen__line fc-subspecimen__line--2">Raw Ink Expression</div>
+                        <div class="fc-subspecimen__line fc-subspecimen__line--3">Aggressive Brushwork</div>
+                        <div class="fc-subspecimen__line fc-subspecimen__line--4">since 1980</div>
+                    </div>
+                    <div class="fc-subspecimen" style="font-family:'Brushfield_Fury', sans-serif;">
+                        <div class="fc-subspecimen__line fc-subspecimen__line--1">Bircks and Boots</div>
+                        <div class="fc-subspecimen__line fc-subspecimen__line--2">Wherever it is</div>
+                        <div class="fc-subspecimen__line fc-subspecimen__line--3">Bold Vibing</div>
+                        <div class="fc-subspecimen__line fc-subspecimen__line--4">since 1980</div>
+                    </div>
+                    <div class="fc-subspecimen" style="font-family:'Brushfield_Fury', sans-serif;">
+                        <div class="fc-subspecimen__line fc-subspecimen__line--1">UNCONTAINED ENERGY</div>
+                        <div class="fc-subspecimen__line fc-subspecimen__line--2">Born in the Underground</div>
+                        <div class="fc-subspecimen__line fc-subspecimen__line--3">Aa Bb Cc Dd · 0123</div>
+                        <div class="fc-subspecimen__line fc-subspecimen__line--4">Textured Ink Display</div>
+                    </div>
+                </div>
             </article>
 
             <!-- Card 6: Stadium Bold -->
             <article class="font-card fc-t1" data-category="sans-serif" data-index="4">
-                <div class="font-card__preview">
+                <div class="font-card__main-row">
+    <div class="font-card__preview">
                     <div class="font-card__badges">
                         <span class="fc-badge fc-badge--type">Sans Serif</span>
                         <span class="fc-badge fc-badge--sale">Uppercase</span>
@@ -2745,11 +3086,33 @@
                         <button class="fc-btn-buy font-card__cta-buy">Buy Now</button>
                     </div>
                 </div>
+                </div>
+                <div class="font-card__previews-row">
+                    <div class="fc-subspecimen" style="font-family:'Stadium_Bold', sans-serif;">
+                        <div class="fc-subspecimen__line fc-subspecimen__line--1">GAME DAY SPIRIT</div>
+                        <div class="fc-subspecimen__line fc-subspecimen__line--2">Athletic Excellence</div>
+                        <div class="fc-subspecimen__line fc-subspecimen__line--3">Victory on the Field</div>
+                        <div class="fc-subspecimen__line fc-subspecimen__line--4">since 1980</div>
+                    </div>
+                    <div class="fc-subspecimen" style="font-family:'Stadium_Bold', sans-serif;">
+                        <div class="fc-subspecimen__line fc-subspecimen__line--1">Bircks and Boots</div>
+                        <div class="fc-subspecimen__line fc-subspecimen__line--2">Wherever it is</div>
+                        <div class="fc-subspecimen__line fc-subspecimen__line--3">Bold Vibing</div>
+                        <div class="fc-subspecimen__line fc-subspecimen__line--4">since 1980</div>
+                    </div>
+                    <div class="fc-subspecimen" style="font-family:'Stadium_Bold', sans-serif;">
+                        <div class="fc-subspecimen__line fc-subspecimen__line--1">VARSITY HEADLINES</div>
+                        <div class="fc-subspecimen__line fc-subspecimen__line--2">Championship Heritage</div>
+                        <div class="fc-subspecimen__line fc-subspecimen__line--3">Aa Bb Cc Dd · 0123</div>
+                        <div class="fc-subspecimen__line fc-subspecimen__line--4">Heavyweight Sports Sans</div>
+                    </div>
+                </div>
             </article>
 
             <!-- Card 7: Strata Bold -->
             <article class="font-card fc-t1" data-category="sans-serif" data-index="4">
-                <div class="font-card__preview">
+                <div class="font-card__main-row">
+    <div class="font-card__preview">
                     <div class="font-card__badges">
                         <span class="fc-badge fc-badge--type">Sans Serif</span>
                         <span class="fc-badge fc-badge--sale">Uppercase,Lowercase,Numbers,Symbols</span>
@@ -2773,11 +3136,33 @@
                         <button class="fc-btn-buy font-card__cta-buy">Buy Now</button>
                     </div>
                 </div>
+                </div>
+                <div class="font-card__previews-row">
+                    <div class="fc-subspecimen" style="font-family:'Strata_Bold', sans-serif;">
+                        <div class="fc-subspecimen__line fc-subspecimen__line--1">LAYERED STRENGTH</div>
+                        <div class="fc-subspecimen__line fc-subspecimen__line--2">Tectonic Structure</div>
+                        <div class="fc-subspecimen__line fc-subspecimen__line--3">Solid Foundation</div>
+                        <div class="fc-subspecimen__line fc-subspecimen__line--4">since 1980</div>
+                    </div>
+                    <div class="fc-subspecimen" style="font-family:'Strata_Bold', sans-serif;">
+                        <div class="fc-subspecimen__line fc-subspecimen__line--1">Bircks and Boots</div>
+                        <div class="fc-subspecimen__line fc-subspecimen__line--2">Wherever it is</div>
+                        <div class="fc-subspecimen__line fc-subspecimen__line--3">Bold Vibing</div>
+                        <div class="fc-subspecimen__line fc-subspecimen__line--4">since 1980</div>
+                    </div>
+                    <div class="fc-subspecimen" style="font-family:'Strata_Bold', sans-serif;">
+                        <div class="fc-subspecimen__line fc-subspecimen__line--1">GEOLOGICAL PRECISION</div>
+                        <div class="fc-subspecimen__line fc-subspecimen__line--2">Unshakable Balance</div>
+                        <div class="fc-subspecimen__line fc-subspecimen__line--3">Aa Bb Cc Dd · 0123</div>
+                        <div class="fc-subspecimen__line fc-subspecimen__line--4">Monolithic Proportions</div>
+                    </div>
+                </div>
             </article>
 
             <!-- Card 8: Funkadelic Serif -->
             <article class="font-card fc-t1" data-category="serif" data-index="4">
-                <div class="font-card__preview">
+                <div class="font-card__main-row">
+    <div class="font-card__preview">
                     <div class="font-card__badges">
                         <span class="fc-badge fc-badge--type">Serif</span>
                         <span class="fc-badge fc-badge--sale">Uppercase,Numbers</span>
@@ -2802,11 +3187,33 @@
                         <button class="fc-btn-buy font-card__cta-buy">Buy Now</button>
                     </div>
                 </div>
+                </div>
+                <div class="font-card__previews-row">
+                    <div class="fc-subspecimen" style="font-family:'Funkadelic_Serif', sans-serif;">
+                        <div class="fc-subspecimen__line fc-subspecimen__line--1">RETRO GROOVE</div>
+                        <div class="fc-subspecimen__line fc-subspecimen__line--2">Psychedelic Rhythm</div>
+                        <div class="fc-subspecimen__line fc-subspecimen__line--3">Soulful Good Vibes</div>
+                        <div class="fc-subspecimen__line fc-subspecimen__line--4">since 1980</div>
+                    </div>
+                    <div class="fc-subspecimen" style="font-family:'Funkadelic_Serif', sans-serif;">
+                        <div class="fc-subspecimen__line fc-subspecimen__line--1">Bircks and Boots</div>
+                        <div class="fc-subspecimen__line fc-subspecimen__line--2">Wherever it is</div>
+                        <div class="fc-subspecimen__line fc-subspecimen__line--3">Bold Vibing</div>
+                        <div class="fc-subspecimen__line fc-subspecimen__line--4">since 1980</div>
+                    </div>
+                    <div class="fc-subspecimen" style="font-family:'Funkadelic_Serif', sans-serif;">
+                        <div class="fc-subspecimen__line fc-subspecimen__line--1">ELECTRIC BOOGALOO</div>
+                        <div class="fc-subspecimen__line fc-subspecimen__line--2">Seventies Vinyl Culture</div>
+                        <div class="fc-subspecimen__line fc-subspecimen__line--3">Aa Bb Cc Dd · 0123</div>
+                        <div class="fc-subspecimen__line fc-subspecimen__line--4">Expressive Flared Serif</div>
+                    </div>
+                </div>
             </article>
 
             <!-- Card 9: Velocity Brush -->
             <article class="font-card fc-t1" data-category="handwriting" data-index="4">
-                <div class="font-card__preview">
+                <div class="font-card__main-row">
+    <div class="font-card__preview">
                     <div class="font-card__badges">
                         <span class="fc-badge fc-badge--type">Handwriting</span>
                         <span class="fc-badge fc-badge--sale">Uppercase,Numbers</span>
@@ -2831,11 +3238,33 @@
                         <button class="fc-btn-buy font-card__cta-buy">Buy Now</button>
                     </div>
                 </div>
+                </div>
+                <div class="font-card__previews-row">
+                    <div class="fc-subspecimen" style="font-family:'Velocity_Brush', handwriting;">
+                        <div class="fc-subspecimen__line fc-subspecimen__line--1">SWIFT MOTION</div>
+                        <div class="fc-subspecimen__line fc-subspecimen__line--2">Fast Hand Lettering</div>
+                        <div class="fc-subspecimen__line fc-subspecimen__line--3">Spontaneous Strokes</div>
+                        <div class="fc-subspecimen__line fc-subspecimen__line--4">since 1980</div>
+                    </div>
+                    <div class="fc-subspecimen" style="font-family:'Velocity_Brush', handwriting;">
+                        <div class="fc-subspecimen__line fc-subspecimen__line--1">Bircks and Boots</div>
+                        <div class="fc-subspecimen__line fc-subspecimen__line--2">Wherever it is</div>
+                        <div class="fc-subspecimen__line fc-subspecimen__line--3">Bold Vibing</div>
+                        <div class="fc-subspecimen__line fc-subspecimen__line--4">since 1980</div>
+                    </div>
+                    <div class="fc-subspecimen" style="font-family:'Velocity_Brush', handwriting;">
+                        <div class="fc-subspecimen__line fc-subspecimen__line--1">URBAN ADVENTURE</div>
+                        <div class="fc-subspecimen__line fc-subspecimen__line--2">Fluid Quick Movement</div>
+                        <div class="fc-subspecimen__line fc-subspecimen__line--3">Aa Bb Cc Dd · 0123</div>
+                        <div class="fc-subspecimen__line fc-subspecimen__line--4">Freehand Brush Script</div>
+                    </div>
+                </div>
             </article>
 
             <!-- Card 10: Goliath Soft -->
             <article class="font-card fc-t1" data-category="sans-serif" data-index="4">
-                <div class="font-card__preview">
+                <div class="font-card__main-row">
+    <div class="font-card__preview">
                     <div class="font-card__badges">
                         <span class="fc-badge fc-badge--type">Sans serif</span>
                         <span class="fc-badge fc-badge--sale">Uppercase,Lowercase,Numbers,Symbols</span>
@@ -2860,11 +3289,33 @@
                         <button class="fc-btn-buy font-card__cta-buy">Buy Now</button>
                     </div>
                 </div>
+                </div>
+                <div class="font-card__previews-row">
+                    <div class="fc-subspecimen" style="font-family:'Goliath_Soft', serif;">
+                        <div class="fc-subspecimen__line fc-subspecimen__line--1">GENTLE GIANT</div>
+                        <div class="fc-subspecimen__line fc-subspecimen__line--2">Warm Rounded Curves</div>
+                        <div class="fc-subspecimen__line fc-subspecimen__line--3">Friendly Monument</div>
+                        <div class="fc-subspecimen__line fc-subspecimen__line--4">since 1980</div>
+                    </div>
+                    <div class="fc-subspecimen" style="font-family:'Goliath_Soft', serif;">
+                        <div class="fc-subspecimen__line fc-subspecimen__line--1">Bircks and Boots</div>
+                        <div class="fc-subspecimen__line fc-subspecimen__line--2">Wherever it is</div>
+                        <div class="fc-subspecimen__line fc-subspecimen__line--3">Bold Vibing</div>
+                        <div class="fc-subspecimen__line fc-subspecimen__line--4">since 1980</div>
+                    </div>
+                    <div class="fc-subspecimen" style="font-family:'Goliath_Soft', serif;">
+                        <div class="fc-subspecimen__line fc-subspecimen__line--1">SOFT GEOMETRY</div>
+                        <div class="fc-subspecimen__line fc-subspecimen__line--2">Approachable Presence</div>
+                        <div class="fc-subspecimen__line fc-subspecimen__line--3">Aa Bb Cc Dd · 0123</div>
+                        <div class="fc-subspecimen__line fc-subspecimen__line--4">Heavy Rounded Headline</div>
+                    </div>
+                </div>
             </article>
 
             <!-- Card 11: Prose Bold -->
             <article class="font-card fc-t1" data-category="serif" data-index="4">
-                <div class="font-card__preview">
+                <div class="font-card__main-row">
+    <div class="font-card__preview">
                     <div class="font-card__badges">
                         <span class="fc-badge fc-badge--type">Serif</span>
                         <span class="fc-badge fc-badge--sale">Uppercase,Lowercase,Numbers,Symbols</span>
@@ -2889,11 +3340,33 @@
                         <button class="fc-btn-buy font-card__cta-buy">Buy Now</button>
                     </div>
                 </div>
+                </div>
+                <div class="font-card__previews-row">
+                    <div class="fc-subspecimen" style="font-family:'Prose_Bold', script;">
+                        <div class="fc-subspecimen__line fc-subspecimen__line--1">LITERARY CLASSIC</div>
+                        <div class="fc-subspecimen__line fc-subspecimen__line--2">Eloquent Reflections</div>
+                        <div class="fc-subspecimen__line fc-subspecimen__line--3">Timeless Storytelling</div>
+                        <div class="fc-subspecimen__line fc-subspecimen__line--4">since 1980</div>
+                    </div>
+                    <div class="fc-subspecimen" style="font-family:'Prose_Bold', script;">
+                        <div class="fc-subspecimen__line fc-subspecimen__line--1">Bircks and Boots</div>
+                        <div class="fc-subspecimen__line fc-subspecimen__line--2">Wherever it is</div>
+                        <div class="fc-subspecimen__line fc-subspecimen__line--3">Bold Vibing</div>
+                        <div class="fc-subspecimen__line fc-subspecimen__line--4">since 1980</div>
+                    </div>
+                    <div class="fc-subspecimen" style="font-family:'Prose_Bold', script;">
+                        <div class="fc-subspecimen__line fc-subspecimen__line--1">GOLDEN ARCHIVES</div>
+                        <div class="fc-subspecimen__line fc-subspecimen__line--2">Ink on Parchment Paper</div>
+                        <div class="fc-subspecimen__line fc-subspecimen__line--3">Aa Bb Cc Dd · 0123</div>
+                        <div class="fc-subspecimen__line fc-subspecimen__line--4">Refined Script Display</div>
+                    </div>
+                </div>
             </article>
 
             <!-- Card 12: Storybook Sans -->
             <article class="font-card fc-t1" data-category="serif" data-index="4">
-                <div class="font-card__preview">
+                <div class="font-card__main-row">
+    <div class="font-card__preview">
                     <div class="font-card__badges">
                         <span class="fc-badge fc-badge--type">Sans</span>
                         <span class="fc-badge fc-badge--sale">Uppercase,Lowercase,Numbers,Symbols</span>
@@ -2918,11 +3391,33 @@
                         <button class="fc-btn-buy font-card__cta-buy">Buy Now</button>
                     </div>
                 </div>
+                </div>
+                <div class="font-card__previews-row">
+                    <div class="fc-subspecimen" style="font-family:'Storybook_Sans', serif;">
+                        <div class="fc-subspecimen__line fc-subspecimen__line--1">ONCE UPON A TIME</div>
+                        <div class="fc-subspecimen__line fc-subspecimen__line--2">Whimsical Enchantment</div>
+                        <div class="fc-subspecimen__line fc-subspecimen__line--3">Fairytale Chronicles</div>
+                        <div class="fc-subspecimen__line fc-subspecimen__line--4">since 1980</div>
+                    </div>
+                    <div class="fc-subspecimen" style="font-family:'Storybook_Sans', serif;">
+                        <div class="fc-subspecimen__line fc-subspecimen__line--1">Bircks and Boots</div>
+                        <div class="fc-subspecimen__line fc-subspecimen__line--2">Wherever it is</div>
+                        <div class="fc-subspecimen__line fc-subspecimen__line--3">Bold Vibing</div>
+                        <div class="fc-subspecimen__line fc-subspecimen__line--4">since 1980</div>
+                    </div>
+                    <div class="fc-subspecimen" style="font-family:'Storybook_Sans', serif;">
+                        <div class="fc-subspecimen__line fc-subspecimen__line--1">CHILDHOOD WONDER</div>
+                        <div class="fc-subspecimen__line fc-subspecimen__line--2">Magic in Every Word</div>
+                        <div class="fc-subspecimen__line fc-subspecimen__line--3">Aa Bb Cc Dd · 0123</div>
+                        <div class="fc-subspecimen__line fc-subspecimen__line--4">Playful Story Display</div>
+                    </div>
+                </div>
             </article>
 
             <!-- Card 13: Pebble Sans -->
             <article class="font-card fc-t1" data-category="serif" data-index="4">
-                <div class="font-card__preview">
+                <div class="font-card__main-row">
+    <div class="font-card__preview">
                     <div class="font-card__badges">
                         <span class="fc-badge fc-badge--type">Sans</span>
                         <span class="fc-badge fc-badge--sale">Uppercase,Lowercase,Numbers,Symbols</span>
@@ -2947,11 +3442,33 @@
                         <button class="fc-btn-buy font-card__cta-buy">Buy Now</button>
                     </div>
                 </div>
+                </div>
+                <div class="font-card__previews-row">
+                    <div class="fc-subspecimen" style="font-family:'Pebble_Sans', serif;">
+                        <div class="fc-subspecimen__line fc-subspecimen__line--1">SMOOTH CONTOURS</div>
+                        <div class="fc-subspecimen__line fc-subspecimen__line--2">River Stone Curves</div>
+                        <div class="fc-subspecimen__line fc-subspecimen__line--3">Natural Minimal Design</div>
+                        <div class="fc-subspecimen__line fc-subspecimen__line--4">since 1980</div>
+                    </div>
+                    <div class="fc-subspecimen" style="font-family:'Pebble_Sans', serif;">
+                        <div class="fc-subspecimen__line fc-subspecimen__line--1">Bircks and Boots</div>
+                        <div class="fc-subspecimen__line fc-subspecimen__line--2">Wherever it is</div>
+                        <div class="fc-subspecimen__line fc-subspecimen__line--3">Bold Vibing</div>
+                        <div class="fc-subspecimen__line fc-subspecimen__line--4">since 1980</div>
+                    </div>
+                    <div class="fc-subspecimen" style="font-family:'Pebble_Sans', serif;">
+                        <div class="fc-subspecimen__line fc-subspecimen__line--1">NATURE AESTHETIC</div>
+                        <div class="fc-subspecimen__line fc-subspecimen__line--2">Soft Organic Presence</div>
+                        <div class="fc-subspecimen__line fc-subspecimen__line--3">Aa Bb Cc Dd · 0123</div>
+                        <div class="fc-subspecimen__line fc-subspecimen__line--4">Modern Soft Sans</div>
+                    </div>
+                </div>
             </article>
 
             <!-- Card 14: Midnight Citadel -->
             <article class="font-card fc-t1" data-category="serif" data-index="4">
-                <div class="font-card__preview">
+                <div class="font-card__main-row">
+    <div class="font-card__preview">
                     <div class="font-card__badges">
                         <span class="fc-badge fc-badge--type">Serif</span>
                         <span class="fc-badge fc-badge--sale">Uppercase,Lowercase,Numbers,Symbols</span>
@@ -2976,11 +3493,33 @@
                         <button class="fc-btn-buy font-card__cta-buy">Buy Now</button>
                     </div>
                 </div>
+                </div>
+                <div class="font-card__previews-row">
+                    <div class="fc-subspecimen" style="font-family:'Midnight_Citadel', serif;">
+                        <div class="fc-subspecimen__line fc-subspecimen__line--1">HALLOWEEN</div>
+                        <div class="fc-subspecimen__line fc-subspecimen__line--2">Midnight</div>
+                        <div class="fc-subspecimen__line fc-subspecimen__line--3">Trick or Treat</div>
+                        <div class="fc-subspecimen__line fc-subspecimen__line--4">since 1980</div>
+                    </div>
+                    <div class="fc-subspecimen" style="font-family:'Midnight_Citadel', serif;">
+                        <div class="fc-subspecimen__line fc-subspecimen__line--1">Bircks and Boots</div>
+                        <div class="fc-subspecimen__line fc-subspecimen__line--2">Wherever it is</div>
+                        <div class="fc-subspecimen__line fc-subspecimen__line--3">Bold Vibing</div>
+                        <div class="fc-subspecimen__line fc-subspecimen__line--4">since 1980</div>
+                    </div>
+                    <div class="fc-subspecimen" style="font-family:'Midnight_Citadel', serif;">
+                        <div class="fc-subspecimen__line fc-subspecimen__line--1">WITCHING HOUR</div>
+                        <div class="fc-subspecimen__line fc-subspecimen__line--2">Spooky Season 1313</div>
+                        <div class="fc-subspecimen__line fc-subspecimen__line--3">Aa Bb Cc Dd · 0123</div>
+                        <div class="fc-subspecimen__line fc-subspecimen__line--4">Dark Gothic Fantasy</div>
+                    </div>
+                </div>
             </article>
 
             <!-- Card 15: Zenith Spark -->
             <article class="font-card fc-t1" data-category="serif" data-index="4">
-                <div class="font-card__preview">
+                <div class="font-card__main-row">
+    <div class="font-card__preview">
                     <div class="font-card__badges">
                         <span class="fc-badge fc-badge--type">Serif</span>
                         <span class="fc-badge fc-badge--sale">Uppercase,Lowercase,Numbers,Symbols</span>
@@ -3005,11 +3544,33 @@
                         <button class="fc-btn-buy font-card__cta-buy">Buy Now</button>
                     </div>
                 </div>
+                </div>
+                <div class="font-card__previews-row">
+                    <div class="fc-subspecimen" style="font-family:'Zenith_Spark', serif;">
+                        <div class="fc-subspecimen__line fc-subspecimen__line--1">COSMIC RADIANCE</div>
+                        <div class="fc-subspecimen__line fc-subspecimen__line--2">Brilliant Constellation</div>
+                        <div class="fc-subspecimen__line fc-subspecimen__line--3">Reach for the Stars</div>
+                        <div class="fc-subspecimen__line fc-subspecimen__line--4">since 1980</div>
+                    </div>
+                    <div class="fc-subspecimen" style="font-family:'Zenith_Spark', serif;">
+                        <div class="fc-subspecimen__line fc-subspecimen__line--1">Bircks and Boots</div>
+                        <div class="fc-subspecimen__line fc-subspecimen__line--2">Wherever it is</div>
+                        <div class="fc-subspecimen__line fc-subspecimen__line--3">Bold Vibing</div>
+                        <div class="fc-subspecimen__line fc-subspecimen__line--4">since 1980</div>
+                    </div>
+                    <div class="fc-subspecimen" style="font-family:'Zenith_Spark', serif;">
+                        <div class="fc-subspecimen__line fc-subspecimen__line--1">STELLAR HORIZONS</div>
+                        <div class="fc-subspecimen__line fc-subspecimen__line--2">Illuminating Spaces</div>
+                        <div class="fc-subspecimen__line fc-subspecimen__line--3">Aa Bb Cc Dd · 0123</div>
+                        <div class="fc-subspecimen__line fc-subspecimen__line--4">Sparkling Flare Serif</div>
+                    </div>
+                </div>
             </article>
 
             <!-- Card 16: Sonnet Italic -->
             <article class="font-card fc-t1" data-category="serif" data-index="4">
-                <div class="font-card__preview">
+                <div class="font-card__main-row">
+    <div class="font-card__preview">
                     <div class="font-card__badges">
                         <span class="fc-badge fc-badge--type">Serif</span>
                         <span class="fc-badge fc-badge--sale">Uppercase,Lowercase,Numbers,Symbols</span>
@@ -3034,11 +3595,33 @@
                         <button class="fc-btn-buy font-card__cta-buy">Buy Now</button>
                     </div>
                 </div>
+                </div>
+                <div class="font-card__previews-row">
+                    <div class="fc-subspecimen" style="font-family:'Sonnet_Italic', serif;">
+                        <div class="fc-subspecimen__line fc-subspecimen__line--1">POETIC CADENCE</div>
+                        <div class="fc-subspecimen__line fc-subspecimen__line--2">Shall I Compare Thee</div>
+                        <div class="fc-subspecimen__line fc-subspecimen__line--3">Summer Radiance Flow</div>
+                        <div class="fc-subspecimen__line fc-subspecimen__line--4">since 1980</div>
+                    </div>
+                    <div class="fc-subspecimen" style="font-family:'Sonnet_Italic', serif;">
+                        <div class="fc-subspecimen__line fc-subspecimen__line--1">Bircks and Boots</div>
+                        <div class="fc-subspecimen__line fc-subspecimen__line--2">Wherever it is</div>
+                        <div class="fc-subspecimen__line fc-subspecimen__line--3">Bold Vibing</div>
+                        <div class="fc-subspecimen__line fc-subspecimen__line--4">since 1980</div>
+                    </div>
+                    <div class="fc-subspecimen" style="font-family:'Sonnet_Italic', serif;">
+                        <div class="fc-subspecimen__line fc-subspecimen__line--1">ROMANTIC VERSES</div>
+                        <div class="fc-subspecimen__line fc-subspecimen__line--2">Graceful Stanza Rhythm</div>
+                        <div class="fc-subspecimen__line fc-subspecimen__line--3">Aa Bb Cc Dd · 0123</div>
+                        <div class="fc-subspecimen__line fc-subspecimen__line--4">Delicate Editorial Italic</div>
+                    </div>
+                </div>
             </article>
 
             <!-- Card 17: Nova Legacy -->
             <article class="font-card fc-t1" data-category="serif" data-index="4">
-                <div class="font-card__preview">
+                <div class="font-card__main-row">
+    <div class="font-card__preview">
                     <div class="font-card__badges">
                         <span class="fc-badge fc-badge--type">Serif</span>
                         <span class="fc-badge fc-badge--sale">Uppercase,Lowercase,Numbers,Symbols</span>
@@ -3063,11 +3646,33 @@
                         <button class="fc-btn-buy font-card__cta-buy">Buy Now</button>
                     </div>
                 </div>
+                </div>
+                <div class="font-card__previews-row">
+                    <div class="fc-subspecimen" style="font-family:'Nova_Legacy', serif;">
+                        <div class="fc-subspecimen__line fc-subspecimen__line--1">HERITAGE ESSENCE</div>
+                        <div class="fc-subspecimen__line fc-subspecimen__line--2">Timeless Monumental</div>
+                        <div class="fc-subspecimen__line fc-subspecimen__line--3">Centuries of Craft</div>
+                        <div class="fc-subspecimen__line fc-subspecimen__line--4">since 1980</div>
+                    </div>
+                    <div class="fc-subspecimen" style="font-family:'Nova_Legacy', serif;">
+                        <div class="fc-subspecimen__line fc-subspecimen__line--1">Bircks and Boots</div>
+                        <div class="fc-subspecimen__line fc-subspecimen__line--2">Wherever it is</div>
+                        <div class="fc-subspecimen__line fc-subspecimen__line--3">Bold Vibing</div>
+                        <div class="fc-subspecimen__line fc-subspecimen__line--4">since 1980</div>
+                    </div>
+                    <div class="fc-subspecimen" style="font-family:'Nova_Legacy', serif;">
+                        <div class="fc-subspecimen__line fc-subspecimen__line--1">DISTINGUISHED FORM</div>
+                        <div class="fc-subspecimen__line fc-subspecimen__line--2">Imperial Proportions</div>
+                        <div class="fc-subspecimen__line fc-subspecimen__line--3">Aa Bb Cc Dd · 0123</div>
+                        <div class="fc-subspecimen__line fc-subspecimen__line--4">Classic Roman Capitals</div>
+                    </div>
+                </div>
             </article>
 
             <!-- Card 18: Boutique Seraphina -->
             <article class="font-card fc-t1" data-category="serif" data-index="4">
-                <div class="font-card__preview">
+                <div class="font-card__main-row">
+    <div class="font-card__preview">
                     <div class="font-card__badges">
                         <span class="fc-badge fc-badge--type">Serif</span>
                         <span class="fc-badge fc-badge--sale">Uppercase,Lowercase,Numbers,Symbols</span>
@@ -3092,11 +3697,33 @@
                         <button class="fc-btn-buy font-card__cta-buy">Buy Now</button>
                     </div>
                 </div>
+                </div>
+                <div class="font-card__previews-row">
+                    <div class="fc-subspecimen" style="font-family:'Boutique_Seraphina', serif;">
+                        <div class="fc-subspecimen__line fc-subspecimen__line--1">AVENUE MONTAIGNE</div>
+                        <div class="fc-subspecimen__line fc-subspecimen__line--2">Atelier & Haute Couture</div>
+                        <div class="fc-subspecimen__line fc-subspecimen__line--3">Silk & Velvet Dreams</div>
+                        <div class="fc-subspecimen__line fc-subspecimen__line--4">since 1980</div>
+                    </div>
+                    <div class="fc-subspecimen" style="font-family:'Boutique_Seraphina', serif;">
+                        <div class="fc-subspecimen__line fc-subspecimen__line--1">Bircks and Boots</div>
+                        <div class="fc-subspecimen__line fc-subspecimen__line--2">Wherever it is</div>
+                        <div class="fc-subspecimen__line fc-subspecimen__line--3">Bold Vibing</div>
+                        <div class="fc-subspecimen__line fc-subspecimen__line--4">since 1980</div>
+                    </div>
+                    <div class="fc-subspecimen" style="font-family:'Boutique_Seraphina', serif;">
+                        <div class="fc-subspecimen__line fc-subspecimen__line--1">PARISIAN LUXURY</div>
+                        <div class="fc-subspecimen__line fc-subspecimen__line--2">Elegance Without Effort</div>
+                        <div class="fc-subspecimen__line fc-subspecimen__line--3">Aa Bb Cc Dd · 0123</div>
+                        <div class="fc-subspecimen__line fc-subspecimen__line--4">Refined Modern Serif</div>
+                    </div>
+                </div>
             </article>
 
             <!-- Card 19: Glissade -->
             <article class="font-card fc-t1" data-category="serif" data-index="4">
-                <div class="font-card__preview">
+                <div class="font-card__main-row">
+    <div class="font-card__preview">
                     <div class="font-card__badges">
                         <span class="fc-badge fc-badge--type">Serif</span>
                         <span class="fc-badge fc-badge--sale">Uppercase,Lowercase,Numbers,Symbols</span>
@@ -3121,11 +3748,33 @@
                         <button class="fc-btn-buy font-card__cta-buy">Buy Now</button>
                     </div>
                 </div>
+                </div>
+                <div class="font-card__previews-row">
+                    <div class="fc-subspecimen" style="font-family:'Glissade', serif;">
+                        <div class="fc-subspecimen__line fc-subspecimen__line--1">GRACEFUL MOTION</div>
+                        <div class="fc-subspecimen__line fc-subspecimen__line--2">Flowing Choreography</div>
+                        <div class="fc-subspecimen__line fc-subspecimen__line--3">Effortless Harmony</div>
+                        <div class="fc-subspecimen__line fc-subspecimen__line--4">since 1980</div>
+                    </div>
+                    <div class="fc-subspecimen" style="font-family:'Glissade', serif;">
+                        <div class="fc-subspecimen__line fc-subspecimen__line--1">Bircks and Boots</div>
+                        <div class="fc-subspecimen__line fc-subspecimen__line--2">Wherever it is</div>
+                        <div class="fc-subspecimen__line fc-subspecimen__line--3">Bold Vibing</div>
+                        <div class="fc-subspecimen__line fc-subspecimen__line--4">since 1980</div>
+                    </div>
+                    <div class="fc-subspecimen" style="font-family:'Glissade', serif;">
+                        <div class="fc-subspecimen__line fc-subspecimen__line--1">CONTINUOUS DANCE</div>
+                        <div class="fc-subspecimen__line fc-subspecimen__line--2">Poise and Equilibrium</div>
+                        <div class="fc-subspecimen__line fc-subspecimen__line--3">Aa Bb Cc Dd · 0123</div>
+                        <div class="fc-subspecimen__line fc-subspecimen__line--4">Fluid Curvature Serif</div>
+                    </div>
+                </div>
             </article>
 
             <!-- Card 20: Onyx Dynasty -->
             <article class="font-card fc-t1" data-category="serif" data-index="4">
-                <div class="font-card__preview">
+                <div class="font-card__main-row">
+    <div class="font-card__preview">
                     <div class="font-card__badges">
                         <span class="fc-badge fc-badge--type">Serif</span>
                         <span class="fc-badge fc-badge--sale">Uppercase,Lowercase,Numbers,Symbols</span>
@@ -3150,11 +3799,33 @@
                         <button class="fc-btn-buy font-card__cta-buy">Buy Now</button>
                     </div>
                 </div>
+                </div>
+                <div class="font-card__previews-row">
+                    <div class="fc-subspecimen" style="font-family:'Onyx_Dynasty', serif;">
+                        <div class="fc-subspecimen__line fc-subspecimen__line--1">SOVEREIGN REALM</div>
+                        <div class="fc-subspecimen__line fc-subspecimen__line--2">The Crown Jewel</div>
+                        <div class="fc-subspecimen__line fc-subspecimen__line--3">Monarch Authority</div>
+                        <div class="fc-subspecimen__line fc-subspecimen__line--4">since 1980</div>
+                    </div>
+                    <div class="fc-subspecimen" style="font-family:'Onyx_Dynasty', serif;">
+                        <div class="fc-subspecimen__line fc-subspecimen__line--1">Bircks and Boots</div>
+                        <div class="fc-subspecimen__line fc-subspecimen__line--2">Wherever it is</div>
+                        <div class="fc-subspecimen__line fc-subspecimen__line--3">Bold Vibing</div>
+                        <div class="fc-subspecimen__line fc-subspecimen__line--4">since 1980</div>
+                    </div>
+                    <div class="fc-subspecimen" style="font-family:'Onyx_Dynasty', serif;">
+                        <div class="fc-subspecimen__line fc-subspecimen__line--1">IMPERIAL MAJESTY</div>
+                        <div class="fc-subspecimen__line fc-subspecimen__line--2">Gilded Dynasty Stone</div>
+                        <div class="fc-subspecimen__line fc-subspecimen__line--3">Aa Bb Cc Dd · 0123</div>
+                        <div class="fc-subspecimen__line fc-subspecimen__line--4">High Contrast Display</div>
+                    </div>
+                </div>
             </article>
 
             <!-- Card 21: Apex Rounded -->
             <article class="font-card fc-t1" data-category="serif" data-index="4">
-                <div class="font-card__preview">
+                <div class="font-card__main-row">
+    <div class="font-card__preview">
                     <div class="font-card__badges">
                         <span class="fc-badge fc-badge--type">Serif</span>
                         <span class="fc-badge fc-badge--sale">Uppercase,Lowercase,Numbers,Symbols</span>
@@ -3179,11 +3850,33 @@
                         <button class="fc-btn-buy font-card__cta-buy">Buy Now</button>
                     </div>
                 </div>
+                </div>
+                <div class="font-card__previews-row">
+                    <div class="fc-subspecimen" style="font-family:'Apex_Rounded', serif;">
+                        <div class="fc-subspecimen__line fc-subspecimen__line--1">SUMMIT HORIZONS</div>
+                        <div class="fc-subspecimen__line fc-subspecimen__line--2">Pure Engineering</div>
+                        <div class="fc-subspecimen__line fc-subspecimen__line--3">Peak Performance Tech</div>
+                        <div class="fc-subspecimen__line fc-subspecimen__line--4">since 1980</div>
+                    </div>
+                    <div class="fc-subspecimen" style="font-family:'Apex_Rounded', serif;">
+                        <div class="fc-subspecimen__line fc-subspecimen__line--1">Bircks and Boots</div>
+                        <div class="fc-subspecimen__line fc-subspecimen__line--2">Wherever it is</div>
+                        <div class="fc-subspecimen__line fc-subspecimen__line--3">Bold Vibing</div>
+                        <div class="fc-subspecimen__line fc-subspecimen__line--4">since 1980</div>
+                    </div>
+                    <div class="fc-subspecimen" style="font-family:'Apex_Rounded', serif;">
+                        <div class="fc-subspecimen__line fc-subspecimen__line--1">DIGITAL PRECISION</div>
+                        <div class="fc-subspecimen__line fc-subspecimen__line--2">Futuristic Interface</div>
+                        <div class="fc-subspecimen__line fc-subspecimen__line--3">Aa Bb Cc Dd · 0123</div>
+                        <div class="fc-subspecimen__line fc-subspecimen__line--4">Rounded Corner Sans</div>
+                    </div>
+                </div>
             </article>
 
             <!-- Card 22: Nova Shell -->
             <article class="font-card fc-t1" data-category="serif" data-index="4">
-                <div class="font-card__preview">
+                <div class="font-card__main-row">
+    <div class="font-card__preview">
                     <div class="font-card__badges">
                         <span class="fc-badge fc-badge--type">Serif</span>
                         <span class="fc-badge fc-badge--sale">Uppercase,Lowercase,Numbers,Symbols</span>
@@ -3208,11 +3901,33 @@
                         <button class="fc-btn-buy font-card__cta-buy">Buy Now</button>
                     </div>
                 </div>
+                </div>
+                <div class="font-card__previews-row">
+                    <div class="fc-subspecimen" style="font-family:'Nova_Shell', serif;">
+                        <div class="fc-subspecimen__line fc-subspecimen__line--1">OCEANIC SPIRAL</div>
+                        <div class="fc-subspecimen__line fc-subspecimen__line--2">Golden Ratio Geometry</div>
+                        <div class="fc-subspecimen__line fc-subspecimen__line--3">Echoes of the Deep</div>
+                        <div class="fc-subspecimen__line fc-subspecimen__line--4">since 1980</div>
+                    </div>
+                    <div class="fc-subspecimen" style="font-family:'Nova_Shell', serif;">
+                        <div class="fc-subspecimen__line fc-subspecimen__line--1">Bircks and Boots</div>
+                        <div class="fc-subspecimen__line fc-subspecimen__line--2">Wherever it is</div>
+                        <div class="fc-subspecimen__line fc-subspecimen__line--3">Bold Vibing</div>
+                        <div class="fc-subspecimen__line fc-subspecimen__line--4">since 1980</div>
+                    </div>
+                    <div class="fc-subspecimen" style="font-family:'Nova_Shell', serif;">
+                        <div class="fc-subspecimen__line fc-subspecimen__line--1">NATURAL SYMMETRY</div>
+                        <div class="fc-subspecimen__line fc-subspecimen__line--2">Conch & Pearl Wonder</div>
+                        <div class="fc-subspecimen__line fc-subspecimen__line--3">Aa Bb Cc Dd · 0123</div>
+                        <div class="fc-subspecimen__line fc-subspecimen__line--4">Sculptural Curves</div>
+                    </div>
+                </div>
             </article>
 
             <!-- Card 23: Throttle Street -->
             <article class="font-card fc-t1" data-category="serif" data-index="4">
-                <div class="font-card__preview">
+                <div class="font-card__main-row">
+    <div class="font-card__preview">
                     <div class="font-card__badges">
                         <span class="fc-badge fc-badge--type">Serif</span>
                         <span class="fc-badge fc-badge--sale">Uppercase,Lowercase,Numbers,Symbols</span>
@@ -3237,11 +3952,33 @@
                         <button class="fc-btn-buy font-card__cta-buy">Buy Now</button>
                     </div>
                 </div>
+                </div>
+                <div class="font-card__previews-row">
+                    <div class="fc-subspecimen" style="font-family:'Throttle_Street', serif;">
+                        <div class="fc-subspecimen__line fc-subspecimen__line--1">ASPHALT & ADRENALINE</div>
+                        <div class="fc-subspecimen__line fc-subspecimen__line--2">Midnight Street Drag</div>
+                        <div class="fc-subspecimen__line fc-subspecimen__line--3">Full Throttle Power</div>
+                        <div class="fc-subspecimen__line fc-subspecimen__line--4">since 1980</div>
+                    </div>
+                    <div class="fc-subspecimen" style="font-family:'Throttle_Street', serif;">
+                        <div class="fc-subspecimen__line fc-subspecimen__line--1">Bircks and Boots</div>
+                        <div class="fc-subspecimen__line fc-subspecimen__line--2">Wherever it is</div>
+                        <div class="fc-subspecimen__line fc-subspecimen__line--3">Bold Vibing</div>
+                        <div class="fc-subspecimen__line fc-subspecimen__line--4">since 1980</div>
+                    </div>
+                    <div class="fc-subspecimen" style="font-family:'Throttle_Street', serif;">
+                        <div class="fc-subspecimen__line fc-subspecimen__line--1">RAW ROAR ENGINE</div>
+                        <div class="fc-subspecimen__line fc-subspecimen__line--2">Pavement & Burnout</div>
+                        <div class="fc-subspecimen__line fc-subspecimen__line--3">Aa Bb Cc Dd · 0123</div>
+                        <div class="fc-subspecimen__line fc-subspecimen__line--4">Industrial Heavyweight</div>
+                    </div>
+                </div>
             </article>
 
             <!-- Card 24: Vabguard Axis -->
             <article class="font-card fc-t1" data-category="serif" data-index="4">
-                <div class="font-card__preview">
+                <div class="font-card__main-row">
+    <div class="font-card__preview">
                     <div class="font-card__badges">
                         <span class="fc-badge fc-badge--type">Serif</span>
                         <span class="fc-badge fc-badge--sale">Uppercase,Lowercase,Numbers,Symbols</span>
@@ -3266,11 +4003,33 @@
                         <button class="fc-btn-buy font-card__cta-buy">Buy Now</button>
                     </div>
                 </div>
+                </div>
+                <div class="font-card__previews-row">
+                    <div class="fc-subspecimen" style="font-family:'Vanguard_Axis', serif;">
+                        <div class="fc-subspecimen__line fc-subspecimen__line--1">AVANT-GARDE VISION</div>
+                        <div class="fc-subspecimen__line fc-subspecimen__line--2">Constructive Matrix</div>
+                        <div class="fc-subspecimen__line fc-subspecimen__line--3">Future Architecture</div>
+                        <div class="fc-subspecimen__line fc-subspecimen__line--4">since 1980</div>
+                    </div>
+                    <div class="fc-subspecimen" style="font-family:'Vanguard_Axis', serif;">
+                        <div class="fc-subspecimen__line fc-subspecimen__line--1">Bircks and Boots</div>
+                        <div class="fc-subspecimen__line fc-subspecimen__line--2">Wherever it is</div>
+                        <div class="fc-subspecimen__line fc-subspecimen__line--3">Bold Vibing</div>
+                        <div class="fc-subspecimen__line fc-subspecimen__line--4">since 1980</div>
+                    </div>
+                    <div class="fc-subspecimen" style="font-family:'Vanguard_Axis', serif;">
+                        <div class="fc-subspecimen__line fc-subspecimen__line--1">RADICAL FORMATION</div>
+                        <div class="fc-subspecimen__line fc-subspecimen__line--2">Geometric Foundation</div>
+                        <div class="fc-subspecimen__line fc-subspecimen__line--3">Aa Bb Cc Dd · 0123</div>
+                        <div class="fc-subspecimen__line fc-subspecimen__line--4">Progressive Design Axis</div>
+                    </div>
+                </div>
             </article>
 
             <!-- Card 25: Volo Scale -->
             <article class="font-card fc-t1" data-category="serif" data-index="4">
-                <div class="font-card__preview">
+                <div class="font-card__main-row">
+    <div class="font-card__preview">
                     <div class="font-card__badges">
                         <span class="fc-badge fc-badge--type">Serif</span>
                         <span class="fc-badge fc-badge--sale">Uppercase,Lowercase,Numbers,Symbols</span>
@@ -3295,11 +4054,33 @@
                         <button class="fc-btn-buy font-card__cta-buy">Buy Now</button>
                     </div>
                 </div>
+                </div>
+                <div class="font-card__previews-row">
+                    <div class="fc-subspecimen" style="font-family:'Volo_Scale', serif;">
+                        <div class="fc-subspecimen__line fc-subspecimen__line--1">MUSICAL FREQUENCY</div>
+                        <div class="fc-subspecimen__line fc-subspecimen__line--2">Harmonic Resonances</div>
+                        <div class="fc-subspecimen__line fc-subspecimen__line--3">Sound & Architecture</div>
+                        <div class="fc-subspecimen__line fc-subspecimen__line--4">since 1980</div>
+                    </div>
+                    <div class="fc-subspecimen" style="font-family:'Volo_Scale', serif;">
+                        <div class="fc-subspecimen__line fc-subspecimen__line--1">Bircks and Boots</div>
+                        <div class="fc-subspecimen__line fc-subspecimen__line--2">Wherever it is</div>
+                        <div class="fc-subspecimen__line fc-subspecimen__line--3">Bold Vibing</div>
+                        <div class="fc-subspecimen__line fc-subspecimen__line--4">since 1980</div>
+                    </div>
+                    <div class="fc-subspecimen" style="font-family:'Volo_Scale', serif;">
+                        <div class="fc-subspecimen__line fc-subspecimen__line--1">OCTAVE SYMPHONY</div>
+                        <div class="fc-subspecimen__line fc-subspecimen__line--2">Vibrations in Motion</div>
+                        <div class="fc-subspecimen__line fc-subspecimen__line--3">Aa Bb Cc Dd · 0123</div>
+                        <div class="fc-subspecimen__line fc-subspecimen__line--4">Rhythmic Proportions</div>
+                    </div>
+                </div>
             </article>
 
             <!-- Card 26: Midfield Regular -->
             <article class="font-card fc-t1" data-category="sans-serif" data-index="5">
-                <div class="font-card__preview">
+                <div class="font-card__main-row">
+    <div class="font-card__preview">
                     <div class="font-card__badges">
                         <span class="fc-badge fc-badge--type">Sans Serif</span>
                         <span class="fc-badge fc-badge--sale">Uppercase,Lowercase,Numbers,Symbols</span>
@@ -3324,12 +4105,82 @@
                         <button class="fc-btn-buy font-card__cta-buy">Buy Now</button>
                     </div>
                 </div>
+                </div>
+                <div class="font-card__previews-row">
+                    <div class="fc-subspecimen" style="font-family:'Midfield-Regular', sans-serif;">
+                        <div class="fc-subspecimen__line fc-subspecimen__line--1">MIDFIELD COMMAND</div>
+                        <div class="fc-subspecimen__line fc-subspecimen__line--2">Tactical Balance</div>
+                        <div class="fc-subspecimen__line fc-subspecimen__line--3">Total Spatial Control</div>
+                        <div class="fc-subspecimen__line fc-subspecimen__line--4">since 1980</div>
+                    </div>
+                    <div class="fc-subspecimen" style="font-family:'Midfield-Regular', sans-serif;">
+                        <div class="fc-subspecimen__line fc-subspecimen__line--1">Bircks and Boots</div>
+                        <div class="fc-subspecimen__line fc-subspecimen__line--2">Wherever it is</div>
+                        <div class="fc-subspecimen__line fc-subspecimen__line--3">Bold Vibing</div>
+                        <div class="fc-subspecimen__line fc-subspecimen__line--4">since 1980</div>
+                    </div>
+                    <div class="fc-subspecimen" style="font-family:'Midfield-Regular', sans-serif;">
+                        <div class="fc-subspecimen__line fc-subspecimen__line--1">CLEAN PRECISION</div>
+                        <div class="fc-subspecimen__line fc-subspecimen__line--2">Playmaker Strategy</div>
+                        <div class="fc-subspecimen__line fc-subspecimen__line--3">Aa Bb Cc Dd · 0123</div>
+                        <div class="fc-subspecimen__line fc-subspecimen__line--4">Clean Modern Grotesk</div>
+                    </div>
+                </div>
             </article>
 
+            <!-- Card 27: Glyphere Hallowthorn — Custom woff2 (Serif / Display) -->
+            <article class="font-card fc-t1" data-category="serif" data-index="6">
+                <div class="font-card__main-row">
+                    <div class="font-card__preview">
+                        <div class="font-card__badges">
+                            <span class="fc-badge fc-badge--type">Serif</span>
+                            <span class="fc-badge fc-badge--sale">Uppercase,Lowercase,Numbers,Symbols</span>
+                        </div>
+                        <button class="font-card__wishlist" aria-label="Add to wishlist">
+                            <span class="material-symbols-outlined" aria-hidden="true">favorite</span>
+                        </button>
+                        <div class="font-card__name-label">Glyphere Hallowthorn</div>
+                        <div class="font-card__big" style="font-family:'Glyphere_Hallowthorn',serif;color:#1c1812;"
+                            data-default="AaBb">AaBb</div>
+                        <div class="font-card__tagline">An elegant, eerie display serif with stylistic flourishes.</div>
+                    </div>
+                    <div class="font-card__bottom">
+                        <div class="font-card__price-wrap">
+                            <span class="font-card__price">$14.95</span>
+                            <span class="font-card__styles-count">1 Style · USD</span>
+                        </div>
+                        <div class="font-card__btns">
+                            <button class="fc-btn-details font-card__cta-details">Details</button>
+                            <button class="fc-btn-buy font-card__cta-buy">Buy Now</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="font-card__previews-row">
+                    <div class="fc-subspecimen" style="font-family:'Glyphere_Hallowthorn', serif;">
+                        <div class="fc-subspecimen__line fc-subspecimen__line--1">HALLOWTHORN</div>
+                        <div class="fc-subspecimen__line fc-subspecimen__line--2">Elegant &amp; Eerie</div>
+                        <div class="fc-subspecimen__line fc-subspecimen__line--3">Stylistic Flourish</div>
+                        <div class="fc-subspecimen__line fc-subspecimen__line--4">since 2026</div>
+                    </div>
+                    <div class="fc-subspecimen" style="font-family:'Glyphere_Hallowthorn', serif;">
+                        <div class="fc-subspecimen__line fc-subspecimen__line--1">Bircks and Boots</div>
+                        <div class="fc-subspecimen__line fc-subspecimen__line--2">Wherever it is</div>
+                        <div class="fc-subspecimen__line fc-subspecimen__line--3">Bold Vibing</div>
+                        <div class="fc-subspecimen__line fc-subspecimen__line--4">since 1980</div>
+                    </div>
+                    <div class="fc-subspecimen" style="font-family:'Glyphere_Hallowthorn', serif;">
+                        <div class="fc-subspecimen__line fc-subspecimen__line--1">SHADOWS &amp; STARS</div>
+                        <div class="fc-subspecimen__line fc-subspecimen__line--2">Midnight Editorial</div>
+                        <div class="fc-subspecimen__line fc-subspecimen__line--3">Aa Bb Cc Dd · 0123</div>
+                        <div class="fc-subspecimen__line fc-subspecimen__line--4">Display Serif</div>
+                    </div>
+                </div>
+            </article>
 
             <!-- Newsletter Card -->
-            <article class="font-card font-card--newsletter" data-category="all" data-index="6">
-                <div class="font-card__preview">
+            <article class="font-card font-card--newsletter" data-category="all" data-index="7">
+                <div class="font-card__main-row">
+<div class="font-card__preview">
                     <div class="newsletter-card__inner">
                         <h2 class="newsletter-card__headline">New specimens<br />weekly.</h2>
                         <p class="newsletter-card__sub">Early access &amp; licensing drops</p>
@@ -3351,6 +4202,7 @@
                         <span class="material-symbols-outlined" aria-hidden="true">arrow_forward</span>
                     </button>
                 </div>
+                </div>
             </article>
 
         </div><!-- /mp-grid -->
@@ -3366,14 +4218,16 @@
         <!-- ── Pagination ── -->
         <nav class="mp-pagination" id="marketplace-pagination" aria-label="Marketplace pagination">
             <div class="mp-pagination__info">
-                Showing <span id="pagination-start">1</span>–<span id="pagination-end">10</span> of <span id="pagination-total">26</span> typefaces
+                Showing <span id="pagination-start">1</span>–<span id="pagination-end">10</span> of <span
+                    id="pagination-total">27</span> typefaces
             </div>
             <div class="mp-pagination__controls">
                 <button class="mp-page-btn mp-page-btn--prev" id="page-prev-btn" aria-label="Previous page">
                     <span class="material-symbols-outlined" aria-hidden="true">arrow_back</span>
                     <span>Previous</span>
                 </button>
-                <div class="mp-pagination__numbers" id="pagination-numbers" role="navigation" aria-label="Pagination page numbers">
+                <div class="mp-pagination__numbers" id="pagination-numbers" role="navigation"
+                    aria-label="Pagination page numbers">
                     <!-- Dynamic Page Buttons -->
                 </div>
                 <button class="mp-page-btn mp-page-btn--next" id="page-next-btn" aria-label="Next page">
@@ -3445,27 +4299,27 @@
             <nav>
                 <h3 class="footer-col-title">Marketplace</h3>
                 <ul class="footer-links-list">
-                    <li><a href="/marketplace.html">All Fonts</a></li>
-                    <li><a href="/marketplace.html">Serifs</a></li>
-                    <li><a href="/marketplace.html">Display</a></li>
+                    <li><a href="marketplace.html">All Fonts</a></li>
+                    <li><a href="marketplace.html">Serifs</a></li>
+                    <li><a href="marketplace.html">Display</a></li>
 
                 </ul>
             </nav>
             <nav>
                 <h3 class="footer-col-title">Services</h3>
                 <ul class="footer-links-list">
-                    <li><a href="/custom-font-services/custom_font_services.html">Custom Design</a></li>
-                    <li><a href="/custom-font-services/custom_font_services.html">Brand Typography</a></li>
-                    <li><a href="/custom-font-services/custom_font_services.html">Licensing</a></li>
+                    <li><a href="custom-font-services/custom_font_services.html">Custom Design</a></li>
+                    <li><a href="custom-font-services/custom_font_services.html">Brand Typography</a></li>
+                    <li><a href="custom-font-services/custom_font_services.html">Licensing</a></li>
                 </ul>
             </nav>
             <nav>
                 <h3 class="footer-col-title">Journal</h3>
                 <ul class="footer-links-list">
-                    <li><a href="/blog/index.html">The Journal</a></li>
-                    <li><a href="/blog/best-fonts-for-luxury-brands.html">Luxury Fonts</a></li>
+                    <li><a href="blog/index.html">The Journal</a></li>
+                    <li><a href="blog/best-fonts-for-luxury-brands.html">Luxury Fonts</a></li>
 
-                    <li><a href="/blog/behind-nova-legacy.html">Behind Nova Legacy</a></li>
+                    <li><a href="blog/behind-nova-legacy.html">Behind Nova Legacy</a></li>
                 </ul>
             </nav>
             <nav>
@@ -3480,8 +4334,8 @@
         <div class="footer-bottom">
             <p class="footer-copy">© 2026 Glyphere. All Rights Reserved.</p>
             <nav class="footer-legal">
-                <a href="/licensing.html">Licensing Terms</a>
-                <a href="/cookie-policy.html">Cookie Policy</a>
+                <a href="licensing.html">Licensing Terms</a>
+                <a href="cookie-policy.html">Cookie Policy</a>
             </nav>
         </div>
     </footer>
@@ -3585,7 +4439,7 @@
         </div>
     </div>
 
-    <script src="/globalscript.js"></script>
+    <script src="globalscript.js"></script>
 
     <script>
         /* ═══════════════════════════════════════════════════════
@@ -3612,6 +4466,16 @@
                 const defaultText = el.dataset.default || 'AaBb';
                 const display = trimmed === '' ? defaultText : text;
                 el.textContent = display;
+            });
+
+            document.querySelectorAll('.fc-subspecimen').forEach(box => {
+                const line1 = box.querySelector('.fc-subspecimen__line--1');
+                if (line1) {
+                    if (!line1.dataset.default) {
+                        line1.dataset.default = line1.textContent.trim();
+                    }
+                    line1.textContent = trimmed === '' ? line1.dataset.default : text;
+                }
             });
         }
 
@@ -3740,11 +4604,13 @@
                 const isVisibleOnPage = currentSlice.includes(card);
                 if (isVisibleOnPage) {
                     card.style.display = '';
+                    card.classList.remove('fc-card--hidden');
                     card.classList.remove('fc-filtering-out');
                     card.classList.add('fc-filtering-in', 'fc-reveal--visible');
                     setTimeout(() => card.classList.remove('fc-filtering-in'), 250);
                 } else {
                     card.style.display = 'none';
+                    card.classList.add('fc-card--hidden');
                 }
             });
 
@@ -3752,9 +4618,11 @@
             if (newsletterCard) {
                 if (activeFilter === 'all' && currentPage === totalPages && totalItems > 0) {
                     newsletterCard.style.display = '';
+                    newsletterCard.classList.remove('fc-card--hidden');
                     newsletterCard.classList.add('fc-reveal--visible');
                 } else {
                     newsletterCard.style.display = 'none';
+                    newsletterCard.classList.add('fc-card--hidden');
                 }
             }
 
@@ -3961,6 +4829,8 @@
             'Apex Rounded': 'Apex_Rounded',
             'Midfield-Regular': 'Midfield-Regular',
             'Midfield Regular': 'Midfield-Regular',
+            'Glyphere Hallowthorn': 'Glyphere_Hallowthorn',
+            'Hallowthorn': 'Glyphere_Hallowthorn',
         };
         document.querySelectorAll('.font-card__cta-details').forEach(btn => {
             btn.addEventListener('click', function (e) {
@@ -3971,7 +4841,7 @@
                 const slug = FONT_SLUG_MAP[fontName];
 
                 if (slug) {
-                    window.location.href = `/font-detail-v2.html?font=${slug}`;
+                    window.location.href = `font-detail-v2.html?font=${slug}`;
                 } else {
                     // Fallback: show toast if no mapping found
                     const orig = this.textContent;
@@ -4028,7 +4898,7 @@
                 _toastEl.innerHTML = `
                   <span class="cart-toast__icon">✦</span>
                   <span class="cart-toast__msg"></span>
-                  <a class="cart-toast__action" href="/cart.html">View Cart →</a>`;
+                  <a class="cart-toast__action" href="cart.html">View Cart →</a>`;
                 document.body.appendChild(_toastEl);
             }
             _toastEl.querySelector('.cart-toast__msg').textContent = `${fontName} added to cart`;
@@ -4324,12 +5194,12 @@
             viewGridBtn.addEventListener('click', () => setViewMode('grid'));
             viewListBtn.addEventListener('click', () => setViewMode('list'));
 
-            // Restore view preference
+            // Restore view preference — default to 'list' for new visitors
             const savedViewMode = localStorage.getItem('glyphere-view-mode');
-            if (savedViewMode === 'list') {
-                setViewMode('list');
-            } else {
+            if (savedViewMode === 'grid') {
                 setViewMode('grid');
+            } else {
+                setViewMode('list');
             }
         }
 
@@ -4439,6 +5309,16 @@
                 modalGridContainer.appendChild(grid);
             });
         }
+
+        // Connect subspecimen cards to Glyph Modal
+        document.querySelectorAll('.fc-subspecimen').forEach(box => {
+            box.addEventListener('click', (e) => {
+                e.stopPropagation();
+                const card = box.closest('.font-card');
+                const bigDisplay = card ? card.querySelector('.font-card__big') : null;
+                if (bigDisplay) bigDisplay.click();
+            });
+        });
 
         document.querySelectorAll('.font-card').forEach(card => {
             const bigDisplay = card.querySelector('.font-card__big');
@@ -4625,6 +5505,7 @@
         });
 
     </script>
+
 
     <script src="javascript/loginmodel.js" defer></script>
 </body>

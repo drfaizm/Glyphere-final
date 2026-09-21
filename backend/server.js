@@ -72,7 +72,7 @@ const server = http.createServer(async (req, res) => {
   if (req.method === 'OPTIONS') {
     res.setHeader('Access-Control-Allow-Origin', '*');
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
-    res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+    res.setHeader('Access-Control-Allow-Headers', 'Content-Type, X-Order-Token');
     return res.status(200).end();
   }
 
@@ -104,15 +104,24 @@ const server = http.createServer(async (req, res) => {
   const isGetCheckout = cleanPath === '/api/get-checkout-session' || cleanPath === '/api/get-checkout-session.php' ||
                         cleanPath === '/main-website/api/get-checkout-session' || cleanPath === '/main-website/api/get-checkout-session.php';
   if (isGetCheckout) {
-    req.query = parsedUrl.query;
-    try {
-      await getCheckoutHandler(req, res);
-    } catch (err) {
-      console.error('API Error (get-checkout):', err);
-      if (!res.writableEnded) {
-        res.status(500).json({ error: err.message });
+    let bodyData = '';
+    req.on('data', chunk => { bodyData += chunk; });
+    req.on('end', async () => {
+      try {
+        req.body = bodyData ? JSON.parse(bodyData) : {};
+      } catch (e) {
+        req.body = {};
       }
-    }
+      req.query = parsedUrl.query;
+      try {
+        await getCheckoutHandler(req, res);
+      } catch (err) {
+        console.error('API Error (get-checkout):', err);
+        if (!res.writableEnded) {
+          res.status(500).json({ error: err.message });
+        }
+      }
+    });
     return;
   }
 
@@ -139,6 +148,7 @@ const server = http.createServer(async (req, res) => {
     lowerPath.includes('commercial-vault') ||
     lowerPath.includes('font-vault') ||
     lowerPath.includes('backend') ||
+    lowerPath.includes('/data') ||
     lowerPath.includes('docs') ||
     lowerPath.endsWith('.lock') ||
     (lowerPath.endsWith('.json') && !lowerPath.includes('manifest'))

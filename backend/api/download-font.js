@@ -3,6 +3,7 @@ const path = require('path');
 const { execSync } = require('child_process');
 require('dotenv').config({ path: path.join(__dirname, '../.env') });
 const Stripe = require('stripe');
+const { recordDownload, getOrInitSession } = require('./downloads-tracker');
 
 const stripeSecretKey = process.env.STRIPE_SECRET_KEY;
 const stripe = stripeSecretKey ? new Stripe(stripeSecretKey) : null;
@@ -33,12 +34,12 @@ function slugify(str) {
 }
 
 /**
- * Serverless handler for secure font downloads
+ * Serverless handler for secure font downloads with hard download limits & token security
  */
 module.exports = async function handler(req, res) {
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'GET, OPTIONS');
-  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, X-Order-Token');
 
   if (req.method === 'OPTIONS') {
     return res.status(200).end();
@@ -48,10 +49,23 @@ module.exports = async function handler(req, res) {
     return res.status(405).json({ error: 'Method Not Allowed' });
   }
 
-  const { session_id, font, all } = req.query || {};
+  const { session_id, font, all, token } = req.query || {};
+  const providedToken = token || req.headers['x-order-token'] || '';
+  const clientIp = req.headers['x-forwarded-for']?.split(',')[0]?.trim() || req.socket?.remoteAddress || '';
 
   if (!session_id) {
     return res.status(400).json({ error: 'Missing session_id parameter.' });
+  }
+
+  // Strictly block demo/test from downloading real commercial font packages
+  if (session_id === 'demo' || session_id === 'test') {
+    return res.status(403).json({
+      error: 'Demo font downloads are disabled. A verified commercial license purchase is required.'
+    });
+  }
+
+  if (!stripe) {
+    return res.status(500).json({ error: 'Stripe configuration missing on server.' });
   }
 
   const packagesDir = getPackagesDir();
@@ -63,107 +77,129 @@ module.exports = async function handler(req, res) {
     } catch (e) {}
   }
 
+  let session;
   let authorizedFonts = [];
-  let isDemoSession = (session_id === 'demo' || session_id === 'test');
 
-  if (isDemoSession) {
-    // For local testing & UI preview
-    authorizedFonts = Object.keys(manifest);
-  } else {
-    if (!stripe) {
-      return res.status(500).json({ error: 'Stripe configuration missing on server.' });
+  try {
+    session = await stripe.checkout.sessions.retrieve(session_id, {
+      expand: ['line_items', 'customer_details']
+    });
+
+    if (!session || !session.id) {
+      return res.status(404).json({ error: 'Order session not found.' });
     }
 
-    try {
-      const session = await stripe.checkout.sessions.retrieve(session_id, {
-        expand: ['line_items']
+    if (session.payment_status !== 'paid') {
+      return res.status(403).json({
+        error: 'Payment not completed for this session.',
+        payment_status: session.payment_status
       });
-
-      if (session.payment_status !== 'paid') {
-        return res.status(403).json({
-          error: 'Payment not completed for this session.',
-          payment_status: session.payment_status
-        });
-      }
-
-      const lineItems = session.line_items?.data || [];
-      authorizedFonts = lineItems.map(li => slugify(li.description));
-    } catch (err) {
-      console.error('Stripe verification failed in download-font:', err);
-      return res.status(403).json({ error: 'Invalid or expired checkout session.' });
     }
+
+    const lineItems = session.line_items?.data || [];
+    authorizedFonts = lineItems.map(li => slugify(li.description));
+  } catch (err) {
+    console.error('Stripe verification failed in download-font:', err);
+    return res.status(403).json({ error: 'Invalid or expired checkout session.' });
   }
 
-  // Handle "Download All" request
-  if (all === '1' || font === 'all') {
+  // Initialize/ensure session is tracked
+  getOrInitSession(session_id, session);
+
+  // Validate Font / Request Authorization BEFORE burning a download attempt
+  const isDownloadAll = (all === '1' || font === 'all');
+  let targetZipFile = null;
+  let targetDownloadFilename = null;
+  let autoDelete = false;
+
+  if (isDownloadAll) {
     if (authorizedFonts.length === 1) {
-      // Single item: serve that directly
       const targetSlug = matchSlug(authorizedFonts[0], manifest);
       if (targetSlug && manifest[targetSlug]) {
-        return streamZipFile(res, path.join(packagesDir, manifest[targetSlug].zipName), `${targetSlug}-glyphere-package.zip`);
+        targetZipFile = path.join(packagesDir, manifest[targetSlug].zipName);
+        targetDownloadFilename = `${targetSlug}-glyphere-package.zip`;
       }
-    }
+    } else {
+      // Multiple items: bundle into a master archive
+      try {
+        const bundleName = `Glyphere_Order_${session_id.slice(-8)}.zip`;
+        const tempBundleDir = path.join(packagesDir, `temp_bundle_${Date.now()}`);
+        fs.mkdirSync(tempBundleDir, { recursive: true });
 
-    // Multiple items: bundle into a master archive
-    try {
-      const bundleName = `Glyphere_Order_${session_id.slice(-8)}.zip`;
-      const tempBundleDir = path.join(packagesDir, `temp_bundle_${Date.now()}`);
-      fs.mkdirSync(tempBundleDir, { recursive: true });
-
-      const filesToBundle = [];
-      for (const authFont of authorizedFonts) {
-        const matched = matchSlug(authFont, manifest);
-        if (matched && manifest[matched]) {
-          const srcZip = path.join(packagesDir, manifest[matched].zipName);
-          if (fs.existsSync(srcZip)) {
-            const destZip = path.join(tempBundleDir, manifest[matched].zipName);
-            fs.copyFileSync(srcZip, destZip);
-            filesToBundle.push(manifest[matched].zipName);
+        const filesToBundle = [];
+        for (const authFont of authorizedFonts) {
+          const matched = matchSlug(authFont, manifest);
+          if (matched && manifest[matched]) {
+            const srcZip = path.join(packagesDir, manifest[matched].zipName);
+            if (fs.existsSync(srcZip)) {
+              const destZip = path.join(tempBundleDir, manifest[matched].zipName);
+              fs.copyFileSync(srcZip, destZip);
+              filesToBundle.push(manifest[matched].zipName);
+            }
           }
         }
-      }
 
-      if (filesToBundle.length === 0) {
+        if (filesToBundle.length === 0) {
+          fs.rmSync(tempBundleDir, { recursive: true, force: true });
+          return res.status(404).json({ error: 'No font packages found for this order.' });
+        }
+
+        const bundleZipPath = path.join(packagesDir, bundleName);
+        if (fs.existsSync(bundleZipPath)) fs.unlinkSync(bundleZipPath);
+
+        execSync(`cd "${tempBundleDir}" && zip -q -r "${bundleZipPath}" ./*`);
         fs.rmSync(tempBundleDir, { recursive: true, force: true });
-        return res.status(404).json({ error: 'No font packages found for this order.' });
+
+        targetZipFile = bundleZipPath;
+        targetDownloadFilename = bundleName;
+        autoDelete = true;
+      } catch (err) {
+        console.error('Bundle creation error:', err);
+        return res.status(500).json({ error: 'Failed to create bundle archive.' });
       }
-
-      const bundleZipPath = path.join(packagesDir, bundleName);
-      if (fs.existsSync(bundleZipPath)) fs.unlinkSync(bundleZipPath);
-
-      execSync(`cd "${tempBundleDir}" && zip -q -r "${bundleZipPath}" ./*`);
-      fs.rmSync(tempBundleDir, { recursive: true, force: true });
-
-      return streamZipFile(res, bundleZipPath, bundleName, true);
-    } catch (err) {
-      console.error('Bundle creation error:', err);
-      return res.status(500).json({ error: 'Failed to create bundle archive.' });
     }
-  }
+  } else {
+    // Single font download
+    const requestedSlug = slugify(font);
+    const matchedSlug = matchSlug(requestedSlug, manifest);
 
-  // Single font download
-  const requestedSlug = slugify(font);
-  const matchedSlug = matchSlug(requestedSlug, manifest);
+    if (!matchedSlug || !manifest[matchedSlug]) {
+      return res.status(404).json({ error: `Font package for '${font}' not found.` });
+    }
 
-  if (!matchedSlug || !manifest[matchedSlug]) {
-    return res.status(404).json({ error: `Font package for '${font}' not found.` });
-  }
-
-  // Verify that the requested font was paid for in this session
-  if (!isDemoSession) {
     const isAuthorized = authorizedFonts.some(af => af === matchedSlug || matchedSlug.includes(af) || af.includes(matchedSlug));
     if (!isAuthorized) {
       return res.status(403).json({ error: `Font '${font}' was not included in this checkout session.` });
     }
+
+    const zipFile = path.join(packagesDir, manifest[matchedSlug].zipName);
+    if (!fs.existsSync(zipFile)) {
+      return res.status(404).json({ error: 'Font package archive file missing on server.' });
+    }
+
+    targetZipFile = zipFile;
+    targetDownloadFilename = `${manifest[matchedSlug].displayName.replace(/\s+/g, '_')}_Glyphere_Package.zip`;
   }
 
-  const zipFile = path.join(packagesDir, manifest[matchedSlug].zipName);
-  if (!fs.existsSync(zipFile)) {
-    return res.status(404).json({ error: 'Font package archive file missing on server.' });
+  if (!targetZipFile || !fs.existsSync(targetZipFile)) {
+    return res.status(404).json({ error: 'Requested font archive is unavailable.' });
   }
 
-  const downloadFilename = `${manifest[matchedSlug].displayName.replace(/\s+/g, '_')}_Glyphere_Package.zip`;
-  return streamZipFile(res, zipFile, downloadFilename);
+  // Check Download Quota & Token, and Record Download
+  const downloadResult = recordDownload(session_id, providedToken, isDownloadAll ? 'ALL_FONTS' : font, clientIp);
+  if (!downloadResult.allowed) {
+    if (autoDelete && fs.existsSync(targetZipFile)) {
+      try { fs.unlinkSync(targetZipFile); } catch (e) {}
+    }
+    return res.status(downloadResult.status || 403).json({
+      error: downloadResult.error,
+      limit_reached: downloadResult.status === 403 && downloadResult.error.includes('limit reached')
+    });
+  }
+
+  // Stream ZIP file
+  res.setHeader('X-Downloads-Remaining', String(downloadResult.downloadsRemaining));
+  return streamZipFile(res, targetZipFile, targetDownloadFilename, autoDelete);
 };
 
 // Helper to match requested slug against manifest keys
@@ -186,7 +222,7 @@ function streamZipFile(res, filePath, filename, autoDelete = false) {
     'Content-Type': 'application/zip',
     'Content-Length': stat.size,
     'Content-Disposition': `attachment; filename="${filename}"`,
-    'Cache-Control': 'no-store, no-cache, must-revalidate',
+    'Cache-Control': 'no-store, no-cache, must-revalidate, max-age=0',
     'Pragma': 'no-cache',
     'Expires': '0'
   });

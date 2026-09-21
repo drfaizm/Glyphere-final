@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Acquisition Confirmed — Glyphere</title>
     <meta name="description" content="Thank you for your typeface license acquisition with Glyphere.">
-    <link rel="icon" type="image/png" href="/assets/images/glyphere.png">
+    <link rel="icon" type="image/png" href="assets/images/glyphere.png">
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -597,6 +597,207 @@
             border-color: #d8cebe;
         }
 
+        /* Security & Quota Badges */
+        .security-quota-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.45rem;
+            background: #fdfaf4;
+            border: 1px solid #dfd3c0;
+            color: #6e6559;
+            padding: 0.35rem 0.8rem;
+            border-radius: 8px;
+            font-size: 0.78rem;
+            font-weight: 600;
+            letter-spacing: 0.02em;
+            margin-top: 0.5rem;
+        }
+
+        .security-quota-pill strong {
+            color: var(--text);
+            font-weight: 700;
+        }
+
+        .security-quota-pill.is-low {
+            background: rgba(234, 179, 8, 0.1);
+            border-color: rgba(234, 179, 8, 0.35);
+            color: #854d0e;
+        }
+
+        .security-quota-pill.is-exhausted {
+            background: rgba(220, 38, 38, 0.08);
+            border-color: rgba(220, 38, 38, 0.25);
+            color: #b91c1c;
+        }
+
+        .item-dl-btn.is-disabled {
+            background: #e9e4dc !important;
+            color: #8c8273 !important;
+            cursor: not-allowed !important;
+            pointer-events: none !important;
+            box-shadow: none !important;
+            transform: none !important;
+        }
+
+        .item-locked-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+            font-size: 0.78rem;
+            color: var(--text-muted);
+            background: #f4eee3;
+            padding: 0.35rem 0.75rem;
+            border-radius: 6px;
+            font-weight: 600;
+        }
+
+        /* Verification Card (Locked Order) */
+        .verification-card {
+            background: linear-gradient(145deg, #ffffff 0%, #fdfbf7 100%);
+            border: 1.5px solid #d4af37;
+            border-radius: var(--radius);
+            box-shadow: 0 12px 36px rgba(20, 16, 9, 0.07);
+            padding: 2.25rem 2rem;
+            text-align: left;
+            margin-bottom: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .verification-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #d4af37, #8c6d3b);
+        }
+
+        .verification-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            background: #fdf6e7;
+            border: 1px solid #ebd9ab;
+            color: var(--gold-dark);
+            padding: 0.3rem 0.8rem;
+            border-radius: 100px;
+            font-size: 0.76rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            margin-bottom: 0.85rem;
+        }
+
+        .verification-title {
+            font-family: 'Bricolage Grotesque', sans-serif;
+            font-size: 1.45rem;
+            font-weight: 800;
+            color: var(--text);
+            margin: 0 0 0.45rem 0;
+        }
+
+        .verification-desc {
+            color: var(--text-muted);
+            font-size: 0.92rem;
+            line-height: 1.6;
+            margin: 0 0 1.35rem 0;
+        }
+
+        .verification-form {
+            display: flex;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+        }
+
+        .verification-input {
+            flex: 1;
+            min-width: 250px;
+            padding: 0.8rem 1rem;
+            border-radius: 10px;
+            border: 1px solid var(--border);
+            font-family: 'Manrope', sans-serif;
+            font-size: 0.95rem;
+            color: var(--text);
+            background: #ffffff;
+            outline: none;
+            transition: all 0.2s;
+            box-sizing: border-box;
+        }
+
+        .verification-input:focus {
+            border-color: var(--gold-dark);
+            box-shadow: 0 0 0 3px rgba(140, 109, 59, 0.12);
+        }
+
+        .btn-verify-unlock {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: #141009;
+            color: #ffffff;
+            border: none;
+            padding: 0.8rem 1.4rem;
+            border-radius: 10px;
+            font-family: 'Manrope', sans-serif;
+            font-weight: 700;
+            font-size: 0.92rem;
+            cursor: pointer;
+            transition: all 0.2s;
+            white-space: nowrap;
+        }
+
+        .btn-verify-unlock:hover {
+            background: #2a251e;
+            transform: translateY(-1px);
+        }
+
+        .verification-error {
+            margin-top: 0.85rem;
+            padding: 0.7rem 1rem;
+            border-radius: 8px;
+            background: rgba(220, 38, 38, 0.08);
+            border: 1px solid rgba(220, 38, 38, 0.2);
+            color: #b91c1c;
+            font-size: 0.86rem;
+            font-weight: 500;
+            display: none;
+        }
+
+        /* Expired & No Order Cards */
+        .expired-card, .no-order-card {
+            background: #faf8f5;
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 2.25rem 2rem;
+            text-align: left;
+            margin-bottom: 2rem;
+        }
+
+        .expired-card {
+            border-left: 4px solid #b91c1c;
+        }
+
+        .expired-title, .no-order-title {
+            font-family: 'Bricolage Grotesque', sans-serif;
+            font-size: 1.35rem;
+            font-weight: 800;
+            color: var(--text);
+            margin: 0 0 0.5rem 0;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .expired-desc, .no-order-desc {
+            color: var(--text-muted);
+            font-size: 0.92rem;
+            line-height: 1.6;
+            margin: 0 0 1.25rem 0;
+        }
+
+
         @media (max-width: 600px) {
             .page-title { font-size: 2.2rem; }
             .receipt-grid { grid-template-columns: 1fr; gap: 1rem; }
@@ -617,19 +818,19 @@
     <header class="header-nav">
         <nav class="nav-inner" aria-label="Main navigation">
             <div class="nav-logo-group">
-                <a href="/index.html">
-                    <img src="/assets/images/glyphere.png" class="nav-logo-img" alt="Glyphere" width="40" height="40" />
+                <a href="index.html">
+                    <img src="assets/images/glyphere.png" class="nav-logo-img" alt="Glyphere" width="40" height="40" />
                 </a>
-                <a class="nav-logo-name" href="/index.html">Glyphere</a>
+                <a class="nav-logo-name" href="index.html">Glyphere</a>
             </div>
             <ul class="nav-links" role="list">
-                <li><a class="nav-link" href="/marketplace.html">Marketplace</a></li>
-                <li><a class="nav-link" href="/custom-font-services/custom_font_services.html">Services</a></li>
-                <li><a class="nav-link" href="/blog/index.html">Journal</a></li>
-                <li><a class="nav-link" href="/about.html">About</a></li>
+                <li><a class="nav-link" href="marketplace.html">Marketplace</a></li>
+                <li><a class="nav-link" href="custom-font-services/custom_font_services.html">Services</a></li>
+                <li><a class="nav-link" href="blog/index.html">Journal</a></li>
+                <li><a class="nav-link" href="about.html">About</a></li>
             </ul>
             <div class="nav-actions">
-                <a class="nav-cart" href="/cart.html" id="navCartBtn" aria-label="Shopping cart">
+                <a class="nav-cart" href="cart.html" id="navCartBtn" aria-label="Shopping cart">
                     <svg viewBox="0 0 24 24" aria-hidden="true">
                         <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z" />
                         <line x1="3" y1="6" x2="21" y2="6" />
@@ -637,7 +838,7 @@
                     </svg>
                     <span class="nav-cart__badge" id="navCartBadge" data-count="0">0</span>
                 </a>
-                <a class="nav-signup" href="/signup-login.html">Login / Register</a>
+                <a class="nav-signup" href="signup-login.html">Login / Register</a>
             </div>
             <button class="nav-hamburger" aria-label="Menu" aria-expanded="false">
                 <span class="nav-hamburger__line"></span>
@@ -649,14 +850,14 @@
 
     <div class="nav-mobile-menu" role="dialog" aria-label="Mobile navigation">
         <div class="nav-mobile-menu__links">
-            <a class="nav-mobile-menu__link" href="/marketplace.html">Marketplace</a>
-            <a class="nav-mobile-menu__link" href="/custom-font-services/custom_font_services.html">Services</a>
-            <a class="nav-mobile-menu__link" href="/blog/index.html">Journal</a>
-            <a class="nav-mobile-menu__link" href="/about.html">About</a>
+            <a class="nav-mobile-menu__link" href="marketplace.html">Marketplace</a>
+            <a class="nav-mobile-menu__link" href="custom-font-services/custom_font_services.html">Services</a>
+            <a class="nav-mobile-menu__link" href="blog/index.html">Journal</a>
+            <a class="nav-mobile-menu__link" href="about.html">About</a>
         </div>
         <div class="nav-mobile-menu__actions">
-            <a class="nav-mobile-menu__cart" href="/cart.html" aria-label="Shopping cart">Cart</a>
-            <a class="nav-mobile-menu__signup" href="/signup-login.html">Login / Register</a>
+            <a class="nav-mobile-menu__cart" href="cart.html" aria-label="Shopping cart">Cart</a>
+            <a class="nav-mobile-menu__signup" href="signup-login.html">Login / Register</a>
         </div>
     </div>
 
@@ -705,6 +906,60 @@
             </div>
         </div>
 
+        <!-- Security Verification Card (Hidden by default, shown if URL is shared or opened on new device) -->
+        <div class="verification-card" id="deviceVerificationCard" style="display: none;">
+            <div class="verification-badge">
+                <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+                <span>Device Authorization Required</span>
+            </div>
+            <h2 class="verification-title">Confirm Purchaser Email to Access Files</h2>
+            <p class="verification-desc">
+                To safeguard commercial typeface licenses and prevent unauthorized downloads from shared links, please confirm the billing email address used during purchase.
+                <br>Registered purchaser email: <strong id="maskedEmailDisplay" style="color: var(--text);">...</strong>
+            </p>
+            <form class="verification-form" onsubmit="event.preventDefault(); submitEmailVerification();">
+                <input type="email" id="verifyEmailInput" class="verification-input" placeholder="Enter billing email (e.g., name@domain.com)" required autocomplete="email" />
+                <button type="submit" class="btn-verify-unlock" id="verifyUnlockBtn">
+                    <span>Unlock Downloads</span>
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                </button>
+            </form>
+            <div class="verification-error" id="verifyErrorMsg"></div>
+        </div>
+
+        <!-- Expired Order Card (Hidden by default, shown if > 24 hours) -->
+        <div class="expired-card" id="orderExpiredCard" style="display: none;">
+            <h2 class="expired-title">
+                <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="#b91c1c" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <polyline points="12 6 12 12 16 14"></polyline>
+                </svg>
+                Download Link Expired
+            </h2>
+            <p class="expired-desc">
+                To protect against piracy and unauthorized distribution, font download links remain active for 24 hours following acquisition. Your commercial license remains perpetual and fully valid.
+                <br>If you need your font archive packages re-dispatched, please contact our foundry studio at <a href="mailto:glyphere@gmail.com" style="color: var(--gold-dark); text-decoration: underline; font-weight: 600;">glyphere@gmail.com</a> with your order confirmation.
+            </p>
+        </div>
+
+        <!-- No Order Found Card (Hidden by default, shown if visited without valid session_id) -->
+        <div class="no-order-card" id="noOrderCard" style="display: none;">
+            <h2 class="no-order-title">
+                <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--gold-dark);">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <line x1="12" y1="8" x2="12" y2="12"></line>
+                    <line x1="12" y1="16" x2="12.01" y2="16"></line>
+                </svg>
+                No Active Order Found
+            </h2>
+            <p class="no-order-desc">
+                No active font acquisition session was detected. If you just completed a purchase, please access this page using the direct link provided upon checkout completion or in your email receipt.
+            </p>
+            <a href="marketplace.html" class="btn-primary" style="display: inline-flex;">
+                Browse Typeface Marketplace
+            </a>
+        </div>
+
         <!-- Instant Download Center Card -->
         <div class="download-center-card" id="downloadCenterCard">
             <div class="download-center-header">
@@ -720,6 +975,12 @@
                     <p class="download-center-desc">
                         Un-subsetted desktop OTF/TTF, web WOFF2 archives, and your signed commercial EULA are ready.
                     </p>
+                    <div class="security-quota-pill" id="orderQuotaPill">
+                        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                        <span>Downloads remaining: <strong id="downloadsRemainingDisplay">3</strong> of <span id="maxDownloadsDisplay">3</span></span>
+                        <span style="color: var(--border);">&bull;</span>
+                        <span id="linkExpiryNotice">Valid for 24 hours</span>
+                    </div>
                 </div>
                 <div id="downloadAllBtnContainer" style="display: none;">
                     <button class="btn-download-all" id="downloadAllMasterBtn" onclick="triggerDownloadAll(this)">
@@ -733,7 +994,7 @@
                 </div>
             </div>
 
-            <div style="font-size: 0.84rem; color: var(--text-muted); line-height: 1.5; border-top: 1px solid var(--border); padding-top: 1rem; display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap;">
+            <div style="font-size: 0.84rem; color: var(--text-muted); line-height: 1.5; border-top: 1px solid var(--border); padding-top: 1rem; margin-top: 1rem; display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap;">
                 <span style="display: inline-flex; align-items: center; gap: 0.3rem; color: var(--green); font-weight: 600;">
                     <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
                     Commercial Clearance Active
@@ -809,11 +1070,11 @@
 
         <!-- Buttons -->
         <div class="btn-group">
-            <a href="/marketplace.html" class="btn-primary">
+            <a href="marketplace.html" class="btn-primary">
                 <span>Explore More Typefaces</span>
                 <span class="material-symbols-outlined" style="font-size: 1.1rem;">arrow_forward</span>
             </a>
-            <a href="/index.html" class="btn-secondary">
+            <a href="index.html" class="btn-secondary">
                 Return to Homepage
             </a>
         </div>
@@ -870,6 +1131,28 @@
         const urlParams = new URLSearchParams(window.location.search);
         const sessionId = urlParams.get('session_id');
 
+        let currentOrderToken = '';
+        try {
+            currentOrderToken = sessionStorage.getItem('glyphere_order_token_' + (sessionId || '')) || '';
+        } catch (e) {}
+
+        let remainingDownloads = 3;
+        let maxAllowedDownloads = 3;
+        let currentDownloadAllUrl = '';
+
+        const receiptCard = document.querySelector('.receipt-card');
+        const deviceVerificationCard = document.getElementById('deviceVerificationCard');
+        const orderExpiredCard = document.getElementById('orderExpiredCard');
+        const noOrderCard = document.getElementById('noOrderCard');
+        const downloadCenterCard = document.getElementById('downloadCenterCard');
+        const orderQuotaPill = document.getElementById('orderQuotaPill');
+        const downloadsRemainingDisplay = document.getElementById('downloadsRemainingDisplay');
+        const maxDownloadsDisplay = document.getElementById('maxDownloadsDisplay');
+        const maskedEmailDisplay = document.getElementById('maskedEmailDisplay');
+        const verifyEmailInput = document.getElementById('verifyEmailInput');
+        const verifyErrorMsg = document.getElementById('verifyErrorMsg');
+        const verifyUnlockBtn = document.getElementById('verifyUnlockBtn');
+
         const orderEmailEl = document.getElementById('orderEmailDisplay');
         const deliveryEmailEl = document.getElementById('deliveryEmailDisplay');
         const orderStatusEl = document.getElementById('orderStatusDisplay');
@@ -878,15 +1161,48 @@
         const downloadAllContainer = document.getElementById('downloadAllBtnContainer');
         const downloadAllBtn = document.getElementById('downloadAllMasterBtn');
 
-        let currentDownloadAllUrl = '';
-
         function toggleGuideAccordion() {
             const accordion = document.getElementById('guideAccordion');
             if (accordion) accordion.classList.toggle('is-open');
         }
 
+        function updateQuotaUI() {
+            if (downloadsRemainingDisplay) downloadsRemainingDisplay.textContent = remainingDownloads;
+            if (maxDownloadsDisplay) maxDownloadsDisplay.textContent = maxAllowedDownloads;
+
+            if (!orderQuotaPill) return;
+
+            if (remainingDownloads <= 0) {
+                orderQuotaPill.className = 'security-quota-pill is-exhausted';
+                orderQuotaPill.innerHTML = `
+                    <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                    <span>Download Limit Reached (${maxAllowedDownloads}/${maxAllowedDownloads})</span>
+                `;
+                // Disable all item download buttons
+                document.querySelectorAll('.item-dl-btn').forEach(btn => {
+                    btn.classList.add('is-disabled');
+                    btn.disabled = true;
+                    btn.innerHTML = `<span>Limit Reached (${maxAllowedDownloads}/${maxAllowedDownloads})</span>`;
+                });
+                if (downloadAllBtn) {
+                    downloadAllBtn.classList.add('is-disabled');
+                    downloadAllBtn.disabled = true;
+                    downloadAllBtn.innerHTML = `<span>Order Limit Reached (${maxAllowedDownloads}/${maxAllowedDownloads})</span>`;
+                }
+            } else if (remainingDownloads === 1) {
+                orderQuotaPill.className = 'security-quota-pill is-low';
+            } else {
+                orderQuotaPill.className = 'security-quota-pill';
+            }
+        }
+
         function downloadFont(btn, downloadUrl, fontName) {
-            if (!btn || btn.classList.contains('is-downloading')) return;
+            if (!btn || btn.classList.contains('is-downloading') || btn.classList.contains('is-disabled')) return;
+
+            if (remainingDownloads <= 0) {
+                alert('Maximum download quota (3/3) has been reached for this order. Please save your previously downloaded packages.');
+                return;
+            }
 
             const origHtml = btn.innerHTML;
             btn.classList.add('is-downloading');
@@ -895,201 +1211,350 @@
                 <span>Preparing...</span>
             `;
 
-            const fullUrl = resolveApiUrl(downloadUrl);
+            let fullUrl = resolveApiUrl(downloadUrl);
+            if (currentOrderToken && !fullUrl.includes('token=')) {
+                fullUrl += (fullUrl.includes('?') ? '&' : '?') + 'token=' + encodeURIComponent(currentOrderToken);
+            }
+
             const anchor = document.createElement('a');
             anchor.href = fullUrl;
             anchor.style.display = 'none';
             document.body.appendChild(anchor);
             anchor.click();
-            setTimeout(() => document.body.removeChild(anchor), 1000);
+            setTimeout(() => {
+                try { document.body.removeChild(anchor); } catch (e) {}
+            }, 1500);
+
+            // Decrement remaining count
+            remainingDownloads = Math.max(0, remainingDownloads - 1);
+            updateQuotaUI();
 
             setTimeout(() => {
                 btn.classList.remove('is-downloading');
-                btn.classList.add('is-done');
-                btn.innerHTML = `
-                    <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                    <span>Downloaded ✓</span>
-                `;
-                setTimeout(() => {
-                    btn.classList.remove('is-done');
-                    btn.innerHTML = origHtml;
-                }, 3500);
+                if (remainingDownloads > 0) {
+                    btn.classList.add('is-done');
+                    btn.innerHTML = `
+                        <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                        <span>Downloaded ✓</span>
+                    `;
+                    setTimeout(() => {
+                        btn.classList.remove('is-done');
+                        btn.innerHTML = origHtml;
+                    }, 3500);
+                }
             }, 1200);
         }
 
         function triggerDownloadAll(btn) {
-            if (!btn || btn.classList.contains('is-downloading')) return;
+            if (!btn || btn.classList.contains('is-downloading') || btn.classList.contains('is-disabled')) return;
+
+            if (remainingDownloads <= 0) {
+                alert('Maximum download quota (3/3) has been reached for this order. Please save your previously downloaded packages.');
+                return;
+            }
 
             if (currentDownloadAllUrl) {
                 const origHtml = btn.innerHTML;
                 btn.classList.add('is-downloading');
                 btn.innerHTML = `<span>Bundling All Packages...</span>`;
 
-                const fullUrl = resolveApiUrl(currentDownloadAllUrl);
+                let fullUrl = resolveApiUrl(currentDownloadAllUrl);
+                if (currentOrderToken && !fullUrl.includes('token=')) {
+                    fullUrl += (fullUrl.includes('?') ? '&' : '?') + 'token=' + encodeURIComponent(currentOrderToken);
+                }
+
                 const anchor = document.createElement('a');
                 anchor.href = fullUrl;
                 document.body.appendChild(anchor);
                 anchor.click();
-                setTimeout(() => document.body.removeChild(anchor), 1000);
+                setTimeout(() => {
+                    try { document.body.removeChild(anchor); } catch (e) {}
+                }, 1500);
+
+                remainingDownloads = Math.max(0, remainingDownloads - 1);
+                updateQuotaUI();
 
                 setTimeout(() => {
                     btn.classList.remove('is-downloading');
-                    btn.innerHTML = `<span>Order Bundle Downloaded ✓</span>`;
-                    setTimeout(() => { btn.innerHTML = origHtml; }, 4000);
+                    if (remainingDownloads > 0) {
+                        btn.innerHTML = `<span>Order Bundle Downloaded ✓</span>`;
+                        setTimeout(() => { btn.innerHTML = origHtml; }, 4000);
+                    }
                 }, 2000);
-            } else {
-                // Fallback: click all download buttons sequentially
-                const btns = document.querySelectorAll('.item-dl-btn');
-                btns.forEach((b, idx) => {
-                    setTimeout(() => b.click(), idx * 600);
-                });
             }
         }
 
-        if (sessionId) {
-            const apiUrl = resolveApiUrl(`/api/get-checkout-session?session_id=${encodeURIComponent(sessionId)}`);
+        function submitEmailVerification() {
+            const inputEmail = (verifyEmailInput ? verifyEmailInput.value : '').trim();
+            if (!inputEmail) {
+                showVerifyError('Please enter your billing email address.');
+                return;
+            }
+
+            if (verifyErrorMsg) verifyErrorMsg.style.display = 'none';
+            if (verifyUnlockBtn) {
+                verifyUnlockBtn.disabled = true;
+                verifyUnlockBtn.innerHTML = '<span>Verifying...</span>';
+            }
+
+            fetchOrderDetails(inputEmail);
+        }
+
+        function showVerifyError(msg) {
+            if (verifyErrorMsg) {
+                verifyErrorMsg.textContent = msg || 'Verification failed. Please check your email and try again.';
+                verifyErrorMsg.style.display = 'block';
+            }
+            if (verifyUnlockBtn) {
+                verifyUnlockBtn.disabled = false;
+                verifyUnlockBtn.innerHTML = `
+                    <span>Unlock Downloads</span>
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                `;
+            }
+        }
+
+        function fetchOrderDetails(verifyEmail = '') {
+            if (!sessionId) {
+                renderNoOrderState();
+                return;
+            }
+
+            let endpoint = `/api/get-checkout-session?session_id=${encodeURIComponent(sessionId)}`;
+            if (currentOrderToken) {
+                endpoint += `&token=${encodeURIComponent(currentOrderToken)}`;
+            }
+            if (verifyEmail) {
+                endpoint += `&verify_email=${encodeURIComponent(verifyEmail)}`;
+            }
+
+            const apiUrl = resolveApiUrl(endpoint);
             fetch(apiUrl)
-                .then(res => {
-                    const contentType = res.headers.get('content-type') || '';
-                    if (contentType.includes('application/json')) {
-                        return res.json();
-                    }
-                    throw new Error('Non-JSON response from server');
-                })
+                .then(res => res.json())
                 .then(data => {
-                    if (data.error) {
-                        renderFallbackState();
+                    if (verifyUnlockBtn) {
+                        verifyUnlockBtn.disabled = false;
+                        verifyUnlockBtn.innerHTML = `
+                            <span>Unlock Downloads</span>
+                            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                        `;
+                    }
+
+                    if (data.error && !data.is_locked && !data.is_expired) {
+                        if (verifyEmail) {
+                            showVerifyError(data.error);
+                            return;
+                        }
+                        renderNoOrderState(data.error);
                         return;
                     }
 
-                    const email = data.customer_email || 'Customer';
-                    orderEmailEl.textContent = email;
-                    if (deliveryEmailEl) deliveryEmailEl.textContent = email;
-
-                    if (data.payment_status) {
-                        orderStatusEl.textContent = data.payment_status === 'paid' ? 'Completed & Paid ✓' : 'Authorized ✓';
+                    if (data.is_expired) {
+                        renderExpiredState(data);
+                        return;
                     }
 
-                    if (data.amount_total) {
-                        orderTotalEl.textContent = `$${Number(data.amount_total).toFixed(2)} ${data.currency || 'USD'}`;
-                    }
-
-                    if (data.download_all_url) {
-                        currentDownloadAllUrl = data.download_all_url;
-                    }
-
-                    if (data.items && data.items.length > 0) {
-                        if (data.items.length > 1 && downloadAllContainer) {
-                            downloadAllContainer.style.display = 'block';
+                    if (data.is_locked) {
+                        if (verifyEmail) {
+                            showVerifyError(data.error || 'The entered email does not match order records.');
                         }
-
-                        orderItemsEl.innerHTML = data.items.map(item => {
-                            const desc = item.description || 'Typeface License';
-                            const fontName = item.font_name || desc.split('—')[0].trim();
-                            const license = item.license_type || 'Commercial Authorization';
-                            const initial = fontName.charAt(0).toUpperCase();
-                            const slug = item.font_slug || fontName.toLowerCase().replace(/[^a-z0-9]+/g, '-');
-                            const downloadUrl = item.download_url || `/api/download-font?session_id=${encodeURIComponent(sessionId)}&font=${encodeURIComponent(slug)}`;
-
-                            return `
-                                <div class="item-row">
-                                    <div class="item-row-left">
-                                        <div class="item-glyph-box">${initial}</div>
-                                        <div class="item-info">
-                                            <div class="item-name">${fontName}</div>
-                                            <div class="item-sub">${license} &bull; Perpetual Commercial Authorization</div>
-                                            <div class="format-badges">
-                                                <span class="format-badge">OTF Desktop</span>
-                                                <span class="format-badge">TTF</span>
-                                                <span class="format-badge">WOFF2 Web</span>
-                                                <span class="format-badge format-badge--license">EULA Included</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="item-actions-wrap">
-                                        <div class="item-price">$${Number(item.amount_total).toFixed(2)}</div>
-                                        <button class="item-dl-btn" onclick="downloadFont(this, '${downloadUrl}', '${fontName}')" title="Download font package archive">
-                                            <svg viewBox="0 0 24 24">
-                                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
-                                                <polyline points="7 10 12 15 17 10"/>
-                                                <line x1="12" y1="15" x2="12" y2="3"/>
-                                            </svg>
-                                            <span>Download (.ZIP)</span>
-                                        </button>
-                                    </div>
-                                </div>
-                            `;
-                        }).join('');
-
-                        // Save licensed fonts to localStorage
-                        try {
-                            const existing = JSON.parse(localStorage.getItem('glyphere_licensed_fonts') || '[]');
-                            const additions = data.items.map(item => ({
-                                id: item.font_slug || item.font_name.toLowerCase().replace(/[^a-z0-9]+/g, '-'),
-                                name: item.font_name,
-                                license: item.license_type || 'Desktop License',
-                                price: item.amount_total,
-                                date: new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })
-                            }));
-                            const merged = [...additions, ...existing.filter(e => !additions.some(a => a.name === e.name))];
-                            localStorage.setItem('glyphere_licensed_fonts', JSON.stringify(merged));
-                        } catch (e) {}
-                    } else {
-                        renderFallbackState();
+                        renderLockedState(data);
+                        return;
                     }
+
+                    // Authorized! Save token
+                    if (data.token) {
+                        currentOrderToken = data.token;
+                        try {
+                            sessionStorage.setItem('glyphere_order_token_' + sessionId, data.token);
+                        } catch (e) {}
+                    }
+
+                    renderAuthorizedOrder(data);
                 })
-                .catch(() => renderFallbackState());
-        } else {
-            renderFallbackState();
+                .catch(err => {
+                    console.error('Fetch order error:', err);
+                    if (verifyEmail) {
+                        showVerifyError('Unable to connect to verification server. Please try again.');
+                    } else {
+                        renderNoOrderState();
+                    }
+                });
         }
 
-        function renderFallbackState() {
-            orderEmailEl.textContent = 'Purchased via Stripe Checkout';
-            if (deliveryEmailEl) deliveryEmailEl.textContent = 'your registered email';
-            orderStatusEl.textContent = 'Completed & Paid ✓';
-            orderTotalEl.textContent = '$120.00 USD';
+        function renderLockedState(data) {
+            if (deviceVerificationCard) deviceVerificationCard.style.display = 'block';
+            if (downloadCenterCard) downloadCenterCard.style.display = 'none';
+            if (orderExpiredCard) orderExpiredCard.style.display = 'none';
+            if (noOrderCard) noOrderCard.style.display = 'none';
 
-            if (downloadAllContainer) downloadAllContainer.style.display = 'block';
-            currentDownloadAllUrl = '/api/download-font?session_id=demo&all=1';
+            if (maskedEmailDisplay) {
+                maskedEmailDisplay.textContent = data.masked_email || 'your registered billing email';
+            }
 
-            const demoFonts = [
-                { name: 'Midnight Citadel', slug: 'midnight-citadel', license: 'Desktop License', price: '60.00' },
-                { name: 'Turbo Block', slug: 'turbo-block', license: 'Desktop + Web License', price: '60.00' }
-            ];
+            if (orderEmailEl) orderEmailEl.textContent = data.masked_email || 'Protected (Verification Required)';
+            if (deliveryEmailEl) deliveryEmailEl.textContent = data.masked_email || 'your email';
+            if (orderStatusEl) {
+                orderStatusEl.textContent = 'Device Authorization Required 🔒';
+                orderStatusEl.style.color = '#b45309';
+            }
+            if (orderTotalEl && data.amount_total) {
+                orderTotalEl.textContent = `$${Number(data.amount_total).toFixed(2)} ${data.currency || 'USD'}`;
+            }
 
-            orderItemsEl.innerHTML = demoFonts.map(font => {
-                const initial = font.name.charAt(0).toUpperCase();
-                const downloadUrl = `/api/download-font?session_id=demo&font=${font.slug}`;
-                return `
-                    <div class="item-row">
-                        <div class="item-row-left">
-                            <div class="item-glyph-box">${initial}</div>
-                            <div class="item-info">
-                                <div class="item-name">${font.name}</div>
-                                <div class="item-sub">${font.license} &bull; Perpetual Commercial Authorization</div>
-                                <div class="format-badges">
-                                    <span class="format-badge">OTF Desktop</span>
-                                    <span class="format-badge">TTF</span>
-                                    <span class="format-badge">WOFF2 Web</span>
-                                    <span class="format-badge format-badge--license">EULA Included</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item-actions-wrap">
-                            <div class="item-price">$${font.price}</div>
-                            <button class="item-dl-btn" onclick="downloadFont(this, '${downloadUrl}', '${font.name}')" title="Download font package archive">
-                                <svg viewBox="0 0 24 24">
-                                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
-                                    <polyline points="7 10 12 15 17 10"/>
-                                    <line x1="12" y1="15" x2="12" y2="3"/>
-                                </svg>
-                                <span>Download (.ZIP)</span>
-                            </button>
-                        </div>
+            if (orderItemsEl) {
+                orderItemsEl.innerHTML = `
+                    <div style="padding: 1.5rem; text-align: center; color: var(--text-muted); font-size: 0.9rem;">
+                        <span style="display: block; font-size: 1.4rem; margin-bottom: 0.4rem;">🔒</span>
+                        <strong>License records secured.</strong>
+                        <p style="margin: 0.35rem 0 0 0; font-size: 0.84rem;">Please confirm your billing email in the verification box above to unlock and download your font packages on this device.</p>
                     </div>
                 `;
-            }).join('');
+            }
         }
+
+        function renderExpiredState(data) {
+            if (orderExpiredCard) orderExpiredCard.style.display = 'block';
+            if (deviceVerificationCard) deviceVerificationCard.style.display = 'none';
+            if (downloadCenterCard) downloadCenterCard.style.display = 'none';
+            if (noOrderCard) noOrderCard.style.display = 'none';
+
+            if (orderStatusEl) {
+                orderStatusEl.textContent = 'Download Link Expired (24h)';
+                orderStatusEl.style.color = '#b91c1c';
+            }
+            if (orderItemsEl) {
+                orderItemsEl.innerHTML = `
+                    <div style="padding: 1.5rem; text-align: center; color: var(--text-muted); font-size: 0.88rem;">
+                        This order's download window has expired. Perpetual licensing remains active. Contact <strong>glyphere@gmail.com</strong> for link re-activation.
+                    </div>
+                `;
+            }
+        }
+
+        function renderNoOrderState(errorMsg) {
+            if (noOrderCard) noOrderCard.style.display = 'block';
+            if (receiptCard) receiptCard.style.display = 'none';
+            if (downloadCenterCard) downloadCenterCard.style.display = 'none';
+            if (deviceVerificationCard) deviceVerificationCard.style.display = 'none';
+            if (orderExpiredCard) orderExpiredCard.style.display = 'none';
+            const guide = document.getElementById('guideAccordion');
+            if (guide) guide.style.display = 'none';
+        }
+
+        function renderAuthorizedOrder(data) {
+            if (deviceVerificationCard) deviceVerificationCard.style.display = 'none';
+            if (orderExpiredCard) orderExpiredCard.style.display = 'none';
+            if (noOrderCard) noOrderCard.style.display = 'none';
+            if (receiptCard) receiptCard.style.display = 'block';
+            if (downloadCenterCard) downloadCenterCard.style.display = 'block';
+
+            const email = data.customer_email || 'Valued Customer';
+            if (orderEmailEl) orderEmailEl.textContent = email;
+            if (deliveryEmailEl) deliveryEmailEl.textContent = email;
+
+            if (orderStatusEl) {
+                orderStatusEl.textContent = data.payment_status === 'paid' ? 'Completed & Paid ✓' : 'Authorized ✓';
+                orderStatusEl.style.color = 'var(--green)';
+            }
+
+            if (orderTotalEl && data.amount_total) {
+                orderTotalEl.textContent = `$${Number(data.amount_total).toFixed(2)} ${data.currency || 'USD'}`;
+            }
+
+            remainingDownloads = data.downloads_remaining !== undefined ? data.downloads_remaining : 3;
+            maxAllowedDownloads = data.max_downloads || 3;
+            updateQuotaUI();
+
+            if (data.download_all_url) {
+                currentDownloadAllUrl = data.download_all_url;
+            }
+
+            if (data.items && data.items.length > 0) {
+                if (data.items.length > 1 && downloadAllContainer) {
+                    downloadAllContainer.style.display = 'block';
+                }
+
+                orderItemsEl.innerHTML = data.items.map(item => {
+                    const desc = item.description || 'Typeface License';
+                    const fontName = item.font_name || desc.split('—')[0].trim();
+                    const license = item.license_type || 'Commercial Authorization';
+                    const initial = fontName.charAt(0).toUpperCase();
+                    const slug = item.font_slug || fontName.toLowerCase().replace(/[^a-z0-9]+/g, '-');
+                    const isDemo = !!data.is_demo;
+                    const isExhausted = remainingDownloads <= 0 || data.is_exhausted;
+                    const btnClass = (isExhausted || isDemo) ? 'item-dl-btn is-disabled' : 'item-dl-btn';
+                    const btnAttr = (isExhausted || isDemo) ? 'disabled' : '';
+                    let btnLabel = 'Download (.ZIP)';
+                    if (isDemo) {
+                        btnLabel = 'Preview Mode (Disabled)';
+                    } else if (isExhausted) {
+                        btnLabel = `Limit Reached (${maxAllowedDownloads}/${maxAllowedDownloads})`;
+                    }
+                    const downloadUrl = isDemo ? '' : (item.download_url || `/api/download-font?session_id=${encodeURIComponent(sessionId)}&font=${encodeURIComponent(slug)}&token=${encodeURIComponent(currentOrderToken)}`);
+
+                    return `
+                        <div class="item-row">
+                            <div class="item-row-left">
+                                <div class="item-glyph-box">${initial}</div>
+                                <div class="item-info">
+                                    <div class="item-name">${fontName}</div>
+                                    <div class="item-sub">${license} &bull; Perpetual Commercial Authorization</div>
+                                    <div class="format-badges">
+                                        <span class="format-badge">OTF Desktop</span>
+                                        <span class="format-badge">TTF</span>
+                                        <span class="format-badge">WOFF2 Web</span>
+                                        <span class="format-badge format-badge--license">EULA Included</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="item-actions-wrap">
+                                <div class="item-price">$${Number(item.amount_total).toFixed(2)}</div>
+                                <button class="${btnClass}" ${btnAttr} onclick="${isDemo ? '' : `downloadFont(this, '${downloadUrl}', '${fontName}')`}" title="${isDemo ? 'Demo preview only' : 'Download font package archive'}">
+                                    <svg viewBox="0 0 24 24">
+                                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                                        <polyline points="7 10 12 15 17 10"/>
+                                        <line x1="12" y1="15" x2="12" y2="3"/>
+                                    </svg>
+                                    <span>${btnLabel}</span>
+                                </button>
+                            </div>
+                        </div>
+                    `;
+                }).join('');
+
+                if (isDemo && orderQuotaPill) {
+                    orderQuotaPill.className = 'security-quota-pill';
+                    orderQuotaPill.innerHTML = `
+                        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                        <span>Demo Preview Mode &bull; Real font downloads require confirmed Stripe purchase</span>
+                    `;
+                    if (downloadAllContainer) downloadAllContainer.style.display = 'none';
+                }
+
+                // Save licensed fonts locally
+                try {
+                    const existing = JSON.parse(localStorage.getItem('glyphere_licensed_fonts') || '[]');
+                    const additions = data.items.map(item => ({
+                        id: item.font_slug || item.font_name.toLowerCase().replace(/[^a-z0-9]+/g, '-'),
+                        name: item.font_name,
+                        license: item.license_type || 'Desktop License',
+                        price: item.amount_total,
+                        date: new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })
+                    }));
+                    const merged = [...additions, ...existing.filter(e => !additions.some(a => a.name === e.name))];
+                    localStorage.setItem('glyphere_licensed_fonts', JSON.stringify(merged));
+                } catch (e) {}
+            }
+        }
+
+        // Initialize Order Inspection
+        if (sessionId) {
+            fetchOrderDetails();
+        } else {
+            renderNoOrderState();
+        }
+
 
         // Hamburger Menu
         const hamburger = document.querySelector('.nav-hamburger');

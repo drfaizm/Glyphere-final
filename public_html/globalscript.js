@@ -3,28 +3,34 @@
    Shared across all pages.
    ===================================================== */
 
-/* ─────────────────────────────────────────
+
+/* ─────────────────────────────────────────
    2. PRELOADER
    Fades out the preloader after page load
    and reveals the main content.
 ───────────────────────────────────────── */
-window.addEventListener('load', function () {
+function dismissPreloader() {
   const preloader = document.getElementById('preloader');
   const content = document.getElementById('content');
 
-  if (preloader) {
-    setTimeout(function () {
-      preloader.classList.add('hide');
-      if (content) content.classList.add('show');
+  if (preloader && !preloader.classList.contains('hide')) {
+    preloader.classList.add('hide');
+    if (content) content.classList.add('show');
 
-      setTimeout(function () {
-        preloader.style.display = 'none';
-      }, 800);
-    }, 1200);
-  } else if (content) {
+    setTimeout(function () {
+      preloader.style.display = 'none';
+    }, 800);
+  } else if (content && !content.classList.contains('show')) {
     content.classList.add('show');
   }
+}
+
+window.addEventListener('load', function () {
+  setTimeout(dismissPreloader, 1000);
 });
+
+// Failsafe timeout in case window.load is delayed by external assets
+setTimeout(dismissPreloader, 2200);
 
 /* ─────────────────────────────────────────
    1. NAV SCROLL SHADOW
@@ -203,7 +209,7 @@ window.addEventListener('scroll', function () {
     var badge = document.getElementById('navCartBadge');
     if (!badge) return;
     var cart = [];
-    try { cart = JSON.parse(localStorage.getItem('glyphereCart') || '[]'); } catch (e) {}
+    try { cart = JSON.parse(localStorage.getItem('glyphereCart') || '[]'); } catch (e) { }
     var count = cart.reduce(function (s, i) { return s + (i.qty || 1); }, 0);
     badge.textContent = count;
     badge.setAttribute('data-count', count);
@@ -235,6 +241,9 @@ window.addEventListener('scroll', function () {
 
     if (!currentUser) return;
 
+    var isSubdir = window.location.pathname.indexOf('/blog/') !== -1 || window.location.pathname.indexOf('/custom-font-services/') !== -1;
+    var mktHref = isSubdir ? '../marketplace.html' : 'marketplace.html';
+
     // ── Desktop Navigation Replacement ──
     var navSignups = document.querySelectorAll('.nav-signup');
     navSignups.forEach(function (btn) {
@@ -256,7 +265,7 @@ window.addEventListener('scroll', function () {
             <span class="nav-user-dropdown__email">' + currentUser.email + '</span>\
           </div>\
           <div class="nav-user-dropdown__divider"></div>\
-          <a class="nav-user-dropdown__item" href="/marketplace.html">\
+          <a class="nav-user-dropdown__item" href="' + mktHref + '">\
             <svg viewBox="0 0 24 24">\
               <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>\
               <polyline points="2 17 12 22 22 17"></polyline>\
@@ -298,7 +307,7 @@ window.addEventListener('scroll', function () {
         </div>\
         <span class="mobile-user-card__name">' + currentUser.name + '</span>\
         <span class="mobile-user-card__email">' + currentUser.email + '</span>\
-        <a class="mobile-user-card__logout" href="/marketplace.html" style="background: rgba(201, 171, 129, 0.12); border: 1px solid rgba(201, 171, 129, 0.25); color: var(--gold); margin-bottom: 0.5rem; text-decoration: none;">\
+        <a class="mobile-user-card__logout" href="' + mktHref + '" style="background: rgba(201, 171, 129, 0.12); border: 1px solid rgba(201, 171, 129, 0.25); color: var(--gold); margin-bottom: 0.5rem; text-decoration: none;">\
           <svg viewBox="0 0 24 24" style="stroke: currentColor;"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>\
           Marketplace\
         </a>\
@@ -314,7 +323,7 @@ window.addEventListener('scroll', function () {
 
       if (btn.parentNode) {
         var parent = btn.parentNode;
-        
+
         // Hide mobile login link if present
         var mobileLogin = parent.querySelector('.nav-mobile-menu__login');
         if (mobileLogin) {
@@ -328,7 +337,7 @@ window.addEventListener('scroll', function () {
 
   // Bind interactions globally
   document.addEventListener('DOMContentLoaded', syncUserNavigation);
-  
+
   // Watch for storage changes (allows instant synchronization across multiple tabs)
   window.addEventListener('storage', function (e) {
     if (e.key === 'glyphere_current_user') {
