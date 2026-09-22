@@ -47,8 +47,11 @@ jobs:
             "mkdir -p \
             '${{ secrets.HOSTINGER_DOMAIN_ROOT }}/public_html' \
             '${{ secrets.HOSTINGER_DOMAIN_ROOT }}/backend' \
+            '${{ secrets.HOSTINGER_DOMAIN_ROOT }}/backend/data' \
+            '${{ secrets.HOSTINGER_DOMAIN_ROOT }}/backend/commercial-vault/packages' \
             '${{ secrets.HOSTINGER_DOMAIN_ROOT }}/login-auth' \
-            '${{ secrets.HOSTINGER_DOMAIN_ROOT }}/font-vault'"
+            '${{ secrets.HOSTINGER_DOMAIN_ROOT }}/font-vault' && \
+            chmod 775 '${{ secrets.HOSTINGER_DOMAIN_ROOT }}/backend/data'"
 
       - name: Deploy public website
         run: |

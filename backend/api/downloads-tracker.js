@@ -4,7 +4,7 @@ const crypto = require('crypto');
 
 const MAX_DOWNLOADS = parseInt(process.env.MAX_DOWNLOADS || '3', 10);
 const EXPIRY_HOURS = parseInt(process.env.DOWNLOAD_EXPIRY_HOURS || '24', 10);
-const INITIAL_GRACE_PERIOD_SECONDS = 180; // 3 minutes after creation for initial landing redirect
+const INITIAL_GRACE_PERIOD_SECONDS = parseInt(process.env.INITIAL_GRACE_PERIOD_SECONDS || (EXPIRY_HOURS * 3600).toString(), 10); // 3 minutes after creation for initial landing redirect
 
 function getRegistryPath() {
   const dirs = [
@@ -178,8 +178,24 @@ function verifySessionAccess(sessionId, providedToken, verifyEmail, sessionData 
     }
   }
 
-  // Check 3: Initial direct landing grace period (purchaser returning immediately from Stripe checkout)
-  const isInitialLanding = (now - record.createdAt) <= INITIAL_GRACE_PERIOD_SECONDS && record.downloadCount === 0;
+  // Check 3: Direct authorized access for verified paid Stripe session within 24 hours
+  const isPaidSession = (sessionData.payment_status === 'paid');
+  if (isPaidSession) {
+    return {
+      authorized: true,
+      isInitialLanding: true,
+      isExpired: false,
+      isExhausted,
+      downloadsRemaining,
+      maxDownloads: record.maxDownloads,
+      expiresAt: record.expiresAt,
+      maskedEmail,
+      token: record.token
+    };
+  }
+
+  // Check 4: Initial direct landing grace period
+  const isInitialLanding = (now - record.createdAt) <= INITIAL_GRACE_PERIOD_SECONDS;
   if (isInitialLanding) {
     return {
       authorized: true,

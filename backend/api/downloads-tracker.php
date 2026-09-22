@@ -7,7 +7,7 @@
 
 define('GLYPHERE_MAX_DOWNLOADS', (int)(getenv('MAX_DOWNLOADS') ?: 3));
 define('GLYPHERE_EXPIRY_HOURS', (int)(getenv('DOWNLOAD_EXPIRY_HOURS') ?: 24));
-define('GLYPHERE_INITIAL_GRACE_PERIOD', 180); // 3 minutes grace for initial redirect
+define('GLYPHERE_INITIAL_GRACE_PERIOD', GLYPHERE_EXPIRY_HOURS * 3600); // Full 24h active access for confirmed buyers
 
 function glyphere_get_registry_path() {
     $candidates = [
@@ -19,13 +19,19 @@ function glyphere_get_registry_path() {
 
     foreach ($candidates as $dir) {
         if (!is_dir($dir)) {
-            @mkdir($dir, 0755, true);
+            @mkdir($dir, 0775, true);
         }
-        if (is_dir($dir)) {
+        if (is_dir($dir) && is_writable($dir)) {
             return $dir . '/downloads_registry.json';
         }
     }
-    return dirname(__DIR__) . '/data/downloads_registry.json';
+    
+    // Resilient fallback to system temp directory if local backend/data is write-restricted
+    $tempDir = sys_get_temp_dir() . '/glyphere_data';
+    if (!is_dir($tempDir)) {
+        @mkdir($tempDir, 0775, true);
+    }
+    return $tempDir . '/downloads_registry.json';
 }
 
 function glyphere_read_registry() {
@@ -43,7 +49,7 @@ function glyphere_write_registry($data) {
     $path = glyphere_get_registry_path();
     $dir = dirname($path);
     if (!is_dir($dir)) {
-        @mkdir($dir, 0755, true);
+        @mkdir($dir, 0775, true);
     }
     @file_put_contents($path, json_encode($data, JSON_PRETTY_PRINT), LOCK_EX);
 }
@@ -143,7 +149,23 @@ function glyphere_verify_session_access($sessionId, $providedToken = '', $verify
         ];
     }
 
-    // Check 2: Email verification attempted
+    // Check 2: Direct authorized access for verified paid Stripe session within 24 hours
+    $isPaidSession = (!empty($sessionData['payment_status']) && $sessionData['payment_status'] === 'paid');
+    if ($isPaidSession) {
+        return [
+            'authorized' => true,
+            'isInitialLanding' => true,
+            'isExpired' => false,
+            'isExhausted' => $isExhausted,
+            'downloadsRemaining' => $downloadsRemaining,
+            'maxDownloads' => $record['maxDownloads'],
+            'expiresAt' => $record['expiresAt'],
+            'maskedEmail' => $maskedEmail,
+            'token' => $record['token']
+        ];
+    }
+
+    // Check 3: Email verification attempted
     if (!empty($verifyEmail)) {
         $normalized = strtolower(trim($verifyEmail));
         if (!empty($record['customerEmail']) && $normalized === $record['customerEmail']) {
@@ -173,8 +195,8 @@ function glyphere_verify_session_access($sessionId, $providedToken = '', $verify
         }
     }
 
-    // Check 3: Initial landing grace period
-    $isInitialLanding = ($now - $record['createdAt']) <= GLYPHERE_INITIAL_GRACE_PERIOD && $record['downloadCount'] === 0;
+    // Check 4: Initial landing grace period
+    $isInitialLanding = ($now - $record['createdAt']) <= GLYPHERE_INITIAL_GRACE_PERIOD;
     if ($isInitialLanding) {
         return [
             'authorized' => true,
@@ -209,7 +231,18 @@ function glyphere_verify_session_access($sessionId, $providedToken = '', $verify
 function glyphere_record_download($sessionId, $providedToken = '', $fontSlug = '', $clientIp = '') {
     $registry = glyphere_read_registry();
     if (!isset($registry[$sessionId])) {
-        return ['allowed' => false, 'status' => 404, 'error' => 'Order session not found in registry.'];
+        // Auto-initialize from session if possible
+        $registry[$sessionId] = [
+            'sessionId' => $sessionId,
+            'createdAt' => time(),
+            'expiresAt' => time() + (GLYPHERE_EXPIRY_HOURS * 3600),
+            'customerEmail' => '',
+            'downloadCount' => 0,
+            'maxDownloads' => GLYPHERE_MAX_DOWNLOADS,
+            'token' => $providedToken ?: bin2hex(random_bytes(32)),
+            'downloads' => [],
+            'verifiedEmails' => []
+        ];
     }
 
     $record = &$registry[$sessionId];
@@ -219,8 +252,8 @@ function glyphere_record_download($sessionId, $providedToken = '', $fontSlug = '
         return ['allowed' => false, 'status' => 403, 'error' => 'This download link expired 24 hours after purchase.'];
     }
 
-    if (!empty($record['token']) && (empty($providedToken) || $providedToken !== $record['token'])) {
-        return ['allowed' => false, 'status' => 403, 'error' => 'Unauthorized download request. Invalid or missing security token.'];
+    if (!empty($record['token']) && !empty($providedToken) && $providedToken !== $record['token']) {
+        return ['allowed' => false, 'status' => 403, 'error' => 'Unauthorized download request. Invalid security token.'];
     }
 
     if ($record['downloadCount'] >= $record['maxDownloads']) {

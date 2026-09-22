@@ -14,7 +14,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;700;800&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
 
-    <link rel="stylesheet" href="css/globalstyle.css">
+    <link rel="stylesheet" href="css/globalstyle.css?v=20260922">
+    <link rel="stylesheet" href="css/fonts-base64.css?v=20260922">
 
     <style>
         :root {
@@ -942,22 +943,24 @@
             </p>
         </div>
 
-        <!-- No Order Found Card (Hidden by default, shown if visited without valid session_id) -->
+        <!-- No Order Found / Verification Card -->
         <div class="no-order-card" id="noOrderCard" style="display: none;">
-            <h2 class="no-order-title">
+            <h2 class="no-order-title" id="noOrderTitle">
                 <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--gold-dark);">
                     <circle cx="12" cy="12" r="10"></circle>
                     <line x1="12" y1="8" x2="12" y2="12"></line>
                     <line x1="12" y1="16" x2="12.01" y2="16"></line>
                 </svg>
-                No Active Order Found
+                <span>No Active Order Found</span>
             </h2>
-            <p class="no-order-desc">
+            <p class="no-order-desc" id="noOrderDesc">
                 No active font acquisition session was detected. If you just completed a purchase, please access this page using the direct link provided upon checkout completion or in your email receipt.
             </p>
-            <a href="marketplace.html" class="btn-primary" style="display: inline-flex;">
-                Browse Typeface Marketplace
-            </a>
+            <div id="noOrderActionWrap" style="display: flex; gap: 0.75rem; flex-wrap: wrap; margin-top: 1rem;">
+                <a href="marketplace.html" class="btn-primary" style="display: inline-flex;">
+                    Browse Typeface Marketplace
+                </a>
+            </div>
         </div>
 
         <!-- Instant Download Center Card -->
@@ -1218,6 +1221,7 @@
 
             const anchor = document.createElement('a');
             anchor.href = fullUrl;
+            anchor.setAttribute('download', '');
             anchor.style.display = 'none';
             document.body.appendChild(anchor);
             anchor.click();
@@ -1265,6 +1269,8 @@
 
                 const anchor = document.createElement('a');
                 anchor.href = fullUrl;
+                anchor.setAttribute('download', '');
+                anchor.style.display = 'none';
                 document.body.appendChild(anchor);
                 anchor.click();
                 setTimeout(() => {
@@ -1376,6 +1382,8 @@
                     console.error('Fetch order error:', err);
                     if (verifyEmail) {
                         showVerifyError('Unable to connect to verification server. Please try again.');
+                    } else if (sessionId) {
+                        renderNoOrderState('Network or server connection issue while retrieving order details.');
                     } else {
                         renderNoOrderState();
                     }
@@ -1398,7 +1406,7 @@
                 orderStatusEl.textContent = 'Device Authorization Required 🔒';
                 orderStatusEl.style.color = '#b45309';
             }
-            if (orderTotalEl && data.amount_total) {
+            if (orderTotalEl && data.amount_total != null) {
                 orderTotalEl.textContent = `$${Number(data.amount_total).toFixed(2)} ${data.currency || 'USD'}`;
             }
 
@@ -1434,94 +1442,148 @@
 
         function renderNoOrderState(errorMsg) {
             if (noOrderCard) noOrderCard.style.display = 'block';
-            if (receiptCard) receiptCard.style.display = 'none';
-            if (downloadCenterCard) downloadCenterCard.style.display = 'none';
-            if (deviceVerificationCard) deviceVerificationCard.style.display = 'none';
-            if (orderExpiredCard) orderExpiredCard.style.display = 'none';
             const guide = document.getElementById('guideAccordion');
-            if (guide) guide.style.display = 'none';
+
+            const titleEl = document.getElementById('noOrderTitle');
+            const descEl = document.getElementById('noOrderDesc');
+            const actionWrap = document.getElementById('noOrderActionWrap');
+
+            if (sessionId) {
+                // Customer has a Stripe session ID
+                if (titleEl) {
+                    titleEl.innerHTML = `
+                        <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--gold-dark);">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <line x1="12" y1="8" x2="12" y2="12"></line>
+                            <line x1="12" y1="16" x2="12.01" y2="16"></line>
+                        </svg>
+                        <span>Order Verification In Progress</span>
+                    `;
+                }
+                if (descEl) {
+                    descEl.innerHTML = `
+                        We received your purchase session (<code>${sessionId.substring(0, 16)}...</code>).
+                        ${errorMsg ? `<br><strong style="color: #b45309;">${errorMsg}</strong>` : ''}
+                        <br>If your payment just completed, your download packages are ready to be retrieved. Please click below to refresh.
+                    `;
+                }
+                if (actionWrap) {
+                    actionWrap.innerHTML = `
+                        <button class="btn-primary" style="display: inline-flex; cursor: pointer; border: none;" onclick="fetchOrderDetails()">
+                            <span>Refresh &amp; Retrieve Font Packages</span>
+                            <span class="material-symbols-outlined" style="font-size: 1.1rem; margin-left: 0.35rem;">refresh</span>
+                        </button>
+                        <a href="mailto:glyphere@gmail.com?subject=Order%20Help%20${encodeURIComponent(sessionId)}" class="btn-secondary" style="display: inline-flex;">
+                            Contact Foundry Support
+                        </a>
+                    `;
+                }
+            } else {
+                if (receiptCard) receiptCard.style.display = 'none';
+                if (downloadCenterCard) downloadCenterCard.style.display = 'none';
+                if (deviceVerificationCard) deviceVerificationCard.style.display = 'none';
+                if (orderExpiredCard) orderExpiredCard.style.display = 'none';
+                if (guide) guide.style.display = 'none';
+            }
         }
 
         function renderAuthorizedOrder(data) {
-            if (deviceVerificationCard) deviceVerificationCard.style.display = 'none';
-            if (orderExpiredCard) orderExpiredCard.style.display = 'none';
-            if (noOrderCard) noOrderCard.style.display = 'none';
-            if (receiptCard) receiptCard.style.display = 'block';
-            if (downloadCenterCard) downloadCenterCard.style.display = 'block';
+            try {
+                if (deviceVerificationCard) deviceVerificationCard.style.display = 'none';
+                if (orderExpiredCard) orderExpiredCard.style.display = 'none';
+                if (noOrderCard) noOrderCard.style.display = 'none';
+                if (receiptCard) receiptCard.style.display = 'block';
+                if (downloadCenterCard) downloadCenterCard.style.display = 'block';
+                const guide = document.getElementById('guideAccordion');
+                if (guide) guide.style.display = 'block';
 
-            const email = data.customer_email || 'Valued Customer';
-            if (orderEmailEl) orderEmailEl.textContent = email;
-            if (deliveryEmailEl) deliveryEmailEl.textContent = email;
+                const email = data.customer_email || 'Valued Customer';
+                if (orderEmailEl) orderEmailEl.textContent = email;
+                if (deliveryEmailEl) deliveryEmailEl.textContent = email;
 
-            if (orderStatusEl) {
-                orderStatusEl.textContent = data.payment_status === 'paid' ? 'Completed & Paid ✓' : 'Authorized ✓';
-                orderStatusEl.style.color = 'var(--green)';
-            }
+                if (orderStatusEl) {
+                    orderStatusEl.textContent = (data.payment_status === 'paid' || !data.payment_status) ? 'Completed & Paid ✓' : 'Authorized ✓';
+                    orderStatusEl.style.color = 'var(--green)';
+                }
 
-            if (orderTotalEl && data.amount_total) {
-                orderTotalEl.textContent = `$${Number(data.amount_total).toFixed(2)} ${data.currency || 'USD'}`;
-            }
+                if (orderTotalEl && data.amount_total != null) {
+                    orderTotalEl.textContent = `$${Number(data.amount_total).toFixed(2)} ${data.currency || 'USD'}`;
+                }
 
-            remainingDownloads = data.downloads_remaining !== undefined ? data.downloads_remaining : 3;
-            maxAllowedDownloads = data.max_downloads || 3;
-            updateQuotaUI();
+                remainingDownloads = data.downloads_remaining !== undefined ? data.downloads_remaining : 3;
+                maxAllowedDownloads = data.max_downloads || 3;
+                updateQuotaUI();
 
-            if (data.download_all_url) {
-                currentDownloadAllUrl = data.download_all_url;
-            }
+                if (data.download_all_url) {
+                    currentDownloadAllUrl = data.download_all_url;
+                }
 
-            if (data.items && data.items.length > 0) {
-                if (data.items.length > 1 && downloadAllContainer) {
+                const rawItems = Array.isArray(data.items) ? data.items : [];
+                if (rawItems.length > 1 && downloadAllContainer) {
                     downloadAllContainer.style.display = 'block';
                 }
 
-                orderItemsEl.innerHTML = data.items.map(item => {
-                    const desc = item.description || 'Typeface License';
-                    const fontName = item.font_name || desc.split('—')[0].trim();
-                    const license = item.license_type || 'Commercial Authorization';
-                    const initial = fontName.charAt(0).toUpperCase();
-                    const slug = item.font_slug || fontName.toLowerCase().replace(/[^a-z0-9]+/g, '-');
-                    const isDemo = !!data.is_demo;
-                    const isExhausted = remainingDownloads <= 0 || data.is_exhausted;
-                    const btnClass = (isExhausted || isDemo) ? 'item-dl-btn is-disabled' : 'item-dl-btn';
-                    const btnAttr = (isExhausted || isDemo) ? 'disabled' : '';
-                    let btnLabel = 'Download (.ZIP)';
-                    if (isDemo) {
-                        btnLabel = 'Preview Mode (Disabled)';
-                    } else if (isExhausted) {
-                        btnLabel = `Limit Reached (${maxAllowedDownloads}/${maxAllowedDownloads})`;
-                    }
-                    const downloadUrl = isDemo ? '' : (item.download_url || `/api/download-font?session_id=${encodeURIComponent(sessionId)}&font=${encodeURIComponent(slug)}&token=${encodeURIComponent(currentOrderToken)}`);
+                if (orderItemsEl) {
+                    if (rawItems.length === 0) {
+                        orderItemsEl.innerHTML = `
+                            <div style="padding: 1.5rem; text-align: center; color: var(--text-muted); font-size: 0.9rem;">
+                                Your order has been registered. Packages are ready in the Download Center below.
+                            </div>
+                        `;
+                    } else {
+                        orderItemsEl.innerHTML = rawItems.map(item => {
+                            if (!item) return '';
+                            const desc = String(item.description || 'Typeface License');
+                            const parts = desc.split(/[\u2014\u2013\-]/);
+                            const fontName = String(item.font_name || (parts[0] ? parts[0].trim() : desc) || 'Typeface License');
+                            const license = String(item.license_type || (parts[1] ? parts[1].trim() : 'Commercial Authorization') || 'Commercial Authorization');
+                            const initial = fontName ? fontName.charAt(0).toUpperCase() : 'G';
+                            const slug = String(item.font_slug || fontName.toLowerCase().replace(/[^a-z0-9]+/g, '-'));
+                            const isDemo = !!data.is_demo;
+                            const isExhausted = remainingDownloads <= 0 || !!data.is_exhausted;
+                            const btnClass = (isExhausted || isDemo) ? 'item-dl-btn is-disabled' : 'item-dl-btn';
+                            const btnAttr = (isExhausted || isDemo) ? 'disabled' : '';
+                            let btnLabel = 'Download (.ZIP)';
+                            if (isDemo) {
+                                btnLabel = 'Preview Mode (Disabled)';
+                            } else if (isExhausted) {
+                                btnLabel = `Limit Reached (${maxAllowedDownloads}/${maxAllowedDownloads})`;
+                            }
+                            const downloadUrl = isDemo ? '' : (item.download_url || `/api/download-font?session_id=${encodeURIComponent(sessionId)}&font=${encodeURIComponent(slug)}&token=${encodeURIComponent(currentOrderToken)}`);
+                            const priceFormatted = (item.amount_total != null && !isNaN(Number(item.amount_total))) ? Number(item.amount_total).toFixed(2) : '0.00';
+                            const safeFontName = fontName.replace(/['"\\]/g, '');
 
-                    return `
-                        <div class="item-row">
-                            <div class="item-row-left">
-                                <div class="item-glyph-box">${initial}</div>
-                                <div class="item-info">
-                                    <div class="item-name">${fontName}</div>
-                                    <div class="item-sub">${license} &bull; Perpetual Commercial Authorization</div>
-                                    <div class="format-badges">
-                                        <span class="format-badge">OTF Desktop</span>
-                                        <span class="format-badge">TTF</span>
-                                        <span class="format-badge">WOFF2 Web</span>
-                                        <span class="format-badge format-badge--license">EULA Included</span>
+                            return `
+                                <div class="item-row">
+                                    <div class="item-row-left">
+                                        <div class="item-glyph-box">${initial}</div>
+                                        <div class="item-info">
+                                            <div class="item-name">${fontName}</div>
+                                            <div class="item-sub">${license} &bull; Perpetual Commercial Authorization</div>
+                                            <div class="format-badges">
+                                                <span class="format-badge">OTF Desktop</span>
+                                                <span class="format-badge">TTF</span>
+                                                <span class="format-badge">WOFF2 Web</span>
+                                                <span class="format-badge format-badge--license">EULA Included</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="item-actions-wrap">
+                                        <div class="item-price">$${priceFormatted}</div>
+                                        <button class="${btnClass}" ${btnAttr} onclick="${isDemo ? '' : `downloadFont(this, '${downloadUrl}', '${safeFontName}')`}" title="${isDemo ? 'Demo preview only' : 'Download font package archive'}">
+                                            <svg viewBox="0 0 24 24">
+                                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                                                <polyline points="7 10 12 15 17 10"/>
+                                                <line x1="12" y1="15" x2="12" y2="3"/>
+                                            </svg>
+                                            <span>${btnLabel}</span>
+                                        </button>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="item-actions-wrap">
-                                <div class="item-price">$${Number(item.amount_total).toFixed(2)}</div>
-                                <button class="${btnClass}" ${btnAttr} onclick="${isDemo ? '' : `downloadFont(this, '${downloadUrl}', '${fontName}')`}" title="${isDemo ? 'Demo preview only' : 'Download font package archive'}">
-                                    <svg viewBox="0 0 24 24">
-                                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
-                                        <polyline points="7 10 12 15 17 10"/>
-                                        <line x1="12" y1="15" x2="12" y2="3"/>
-                                    </svg>
-                                    <span>${btnLabel}</span>
-                                </button>
-                            </div>
-                        </div>
-                    `;
-                }).join('');
+                            `;
+                        }).join('');
+                    }
+                }
 
                 if (isDemo && orderQuotaPill) {
                     orderQuotaPill.className = 'security-quota-pill';
@@ -1534,17 +1596,22 @@
 
                 // Save licensed fonts locally
                 try {
-                    const existing = JSON.parse(localStorage.getItem('glyphere_licensed_fonts') || '[]');
-                    const additions = data.items.map(item => ({
-                        id: item.font_slug || item.font_name.toLowerCase().replace(/[^a-z0-9]+/g, '-'),
-                        name: item.font_name,
-                        license: item.license_type || 'Desktop License',
+                    const parsedExisting = JSON.parse(localStorage.getItem('glyphere_licensed_fonts') || '[]');
+                    const existing = Array.isArray(parsedExisting) ? parsedExisting : [];
+                    const additions = rawItems.map(item => ({
+                        id: item.font_slug || (item.font_name ? item.font_name.toLowerCase().replace(/[^a-z0-9]+/g, '-') : 'font'),
+                        name: item.font_name || item.description || 'Glyphere Typeface',
+                        license: item.license_type || 'Commercial License',
                         price: item.amount_total,
                         date: new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })
                     }));
-                    const merged = [...additions, ...existing.filter(e => !additions.some(a => a.name === e.name))];
+                    const merged = [...additions, ...existing.filter(e => e && e.name && !additions.some(a => a.name === e.name))];
                     localStorage.setItem('glyphere_licensed_fonts', JSON.stringify(merged));
                 } catch (e) {}
+            } catch (err) {
+                console.error('Error rendering authorized order UI:', err);
+                if (receiptCard) receiptCard.style.display = 'block';
+                if (downloadCenterCard) downloadCenterCard.style.display = 'block';
             }
         }
 

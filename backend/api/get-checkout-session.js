@@ -133,11 +133,14 @@ module.exports = async function handler(req, res) {
     }
 
     // Authorized access: Generate secure, signed download URLs with token
-    const items = (session.line_items?.data || []).map(li => {
-      const desc = li.description || 'Typeface License';
-      const parts = desc.split('—');
+    let items = (session.line_items?.data || []).map(li => {
+      const desc = li.description || li.price?.product?.name || li.price?.nickname || 'Typeface License';
+      const parts = desc.split(/\s*[\u2014\u2013\-]\s*/);
       const fontName = parts[0] ? parts[0].trim() : desc;
-      const license = parts[1] ? parts[1].trim() : 'Commercial Authorization';
+      let license = parts[1] ? parts[1].trim() : 'Commercial Authorization';
+      if (!license.toLowerCase().includes('license') && !license.toLowerCase().includes('authorization')) {
+        license += ' License';
+      }
       const fontSlug = fontName
         .toLowerCase()
         .replace(/^\d+[\.\s]+/, '')
@@ -150,10 +153,24 @@ module.exports = async function handler(req, res) {
         license_type: license,
         font_slug: fontSlug,
         download_url: `/api/download-font?session_id=${session.id}&font=${encodeURIComponent(fontSlug)}&token=${encodeURIComponent(authResult.token)}`,
-        amount_total: (li.amount_total / 100).toFixed(2),
-        quantity: li.quantity,
+        amount_total: ((li.amount_total || 0) / 100).toFixed(2),
+        quantity: li.quantity || 1,
       };
     });
+
+    if (items.length === 0) {
+      const fallbackName = session.metadata?.fontName || session.metadata?.product_name || 'Glyphere Typeface';
+      const fallbackSlug = fallbackName.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
+      items.push({
+        description: `${fallbackName} — Commercial License`,
+        font_name: fallbackName,
+        license_type: 'Commercial License',
+        font_slug: fallbackSlug || 'glyphere-typeface',
+        download_url: `/api/download-font?session_id=${session.id}&font=${encodeURIComponent(fallbackSlug || 'glyphere-typeface')}&token=${encodeURIComponent(authResult.token)}`,
+        amount_total: ((session.amount_total || 0) / 100).toFixed(2),
+        quantity: 1,
+      });
+    }
 
     return res.status(200).json({
       id: session.id,

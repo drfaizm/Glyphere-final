@@ -27,7 +27,8 @@ function slugify(str) {
   return String(str || '')
     .toLowerCase()
     .replace(/^\d+[\.\s]+/, '')
-    .replace(/—.*$/, '') // remove license suffix like ' — Desktop License'
+    .replace(/\s*[\u2014\u2013\-]\s*(Commercial|Desktop|Web|App|Studio|License).*$/i, '')
+    .replace(/\s*[\u2014\u2013\-].*$/, '')
     .replace(/\(.*?\)/g, '')
     .replace(/[^a-z0-9]+/g, '-')
     .replace(/^-+|-+$/g, '');
@@ -97,7 +98,11 @@ module.exports = async function handler(req, res) {
     }
 
     const lineItems = session.line_items?.data || [];
-    authorizedFonts = lineItems.map(li => slugify(li.description));
+    authorizedFonts = lineItems.map(li => slugify(li.description || li.price?.product?.name || li.price?.nickname || ''));
+    if (authorizedFonts.length === 0 && session.metadata) {
+      const fallback = session.metadata.fontName || session.metadata.product_name || '';
+      if (fallback) authorizedFonts.push(slugify(fallback));
+    }
   } catch (err) {
     console.error('Stripe verification failed in download-font:', err);
     return res.status(403).json({ error: 'Invalid or expired checkout session.' });

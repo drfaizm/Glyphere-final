@@ -46,8 +46,8 @@
        font so the browser fetches them at highest priority
        before the parser hits them in <body>.
   ══════════════════════════════════════════════════ -->
-    <link rel="stylesheet" href="css/globalstyle.css" />
-    <link rel="stylesheet" href="css/fonts-base64.css" />
+    <link rel="stylesheet" href="css/globalstyle.css?v=20260922" />
+    <link rel="stylesheet" href="css/fonts-base64.css?v=20260922" />
     <link rel="stylesheet" href="javascript/loginmodel.css">
 
     <!-- ══════════════════════════════════════════════════
@@ -2799,6 +2799,10 @@
             font-style: italic !important;
         }
 
+        .font-Glyphere_Hallowthorn {
+            font-family: 'Glyphere_Hallowthorn', 'Glyphere Hallowthorn', serif !important;
+        }
+
         @media (max-width: 768px) {
             .trust-ribbon__divider {
                 display: none;
@@ -3662,6 +3666,8 @@
                             <div class="tester-tabs" role="tablist" aria-label="Font Family Selection">
                                 <button class="tester-tab active" role="tab" aria-selected="true"
                                     data-font="Turbo_Block">Turbo Block</button>
+                                <button class="tester-tab" role="tab" aria-selected="false"
+                                    data-font="Glyphere_Hallowthorn">Hallowthorn</button>
                                 <button class="tester-tab" role="tab" aria-selected="false" data-font="Nova Legacy">Nova
                                     Legacy</button>
                                 <button class="tester-tab" role="tab" aria-selected="false"

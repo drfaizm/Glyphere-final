@@ -1,0 +1,554 @@
+{
+  "nova-legacy": {
+    "displayName": "Nova Legacy",
+    "folderName": "1. Nova Legacy",
+    "zipName": "nova-legacy-glyphere-package.zip",
+    "sizeBytes": 37228,
+    "formats": [
+      "OTF",
+      "WOFF"
+    ],
+    "fontFiles": [
+      "Nova_Legacy.otf",
+      "Nova_Legacy.woff"
+    ]
+  },
+  "turbo-block": {
+    "displayName": "Turbo Block",
+    "folderName": "10. Turbo Block",
+    "zipName": "turbo-block-glyphere-package.zip",
+    "sizeBytes": 21581,
+    "formats": [
+      "OTF",
+      "TTF",
+      "WOFF",
+      "WOFF2"
+    ],
+    "fontFiles": [
+      "Turbo_Block.otf",
+      "Turbo_Block.ttf",
+      "Turbo_Block.woff",
+      "Turbo_Block.woff2"
+    ]
+  },
+  "vellum-flow": {
+    "displayName": "Vellum Flow",
+    "folderName": "10. Vellum Flow",
+    "zipName": "vellum-flow-glyphere-package.zip",
+    "sizeBytes": 66658,
+    "formats": [
+      "OTF",
+      "TTF",
+      "WOFF",
+      "WOFF2"
+    ],
+    "fontFiles": [
+      "Vellum_Flow.otf",
+      "Vellum_Flow.ttf",
+      "Vellum_Flow.woff",
+      "Vellum_Flow.woff2"
+    ]
+  },
+  "stadium-bold": {
+    "displayName": "Stadium Bold",
+    "folderName": "11. Stadium Bold",
+    "zipName": "stadium-bold-glyphere-package.zip",
+    "sizeBytes": 17503,
+    "formats": [
+      "OTF",
+      "TTF",
+      "WOFF",
+      "WOFF2"
+    ],
+    "fontFiles": [
+      "Stadium_Bold.otf",
+      "Stadium_Bold.ttf",
+      "Stadium_Bold.woff",
+      "Stadium_Bold.woff2"
+    ]
+  },
+  "strata-bold": {
+    "displayName": "Strata Bold",
+    "folderName": "12. Strata Bold",
+    "zipName": "strata-bold-glyphere-package.zip",
+    "sizeBytes": 87015,
+    "formats": [
+      "OTF",
+      "TTF",
+      "WOFF",
+      "WOFF2"
+    ],
+    "fontFiles": [
+      "Strata_Bold.otf",
+      "Strata_Bold.ttf",
+      "Strata_Bold.woff",
+      "Strata_Bold.woff2"
+    ]
+  },
+  "funkadelic-serif": {
+    "displayName": "Funkadelic Serif",
+    "folderName": "13. Funkadelic Serif",
+    "zipName": "funkadelic-serif-glyphere-package.zip",
+    "sizeBytes": 53871,
+    "formats": [
+      "OTF",
+      "TTF",
+      "WOFF",
+      "WOFF2"
+    ],
+    "fontFiles": [
+      "Funkadelic_Serif.otf",
+      "Funkadelic_Serif.ttf",
+      "Funkadelic_Serif.woff",
+      "Funkadelic_Serif.woff2"
+    ]
+  },
+  "velocity-brush": {
+    "displayName": "Velocity Brush",
+    "folderName": "14. Velocity Brush",
+    "zipName": "velocity-brush-glyphere-package.zip",
+    "sizeBytes": 52821,
+    "formats": [
+      "OTF",
+      "TTF",
+      "WOFF",
+      "WOFF2"
+    ],
+    "fontFiles": [
+      "Velocity_Brush.otf",
+      "Velocity_Brush.ttf",
+      "Velocity_Brush.woff",
+      "Velocity_Brush.woff2"
+    ]
+  },
+  "goliath-soft": {
+    "displayName": "Goliath Soft",
+    "folderName": "15. Goliath Soft",
+    "zipName": "goliath-soft-glyphere-package.zip",
+    "sizeBytes": 53885,
+    "formats": [
+      "OTF",
+      "TTF",
+      "WOFF",
+      "WOFF2"
+    ],
+    "fontFiles": [
+      "Goliath_Soft.otf",
+      "Goliath_Soft.ttf",
+      "Goliath_Soft.woff",
+      "Goliath_Soft.woff2"
+    ]
+  },
+  "velvet-monoline": {
+    "displayName": "Velvet Monoline",
+    "folderName": "16. Velvet Monoline",
+    "zipName": "velvet-monoline-glyphere-package.zip",
+    "sizeBytes": 245434,
+    "formats": [
+      "OTF",
+      "TTF",
+      "WOFF",
+      "WOFF2"
+    ],
+    "fontFiles": [
+      "Velvet_Monoline.otf",
+      "Velvet_Monoline.ttf",
+      "Velvet_Monoline.woff",
+      "Velvet_Monoline.woff2"
+    ]
+  },
+  "prose-bold": {
+    "displayName": "Prose Bold",
+    "folderName": "17. Prose Bold",
+    "zipName": "prose-bold-glyphere-package.zip",
+    "sizeBytes": 60927,
+    "formats": [
+      "OTF",
+      "TTF",
+      "WOFF",
+      "WOFF2"
+    ],
+    "fontFiles": [
+      "Prose_Bold.otf",
+      "Prose_Bold.ttf",
+      "Prose_Bold.woff",
+      "Prose_Bold.woff2"
+    ]
+  },
+  "zenith-spark": {
+    "displayName": "Zenith Spark",
+    "folderName": "18. Zenith Spark",
+    "zipName": "zenith-spark-glyphere-package.zip",
+    "sizeBytes": 80100,
+    "formats": [
+      "OTF",
+      "TTF",
+      "WOFF",
+      "WOFF2"
+    ],
+    "fontFiles": [
+      "Zenith_Spark.otf",
+      "Zenith_Spark.ttf",
+      "Zenith_Spark.woff",
+      "Zenith_Spark.woff2"
+    ]
+  },
+  "glissade": {
+    "displayName": "Glissade",
+    "folderName": "19. Glissade",
+    "zipName": "glissade-glyphere-package.zip",
+    "sizeBytes": 151034,
+    "formats": [
+      "OTF",
+      "TTF",
+      "WOFF",
+      "WOFF2"
+    ],
+    "fontFiles": [
+      "Glissade.otf",
+      "Glissade.ttf",
+      "Glissade.woff",
+      "Glissade.woff2"
+    ]
+  },
+  "mojo-rough": {
+    "displayName": "Mojo Rough",
+    "folderName": "2 Mojo Rough",
+    "zipName": "mojo-rough-glyphere-package.zip",
+    "sizeBytes": 111059,
+    "formats": [
+      "OTF",
+      "TTF",
+      "WOFF"
+    ],
+    "fontFiles": [
+      "Majo_Rough.otf",
+      "Majo_Rough.ttf",
+      "Majo_Rough.woff"
+    ]
+  },
+  "boutique-seraphina": {
+    "displayName": "Boutique Seraphina",
+    "folderName": "20. Boutique Seraphina",
+    "zipName": "boutique-seraphina-glyphere-package.zip",
+    "sizeBytes": 57860,
+    "formats": [
+      "OTF",
+      "TTF",
+      "WOFF",
+      "WOFF2"
+    ],
+    "fontFiles": [
+      "Boutique_Seraphina.otf",
+      "Boutique_Seraphina.ttf",
+      "Boutique_Seraphina.woff",
+      "Boutique_Seraphina.woff2"
+    ]
+  },
+  "onyx-dynasty": {
+    "displayName": "Onyx Dynasty",
+    "folderName": "21. Onyx Dynasty",
+    "zipName": "onyx-dynasty-glyphere-package.zip",
+    "sizeBytes": 86873,
+    "formats": [
+      "OTF",
+      "TTF",
+      "WOFF",
+      "WOFF2"
+    ],
+    "fontFiles": [
+      "Onyx_Dynasty.otf",
+      "Onyx_Dynasty.ttf",
+      "Onyx_Dynasty.woff",
+      "Onyx_Dynasty.woff2"
+    ]
+  },
+  "apex-rounded": {
+    "displayName": "Apex Rounded",
+    "folderName": "22. Apex Rounded",
+    "zipName": "apex-rounded-glyphere-package.zip",
+    "sizeBytes": 57161,
+    "formats": [
+      "OTF",
+      "TTF",
+      "WOFF",
+      "WOFF2"
+    ],
+    "fontFiles": [
+      "Apex_Rounded.otf",
+      "Apex_Rounded.ttf",
+      "Apex_Rounded.woff",
+      "Apex_Rounded.woff2"
+    ]
+  },
+  "vanguard-axis": {
+    "displayName": "Vanguard Axis",
+    "folderName": "23. Vanguard Axis",
+    "zipName": "vanguard-axis-glyphere-package.zip",
+    "sizeBytes": 44551,
+    "formats": [
+      "OTF",
+      "TTF",
+      "WOFF",
+      "WOFF2"
+    ],
+    "fontFiles": [
+      "Vanguard_Axis.otf",
+      "Vanguard_Axis.ttf",
+      "Vanguard_Axis.woff",
+      "Vanguard_Axis.woff2"
+    ]
+  },
+  "throttle-street": {
+    "displayName": "Throttle Street",
+    "folderName": "24. Throttle Street",
+    "zipName": "throttle-street-glyphere-package.zip",
+    "sizeBytes": 75982,
+    "formats": [
+      "OTF",
+      "TTF",
+      "WOFF",
+      "WOFF2"
+    ],
+    "fontFiles": [
+      "Throttle_Street.otf",
+      "Throttle_Street.ttf",
+      "Throttle_Street.woff",
+      "Throttle_Street.woff2"
+    ]
+  },
+  "nova-shell": {
+    "displayName": "Nova Shell",
+    "folderName": "25. Nova Shell",
+    "zipName": "nova-shell-glyphere-package.zip",
+    "sizeBytes": 66951,
+    "formats": [
+      "OTF",
+      "TTF",
+      "WOFF",
+      "WOFF2"
+    ],
+    "fontFiles": [
+      "Nova_Shell.otf",
+      "Nova_Shell.ttf",
+      "Nova_Shell.woff",
+      "Nova_Shell.woff2"
+    ]
+  },
+  "puffygroove": {
+    "displayName": "PuffyGroove",
+    "folderName": "26. PuffyGroove",
+    "zipName": "puffygroove-glyphere-package.zip",
+    "sizeBytes": 33746,
+    "formats": [
+      "OTF",
+      "TTF"
+    ],
+    "fontFiles": [
+      "Puffy Groove.otf",
+      "Puffy Groove.ttf"
+    ]
+  },
+  "volo-scale": {
+    "displayName": "Volo Scale",
+    "folderName": "26. Volo Scale",
+    "zipName": "volo-scale-glyphere-package.zip",
+    "sizeBytes": 55744,
+    "formats": [
+      "OTF",
+      "TTF",
+      "WOFF",
+      "WOFF2"
+    ],
+    "fontFiles": [
+      "Volo_Scale.otf",
+      "Volo_Scale.ttf",
+      "Volo_Scale.woff",
+      "Volo_Scale.woff2"
+    ]
+  },
+  "glyphere-hallowthorn": {
+    "displayName": "Glyphere Hallowthorn",
+    "folderName": "27. Glyphere Hallowthorn ",
+    "zipName": "glyphere-hallowthorn-glyphere-package.zip",
+    "sizeBytes": 194925,
+    "formats": [
+      "OTF",
+      "TTF",
+      "WOFF",
+      "WOFF2"
+    ],
+    "fontFiles": [
+      "GlyphereHallowthorn-Regular.otf",
+      "GlyphereHallowthorn-Regular.ttf",
+      "GlyphereHallowthorn-Regular.woff",
+      "GlyphereHallowthorn-Regular.woff2"
+    ]
+  },
+  "sonnet-italic": {
+    "displayName": "Sonnet Italic",
+    "folderName": "3. Sonnet Italic",
+    "zipName": "sonnet-italic-glyphere-package.zip",
+    "sizeBytes": 66307,
+    "formats": [
+      "OTF",
+      "TTF",
+      "WOFF2"
+    ],
+    "fontFiles": [
+      "Sonnet_Italic.otf",
+      "Sonnet_Italic.ttf",
+      "Sonnet_Italic.woff2"
+    ]
+  },
+  "midnight-citadel": {
+    "displayName": "Midnight Citadel",
+    "folderName": "4. Midnight Citadel",
+    "zipName": "midnight-citadel-glyphere-package.zip",
+    "sizeBytes": 91216,
+    "formats": [
+      "OTF",
+      "TTF",
+      "WOFF2"
+    ],
+    "fontFiles": [
+      "Midnight_Citadel.otf",
+      "Midnight_Citadel.ttf",
+      "Midnight_Citadel.woff2"
+    ]
+  },
+  "pebble-sans": {
+    "displayName": "Pebble Sans",
+    "folderName": "5. Pebble Sans",
+    "zipName": "pebble-sans-glyphere-package.zip",
+    "sizeBytes": 59506,
+    "formats": [
+      "OTF",
+      "TTF",
+      "WOFF2"
+    ],
+    "fontFiles": [
+      "Pebble_Sans.otf",
+      "Pebble_Sans.ttf",
+      "Pebble_Sans.woff2"
+    ]
+  },
+  "storybook-sans": {
+    "displayName": "Storybook Sans",
+    "folderName": "6. Storybook Sans",
+    "zipName": "storybook-sans-glyphere-package.zip",
+    "sizeBytes": 93071,
+    "formats": [
+      "OTF",
+      "TTF",
+      "WOFF2"
+    ],
+    "fontFiles": [
+      "Storybook_Sans.otf",
+      "Storybook_Sans.ttf",
+      "Storybook_Sans.woff2"
+    ]
+  },
+  "mistavio-sans": {
+    "displayName": "Mistavio Sans",
+    "folderName": "7. Mistavio Sans",
+    "zipName": "mistavio-sans-glyphere-package.zip",
+    "sizeBytes": 29533,
+    "formats": [
+      "OTF",
+      "TTF",
+      "WOFF",
+      "WOFF2"
+    ],
+    "fontFiles": [
+      "Mistavio_Sans.otf",
+      "Mistavio_Sans.ttf",
+      "Mistavio_Sans.woff",
+      "Mistavio_Sans.woff2"
+    ]
+  },
+  "brushfield-fury": {
+    "displayName": "Brushfield Fury",
+    "folderName": "8. Brushfield Fury",
+    "zipName": "brushfield-fury-glyphere-package.zip",
+    "sizeBytes": 131507,
+    "formats": [
+      "OTF",
+      "TTF",
+      "WOFF",
+      "WOFF2"
+    ],
+    "fontFiles": [
+      "Brushfield_Fury.otf",
+      "Brushfield_Fury.ttf",
+      "Brushfield_Fury.woff",
+      "Brushfield_Fury.woff2"
+    ]
+  },
+  "block-italic": {
+    "displayName": "Block Italic",
+    "folderName": "9. Block Italic",
+    "zipName": "block-italic-glyphere-package.zip",
+    "sizeBytes": 97995,
+    "formats": [
+      "OTF",
+      "TTF",
+      "WOFF",
+      "WOFF2"
+    ],
+    "fontFiles": [
+      "BLOCK_ITALIC.otf",
+      "BLOCK_ITALIC.ttf",
+      "BLOCK_ITALIC.woff",
+      "BLOCK_ITALIC.woff2"
+    ]
+  },
+  "byzantine": {
+    "displayName": "Byzantine",
+    "folderName": "Byzantine",
+    "zipName": "byzantine-glyphere-package.zip",
+    "sizeBytes": 14388,
+    "formats": [
+      "TTF"
+    ],
+    "fontFiles": [
+      "ByzantinoGR.ttf"
+    ]
+  },
+  "byzantino": {
+    "displayName": "Byzantine",
+    "folderName": "Byzantine",
+    "zipName": "byzantine-glyphere-package.zip",
+    "sizeBytes": 14388,
+    "formats": [
+      "TTF"
+    ],
+    "fontFiles": [
+      "ByzantinoGR.ttf"
+    ]
+  },
+  "petersburg": {
+    "displayName": "Petersburg",
+    "folderName": "Petersburg",
+    "zipName": "petersburg-glyphere-package.zip",
+    "sizeBytes": 14677,
+    "formats": [
+      "TTF"
+    ],
+    "fontFiles": [
+      "Petersberg.ttf"
+    ]
+  },
+  "petersberg": {
+    "displayName": "Petersburg",
+    "folderName": "Petersburg",
+    "zipName": "petersburg-glyphere-package.zip",
+    "sizeBytes": 14677,
+    "formats": [
+      "TTF"
+    ],
+    "fontFiles": [
+      "Petersberg.ttf"
+    ]
+  }
+}

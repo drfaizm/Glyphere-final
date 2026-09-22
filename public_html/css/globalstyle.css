@@ -10,9 +10,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=Instrument+Sans:wght@400;500&family=JetBrains+Mono:wght@300;400&display=swap');
 
 /* ─────────────────────────────────────────
-   CUSTOM FONTS (All 27 Glyphere Typefaces — Base64 Inlined)
+   CUSTOM FONTS (All 28 Glyphere Typefaces — Base64 Inlined)
 ───────────────────────────────────────── */
-@import url('fonts-base64.css');
+@import url('fonts-base64.css?v=20260922');
 
 
 /* ─────────────────────────────────────────
@@ -856,6 +856,7 @@ img {
     .header-nav {
         width: calc(100% - 1.25rem);
         margin-top: 0.3rem;
+        top: env(safe-area-inset-top, 0.3rem);
     }
 
     .nav-inner {
@@ -863,28 +864,51 @@ img {
     }
 
     .nav-logo-name {
-        font-size: 1.2rem;
+        font-size: 1.15rem;
     }
 
     .nav-logo-img {
-        width: 32px;
-        height: 32px;
+        width: 30px;
+        height: 30px;
     }
 
     .nav-actions {
-        margin-right: 0.4rem;
+        margin-right: 0.35rem;
         gap: 0.4rem;
     }
 
     .nav-cart {
-        width: 34px;
-        height: 34px;
+        width: 36px;
+        height: 36px;
+        min-width: 36px;
+        min-height: 36px;
     }
 
     .nav-hamburger {
-        width: 34px;
-        height: 34px;
-        padding: 7px;
+        width: 36px;
+        height: 36px;
+        min-width: 36px;
+        min-height: 36px;
+        padding: 8px;
+    }
+}
+
+@media (max-width: 360px) {
+    .header-nav {
+        width: calc(100% - 0.75rem);
+    }
+
+    .nav-inner {
+        padding: 0.3rem 0.65rem;
+    }
+
+    .nav-logo-name {
+        font-size: 1.05rem;
+    }
+
+    .nav-logo-img {
+        width: 26px;
+        height: 26px;
     }
 }
 

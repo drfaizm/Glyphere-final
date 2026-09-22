@@ -23,8 +23,8 @@
         rel="stylesheet">
 
     <!-- Global styles -->
-    <link rel="stylesheet" href="css/globalstyle.css" />
-    <link rel="stylesheet" href="css/fonts-base64.css" />
+    <link rel="stylesheet" href="css/globalstyle.css?v=20260922" />
+    <link rel="stylesheet" href="css/fonts-base64.css?v=20260922" />
 
     <link rel="stylesheet" href="javascript/loginmodel.css">
 
@@ -1598,14 +1598,48 @@
 
         @media (max-width: 640px) {
             .mp-main {
-                padding-left: 1.25rem;
-                padding-right: 1.25rem;
+                padding-left: 1rem;
+                padding-right: 1rem;
                 padding-top: 4.75rem;
+                overflow-x: clip;
             }
 
             .mp-hero-compact {
-                padding: 0.25rem 0 1.25rem;
-                margin-bottom: 1rem;
+                padding: 0.25rem 0 1rem;
+                margin-bottom: 0.75rem;
+                gap: 0.75rem;
+            }
+
+            .mp-hero-compact__stats {
+                width: 100%;
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
+                scrollbar-width: none;
+                flex-wrap: nowrap;
+                padding-bottom: 4px;
+                gap: 0.5rem;
+            }
+
+            .mp-hero-compact__stats::-webkit-scrollbar {
+                display: none;
+            }
+
+            .mp-stat-badge {
+                flex-shrink: 0;
+                padding: 6px 10px;
+                gap: 8px;
+            }
+
+            .mp-stat-badge__icon {
+                font-size: 16px;
+            }
+
+            .mp-stat-badge__val {
+                font-size: 0.75rem;
+            }
+
+            .mp-stat-badge__lbl {
+                font-size: 0.65rem;
             }
 
             .mp-hero-compact__title {
@@ -1620,15 +1654,71 @@
             }
 
             .mp-preview-bar {
-                padding: 0 0.75rem;
+                position: relative;
+                top: auto;
+                padding: 0;
+                margin-bottom: 1.25rem;
+                z-index: 20;
+            }
+
+            .mp-preview-bar__input-wrap {
+                padding: 8px 12px;
+            }
+
+            .mp-preview-bar__presets {
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
+                scrollbar-width: none;
+                flex-wrap: nowrap;
+                padding-bottom: 4px;
+            }
+
+            .mp-preview-bar__presets::-webkit-scrollbar {
+                display: none;
+            }
+
+            .mp-preset-btn {
+                flex-shrink: 0;
+            }
+
+            .mp-filters {
+                margin-bottom: 1.5rem;
+                gap: 0.75rem;
+            }
+
+            .mp-filters__pills {
+                flex-wrap: nowrap;
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
+                scrollbar-width: none;
+                padding-bottom: 6px;
+                margin: 0 -0.5rem;
+                padding-left: 0.5rem;
+                padding-right: 0.5rem;
+            }
+
+            .mp-filters__pills::-webkit-scrollbar {
+                display: none;
+            }
+
+            .mp-pill,
+            .mp-pill--active {
+                flex-shrink: 0;
+                padding: 0.4rem 0.85rem;
+                font-size: 0.75rem;
+            }
+
+            .mp-filters__sort {
+                flex-wrap: wrap;
+                gap: 0.5rem;
             }
 
             .mp-featured {
-                padding: 2.5rem 1.75rem;
+                padding: 2rem 1.25rem;
             }
 
             .font-card__big {
-                font-size: var(--specimen-size, clamp(36px, 10vw, 48px));
+                font-size: var(--specimen-size, clamp(32px, 9vw, 44px));
             }
         }
 
@@ -2860,8 +2950,56 @@
                 </div>
             </article>
 
+            <!-- Card 2: Glyphere Hallowthorn — Custom woff2 (Serif / Display) — New Release -->
+            <article class="font-card fc-t1" data-category="serif display" data-index="1" data-desktop-price="14.95" data-web-price="20" data-commercial-price="29.95">
+                <div class="font-card__main-row">
+                    <div class="font-card__preview">
+                        <div class="font-card__badges">
+                            <span class="fc-badge fc-badge--type">Serif</span>
+                            <span class="fc-badge fc-badge--sale">440+ Glyphs · Accents &amp; Diacritics</span>
+                        </div>
+                        <button class="font-card__wishlist" aria-label="Add to wishlist">
+                            <span class="material-symbols-outlined" aria-hidden="true">favorite</span>
+                        </button>
+                        <div class="font-card__name-label">Glyphere Hallowthorn</div>
+                        <div class="font-card__big" style="font-family:'Glyphere_Hallowthorn',serif;color:#1c1812;"
+                            data-default="AaBb">AaBb</div>
+                        <div class="font-card__tagline">An elegant, eerie display serif with stylistic flourishes.</div>
+                    </div>
+                    <div class="font-card__bottom">
+                        <div class="font-card__price-wrap">
+                            <span class="font-card__price">$14.95</span>
+                            <span class="font-card__styles-count">1 Style · USD</span>
+                        </div>
+                        <div class="font-card__btns">
+                            <button class="fc-btn-details font-card__cta-details">Details</button>
+                            <button class="fc-btn-buy font-card__cta-buy">Buy Now</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="font-card__previews-row">
+                    <div class="fc-subspecimen" style="font-family:'Glyphere_Hallowthorn', serif;">
+                        <div class="fc-subspecimen__line fc-subspecimen__line--1">HALLOWTHORN</div>
+                        <div class="fc-subspecimen__line fc-subspecimen__line--2">Elegant &amp; Eerie</div>
+                        <div class="fc-subspecimen__line fc-subspecimen__line--3">Stylistic Flourish</div>
+                        <div class="fc-subspecimen__line fc-subspecimen__line--4">since 2026</div>
+                    </div>
+                    <div class="fc-subspecimen" style="font-family:'Glyphere_Hallowthorn', serif;">
+                        <div class="fc-subspecimen__line fc-subspecimen__line--1">Bircks and Boots</div>
+                        <div class="fc-subspecimen__line fc-subspecimen__line--2">Wherever it is</div>
+                        <div class="fc-subspecimen__line fc-subspecimen__line--3">Bold Vibing</div>
+                        <div class="fc-subspecimen__line fc-subspecimen__line--4">since 1980</div>
+                    </div>
+                    <div class="fc-subspecimen" style="font-family:'Glyphere_Hallowthorn', serif;">
+                        <div class="fc-subspecimen__line fc-subspecimen__line--1">SHADOWS &amp; STARS</div>
+                        <div class="fc-subspecimen__line fc-subspecimen__line--2">Midnight Editorial</div>
+                        <div class="fc-subspecimen__line fc-subspecimen__line--3">Aa Bb Cc Dd · 0123</div>
+                        <div class="fc-subspecimen__line fc-subspecimen__line--4">Display Serif</div>
+                    </div>
+                </div>
+            </article>
 
-            <!-- Card 2: Vellum Flow (Handwriting) -->
+            <!-- Card 3: Vellum Flow (Handwriting) -->
             <article class="font-card fc-t1" data-category="handwriting" data-index="2">
                 <div class="font-card__main-row">
     <div class="font-card__preview">
@@ -3393,19 +3531,19 @@
                 </div>
                 </div>
                 <div class="font-card__previews-row">
-                    <div class="fc-subspecimen" style="font-family:'Storybook_Sans', serif;">
+                    <div class="fc-subspecimen" style="font-family:'Storybook_Sans', sans-serif;">
                         <div class="fc-subspecimen__line fc-subspecimen__line--1">ONCE UPON A TIME</div>
                         <div class="fc-subspecimen__line fc-subspecimen__line--2">Whimsical Enchantment</div>
                         <div class="fc-subspecimen__line fc-subspecimen__line--3">Fairytale Chronicles</div>
                         <div class="fc-subspecimen__line fc-subspecimen__line--4">since 1980</div>
                     </div>
-                    <div class="fc-subspecimen" style="font-family:'Storybook_Sans', serif;">
+                    <div class="fc-subspecimen" style="font-family:'Storybook_Sans', sans-serif;">
                         <div class="fc-subspecimen__line fc-subspecimen__line--1">Bircks and Boots</div>
                         <div class="fc-subspecimen__line fc-subspecimen__line--2">Wherever it is</div>
                         <div class="fc-subspecimen__line fc-subspecimen__line--3">Bold Vibing</div>
                         <div class="fc-subspecimen__line fc-subspecimen__line--4">since 1980</div>
                     </div>
-                    <div class="fc-subspecimen" style="font-family:'Storybook_Sans', serif;">
+                    <div class="fc-subspecimen" style="font-family:'Storybook_Sans', sans-serif;">
                         <div class="fc-subspecimen__line fc-subspecimen__line--1">CHILDHOOD WONDER</div>
                         <div class="fc-subspecimen__line fc-subspecimen__line--2">Magic in Every Word</div>
                         <div class="fc-subspecimen__line fc-subspecimen__line--3">Aa Bb Cc Dd · 0123</div>
@@ -3444,19 +3582,19 @@
                 </div>
                 </div>
                 <div class="font-card__previews-row">
-                    <div class="fc-subspecimen" style="font-family:'Pebble_Sans', serif;">
+                    <div class="fc-subspecimen" style="font-family:'Pebble_Sans', sans-serif;">
                         <div class="fc-subspecimen__line fc-subspecimen__line--1">SMOOTH CONTOURS</div>
                         <div class="fc-subspecimen__line fc-subspecimen__line--2">River Stone Curves</div>
                         <div class="fc-subspecimen__line fc-subspecimen__line--3">Natural Minimal Design</div>
                         <div class="fc-subspecimen__line fc-subspecimen__line--4">since 1980</div>
                     </div>
-                    <div class="fc-subspecimen" style="font-family:'Pebble_Sans', serif;">
+                    <div class="fc-subspecimen" style="font-family:'Pebble_Sans', sans-serif;">
                         <div class="fc-subspecimen__line fc-subspecimen__line--1">Bircks and Boots</div>
                         <div class="fc-subspecimen__line fc-subspecimen__line--2">Wherever it is</div>
                         <div class="fc-subspecimen__line fc-subspecimen__line--3">Bold Vibing</div>
                         <div class="fc-subspecimen__line fc-subspecimen__line--4">since 1980</div>
                     </div>
-                    <div class="fc-subspecimen" style="font-family:'Pebble_Sans', serif;">
+                    <div class="fc-subspecimen" style="font-family:'Pebble_Sans', sans-serif;">
                         <div class="fc-subspecimen__line fc-subspecimen__line--1">NATURE AESTHETIC</div>
                         <div class="fc-subspecimen__line fc-subspecimen__line--2">Soft Organic Presence</div>
                         <div class="fc-subspecimen__line fc-subspecimen__line--3">Aa Bb Cc Dd · 0123</div>
@@ -4128,55 +4266,6 @@
                 </div>
             </article>
 
-            <!-- Card 27: Glyphere Hallowthorn — Custom woff2 (Serif / Display) -->
-            <article class="font-card fc-t1" data-category="serif" data-index="6">
-                <div class="font-card__main-row">
-                    <div class="font-card__preview">
-                        <div class="font-card__badges">
-                            <span class="fc-badge fc-badge--type">Serif</span>
-                            <span class="fc-badge fc-badge--sale">Uppercase,Lowercase,Numbers,Symbols</span>
-                        </div>
-                        <button class="font-card__wishlist" aria-label="Add to wishlist">
-                            <span class="material-symbols-outlined" aria-hidden="true">favorite</span>
-                        </button>
-                        <div class="font-card__name-label">Glyphere Hallowthorn</div>
-                        <div class="font-card__big" style="font-family:'Glyphere_Hallowthorn',serif;color:#1c1812;"
-                            data-default="AaBb">AaBb</div>
-                        <div class="font-card__tagline">An elegant, eerie display serif with stylistic flourishes.</div>
-                    </div>
-                    <div class="font-card__bottom">
-                        <div class="font-card__price-wrap">
-                            <span class="font-card__price">$14.95</span>
-                            <span class="font-card__styles-count">1 Style · USD</span>
-                        </div>
-                        <div class="font-card__btns">
-                            <button class="fc-btn-details font-card__cta-details">Details</button>
-                            <button class="fc-btn-buy font-card__cta-buy">Buy Now</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="font-card__previews-row">
-                    <div class="fc-subspecimen" style="font-family:'Glyphere_Hallowthorn', serif;">
-                        <div class="fc-subspecimen__line fc-subspecimen__line--1">HALLOWTHORN</div>
-                        <div class="fc-subspecimen__line fc-subspecimen__line--2">Elegant &amp; Eerie</div>
-                        <div class="fc-subspecimen__line fc-subspecimen__line--3">Stylistic Flourish</div>
-                        <div class="fc-subspecimen__line fc-subspecimen__line--4">since 2026</div>
-                    </div>
-                    <div class="fc-subspecimen" style="font-family:'Glyphere_Hallowthorn', serif;">
-                        <div class="fc-subspecimen__line fc-subspecimen__line--1">Bircks and Boots</div>
-                        <div class="fc-subspecimen__line fc-subspecimen__line--2">Wherever it is</div>
-                        <div class="fc-subspecimen__line fc-subspecimen__line--3">Bold Vibing</div>
-                        <div class="fc-subspecimen__line fc-subspecimen__line--4">since 1980</div>
-                    </div>
-                    <div class="fc-subspecimen" style="font-family:'Glyphere_Hallowthorn', serif;">
-                        <div class="fc-subspecimen__line fc-subspecimen__line--1">SHADOWS &amp; STARS</div>
-                        <div class="fc-subspecimen__line fc-subspecimen__line--2">Midnight Editorial</div>
-                        <div class="fc-subspecimen__line fc-subspecimen__line--3">Aa Bb Cc Dd · 0123</div>
-                        <div class="fc-subspecimen__line fc-subspecimen__line--4">Display Serif</div>
-                    </div>
-                </div>
-            </article>
-
             <!-- Newsletter Card -->
             <article class="font-card font-card--newsletter" data-category="all" data-index="7">
                 <div class="font-card__main-row">
@@ -4581,8 +4670,8 @@
 
             // Filter font cards matching current active filter
             const matchingCards = fontCards.filter(card => {
-                const cat = card.dataset.category;
-                return activeFilter === 'all' || cat === activeFilter || cat === 'all';
+                const cats = (card.dataset.category || '').toLowerCase().split(/\s+/);
+                return activeFilter === 'all' || cats.includes(activeFilter) || cats.includes('all');
             });
 
             const totalItems = matchingCards.length;
@@ -4671,8 +4760,8 @@
             pageNextBtn.addEventListener('click', () => {
                 const { fontCards } = getActiveCards();
                 const matchingCards = fontCards.filter(card => {
-                    const cat = card.dataset.category;
-                    return activeFilter === 'all' || cat === activeFilter || cat === 'all';
+                    const cats = (card.dataset.category || '').toLowerCase().split(/\s+/);
+                    return activeFilter === 'all' || cats.includes(activeFilter) || cats.includes('all');
                 });
                 const totalPages = Math.ceil(matchingCards.length / ITEMS_PER_PAGE);
                 if (currentPage < totalPages) {
@@ -4838,7 +4927,7 @@
                 const card = this.closest('.font-card');
                 const nameEl = card ? card.querySelector('.font-card__name-label') : null;
                 const fontName = nameEl ? nameEl.textContent.trim() : '';
-                const slug = FONT_SLUG_MAP[fontName];
+                const slug = FONT_SLUG_MAP[fontName] || FONT_SLUG_MAP[fontName.replace(/-/g, ' ')] || (fontName ? fontName.replace(/\s+/g, '_') : '');
 
                 if (slug) {
                     window.location.href = `font-detail-v2.html?font=${slug}`;
@@ -4853,6 +4942,20 @@
                         this.style.opacity = '';
                         this.style.cursor = '';
                     }, 1600);
+                }
+            });
+        });
+
+        // Make font card name labels clickable directly to details
+        document.querySelectorAll('.font-card__name-label').forEach(label => {
+            label.style.cursor = 'pointer';
+            label.setAttribute('title', 'View Font Details');
+            label.addEventListener('click', function (e) {
+                e.stopPropagation();
+                const fontName = this.textContent.trim();
+                const slug = FONT_SLUG_MAP[fontName] || FONT_SLUG_MAP[fontName.replace(/-/g, ' ')] || (fontName ? fontName.replace(/\s+/g, '_') : '');
+                if (slug) {
+                    window.location.href = `font-detail-v2.html?font=${slug}`;
                 }
             });
         });
@@ -4954,12 +5057,19 @@
                 const price = parseFloat(priceText.replace(/[^0-9.]/g, '')) || 0;
                 const license = card?.dataset.selectedLicense || 'Desktop';
 
+                const desktopPrice = card?.dataset.desktopPrice ? parseFloat(card.dataset.desktopPrice) : null;
+                const webPrice = card?.dataset.webPrice ? parseFloat(card.dataset.webPrice) : null;
+                const commercialPrice = card?.dataset.commercialPrice ? parseFloat(card.dataset.commercialPrice) : null;
+
                 glCart_flyParticle(this);
                 glCart_add({
                     id: name.toLowerCase().replace(/\s+/g, '-') + '-' + license.toLowerCase(),
                     name,
                     price,
-                    license: license
+                    license: license,
+                    ...(desktopPrice && webPrice && commercialPrice ? {
+                        prices: { Desktop: desktopPrice, Web: webPrice, Commercial: commercialPrice }
+                    } : {})
                 });
                 glCart_syncBadge();
                 glCart_toast(`${name} (${license})`, price);
@@ -5408,8 +5518,9 @@
             const priceEl = priceWrap.querySelector('.font-card__price');
             const stylesEl = priceWrap.querySelector('.font-card__styles-count');
             const basePriceText = priceEl ? priceEl.textContent.trim() : '$13';
-            const desktopPrice = parseFloat(basePriceText.replace(/[^0-9.]/g, '')) || 18;
-            const webBasePrice = Math.round(desktopPrice / 0.6);
+            const desktopPrice = card.dataset.desktopPrice ? parseFloat(card.dataset.desktopPrice) : (parseFloat(basePriceText.replace(/[^0-9.]/g, '')) || 18);
+            const webBasePrice = card.dataset.webPrice ? parseFloat(card.dataset.webPrice) : Math.round(desktopPrice / 0.6);
+            const commercialPrice = card.dataset.commercialPrice ? parseFloat(card.dataset.commercialPrice) : Math.round(webBasePrice * 1.5);
 
             card.dataset.basePrice = webBasePrice;
             card.dataset.selectedLicense = 'Desktop';
@@ -5423,17 +5534,17 @@
                 <span class="font-card__styles-count">${stylesEl ? stylesEl.textContent : '1 Style · USD'}</span>
                 
                 <div class="fc-license-popover">
-                    <div class="fc-license-option fc-license-option--active" data-license="Desktop" data-multiplier="0.6">
+                    <div class="fc-license-option fc-license-option--active" data-license="Desktop" data-fixed-price="${desktopPrice}">
                         <span>Desktop</span>
                         <span>$${desktopPrice}</span>
                     </div>
-                    <div class="fc-license-option" data-license="Web" data-multiplier="1.0">
+                    <div class="fc-license-option" data-license="Web" data-fixed-price="${webBasePrice}">
                         <span>Web</span>
                         <span>$${webBasePrice}</span>
                     </div>
-                    <div class="fc-license-option" data-license="Commercial" data-multiplier="1.5">
+                    <div class="fc-license-option" data-license="Commercial" data-fixed-price="${commercialPrice}">
                         <span>Commercial</span>
-                        <span>$${Math.round(webBasePrice * 1.5)}</span>
+                        <span>$${commercialPrice}</span>
                     </div>
                 </div>
             `;
@@ -5480,9 +5591,10 @@
                 e.stopPropagation();
 
                 const license = option.dataset.license;
+                const fixedPrice = option.dataset.fixedPrice ? parseFloat(option.dataset.fixedPrice) : null;
                 const multiplier = parseFloat(option.dataset.multiplier) || 1;
                 const basePrice = parseFloat(card.dataset.basePrice) || 18;
-                const finalPrice = Math.round(basePrice * multiplier);
+                const finalPrice = fixedPrice !== null ? fixedPrice : Math.round(basePrice * multiplier);
 
                 card.dataset.selectedLicense = license;
                 card.dataset.selectedPrice = finalPrice;

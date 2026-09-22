@@ -19,14 +19,22 @@ function dismissPreloader() {
 
     setTimeout(function () {
       preloader.style.display = 'none';
-    }, 800);
+    }, 1000);
   } else if (content && !content.classList.contains('show')) {
     content.classList.add('show');
   }
 }
 
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', function () {
+    setTimeout(dismissPreloader, 1100);
+  });
+} else {
+  setTimeout(dismissPreloader, 900);
+}
+
 window.addEventListener('load', function () {
-  setTimeout(dismissPreloader, 1000);
+  setTimeout(dismissPreloader, 900);
 });
 
 // Failsafe timeout in case window.load is delayed by external assets
@@ -152,11 +160,14 @@ window.addEventListener('scroll', function () {
   var body = document.body;
 
   if (!hamburger || !mobileMenu) return;
+  if (hamburger.dataset.menuBound === 'true') return;
+  hamburger.dataset.menuBound = 'true';
 
   function openMenu() {
     hamburger.classList.add('is-open');
     mobileMenu.classList.add('is-open');
-    body.style.overflow = 'hidden'; // scroll band
+    body.style.overflow = 'hidden';
+    body.style.touchAction = 'none';
     hamburger.setAttribute('aria-expanded', 'true');
     if (previewBar) previewBar.style.visibility = 'hidden';
   }
@@ -165,11 +176,13 @@ window.addEventListener('scroll', function () {
     hamburger.classList.remove('is-open');
     mobileMenu.classList.remove('is-open');
     body.style.overflow = '';
+    body.style.touchAction = '';
     hamburger.setAttribute('aria-expanded', 'false');
     if (previewBar) previewBar.style.visibility = 'visible';
   }
 
-  function toggleMenu() {
+  function toggleMenu(e) {
+    if (e) e.stopPropagation();
     if (hamburger.classList.contains('is-open')) {
       closeMenu();
     } else {
@@ -179,20 +192,20 @@ window.addEventListener('scroll', function () {
 
   hamburger.addEventListener('click', toggleMenu);
 
-  // Mobile menu links click pe band ho jaye
-  mobileMenu.querySelectorAll('.nav-mobile-menu__link, .nav-mobile-menu__login, .nav-mobile-menu__signup')
+  // Close menu on link click
+  mobileMenu.querySelectorAll('.nav-mobile-menu__link, .nav-mobile-menu__cart, .nav-mobile-menu__login, .nav-mobile-menu__signup')
     .forEach(function (el) {
       el.addEventListener('click', closeMenu);
     });
 
-  // ESC key se band karo
+  // ESC key to close
   document.addEventListener('keydown', function (e) {
-    if (e.key === 'Escape') closeMenu();
+    if (e.key === 'Escape' && hamburger.classList.contains('is-open')) closeMenu();
   });
 
-  // Resize pe agar desktop ho gaya toh band karo
+  // Resize close on desktop
   window.addEventListener('resize', function () {
-    if (window.innerWidth >= 1024) closeMenu();
+    if (window.innerWidth >= 1024 && hamburger.classList.contains('is-open')) closeMenu();
   });
 })();
 

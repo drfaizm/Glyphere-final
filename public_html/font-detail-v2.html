@@ -19,8 +19,9 @@
   <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
     rel="stylesheet" />
 
+  <link rel="stylesheet" href="css/fonts-base64.css?v=20260922">
   <link rel="stylesheet" href="javascript/loginmodel.css">
-  <link rel="stylesheet" href="css/globalstyle.css">
+  <link rel="stylesheet" href="css/globalstyle.css?v=20260922">
 
   <style>
     /* ===================================================
@@ -36,6 +37,8 @@
 
     html {
       scroll-behavior: smooth;
+      overflow-x: clip;
+      -webkit-text-size-adjust: 100%;
     }
 
     body {
@@ -43,7 +46,9 @@
       color: #1c1812;
       font-family: 'Manrope', sans-serif;
       line-height: 1.5;
-      overflow-x: hidden;
+      overflow-x: clip;
+      width: 100%;
+      position: relative;
     }
 
     body::before {
@@ -2653,12 +2658,15 @@
     @media(max-width: 1024px) {
       .fd-hero {
         grid-template-columns: 1fr;
-        gap: 3rem;
+        gap: 2.5rem;
       }
 
       .fd-hero-buy-box {
         position: static;
         padding: 2rem;
+        max-width: 620px;
+        margin: 0 auto;
+        width: 100%;
       }
 
       .fd-tester-body {
@@ -2668,8 +2676,12 @@
 
       .fd-family-row {
         grid-template-columns: 1fr;
-        gap: 1rem;
+        gap: 1.25rem;
         padding: 1.25rem 1.5rem;
+      }
+
+      .fd-family-row>* {
+        min-width: 0;
       }
 
       .fd-family-style-actions {
@@ -2678,8 +2690,85 @@
     }
 
     @media(max-width: 768px) {
+      .fd-main {
+        padding: 0 1rem;
+        padding-top: 5.5rem;
+        padding-bottom: 4.5rem;
+        overflow-x: clip;
+      }
+
+      .fd-section {
+        padding: 3rem 0;
+      }
+
+      .fd-section--dark {
+        margin: 0 -1rem;
+        padding: 3rem 1rem;
+        border-radius: 1.25rem;
+      }
+
+      /* Sticky Subnav */
+      .fd-subnav-wrap {
+        top: 52px;
+        margin: 0 -1rem 2rem -1rem;
+        padding: 0.5rem 0.5rem;
+      }
+
+      .fd-subnav {
+        gap: 0.4rem;
+        padding: 2px 0.5rem;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+      }
+
+      .fd-subnav::-webkit-scrollbar {
+        display: none;
+      }
+
+      .fd-subnav-pill {
+        font-size: 0.68rem;
+        padding: 0.4rem 0.85rem;
+        flex-shrink: 0;
+      }
+
+      /* Hero Section */
+      .fd-hero {
+        gap: 1.75rem;
+      }
+
+      .fd-name {
+        font-size: clamp(2.2rem, 8.5vw, 3.2rem) !important;
+        line-height: 1.05;
+        margin-top: 0.2rem;
+        margin-bottom: 0.5rem;
+      }
+
+      .fd-tagline {
+        font-size: 1.05rem;
+        line-height: 1.45;
+        margin-bottom: 0.65rem;
+      }
+
+      .fd-description {
+        font-size: 0.88rem;
+        line-height: 1.6;
+        margin-bottom: 1.25rem;
+      }
+
+      .fd-meta-pills {
+        gap: 0.45rem;
+      }
+
+      .fd-meta-pill {
+        font-size: 0.7rem;
+        padding: 5px 12px;
+      }
+
       .fd-hero-tester {
-        padding: 1.25rem;
+        padding: 1rem;
+        border-radius: 1rem;
       }
 
       .fd-hero-tester-header {
@@ -2690,47 +2779,272 @@
 
       .fd-hero-tester-tools {
         width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
         justify-content: space-between;
+        gap: 0.6rem;
+      }
+
+      .fd-hero-tester-presets {
+        width: 100%;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+        padding-bottom: 4px;
+        flex-wrap: nowrap;
+      }
+
+      .fd-hero-tester-presets::-webkit-scrollbar {
+        display: none;
       }
 
       .fd-hero-tester-textarea {
-        font-size: 36px !important;
+        font-size: clamp(24px, 6vw, 36px) !important;
+        min-height: 90px;
       }
 
-      .fd-main {
-        padding: 0 1.25rem;
-        padding-top: 6.5rem;
-        padding-bottom: 4rem;
+      /* Buy Box on Mobile */
+      .fd-hero-buy-box {
+        padding: 1.25rem 1rem;
+        border-radius: 1.15rem;
+        max-width: 100%;
       }
 
-      .fd-section {
-        padding: 4rem 0;
+      .fd-license-card {
+        padding: 0.95rem;
       }
 
-      .fd-section--dark {
-        margin: 0 -1.25rem;
-        padding: 4rem 1.5rem;
-        border-radius: 1.25rem;
+      .fd-license-card-head {
+        gap: 0.5rem;
       }
 
-      .fd-subnav-wrap {
-        margin: 0 -1.25rem 2.5rem -1.25rem;
-        padding: 0.6rem 1.25rem;
+      .fd-license-card-title {
+        font-size: 0.95rem;
       }
 
+      .fd-license-card-price {
+        font-size: 1.2rem;
+      }
+
+      .fd-hero-btn-buy,
+      .fd-hero-btn-cart {
+        padding: 0.85rem 1rem;
+        font-size: 0.875rem;
+      }
+
+      /* Family Styles Section */
       .fd-family-container {
-        padding: 1.5rem;
+        padding: 1rem 0.85rem;
+        border-radius: 1rem;
       }
 
+      .fd-family-bar {
+        padding: 0.65rem 0.85rem;
+        margin-bottom: 1.25rem;
+      }
+
+      .fd-family-bar-input {
+        font-size: 0.85rem;
+      }
+
+      .fd-family-phrases {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+        flex-wrap: nowrap;
+        padding-bottom: 4px;
+        margin-bottom: 1rem;
+      }
+
+      .fd-family-phrases::-webkit-scrollbar {
+        display: none;
+      }
+
+      .fd-family-phrases button {
+        flex-shrink: 0;
+      }
+
+      .fd-family-row {
+        grid-template-columns: 1fr;
+        gap: 0.85rem;
+        padding: 1rem 0.95rem;
+        border-radius: 0.95rem;
+      }
+
+      .fd-family-row>* {
+        min-width: 0;
+        max-width: 100%;
+      }
+
+      .fd-family-style-meta {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+      }
+
+      .fd-family-preview-wrap {
+        width: 100%;
+        max-width: 100%;
+        overflow: hidden;
+        margin: 0.25rem 0;
+      }
+
+      .fd-family-preview-text {
+        font-size: clamp(1.4rem, 5.5vw, 2rem) !important;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: block;
+        max-width: 100%;
+      }
+
+      .fd-family-style-actions {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 0.5rem;
+        width: 100%;
+        align-items: center;
+      }
+
+      .fd-family-style-actions .fd-style-price {
+        grid-column: 1 / -1;
+        font-size: 0.95rem;
+        margin-bottom: 0.1rem;
+      }
+
+      .fd-btn-style-test,
+      .fd-btn-style-buy {
+        width: 100%;
+        text-align: center;
+        justify-content: center;
+        padding: 0.65rem 0.5rem;
+        font-size: 0.72rem;
+      }
+
+      /* Type Tester Section */
+      .fd-tester-controls {
+        padding: 1.25rem 1rem;
+        border-radius: 1rem;
+        gap: 1rem;
+      }
+
+      .fd-tester-surface {
+        min-height: 220px;
+        padding: 1.75rem 1rem;
+        border-radius: 1rem;
+      }
+
+      .fd-tester-preview {
+        font-size: clamp(28px, 8vw, 52px) !important;
+        word-break: break-word;
+      }
+
+      /* Size Ladder */
+      .fd-tester-bar {
+        padding: 0.65rem 1rem;
+        border-radius: 100px;
+        margin-bottom: 1.5rem;
+        gap: 0.5rem;
+      }
+
+      .fd-tester-bar input {
+        font-size: 0.85rem;
+      }
+
+      .fd-tester-hint {
+        display: none;
+      }
+
+      .fd-tester-row {
+        gap: 0.5rem;
+        flex-direction: column;
+        align-items: flex-start;
+        padding-bottom: 1rem;
+      }
+
+      .fd-tester-size {
+        min-width: unset;
+        font-size: 0.68rem;
+      }
+
+      .fd-tester-text {
+        font-size: clamp(14px, 4.5vw, 36px) !important;
+        max-width: 100%;
+        word-break: break-word;
+      }
+
+      /* Glyphs Section */
+      .fd-glyphs-filter-bar {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+        flex-wrap: nowrap;
+        padding-bottom: 4px;
+        gap: 0.4rem;
+        margin-bottom: 1.25rem;
+      }
+
+      .fd-glyphs-filter-bar::-webkit-scrollbar {
+        display: none;
+      }
+
+      .fd-glyph-filter-chip {
+        flex-shrink: 0;
+        font-size: 0.68rem;
+        padding: 0.4rem 0.85rem;
+      }
+
+      .fd-glyphs-wrap {
+        padding: 1rem 0.65rem;
+        border-radius: 1rem;
+      }
+
+      .fd-glyphs-grid {
+        gap: 5px;
+        justify-content: flex-start;
+      }
+
+      .fd-glyph {
+        width: calc((100% - 30px) / 7);
+        min-width: 38px;
+        height: 42px;
+        font-size: 1.15rem;
+        border-radius: 0.45rem;
+      }
+
+      /* Technical Specs & Licensing */
       .fd-specs-container {
-        padding: 1.75rem 1.25rem;
-        gap: 2rem;
+        padding: 1.25rem 1rem;
+        gap: 1.5rem;
+        border-radius: 1rem;
+      }
+
+      .fd-specs-formats-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 0.6rem;
+      }
+
+      .fd-spec-format-item {
+        padding: 0.75rem 0.75rem;
+        gap: 0.5rem;
+        border-radius: 0.75rem;
+      }
+
+      .fd-format-ext {
+        font-size: 0.7rem;
+      }
+
+      .fd-format-desc {
+        font-size: 0.68rem;
       }
 
       .fd-specs-action-bar {
-        padding: 1.5rem;
-        flex-direction: column;
-        align-items: flex-start;
+        padding: 1.25rem 1rem;
+        border-radius: 1rem;
+        gap: 1rem;
       }
 
       .fd-specs-buy-col {
@@ -2741,20 +3055,94 @@
       .fd-btn-specs-buy {
         width: 100%;
         text-align: center;
+        padding: 0.85rem 1rem;
       }
 
+      /* Matrix Table */
+      .fd-matrix-wrap {
+        border-radius: 1rem;
+        margin-top: 0.75rem;
+      }
+
+      .fd-matrix-table th,
+      .fd-matrix-table td {
+        padding: 0.85rem 0.95rem;
+        font-size: 0.8rem;
+      }
+
+      /* Sticky Purchase Bar */
       .fd-sticky {
-        width: calc(100% - 2rem);
-        bottom: 1rem;
-        padding: 0.75rem 1rem;
+        width: calc(100% - 1.5rem);
+        max-width: 420px;
+        left: 50%;
+        bottom: max(0.85rem, env(safe-area-inset-bottom, 0.85rem));
+        padding: 0.65rem 0.85rem 0.65rem 1.15rem;
+        gap: 0.75rem;
+        justify-content: space-between;
       }
 
       .fd-sticky-info {
-        gap: 0.5rem;
+        gap: 0.45rem;
       }
 
       .fd-sticky-name {
-        font-size: 0.875rem;
+        font-size: 0.825rem;
+      }
+
+      .fd-sticky-price {
+        font-size: 0.825rem;
+      }
+
+      .fd-sticky-btn-buy {
+        padding: 0.55rem 1rem;
+        font-size: 0.78rem;
+      }
+
+      .fd-sticky-btn-demo {
+        display: none;
+      }
+    }
+
+    @media(max-width: 480px) {
+      .fd-hero-title {
+        font-size: 2.1rem;
+      }
+
+      .fd-glyphs-wrap {
+        padding: 0.85rem 0.5rem;
+      }
+
+      .fd-glyph {
+        width: calc((100% - 25px) / 6);
+        min-width: 36px;
+        height: 40px;
+        font-size: 1.05rem;
+      }
+
+      .fd-specs-formats-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media(max-width: 360px) {
+      .fd-main {
+        padding: 0 0.65rem;
+        padding-top: 5rem;
+      }
+
+      .fd-hero-title {
+        font-size: 1.85rem;
+      }
+
+      .fd-glyph {
+        width: calc((100% - 20px) / 5);
+        min-width: 34px;
+        height: 38px;
+        font-size: 1rem;
+      }
+
+      .fd-family-style-actions {
+        grid-template-columns: 1fr;
       }
     }
   </style>
@@ -2766,8 +3154,7 @@
   <header class="header-nav">
     <nav class="nav-inner">
       <div class="nav-logo-group">
-        <a href="index.html"><img src="assets/images/glyphere.png" class="nav-logo-img"
-            alt="Glyphere" /></a>
+        <a href="index.html"><img src="assets/images/glyphere.png" class="nav-logo-img" alt="Glyphere" /></a>
         <a class="nav-logo-name" href="index.html">Glyphere</a>
       </div>
       <ul class="nav-links" role="list">
@@ -3108,7 +3495,7 @@
         slug: "Storybook_Sans",
         name: "Storybook Sans",
         tagline: "Playful. Expressive. Memorable.",
-        category: "display",
+        category: "sans-serif",
         tags: ["playful", "editorial", "expressive", "display"],
         description: "Storybook Sans is a display typeface with personality in every curve. Inspired by hand-lettering traditions, it brings warmth and spontaneity to book covers, packaging, and branding that dares to be different.",
         price: 20,
@@ -3482,9 +3869,9 @@
         name: "Glyphere Hallowthorn",
         tagline: "An elegant, eerie display serif with stylistic flourishes.",
         category: "serif",
-        tags: ["serif", "display", "eerie", "luxury", "editorial"],
-        description: "Glyphere Hallowthorn is an elegant, eerie display serif with dramatic serifs and haunting curves. Designed for luxury fashion, mysterious branding, editorial headlines, and packaging that leaves a lasting impression.",
-        price: 17,
+        tags: ["serif", "display", "eerie", "luxury", "editorial", "accents"],
+        description: "Glyphere Hallowthorn is an elegant, eerie display serif with dramatic serifs, haunting curves, and extensive Latin language support including complete accented diacritics. Designed for luxury fashion, mysterious branding, editorial headlines, and packaging that leaves a lasting impression.",
+        price: 14.95,
         desktopPrice: 14.95,
         webPrice: 20,
         commercialPrice: 29.95,
@@ -3493,19 +3880,298 @@
         family: [
           { name: "Glyphere Hallowthorn Regular", style: "Regular", weight: 400, price: 14.95 }
         ],
-        glyphCount: 100,
-        languageSupport: ["Latin", "Western European", "Uppercase", "Lowercase", "Numbers", "Symbols"],
+        glyphCount: 440,
+        languageSupport: ["Basic Latin", "Western European", "Central European", "Southeastern European", "Baltic", "Turkish", "Uppercase", "Lowercase", "Numbers & Fractions", "Punctuation & Symbols", "Accents & Diacritics"],
         formats: ["TTF", "OTF", "WOFF", "WOFF2", "Variable"],
-        previewText: "Shadows & Stars.",
-        chars: "AaBbCcDdEeFfGgHh 0123456789 !?",
+        previewText: "Shadows & Stars. L'Élégance Mystique.",
+        chars: "AaBbCcDdEeFf 012345 !? ÀÉÈñüç",
         fontFamily: "'Glyphere_Hallowthorn', serif",
-        fontFaceUrl: "assets/fonts/Glyphere_Hallowthorn.woff2",
+        fontFaceUrl: "/assets/fonts/Glyphere_Hallowthorn.woff2",
         fallback: "serif",
         theme: "dark",
         designer: { name: "Faiz", studio: "Glyphere", bio: "Independent type designer specialising in display and brand typography.", avatar: "assets/images/faiz.jpeg" },
         releaseDate: "2026-09",
         featured: true,
         relatedSlugs: ["Midnight_Citadel", "Boutique_Seraphina", "Sonnet_Italic"],
+        glyphs: ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "À", "Á", "Â", "Ã", "Ä", "Å", "Æ", "Ç", "È", "É", "Ê", "Ë", "Ì", "Í", "Î", "Ï", "Ð", "Ñ", "Ò", "Ó", "Ô", "Õ", "Ö", "Ø", "Ù", "Ú", "Û", "Ü", "Ý", "Þ", "Ā", "Ă", "Ą", "Ć", "Ĉ", "Ċ", "Č", "Ď", "Ē", "Ĕ", "Ė", "Ę", "Ě", "Ĝ", "Ğ", "Ġ", "Ģ", "Ĥ", "Ĩ", "Ī", "Ĭ", "Į", "İ", "Ĵ", "Ķ", "Ĺ", "Ļ", "Ľ", "Ł", "Ń", "Ņ", "Ň", "Ō", "Ŏ", "Ő", "Œ", "Ŕ", "Ŗ", "Ř", "Ś", "Ŝ", "Ş", "Š", "Ţ", "Ť", "Ũ", "Ū", "Ŭ", "Ů", "Ű", "Ų", "Ŵ", "Ŷ", "Ÿ", "Ź", "Ż", "Ž", "Ǎ", "Ǐ", "Ǒ", "Ǔ", "Ǧ", "Ǩ", "Ǫ", "Ǳ", "ǲ", "Ǵ", "Ƕ", "Ƿ", "Ǹ", "Ȟ", "Ȧ", "Ȩ", "Ȯ", "Ȱ", "Ȳ", "Ḃ", "Ḋ", "Ḑ", "Ḟ", "Ḡ", "Ḣ", "Ḧ", "Ḩ", "Ḱ", "Ḿ", "Ṁ", "Ṃ", "Ṅ", "Ṕ", "Ṗ", "Ṙ", "Ṡ", "Ṫ", "Ṽ", "Ẁ", "Ẃ", "Ẅ", "Ẇ", "Ẋ", "Ẍ", "Ẏ", "Ẑ", "ẞ", "Ẽ", "Ỳ", "Ỹ", "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", "ß", "à", "á", "â", "ã", "ä", "å", "æ", "ç", "è", "é", "ê", "ë", "ì", "í", "î", "ï", "ð", "ñ", "ò", "ó", "ô", "õ", "ö", "ø", "ù", "ú", "û", "ü", "ý", "þ", "ÿ", "ā", "ă", "ą", "ć", "ĉ", "ċ", "č", "ď", "ē", "ĕ", "ė", "ę", "ě", "ĝ", "ğ", "ġ", "ģ", "ĥ", "ĩ", "ī", "ĭ", "į", "ı", "ĵ", "ķ", "ĺ", "ļ", "ľ", "ł", "ń", "ņ", "ň", "ō", "ŏ", "ő", "œ", "ŕ", "ŗ", "ř", "ś", "ŝ", "ş", "š", "ţ", "ť", "ũ", "ū", "ŭ", "ů", "ű", "ų", "ŵ", "ŷ", "ź", "ż", "ž", "ǎ", "ǐ", "ǒ", "ǔ", "ǧ", "ǩ", "ǫ", "ǰ", "ǳ", "ǵ", "ǹ", "ȟ", "ȧ", "ȩ", "ȯ", "ȱ", "ȳ", "ȴ", "ȵ", "ȶ", "ȷ", "ḃ", "ḋ", "ḑ", "ḟ", "ḡ", "ḣ", "ḧ", "ḩ", "ḱ", "ḿ", "ṁ", "ṃ", "ṅ", "ṕ", "ṗ", "ṙ", "ṡ", "ṫ", "Ṽ", "ẁ", "ẃ", "ẅ", "ẇ", "ẋ", "ẍ", "ẏ", "ẑ", "ẗ", "ẘ", "ẙ", "ẽ", "ỳ", "ỹ", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "²", "³", "¹", "¼", "½", "¾", " ", "!", "\"", "#", "$", "%", "&", "'", "(", ")", "*", "+", ",", "-", ".", "/", ":", ";", "<", "=", ">", "?", "@", "[", "\\", "]", "^", "_", "`", "{", "|", "}", "~", "¡", "¢", "£", "¤", "¥", "¦", "§", "¨", "©", "ª", "«", "¬", "®", "¯", "°", "±", "º", "»", "¿", "×", "÷", "̀", "́", "̂", "̃", "̄", "̆", "̇", "̈", "̉", "̊", "̋", "̌", "̧", "̨", "‐", "‑", "‒", "–", "—", "―", "‖", "‗", "‘", "’", "‚", "‛", "“", "”", "•", "‣", "․", "‥", "…", "‹", "›", "⁄", "€", "™", "−"]
+      },
+      {
+        slug: "Boutique_Seraphina",
+        name: "Boutique Seraphina",
+        tagline: "Avenue Montaigne luxury with refined Parisian elegance.",
+        category: "serif",
+        tags: ["serif", "luxury", "fashion", "haute-couture", "editorial", "paris"],
+        description: "Boutique Seraphina channels the golden era of Parisian haute couture. With delicate razor-thin serifs and high-contrast letterforms, it exudes effortless sophistication across fashion editorial, perfumery, and prestige brand identities.",
+        price: 24,
+        desktopPrice: 17,
+        webPrice: 28,
+        commercialPrice: 42,
+        styles: ["Regular"],
+        weights: [400],
+        family: [
+          { name: "Boutique Seraphina Regular", style: "Regular", weight: 400, price: 15 }
+        ],
+        glyphCount: 100,
+        languageSupport: ["Latin", "Western European", "Uppercase", "Lowercase", "Numbers", "Symbols"],
+        formats: ["TTF", "OTF", "WOFF", "WOFF2"],
+        previewText: "Avenue Montaigne. Atelier & Haute Couture.",
+        chars: "AaBbCcDdEeFf 0123456789 !?",
+        fontFamily: "'Boutique_Seraphina', 'Boutique Seraphina', serif",
+        fontFaceUrl: "/assets/fonts/Boutique_Seraphina.woff2",
+        fallback: "serif",
+        theme: "cream",
+        designer: { name: "Faiz", studio: "Glyphere", bio: "Independent type designer specialising in display and brand typography.", avatar: "/assets/images/faiz.jpeg" },
+        releaseDate: "2024-06",
+        featured: false,
+        relatedSlugs: ["Glyphere_Hallowthorn", "Nova_Legacy", "Sonnet_Italic"],
+        glyphs: ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "!", "?", "@", "#", "$", "%", "^", "&", "*", "(", ")", "-", "_", "+", "=", "[", "]", "{", "}", "|", "\\", ":", ";", "'", "\"", ",", ".", "/", "<", ">", "~", "`"]
+      },
+      {
+        slug: "Glissade",
+        name: "Glissade",
+        tagline: "Continuous dance and graceful fluidity in high-contrast serifs.",
+        category: "serif",
+        tags: ["serif", "fluid", "editorial", "dance", "elegance", "luxury"],
+        description: "Glissade embodies the effortless motion and equilibrium of a dancer. Its fluid serifs and sweeping terminals create a continuous visual rhythm ideal for editorial spreads, gallery curation, and luxury brand narratives.",
+        price: 24,
+        desktopPrice: 17,
+        webPrice: 28,
+        commercialPrice: 42,
+        styles: ["Regular"],
+        weights: [400],
+        family: [
+          { name: "Glissade Regular", style: "Regular", weight: 400, price: 15 }
+        ],
+        glyphCount: 100,
+        languageSupport: ["Latin", "Western European", "Uppercase", "Lowercase", "Numbers", "Symbols"],
+        formats: ["TTF", "OTF", "WOFF", "WOFF2"],
+        previewText: "Graceful Motion. Poise & Equilibrium.",
+        chars: "AaBbCcDdEeFf 0123456789 !?",
+        fontFamily: "'Glissade', serif",
+        fontFaceUrl: "/assets/fonts/Glissade.woff2",
+        fallback: "serif",
+        theme: "light",
+        designer: { name: "Faiz", studio: "Glyphere", bio: "Independent type designer specialising in display and brand typography.", avatar: "/assets/images/faiz.jpeg" },
+        releaseDate: "2024-06",
+        featured: false,
+        relatedSlugs: ["Nova_Legacy", "Nova_Shell", "Boutique_Seraphina"],
+        glyphs: ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "!", "?", "@", "#", "$", "%", "^", "&", "*", "(", ")", "-", "_", "+", "=", "[", "]", "{", "}", "|", "\\", ":", ";", "'", "\"", ",", ".", "/", "<", ">", "~", "`"]
+      },
+      {
+        slug: "Onyx_Dynasty",
+        name: "Onyx Dynasty",
+        tagline: "Imperial majesty and monarch authority carved in dark stone.",
+        category: "serif",
+        tags: ["serif", "regal", "luxury", "monarch", "display", "high-contrast"],
+        description: "Onyx Dynasty radiates sovereign majesty. Sharp, dramatic chisel cuts and imposing vertical stress command unquestioned authority, crafted for heritage emblems, prestige spirits, luxury timepiece identities, and monumental display typography.",
+        price: 24,
+        desktopPrice: 17,
+        webPrice: 28,
+        commercialPrice: 42,
+        styles: ["Regular"],
+        weights: [400],
+        family: [
+          { name: "Onyx Dynasty Regular", style: "Regular", weight: 400, price: 15 }
+        ],
+        glyphCount: 100,
+        languageSupport: ["Latin", "Western European", "Uppercase", "Lowercase", "Numbers", "Symbols"],
+        formats: ["TTF", "OTF", "WOFF", "WOFF2"],
+        previewText: "Sovereign Realm. Imperial Majesty.",
+        chars: "AaBbCcDdEeFf 0123456789 !?",
+        fontFamily: "'Onyx_Dynasty', 'Onyx Dynasty', serif",
+        fontFaceUrl: "/assets/fonts/Onyx_Dynasty.woff2",
+        fallback: "serif",
+        theme: "dark",
+        designer: { name: "Faiz", studio: "Glyphere", bio: "Independent type designer specialising in display and brand typography.", avatar: "/assets/images/faiz.jpeg" },
+        releaseDate: "2024-06",
+        featured: false,
+        relatedSlugs: ["Midnight_Citadel", "Glyphere_Hallowthorn", "Nova_Legacy"],
+        glyphs: ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "!", "?", "@", "#", "$", "%", "^", "&", "*", "(", ")", "-", "_", "+", "=", "[", "]", "{", "}", "|", "\\", ":", ";", "'", "\"", ",", ".", "/", "<", ">", "~", "`"]
+      },
+      {
+        slug: "Apex_Rounded",
+        name: "Apex Rounded",
+        tagline: "Summit horizons meet digital precision and pure engineering.",
+        category: "sans-serif",
+        tags: ["geometric", "rounded", "modern", "ui", "tech", "branding"],
+        description: "Apex Rounded merges futuristic engineering precision with softly rounded geometric contours. Designed for digital interfaces, technical branding, sports apparel, and forward-looking identity systems.",
+        price: 18,
+        desktopPrice: 13,
+        webPrice: 22,
+        commercialPrice: 35,
+        styles: ["Regular"],
+        weights: [400],
+        family: [
+          { name: "Apex Rounded Regular", style: "Regular", weight: 400, price: 13 }
+        ],
+        glyphCount: 100,
+        languageSupport: ["Latin", "Western European", "Uppercase", "Lowercase", "Numbers", "Symbols"],
+        formats: ["TTF", "OTF", "WOFF", "WOFF2"],
+        previewText: "Summit Horizons. Digital Precision.",
+        chars: "AaBbCcDdEeFf 0123456789 !?",
+        fontFamily: "'Apex_Rounded', 'Apex Rounded', sans-serif",
+        fontFaceUrl: "/assets/fonts/Apex_Rounded.woff2",
+        fallback: "sans-serif",
+        theme: "dark",
+        designer: { name: "Faiz", studio: "Glyphere", bio: "Independent type designer specialising in display and brand typography.", avatar: "/assets/images/faiz.jpeg" },
+        releaseDate: "2024-06",
+        featured: false,
+        relatedSlugs: ["Pebble_Sans", "Midfield-Regular", "Turbo_Block"],
+        glyphs: ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "!", "?", "@", "#", "$", "%", "^", "&", "*", "(", ")", "-", "_", "+", "=", "[", "]", "{", "}", "|", "\\", ":", ";", "'", "\"", ",", ".", "/", "<", ">", "~", "`"]
+      },
+      {
+        slug: "Nova_Shell",
+        name: "Nova Shell",
+        tagline: "Oceanic spiral meets golden ratio sculptural curvature.",
+        category: "serif",
+        tags: ["serif", "luxury", "organic", "sculptural", "editorial", "display"],
+        description: "Nova Shell draws inspiration from natural symmetry and the oceanic golden spiral. Featuring organic curvature and high-contrast stroke weight, it delivers sculptural poise to high fashion, cosmetics packaging, and luxury editorials.",
+        price: 16,
+        desktopPrice: 11,
+        webPrice: 19,
+        commercialPrice: 30,
+        styles: ["Regular"],
+        weights: [400],
+        family: [
+          { name: "Nova Shell Regular", style: "Regular", weight: 400, price: 11 }
+        ],
+        glyphCount: 100,
+        languageSupport: ["Latin", "Western European", "Uppercase", "Lowercase", "Numbers", "Symbols"],
+        formats: ["TTF", "OTF", "WOFF", "WOFF2"],
+        previewText: "Oceanic Spiral. Sculptural Curves.",
+        chars: "AaBbCcDdEeFf 0123456789 !?",
+        fontFamily: "'Nova_Shell', 'Nova Shell', serif",
+        fontFaceUrl: "/assets/fonts/Nova_Shell.woff2",
+        fallback: "serif",
+        theme: "cream",
+        designer: { name: "Faiz", studio: "Glyphere", bio: "Independent type designer specialising in display and brand typography.", avatar: "/assets/images/faiz.jpeg" },
+        releaseDate: "2024-06",
+        featured: false,
+        relatedSlugs: ["Nova_Legacy", "Glissade", "Boutique_Seraphina"],
+        glyphs: ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "!", "?", "@", "#", "$", "%", "^", "&", "*", "(", ")", "-", "_", "+", "=", "[", "]", "{", "}", "|", "\\", ":", ";", "'", "\"", ",", ".", "/", "<", ">", "~", "`"]
+      },
+      {
+        slug: "Throttle_Street",
+        name: "Throttle Street",
+        tagline: "Asphalt, adrenaline, and raw midnight horsepower.",
+        category: "display",
+        tags: ["display", "heavy", "industrial", "street", "bold", "automotive"],
+        description: "Throttle Street is an aggressive, heavyweight display typeface built for street racing culture, raw industrial graphics, high-octane branding, and unapologetic display headlines that roar off the screen.",
+        price: 18,
+        desktopPrice: 13,
+        webPrice: 22,
+        commercialPrice: 35,
+        styles: ["Regular"],
+        weights: [400],
+        family: [
+          { name: "Throttle Street Regular", style: "Regular", weight: 400, price: 13 }
+        ],
+        glyphCount: 100,
+        languageSupport: ["Latin", "Western European", "Uppercase", "Lowercase", "Numbers", "Symbols"],
+        formats: ["TTF", "OTF", "WOFF", "WOFF2"],
+        previewText: "Asphalt & Adrenaline. Full Throttle Power.",
+        chars: "AaBbCcDdEeFf 0123456789 !?",
+        fontFamily: "'Throttle_Street', 'Throttle Street', sans-serif",
+        fontFaceUrl: "/assets/fonts/Throttle_Street.woff2",
+        fallback: "sans-serif",
+        theme: "dark",
+        designer: { name: "Faiz", studio: "Glyphere", bio: "Independent type designer specialising in display and brand typography.", avatar: "/assets/images/faiz.jpeg" },
+        releaseDate: "2024-06",
+        featured: false,
+        relatedSlugs: ["Turbo_Block", "Strata_Bold", "Stadium_Bold"],
+        glyphs: ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "!", "?", "@", "#", "$", "%", "^", "&", "*", "(", ")", "-", "_", "+", "=", "[", "]", "{", "}", "|", "\\", ":", ";", "'", "\"", ",", ".", "/", "<", ">", "~", "`"]
+      },
+      {
+        slug: "Vanguard_Axis",
+        name: "Vanguard Axis",
+        tagline: "Avant-garde architectural vision meets constructive geometric design.",
+        category: "display",
+        tags: ["display", "constructivist", "architectural", "geometric", "modern", "avant-garde"],
+        description: "Vanguard Axis embodies avant-garde constructivism and progressive geometric design. Its structural tension and fearless proportions make it an arresting centerpiece for gallery posters, architecture monographs, and experimental brand systems.",
+        price: 12,
+        desktopPrice: 8,
+        webPrice: 15,
+        commercialPrice: 24,
+        styles: ["Regular"],
+        weights: [400],
+        family: [
+          { name: "Vanguard Axis Regular", style: "Regular", weight: 400, price: 8 }
+        ],
+        glyphCount: 100,
+        languageSupport: ["Latin", "Western European", "Uppercase", "Lowercase", "Numbers", "Symbols"],
+        formats: ["TTF", "OTF", "WOFF", "WOFF2"],
+        previewText: "Avant-Garde Vision. Radical Formation.",
+        chars: "AaBbCcDdEeFf 0123456789 !?",
+        fontFamily: "'Vanguard_Axis', 'Vanguard Axis', sans-serif",
+        fontFaceUrl: "/assets/fonts/Vanguard_Axis.woff2",
+        fallback: "sans-serif",
+        theme: "light",
+        designer: { name: "Faiz", studio: "Glyphere", bio: "Independent type designer specialising in display and brand typography.", avatar: "/assets/images/faiz.jpeg" },
+        releaseDate: "2024-06",
+        featured: false,
+        relatedSlugs: ["Midfield-Regular", "Turbo_Block", "Volo_Scale"],
+        glyphs: ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "!", "?", "@", "#", "$", "%", "^", "&", "*", "(", ")", "-", "_", "+", "=", "[", "]", "{", "}", "|", "\\", ":", ";", "'", "\"", ",", ".", "/", "<", ">", "~", "`"]
+      },
+      {
+        slug: "Volo_Scale",
+        name: "Volo Scale",
+        tagline: "Harmonic frequencies and architectural resonance.",
+        category: "serif",
+        tags: ["serif", "display", "editorial", "harmonic", "poster", "branding"],
+        description: "Volo Scale is an expressive display serif defined by harmonic proportions, rhythmic counterforms, and architectural resonance. Crafted for editorial spreads, gallery posters, music packaging, and brands seeking rhythmic distinction.",
+        price: 12,
+        desktopPrice: 8,
+        webPrice: 15,
+        commercialPrice: 24,
+        styles: ["Regular"],
+        weights: [400],
+        family: [
+          { name: "Volo Scale Regular", style: "Regular", weight: 400, price: 8 }
+        ],
+        glyphCount: 100,
+        languageSupport: ["Latin", "Western European", "Uppercase", "Lowercase", "Numbers", "Symbols"],
+        formats: ["TTF", "OTF", "WOFF", "WOFF2"],
+        previewText: "Musical Frequency. Sound & Architecture.",
+        chars: "AaBbCcDdEeFfGg 0123456789 !?",
+        fontFamily: "'Volo_Scale', 'Volo Scale', serif",
+        fontFaceUrl: "/assets/fonts/Volo_Scale.woff2",
+        fallback: "serif",
+        theme: "light",
+        designer: { name: "Faiz", studio: "Glyphere", bio: "Independent type designer specialising in display and brand typography.", avatar: "/assets/images/faiz.jpeg" },
+        releaseDate: "2024-06",
+        featured: false,
+        relatedSlugs: ["Vanguard_Axis", "Glissade", "Midnight_Citadel"],
+        glyphs: ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "!", "?", "@", "#", "$", "%", "^", "&", "*", "(", ")", "-", "_", "+", "=", "[", "]", "{", "}", "|", "\\", ":", ";", "'", "\"", ",", ".", "/", "<", ">", "~", "`"]
+      },
+      {
+        slug: "Velvet_Monoline",
+        name: "Velvet Monoline",
+        tagline: "Smooth monoline geometry with silky elegance and modern rhythm.",
+        category: "sans-serif",
+        tags: ["sans-serif", "monoline", "smooth", "modern", "branding", "minimal"],
+        description: "Velvet Monoline is a clean, silky monoline typeface balancing continuous single-weight stroke precision with gentle, tactile curves. Ideal for minimalist logos, modern packaging, lifestyle magazines, and sleek web interfaces.",
+        price: 20,
+        desktopPrice: 15,
+        webPrice: 24,
+        commercialPrice: 38,
+        styles: ["Regular"],
+        weights: [400],
+        family: [
+          { name: "Velvet Monoline Regular", style: "Regular", weight: 400, price: 13 }
+        ],
+        glyphCount: 100,
+        languageSupport: ["Latin", "Western European", "Uppercase", "Lowercase", "Numbers", "Symbols"],
+        formats: ["TTF", "OTF", "WOFF", "WOFF2"],
+        previewText: "Smooth Monoline Precision.",
+        chars: "AaBbCcDdEeFf 0123456789 !?",
+        fontFamily: "'Velvet_Monoline', 'Velvet Monoline', sans-serif",
+        fontFaceUrl: "/assets/fonts/Velvet_Monoline.woff2",
+        fallback: "sans-serif",
+        theme: "cream",
+        designer: { name: "Faiz", studio: "Glyphere", bio: "Independent type designer specialising in display and brand typography.", avatar: "/assets/images/faiz.jpeg" },
+        releaseDate: "2024-06",
+        featured: false,
+        relatedSlugs: ["Apex_Rounded", "Pebble_Sans", "Mistavio_Sans"],
         glyphs: ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "!", "?", "@", "#", "$", "%", "^", "&", "*", "(", ")", "-", "_", "+", "=", "[", "]", "{", "}", "|", "\\", ":", ";", "'", "\"", ",", ".", "/", "<", ">", "~", "`"]
       }
     ];
@@ -3528,9 +4194,24 @@
     }
 
     function loadFont(font) {
-      // All 27 Glyphere fonts are globally embedded via Base64 in fonts-base64.css
-      // No external font URLs are injected to prevent DevTools font harvesting.
-      return;
+      if (!font) return;
+      // All 28 Glyphere fonts are globally embedded via Base64 in fonts-base64.css
+      // Dynamic fallback via FontFace API ensures immediate rendering if base64 CSS is cached or delayed
+      if (typeof FontFace !== 'undefined' && font.fontFaceUrl) {
+        const familyNames = [font.slug, font.name, 'Glyphere_Hallowthorn'].filter(Boolean);
+        try {
+          const fontUrl = font.fontFaceUrl.startsWith('/') ? font.fontFaceUrl : '/' + font.fontFaceUrl;
+          familyNames.forEach(fName => {
+            const cleanName = fName.replace(/^['"]|['"]$/g, '');
+            if (!document.fonts.check(`1em "${cleanName}"`)) {
+              const ff = new FontFace(cleanName, `url('${fontUrl}') format('woff2')`);
+              ff.load().then(loaded => {
+                document.fonts.add(loaded);
+              }).catch(() => {});
+            }
+          });
+        } catch (e) {}
+      }
     }
 
     function getSlug() {
@@ -3544,12 +4225,21 @@
 
     function getFont(slug) {
       if (!slug) return FONTS[0];
-      const norm = slug.toLowerCase().replace(/[-_]/g, '');
-      return FONTS.find(f => f.slug === slug || f.slug.toLowerCase().replace(/[-_]/g, '') === norm) || FONTS[0];
+      const clean = decodeURIComponent(slug).trim();
+      const norm = clean.toLowerCase().replace(/[-_\s]/g, '');
+      return FONTS.find(f =>
+        f.slug === clean ||
+        f.slug.toLowerCase() === clean.toLowerCase() ||
+        f.slug.toLowerCase().replace(/[-_\s]/g, '') === norm ||
+        f.name.toLowerCase().replace(/[-_\s]/g, '') === norm
+      ) || null;
     }
 
     function getRelated(slugs) {
-      return (slugs || []).map(s => FONTS.find(f => f.slug === s || f.slug.toLowerCase() === s.toLowerCase())).filter(Boolean);
+      return (slugs || []).map(s => {
+        const norm = (s || '').toLowerCase().replace(/[-_\s]/g, '');
+        return FONTS.find(f => f.slug === s || f.slug.toLowerCase() === (s || '').toLowerCase() || f.slug.toLowerCase().replace(/[-_\s]/g, '') === norm || f.name.toLowerCase().replace(/[-_\s]/g, '') === norm);
+      }).filter(Boolean);
     }
 
     function fontURL(slug) { return `?font=${slug}`; }
@@ -3633,6 +4323,11 @@
         name: cleanName,
         price,
         license: cleanLic,
+        prices: {
+          Desktop: fontObj.desktopPrice,
+          Web: fontObj.webPrice,
+          Commercial: fontObj.commercialPrice
+        },
         image: '/assets/images/glyphere.png'
       });
       glCart_syncBadge();
@@ -4028,22 +4723,35 @@
 
           <div class="fd-glyphs-filter-bar">
             <button class="fd-glyph-filter-chip is-active" data-filter="all">All (${(font.glyphs || []).length})</button>
-            <button class="fd-glyph-filter-chip" data-filter="upper">Uppercase (A-Z)</button>
-            <button class="fd-glyph-filter-chip" data-filter="lower">Lowercase (a-z)</button>
-            <button class="fd-glyph-filter-chip" data-filter="numbers">Numbers (0-9)</button>
+            <button class="fd-glyph-filter-chip" data-filter="upper">Uppercase</button>
+            <button class="fd-glyph-filter-chip" data-filter="lower">Lowercase</button>
+            <button class="fd-glyph-filter-chip" data-filter="accents">Accents &amp; Diacritics</button>
+            <button class="fd-glyph-filter-chip" data-filter="numbers">Numbers</button>
             <button class="fd-glyph-filter-chip" data-filter="symbols">Punctuation &amp; Symbols</button>
           </div>
 
           <div class="fd-glyphs-wrap">
             <div class="fd-glyphs-grid" id="fd-glyphs-grid">
               ${(font.glyphs || []).map(g => {
-        const code = 'U+' + g.charCodeAt(0).toString(16).toUpperCase().padStart(4, '0');
-        const isUpper = /[A-Z]/.test(g);
-        const isLower = /[a-z]/.test(g);
-        const isNum = /[0-9]/.test(g);
-        const type = isUpper ? 'upper' : isLower ? 'lower' : isNum ? 'numbers' : 'symbols';
-        return `<button class="fd-glyph" style="font-family:${ff};" data-char="${g === ' ' ? '[space]' : g}" data-type="${type}" title="${code}">
-                  <span>${g === ' ' ? '·' : g}</span>
+        const codePoint = g.codePointAt(0);
+        const code = 'U+' + codePoint.toString(16).toUpperCase().padStart(4, '0');
+        const isBasicUpper = /^[A-Z]$/.test(g);
+        const isBasicLower = /^[a-z]$/.test(g);
+        const isUpper = /^\p{Lu}$/u.test(g) || isBasicUpper;
+        const isLower = /^\p{Ll}$/u.test(g) || isBasicLower;
+        const isNum = /^[\d\u00B2\u00B3\u00B9\u00BC\u00BD\u00BE]$/.test(g);
+        const isAccent = (isUpper && !isBasicUpper) || (isLower && !isBasicLower) || /^[\u0300-\u036F]$/.test(g);
+
+        const types = [];
+        if (isUpper) types.push('upper');
+        if (isLower) types.push('lower');
+        if (isNum) types.push('numbers');
+        if (isAccent) types.push('accents');
+        if (!isUpper && !isLower && !isNum && !isAccent) types.push('symbols');
+        const typeAttr = types.join(' ') || 'symbols';
+        const displayChar = /^[\u0300-\u036F]$/.test(g) ? '◌' + g : (g === ' ' ? '·' : g);
+        return `<button class="fd-glyph" style="font-family:${ff};" data-char="${g === ' ' ? '[space]' : g}" data-type="${typeAttr}" title="${code}">
+                  <span>${displayChar}</span>
                   <span class="fd-glyph-unicode">${code}</span>
                 </button>`;
       }).join('')}
@@ -4619,7 +5327,8 @@
           const filter = chip.dataset.filter;
 
           glyphButtons.forEach(btn => {
-            if (filter === 'all' || btn.dataset.type === filter) {
+            const types = (btn.dataset.type || '').split(' ');
+            if (filter === 'all' || types.includes(filter)) {
               btn.style.display = 'flex';
             } else {
               btn.style.display = 'none';
@@ -4685,28 +5394,7 @@
       glCart_syncBadge();
     }
 
-    /* =====================================================
-       NAV HAMBURGER
-    ===================================================== */
-    (function () {
-      const ham = qs('.nav-hamburger');
-      const menu = qs('.nav-mobile-menu');
-      if (!ham || !menu) return;
-      ham.addEventListener('click', () => {
-        const open = ham.classList.toggle('is-open');
-        menu.classList.toggle('is-open', open);
-        document.body.style.overflow = open ? 'hidden' : '';
-        ham.setAttribute('aria-expanded', String(open));
-      });
-      qsa('.nav-mobile-menu__link,.nav-mobile-menu__cart,.nav-mobile-menu__signup', menu)
-        .forEach(el => el.addEventListener('click', () => {
-          ham.classList.remove('is-open');
-          menu.classList.remove('is-open');
-          document.body.style.overflow = '';
-        }));
-      document.addEventListener('keydown', e => { if (e.key === 'Escape') ham.click(); });
-      window.addEventListener('resize', () => { if (window.innerWidth >= 1024) ham.classList.contains('is-open') && ham.click(); });
-    })();
+
 
     /* ── Initialize ── */
     render();

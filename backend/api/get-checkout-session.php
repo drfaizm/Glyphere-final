@@ -179,10 +179,16 @@ if (empty($authResult['authorized']) || !empty($authResult['isLocked'])) {
 $items = [];
 if (!empty($session['line_items']['data'])) {
     foreach ($session['line_items']['data'] as $li) {
-        $desc = $li['description'] ?? 'Typeface License';
-        $parts = explode('—', $desc);
+        $desc = $li['description'] ?? ($li['price']['product']['name'] ?? ($li['price']['nickname'] ?? 'Typeface License'));
+        
+        // Split on em-dash (—), en-dash (–), or spaced hyphen ( - )
+        $parts = preg_split('/\s*[\x{2014}\x{2013}\-]\s*/u', $desc, 2);
         $fontName = trim($parts[0] ?? $desc);
         $license = trim($parts[1] ?? 'Commercial Authorization');
+        if (stripos($license, 'license') === false && stripos($license, 'authorization') === false) {
+            $license .= ' License';
+        }
+
         $fontSlug = preg_replace('/^\d+[\.\s]+/', '', $fontName);
         $fontSlug = trim(preg_replace('/[^a-zA-Z0-9]+/', '-', strtolower($fontSlug)), '-');
 
@@ -198,13 +204,29 @@ if (!empty($session['line_items']['data'])) {
     }
 }
 
+// Fallback if line_items was somehow empty
+if (empty($items)) {
+    $fallbackName = $session['metadata']['fontName'] ?? ($session['metadata']['product_name'] ?? 'Glyphere Typeface');
+    $fallbackSlug = preg_replace('/[^a-zA-Z0-9]+/', '-', strtolower($fallbackName));
+    $fallbackSlug = trim($fallbackSlug, '-');
+    $items[] = [
+        'description' => $fallbackName . ' — Commercial License',
+        'font_name' => $fallbackName,
+        'license_type' => 'Commercial License',
+        'font_slug' => $fallbackSlug ?: 'glyphere-typeface',
+        'download_url' => '/api/download-font.php?session_id=' . urlencode($session['id']) . '&font=' . urlencode($fallbackSlug ?: 'glyphere-typeface') . '&token=' . urlencode($authResult['token']),
+        'amount_total' => number_format(($session['amount_total'] ?? 0) / 100, 2, '.', ''),
+        'quantity' => 1
+    ];
+}
+
 echo json_encode([
     'id' => $session['id'],
     'is_locked' => false,
     'is_expired' => false,
     'is_exhausted' => $authResult['isExhausted'] ?? false,
     'token' => $authResult['token'],
-    'customer_email' => $session['customer_details']['email'] ?? ($session['customer_email'] ?? 'Customer'),
+    'customer_email' => $session['customer_details']['email'] ?? ($session['customer_email'] ?? 'Valued Customer'),
     'customer_name' => $session['customer_details']['name'] ?? 'Valued Typographer',
     'amount_total' => number_format(($session['amount_total'] ?? 0) / 100, 2, '.', ''),
     'currency' => strtoupper($session['currency'] ?? 'USD'),
@@ -212,7 +234,7 @@ echo json_encode([
     'downloads_remaining' => $authResult['downloadsRemaining'],
     'max_downloads' => $authResult['maxDownloads'],
     'expires_at' => $authResult['expiresAt'],
-    'items' => $items,
+    'items' => array_values($items),
     'download_all_url' => '/api/download-font.php?session_id=' . urlencode($session['id']) . '&all=1&token=' . urlencode($authResult['token']),
     'created' => $session['created'] ?? time()
 ]);

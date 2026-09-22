@@ -19,7 +19,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
         rel="stylesheet" />
 
-    <link rel="stylesheet" href="css/globalstyle.css" />
+    <link rel="stylesheet" href="css/globalstyle.css?v=20260922" />
+    <link rel="stylesheet" href="css/fonts-base64.css?v=20260922" />
     <link rel="stylesheet" href="javascript/loginmodel.css">
 
     <script src="cart-manager.js" defer></script>
@@ -2572,15 +2573,7 @@
         renderCart();
         setupPromoCode();
 
-        // Hamburger mobile menu listener
-        const hamburger = document.querySelector('.nav-hamburger');
-        const mobileMenu = document.querySelector('.nav-mobile-menu');
-        if (hamburger && mobileMenu) {
-            hamburger.addEventListener('click', () => {
-                hamburger.classList.toggle('is-open');
-                mobileMenu.classList.toggle('is-open');
-            });
-        }
+
     </script>
 
     <script src="javascript/loginmodel.js" defer></script>

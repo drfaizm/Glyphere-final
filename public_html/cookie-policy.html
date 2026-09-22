@@ -660,19 +660,7 @@
                 });
             }
 
-            /* ── Mobile Hamburger Menu ── */
-            const hamburger = document.querySelector('.nav-hamburger');
-            const mobileMenu = document.querySelector('.nav-mobile-menu');
 
-            if (hamburger && mobileMenu) {
-                hamburger.addEventListener('click', function () {
-                    const expanded = hamburger.getAttribute('aria-expanded') === 'true';
-                    hamburger.setAttribute('aria-expanded', !expanded);
-                    hamburger.classList.toggle('active');
-                    mobileMenu.classList.toggle('active');
-                    document.body.classList.toggle('no-scroll');
-                });
-            }
 
             /* ── Load and Save Cookie Consent settings ── */
             const saveBtn = document.getElementById('btn-save-cookie-settings');

@@ -36,15 +36,20 @@ backend/.env.*
 login-auth/.env
 login-auth/.env.*
 
-# Order & Download Registries (Private)
-backend/data/
+# Order & Download Registries (Keep folder structure, track registry template)
+backend/data/*
+!backend/data/.gitkeep
 
 # Master Typeface Vaults & Commercial Archives (Keep private from Git)
 # Keep font-vault directory, but ignore its contents
 font-vault/*
 !font-vault/.gitkeep
-commercial-vault/
-backend/commercial-vault/
+/commercial-vault/
+backend/commercial-vault/*
+!backend/commercial-vault/packages/
+!backend/commercial-vault/packages/**
+!backend/commercial-vault/packages/*.zip
+!backend/commercial-vault/packages/manifest.json
 master-fonts/
 commercial_licenses/
 *.glyphs

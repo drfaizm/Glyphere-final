@@ -45,12 +45,15 @@ $possibleDirs = [
     __DIR__ . '/../commercial-vault/packages',
     dirname(__DIR__) . '/commercial-vault/packages',
     dirname(__DIR__, 2) . '/backend/commercial-vault/packages',
+    dirname(__DIR__, 2) . '/commercial-vault/packages',
+    ($_SERVER['DOCUMENT_ROOT'] ?? '') . '/../backend/commercial-vault/packages',
+    ($_SERVER['DOCUMENT_ROOT'] ?? '') . '/backend/commercial-vault/packages',
     __DIR__ . '/commercial-vault/packages',
 ];
 
 $packagesDir = null;
 foreach ($possibleDirs as $dir) {
-    if (is_dir($dir)) {
+    if (!empty($dir) && is_dir($dir)) {
         $packagesDir = $dir;
         break;
     }
@@ -73,7 +76,9 @@ if (file_exists($manifestPath)) {
 // Helper to slugify
 function slugify($str) {
     $str = preg_replace('/^\d+[\.\s]+/', '', (string)$str);
-    $str = preg_replace('/—.*$/', '', $str);
+    // Strip em-dash, en-dash, or hyphen followed by license
+    $str = preg_replace('/\s*[\x{2014}\x{2013}\-]\s*(Commercial|Desktop|Web|App|Studio|License).*$/iu', '', $str);
+    $str = preg_replace('/\s*[\x{2014}\x{2013}\-].*$/u', '', $str);
     $str = preg_replace('/\s*\(.*?\)/', '', $str);
     $str = preg_replace('/[^a-zA-Z0-9]+/', '-', strtolower($str));
     return trim($str, '-');
@@ -85,7 +90,11 @@ function matchSlug($slug, $manifest) {
     $clean = preg_replace('/[^a-z0-9]/', '', $slug);
     foreach ($manifest as $key => $val) {
         $keyClean = preg_replace('/[^a-z0-9]/', '', $key);
-        if ($keyClean === $clean || strpos($keyClean, $clean) !== false || strpos($clean, $keyClean) !== false) {
+        if ($keyClean === $clean) return $key;
+    }
+    foreach ($manifest as $key => $val) {
+        $keyClean = preg_replace('/[^a-z0-9]/', '', $key);
+        if ($keyClean && (strpos($clean, $keyClean) !== false || strpos($keyClean, $clean) !== false)) {
             return $key;
         }
     }
@@ -159,8 +168,17 @@ if (($session['payment_status'] ?? '') !== 'paid') {
 $authorizedFonts = [];
 if (!empty($session['line_items']['data'])) {
     foreach ($session['line_items']['data'] as $li) {
-        $desc = $li['description'] ?? '';
-        $authorizedFonts[] = slugify($desc);
+        $desc = $li['description'] ?? ($li['price']['product']['name'] ?? ($li['price']['nickname'] ?? ''));
+        $slug = slugify($desc);
+        if ($slug) {
+            $authorizedFonts[] = $slug;
+        }
+    }
+}
+if (empty($authorizedFonts) && !empty($session['metadata'])) {
+    $fallback = $session['metadata']['fontName'] ?? ($session['metadata']['product_name'] ?? '');
+    if ($fallback) {
+        $authorizedFonts[] = slugify($fallback);
     }
 }
 
@@ -181,7 +199,11 @@ if ($isAll || $requestedFont === 'all') {
         }
     } elseif (class_exists('ZipArchive') && count($authorizedFonts) > 0) {
         $bundleName = 'Glyphere_Order_' . substr($sessionId, -8) . '.zip';
-        $bundlePath = $packagesDir . '/' . $bundleName;
+        $tempDir = sys_get_temp_dir() . '/glyphere_bundles';
+        if (!is_dir($tempDir)) {
+            @mkdir($tempDir, 0775, true);
+        }
+        $bundlePath = $tempDir . '/' . $bundleName;
 
         $zip = new ZipArchive();
         if ($zip->open($bundlePath, ZipArchive::CREATE | ZipArchive::OVERWRITE) === TRUE) {
